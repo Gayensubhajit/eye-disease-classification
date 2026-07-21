@@ -1,0 +1,25 @@
+seed: 42
+
+data:
+  train_csv: data/splits/train.csv
+  val_csv: data/splits/val.csv
+  test_csv: data/splits/test.csv
+  image_size: 224
+  num_classes: null # Set after selecting the dataset and task.
+  class_names: []   # Example: [normal, diabetic_retinopathy, glaucoma]
+
+model:
+  name: efficientnet_b0
+  pretrained: true
+  dropout: 0.2
+
+training:
+  batch_size: 16
+  epochs: 20
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  num_workers: 2
+  device: auto
+
+output:
+  directory: outputs

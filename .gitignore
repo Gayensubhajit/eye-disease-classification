@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.venv/
+
+# Data and generated artefacts
+data/raw/
+data/processed/
+outputs/checkpoints/
+outputs/logs/
+outputs/figures/
+*.pt
+*.pth
+*.ckpt
+
+# Notebooks and local settings
+.ipynb_checkpoints/
+.env
+.DS_Store
+Thumbs.db
+
+# Keep folder structure and documentation
+!data/**/.gitkeep
+!outputs/**/.gitkeep
