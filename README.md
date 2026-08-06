@@ -1,6 +1,6 @@
 # Classification of Eye Diseases from Color Fundus Images
 
-A reproducible deep learning research pipeline for **multi-class retinal disease classification** from colour fundus images, developed as a **7th–8th Semester B.Tech Major Project** at **Jadavpur University**.
+A reproducible deep learning research pipeline for **multi-class retinal disease classification** from colour fundus images, developed as a **B.Tech Major Project** at **Jadavpur University**.
 
 > **Research-use only.** This project is not a clinical diagnostic device and must not be used for patient care.
 
