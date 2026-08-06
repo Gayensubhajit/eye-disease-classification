@@ -1,0 +1,535 @@
+image_path,class_name,label
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy859.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1104.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy106.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa136.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar129.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy1020.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR290.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy389.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy674.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar2.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR83.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar192.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma54.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma309.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1270.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR73.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma841.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma975.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy800.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy460.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia371.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy211.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma60.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR877.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment20.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1358.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma577.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma199.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy553.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1023.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia239.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR728.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma321.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1018.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia47.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma956.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar3.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar30.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR554.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR936.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma240.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1054.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR823.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR203.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1509.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma141.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia298.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema30.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma46.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar388.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma193.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma192.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy26.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma354.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar382.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1056.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR68.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1216.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma369.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia101.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma84.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma773.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy57.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1308.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR982.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1512.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia452.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1295.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa101.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy146.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema77.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia440.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR847.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy739.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR580.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR830.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1220.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma131.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar156.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR789.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia169.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR881.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma123.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia125.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1063.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar93.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy373.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma304.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR890.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1222.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR884.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1110.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma751.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR48.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1354.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy491.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma397.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar362.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1122.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia184.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR252.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR930.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR944.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1441.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia150.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia148.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR19.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma604.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma58.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1288.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR57.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR832.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma86.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy166.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy548.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1155.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1030.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma963.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR35.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR864.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy48.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa33.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma854.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia127.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR99.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1249.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema19.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar280.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy805.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1406.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy683.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma525.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR581.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1124.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR384.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1224.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR75.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy440.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar229.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1090.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy751.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia6.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma878.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy982.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR69.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy221.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma725.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma219.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia470.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy786.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema51.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy149.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1003.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma550.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma403.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia177.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1017.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Pterygium/Pterygium11.jpg,Pterygium,7
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR642.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1228.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy916.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa57.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma406.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma745.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma921.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR95.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy718.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR12.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy90.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy49.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment121.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1200.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa14.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy783.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1419.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy314.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR123.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1150.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy306.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1321.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy76.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy471.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy941.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia118.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy826.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma486.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Pterygium/Pterygium15.jpg,Pterygium,7
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR454.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma611.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia89.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma70.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema25.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1271.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma936.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1464.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma385.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy958.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy407.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma589.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1357.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR66.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar403.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema76.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1249.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar150.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma915.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR363.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1083.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar95.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar227.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1248.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR776.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma960.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma753.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR698.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar269.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR357.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1230.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment89.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR46.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1316.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy168.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy11.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar245.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma698.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR137.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR144.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1195.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1175.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR809.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1278.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy797.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1142.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa122.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia272.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy132.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia253.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar119.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma88.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1018.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR291.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy188.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar336.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR820.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy266.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy255.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1479.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma517.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR951.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia245.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia367.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy645.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma235.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1012.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1461.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma713.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar96.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1147.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy984.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar320.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy597.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR210.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR88.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar264.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1043.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar248.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma762.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy215.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy673.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment3.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1105.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy838.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa85.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar228.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1302.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema16.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR277.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR243.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy964.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR878.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1444.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar207.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar56.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma758.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR352.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR564.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia372.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR230.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar149.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy757.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia91.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1246.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment48.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy759.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma610.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy109.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1306.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR513.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma231.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1313.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy111.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa59.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1050.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy134.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema15.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR317.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia296.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma370.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1259.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy374.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia28.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia258.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1256.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy523.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1255.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy660.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy280.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia76.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1021.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma24.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1000.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia492.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma901.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar393.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia350.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR192.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR755.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma569.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1313.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma542.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1130.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR781.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1012.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar178.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy630.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia370.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy14.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR926.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia283.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy382.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR896.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR379.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1408.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1404.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar302.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma657.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR786.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment23.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1330.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR197.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa117.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar354.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar159.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia348.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar371.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1099.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma835.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma987.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1082.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma33.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1291.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma797.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy511.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy297.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy914.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1149.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma507.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar322.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma473.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy731.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1232.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar273.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar418.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia488.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment35.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma420.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment12.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR959.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema101.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma593.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma189.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma832.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR674.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1121.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy530.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment114.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR702.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1091.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1289.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma441.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy627.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma765.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia336.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR840.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy896.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia375.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1332.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia255.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1279.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy639.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR882.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy377.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy429.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR200.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma769.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1187.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma415.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma91.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR660.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1039.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy832.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR387.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma949.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy870.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy355.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa91.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy208.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar306.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma976.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR510.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma105.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma200.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia500.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy420.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR356.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy586.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma127.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma80.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia429.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar375.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema2.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR472.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR481.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1068.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1217.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR498.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy633.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy242.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1239.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1061.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy746.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1476.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy365.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy239.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy654.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy651.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa15.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma873.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia344.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma802.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1160.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR223.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR336.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia361.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1178.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma559.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR65.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia291.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR124.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR457.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy181.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma671.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy992.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy849.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR42.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma788.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar42.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment50.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1487.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma207.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma372.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1427.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR364.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia330.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy325.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma241.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1140.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma737.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR651.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia228.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema119.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia491.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1020.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1473.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1103.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma704.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR822.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR17.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema10.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma421.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy862.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy720.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR93.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa104.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR972.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR694.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma175.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy172.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia463.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar288.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR63.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy447.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar271.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy850.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia223.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma136.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1238.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia213.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia179.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma730.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR106.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment32.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy602.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy427.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar290.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Myopia/Myopia359.jpg,Myopia,6
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR699.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR407.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Central Serous Chorioretinopathy [Color Fundus]/CSCR60.jpg,Central Serous Chorioretinopathy [Color Fundus],0
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma819.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1280.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR179.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Macular Scar/Macular Scar396.jpg,Macular Scar,5
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Disc Edema/Disc Edema63.jpg,Disc Edema,2
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa19.jpg,Retinitis Pigmentosa,9
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy615.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy10.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy411.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Healthy/Healthy410.jpg,Healthy,4
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinal Detachment/Retinal Detachment42.jpg,Retinal Detachment,8
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma436.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Glaucoma/Glaucoma1220.jpg,Glaucoma,3
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Diabetic Retinopathy/DR1245.jpg,Diabetic Retinopathy,1
+Eye Disease Image Dataset/Original Dataset/Original Dataset/Retinitis Pigmentosa/Retinitis Pigmentosa133.jpg,Retinitis Pigmentosa,9
