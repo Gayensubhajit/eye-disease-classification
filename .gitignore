@@ -5,12 +5,13 @@ __pycache__/
 .coverage
 .venv/
 
-# Data and generated artefacts
+# Dataset images — never commit these
+Eye Disease Image Dataset/
 data/raw/
 data/processed/
-outputs/checkpoints/
-outputs/logs/
-outputs/figures/
+
+# Model checkpoints and outputs — never commit these
+outputs/
 *.pt
 *.pth
 *.ckpt
@@ -21,6 +22,6 @@ outputs/figures/
 .DS_Store
 Thumbs.db
 
-# Keep folder structure and documentation
+# Keep placeholder files to preserve folder structure
 !data/**/.gitkeep
 !outputs/**/.gitkeep
