@@ -3,6 +3,19 @@ message: "If you use this repository, please cite it as below."
 title: "Classification of Eye Diseases from Color Fundus Images"
 type: software
 authors:
-  - name: "Project Contributors"
-date-released: 2026-07-21
+  - family-names: "Basak"
+    given-names: "Gunjan"
+    affiliation: "Jadavpur University"
+  - family-names: "Biswas"
+    given-names: "Chirantan"
+    affiliation: "Jadavpur University"
+  - family-names: "Gayen"
+    given-names: "Subhajit"
+    affiliation: "Jadavpur University"
+date-released: 2026-08-06
 license: MIT
+repository-code: "https://github.com/Gayensubhajit/eye-disease-classification"
+abstract: >
+  A reproducible deep learning pipeline for multi-class retinal disease
+  classification from colour fundus images, developed as a B.Tech Major
+  Project at Jadavpur University under the supervision of Dr. Pawan Kumar Singh.
