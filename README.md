@@ -54,9 +54,9 @@ Equally balanced split across all 10 disease classes (4,000 total images).
 ```
 configs/       Experiment configuration YAML files
 data/
-  train/       Training images (400 per class subfolder)
-  val/         Validation images (50 per class subfolder)
-  test/        Test images (50 per class subfolder)
+  train/       Training images (140 per class subfolder)
+  val/         Validation images (130 per class subfolder)
+  test/        Test images (130 per class subfolder)
 docs/          Proposal, literature review, experiment records
 scripts/       Repeatable CLI helpers (e.g. build_balanced_folders.py)
 src/
