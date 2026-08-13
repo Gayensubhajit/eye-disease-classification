@@ -70,8 +70,12 @@ def compute_metrics(
     macro_sensitivity = float(np.mean(sensitivities))
     macro_specificity = float(np.mean(specificities))
 
+    from sklearn.metrics import balanced_accuracy_score
+    balanced_acc = balanced_accuracy_score(y_true, y_pred)
+
     metrics = {
         "accuracy": float(acc),
+        "balanced_accuracy": float(balanced_acc),
         "macro_f1": float(macro_f1),
         "weighted_f1": float(weighted_f1),
         "macro_auc": float(macro_auc),

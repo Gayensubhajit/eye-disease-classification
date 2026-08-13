@@ -55,6 +55,8 @@ def train_one_epoch(
             loss = criterion(outputs, targets)
 
         scaler.scale(loss).backward()
+        scaler.unscale_(optimizer)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         scaler.step(optimizer)
         scaler.update()
 
@@ -140,7 +142,12 @@ def main() -> None:
     print(f"Using device: {device}")
 
     # Build DataLoaders
-    train_loader, val_loader, test_loader = create_dataloaders(config)
+    use_weighted_sampler = config["training"].get("use_weighted_sampler", True)
+    train_loader, val_loader, test_loader = create_dataloaders(
+        config, use_weighted_sampler=use_weighted_sampler
+    )
+    if use_weighted_sampler:
+        print("Equally distributed class sampling (WeightedRandomSampler) enabled for training.")
     class_names = config["data"]["class_names"]
 
     # Compute class counts for weighted loss
@@ -179,7 +186,6 @@ def main() -> None:
             model, val_loader, criterion, device, class_names, dry_run=args.dry_run
         )
 
-        optimizer.step()
         scheduler.step()
 
         elapsed = time.time() - epoch_start

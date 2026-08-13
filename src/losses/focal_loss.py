@@ -68,11 +68,14 @@ def get_loss_function(
     """
     loss_config = config.get("loss", {})
     loss_name = loss_config.get("name", "cross_entropy").lower()
+    use_weighted_sampler = config.get("training", {}).get("use_weighted_sampler", False)
 
     weights = None
-    if class_counts is not None and len(class_counts) > 0:
+    if not use_weighted_sampler and class_counts is not None and len(class_counts) > 0:
         total = np.sum(class_counts)
         weights_arr = total / (len(class_counts) * np.maximum(class_counts, 1).astype(np.float32))
+        # Normalize weights so mean is 1.0 to prevent loss explosion
+        weights_arr = weights_arr / np.mean(weights_arr)
         weights = torch.tensor(weights_arr, dtype=torch.float32)
 
     if loss_name == "weighted_ce":

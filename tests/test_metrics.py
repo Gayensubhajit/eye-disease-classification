@@ -12,6 +12,7 @@ def test_compute_metrics():
     metrics = compute_metrics(y_true, y_pred, y_prob, class_names=["C1", "C2", "C3"])
 
     assert "accuracy" in metrics
+    assert "balanced_accuracy" in metrics
     assert "macro_f1" in metrics
     assert "kappa" in metrics
     assert "macro_sensitivity" in metrics

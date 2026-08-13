@@ -37,6 +37,7 @@ training:
   weight_decay: 0.0001
   num_workers: 4
   device: auto
+  use_weighted_sampler: true # Samples all 10 classes equally during training
   scheduler: cosine # Options: cosine, reduce_on_plateau, step
 
 output:
