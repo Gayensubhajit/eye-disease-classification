@@ -1,9 +1,9 @@
 """Script to build physical, equally balanced train/val/test folders (no CSV files).
 
 Creates:
-  data/train/<class_name>/ -> 400 images per class (4,000 total)
-  data/val/<class_name>/   -> 50 images per class  (500 total)
-  data/test/<class_name>/  -> 50 images per class  (500 total)
+  data/train/<class_name>/ -> 140 images per class (1,400 total)
+  data/val/<class_name>/   -> 130 images per class (1,300 total)
+  data/test/<class_name>/  -> 130 images per class (1,300 total)
 """
 
 import shutil
@@ -30,9 +30,9 @@ def build_balanced_dataset(
     original_dataset_dir: str = "Eye Disease Image Dataset/Original Dataset/Original Dataset",
     augmented_dataset_dir: str = "Eye Disease Image Dataset/Augmented Dataset/Augmented Dataset",
     output_base_dir: str = "data",
-    train_per_class: int = 400,
-    val_per_class: int = 50,
-    test_per_class: int = 50,
+    train_per_class: int = 140,
+    val_per_class: int = 130,
+    test_per_class: int = 130,
     seed: int = 42,
 ) -> None:
     random.seed(seed)
@@ -42,7 +42,13 @@ def build_balanced_dataset(
     aug_path = Path(augmented_dataset_dir)
     out_path = Path(output_base_dir)
 
-    total_target = train_per_class + val_per_class + test_per_class  # 500
+    # Clean existing data/train, val, test to ensure exact counts
+    for split_dir in ["train", "val", "test"]:
+        p = out_path / split_dir
+        if p.exists():
+            shutil.rmtree(p)
+
+    total_target = train_per_class + val_per_class + test_per_class  # 400
 
     class_dirs = sorted([d for d in orig_path.iterdir() if d.is_dir()])
     print(f"Found {len(class_dirs)} classes to balance.")

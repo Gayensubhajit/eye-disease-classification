@@ -24,19 +24,19 @@ A reproducible deep learning research pipeline for **multi-class retinal disease
 
 | Class | Train Folders | Val Folders | Test Folders | Total |
 |---|:---:|:---:|:---:|:---:|
-| Central Serous Chorioretinopathy | 400 | 50 | 50 | 500 |
-| Diabetic Retinopathy | 400 | 50 | 50 | 500 |
-| Disc Edema | 400 | 50 | 50 | 500 |
-| Glaucoma | 400 | 50 | 50 | 500 |
-| Healthy | 400 | 50 | 50 | 500 |
-| Macular Scar | 400 | 50 | 50 | 500 |
-| Myopia | 400 | 50 | 50 | 500 |
-| Pterygium | 400 | 50 | 50 | 500 |
-| Retinal Detachment | 400 | 50 | 50 | 500 |
-| Retinitis Pigmentosa | 400 | 50 | 50 | 500 |
-| **Total** | **4,000** | **500** | **500** | **5,000** |
+| Central Serous Chorioretinopathy | 140 | 130 | 130 | 400 |
+| Diabetic Retinopathy | 140 | 130 | 130 | 400 |
+| Disc Edema | 140 | 130 | 130 | 400 |
+| Glaucoma | 140 | 130 | 130 | 400 |
+| Healthy | 140 | 130 | 130 | 400 |
+| Macular Scar | 140 | 130 | 130 | 400 |
+| Myopia | 140 | 130 | 130 | 400 |
+| Pterygium | 140 | 130 | 130 | 400 |
+| Retinal Detachment | 140 | 130 | 130 | 400 |
+| Retinitis Pigmentosa | 140 | 130 | 130 | 400 |
+| **Total** | **1,400** | **1,300** | **1,300** | **4,000** |
 
-Equally balanced 80/10/10 split across all 10 disease classes (5,000 total images).
+Equally balanced split across all 10 disease classes (4,000 total images).
 
 ---
 
