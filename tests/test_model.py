@@ -20,3 +20,16 @@ def test_build_model_factory():
     x = torch.randn(1, 3, 224, 224)
     logits = model(x)
     assert logits.shape == (1, 10)
+
+
+def test_biomedclip_factory():
+    config = {
+        "model": {"name": "biomedclip", "pretrained": False, "dropout": 0.2},
+        "data": {"num_classes": 10},
+    }
+    model = build_model(config)
+    assert model.is_biomedclip is True
+    x = torch.randn(2, 3, 224, 224)
+    logits = model(x)
+    assert logits.shape == (2, 10)
+

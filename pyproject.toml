@@ -11,6 +11,7 @@ dependencies = [
   "albumentations>=1.4",
   "numpy>=1.26",
   "opencv-python>=4.9",
+  "open_clip_torch>=2.24",
   "pandas>=2.2",
   "pyyaml>=6.0",
   "scikit-learn>=1.4",
