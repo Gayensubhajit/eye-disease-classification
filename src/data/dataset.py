@@ -1,11 +1,10 @@
-"""PyTorch Dataset and DataLoader creation for fundus eye disease classification."""
+"""PyTorch Dataset and DataLoader module for folder-based fundus eye disease classification (No CSVs)."""
 
 from pathlib import Path
-from typing import Dict, Any, Tuple, Optional
+from typing import Dict, Any, Tuple, Optional, List
 import cv2
-import pandas as pd
 import torch
-from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
+from torch.utils.data import Dataset, DataLoader
 import numpy as np
 
 from src.data.preprocessing import (
@@ -17,40 +16,64 @@ from src.data.preprocessing import (
 
 
 class FundusDataset(Dataset):
-    """PyTorch Dataset loading fundus images from split CSV manifests."""
+    """PyTorch Dataset loading fundus images directly from class subfolders (ImageFolder layout)."""
 
     def __init__(
         self,
-        df_or_csv: Any,
+        root_dir: str | Path,
+        class_names: Optional[List[str]] = None,
         transform: Optional[Any] = None,
         crop_fundus: bool = True,
         apply_clahe_flag: bool = False,
     ):
         """
         Args:
-            df_or_csv: Path to CSV file or a pandas DataFrame.
+            root_dir: Path to directory containing class subdirectories (e.g. data/train).
+            class_names: Optional list of class names to ensure consistent label indexing.
             transform: Albumentations transformation pipeline.
             crop_fundus: Whether to crop black background borders.
             apply_clahe_flag: Whether to apply CLAHE enhancement.
         """
-        if isinstance(df_or_csv, (str, Path)):
-            self.df = pd.read_csv(df_or_csv)
-        else:
-            self.df = df_or_csv.reset_index(drop=True)
+        self.root_path = Path(root_dir)
+        if not self.root_path.exists():
+            raise FileNotFoundError(f"Dataset root directory not found: {self.root_path.resolve()}")
 
+        # Discover class folders
+        if class_names is not None:
+            self.class_names = class_names
+        else:
+            self.class_names = sorted([d.name for d in self.root_path.iterdir() if d.is_dir()])
+
+        self.class_to_idx = {name: idx for idx, name in enumerate(self.class_names)}
         self.transform = transform
         self.crop_fundus = crop_fundus
         self.apply_clahe_flag = apply_clahe_flag
 
+        # Collect (image_path, label) samples
+        self.samples: List[Tuple[Path, int]] = []
+        for class_name in self.class_names:
+            class_dir = self.root_path / class_name
+            if not class_dir.exists():
+                continue
+            class_idx = self.class_to_idx[class_name]
+            image_files = sorted(
+                list(class_dir.glob("*.jpg"))
+                + list(class_dir.glob("*.jpeg"))
+                + list(class_dir.glob("*.png"))
+            )
+            for img_file in image_files:
+                self.samples.append((img_file, class_idx))
+
+        if len(self.samples) == 0:
+            raise RuntimeError(f"Found 0 images in {self.root_path.resolve()}. Check dataset directory path.")
+
     def __len__(self) -> int:
-        return len(self.df)
+        return len(self.samples)
 
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, int]:
-        row = self.df.iloc[idx]
-        image_path = row["image_path"]
-        label = int(row["label"])
+        image_path, label = self.samples[idx]
 
-        image = cv2.imread(image_path)
+        image = cv2.imread(str(image_path))
         if image is None:
             raise FileNotFoundError(f"Image not found or unreadable at path: {image_path}")
 
@@ -70,16 +93,19 @@ class FundusDataset(Dataset):
 
         return image_tensor, label
 
+    @property
+    def labels(self) -> np.ndarray:
+        """Return numpy array of all labels in dataset."""
+        return np.array([s[1] for s in self.samples])
+
 
 def create_dataloaders(
     config: Dict[str, Any],
-    use_weighted_sampler: bool = False,
 ) -> Tuple[DataLoader, DataLoader, DataLoader]:
-    """Create train, validation, and test PyTorch DataLoaders.
+    """Create train, validation, and test PyTorch DataLoaders directly from folder paths.
 
     Args:
         config: Configuration dictionary loaded from config.yaml.
-        use_weighted_sampler: If True, uses WeightedRandomSampler for train dataloader.
 
     Returns:
         Tuple of (train_loader, val_loader, test_loader).
@@ -87,40 +113,32 @@ def create_dataloaders(
     image_size = config["data"]["image_size"]
     crop_fundus = config["data"].get("crop_fundus", True)
     apply_clahe_flag = config["data"].get("apply_clahe", False)
+    class_names = config["data"].get("class_names", None)
 
     train_transforms = get_train_transforms(image_size)
     val_transforms = get_val_transforms(image_size)
 
     train_dataset = FundusDataset(
-        config["data"]["train_csv"],
+        config["data"]["train_dir"],
+        class_names=class_names,
         transform=train_transforms,
         crop_fundus=crop_fundus,
         apply_clahe_flag=apply_clahe_flag,
     )
     val_dataset = FundusDataset(
-        config["data"]["val_csv"],
+        config["data"]["val_dir"],
+        class_names=class_names,
         transform=val_transforms,
         crop_fundus=crop_fundus,
         apply_clahe_flag=apply_clahe_flag,
     )
     test_dataset = FundusDataset(
-        config["data"]["test_csv"],
+        config["data"]["test_dir"],
+        class_names=class_names,
         transform=val_transforms,
         crop_fundus=crop_fundus,
         apply_clahe_flag=apply_clahe_flag,
     )
-
-    sampler = None
-    shuffle = True
-    if use_weighted_sampler:
-        labels = train_dataset.df["label"].values
-        class_counts = np.bincount(labels)
-        class_weights = 1.0 / np.maximum(class_counts, 1)
-        sample_weights = class_weights[labels]
-        sampler = WeightedRandomSampler(
-            weights=sample_weights, num_samples=len(sample_weights), replacement=True
-        )
-        shuffle = False
 
     batch_size = config["training"]["batch_size"]
     num_workers = config["training"]["num_workers"]
@@ -128,8 +146,7 @@ def create_dataloaders(
     train_loader = DataLoader(
         train_dataset,
         batch_size=batch_size,
-        shuffle=shuffle,
-        sampler=sampler,
+        shuffle=True,
         num_workers=num_workers,
         pin_memory=True,
     )

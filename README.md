@@ -20,31 +20,31 @@ A reproducible deep learning research pipeline for **multi-class retinal disease
 
 ## Dataset
 
-10-class colour fundus image classification:
+10-class colour fundus image classification (Folder-based structure — no CSV files):
 
-| Class | Train | Val | Test |
-|---|---|---|---|
-| Central Serous Chorioretinopathy | 81 | 10 | 10 |
-| Diabetic Retinopathy | 1207 | 151 | 151 |
-| Disc Edema | 101 | 13 | 13 |
-| Glaucoma | 1079 | 135 | 135 |
-| Healthy | 819 | 103 | 102 |
-| Macular Scar | 356 | 44 | 44 |
-| Myopia | 400 | 50 | 50 |
-| Pterygium | 13 | 2 | 2 |
-| Retinal Detachment | 100 | 12 | 13 |
-| Retinitis Pigmentosa | 111 | 14 | 14 |
-| **Total** | **4,267** | **534** | **534** |
+| Class | Train Folders | Val Folders | Test Folders | Total |
+|---|:---:|:---:|:---:|:---:|
+| Central Serous Chorioretinopathy | 400 | 50 | 50 | 500 |
+| Diabetic Retinopathy | 400 | 50 | 50 | 500 |
+| Disc Edema | 400 | 50 | 50 | 500 |
+| Glaucoma | 400 | 50 | 50 | 500 |
+| Healthy | 400 | 50 | 50 | 500 |
+| Macular Scar | 400 | 50 | 50 | 500 |
+| Myopia | 400 | 50 | 50 | 500 |
+| Pterygium | 400 | 50 | 50 | 500 |
+| Retinal Detachment | 400 | 50 | 50 | 500 |
+| Retinitis Pigmentosa | 400 | 50 | 50 | 500 |
+| **Total** | **4,000** | **500** | **500** | **5,000** |
 
-Stratified 80/10/10 split from 5,335 original images.
+Equally balanced 80/10/10 split across all 10 disease classes (5,000 total images).
 
 ---
 
 ## Objectives
 
-- Build reproducible data preparation and evaluation pipelines.
+- Build reproducible data preparation and evaluation pipelines directly from folder directories.
 - Establish fair CNN baselines (EfficientNet-B0, ResNet-50) before proposing novel architecture.
-- Evaluate models with Macro F1, ROC-AUC, Cohen's Kappa, Sensitivity, and Specificity.
+- Evaluate models with Macro F1, Balanced Accuracy, ROC-AUC, Cohen's Kappa, Sensitivity, and Specificity.
 - Use Grad-CAM explainability to inspect model behaviour on fundus images.
 
 ---
@@ -53,9 +53,12 @@ Stratified 80/10/10 split from 5,335 original images.
 
 ```
 configs/       Experiment configuration YAML files
-data/          Split manifests (train/val/test CSVs — images not versioned)
+data/
+  train/       Training images (400 per class subfolder)
+  val/         Validation images (50 per class subfolder)
+  test/        Test images (50 per class subfolder)
 docs/          Proposal, literature review, experiment records
-scripts/       Repeatable CLI helpers (e.g. create_splits.py)
+scripts/       Repeatable CLI helpers (e.g. build_balanced_folders.py)
 src/
   data/        Dataset class and preprocessing/augmentations
   losses/      Focal loss and weighted cross-entropy
@@ -81,8 +84,8 @@ source .venv/bin/activate          # Linux/Mac
 # 2. Install dependencies
 pip install -e .[dev]
 
-# 3. Generate train/val/test splits
-python scripts/create_splits.py --config configs/config.yaml
+# 3. Build physical balanced train/val/test folders (one-time setup)
+python scripts/build_balanced_folders.py
 
 # 4. Run training
 python -m src.train --config configs/config.yaml

@@ -9,6 +9,9 @@ __pycache__/
 Eye Disease Image Dataset/
 data/raw/
 data/processed/
+data/train/
+data/val/
+data/test/
 
 # Model checkpoints and outputs — never commit these
 outputs/

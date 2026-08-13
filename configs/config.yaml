@@ -1,10 +1,9 @@
 seed: 42
 
 data:
-  dataset_dir: "Eye Disease Image Dataset/Original Dataset/Original Dataset"
-  train_csv: "data/splits/train.csv"
-  val_csv: "data/splits/val.csv"
-  test_csv: "data/splits/test.csv"
+  train_dir: "data/train"
+  val_dir: "data/val"
+  test_dir: "data/test"
   image_size: 224
   num_classes: 10
   class_names:

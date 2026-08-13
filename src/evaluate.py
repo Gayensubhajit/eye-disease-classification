@@ -38,7 +38,7 @@ def main() -> None:
     model.eval()
 
     # Load test dataset
-    test_csv = config["data"]["test_csv"]
+    test_dir = config["data"]["test_dir"]
     image_size = config["data"]["image_size"]
     crop_fundus = config["data"].get("crop_fundus", True)
     apply_clahe_flag = config["data"].get("apply_clahe", False)
@@ -46,7 +46,8 @@ def main() -> None:
 
     val_transforms = get_val_transforms(image_size)
     test_dataset = FundusDataset(
-        test_csv,
+        test_dir,
+        class_names=class_names,
         transform=val_transforms,
         crop_fundus=crop_fundus,
         apply_clahe_flag=apply_clahe_flag,

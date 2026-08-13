@@ -142,16 +142,14 @@ def main() -> None:
     print(f"Using device: {device}")
 
     # Build DataLoaders
-    use_weighted_sampler = config["training"].get("use_weighted_sampler", True)
-    train_loader, val_loader, test_loader = create_dataloaders(
-        config, use_weighted_sampler=use_weighted_sampler
-    )
-    if use_weighted_sampler:
-        print("Equally distributed class sampling (WeightedRandomSampler) enabled for training.")
+    train_loader, val_loader, test_loader = create_dataloaders(config)
     class_names = config["data"]["class_names"]
 
-    # Compute class counts for weighted loss
-    train_labels = train_loader.dataset.df["label"].values
+    print(f"Loaded folder-based dataset: {len(train_loader.dataset)} train, "
+          f"{len(val_loader.dataset)} val, {len(test_loader.dataset)} test samples across {len(class_names)} classes.")
+
+    # Compute class counts for loss
+    train_labels = train_loader.dataset.labels
     class_counts = np.bincount(train_labels, minlength=len(class_names))
 
     # Build Model, Loss, Optimizer

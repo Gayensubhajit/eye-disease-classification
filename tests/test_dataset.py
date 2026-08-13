@@ -1,14 +1,14 @@
 """Tests for dataset and preprocessing pipelines."""
 
+from pathlib import Path
 import numpy as np
 import pytest
 import torch
-import pandas as pd
 from src.data.preprocessing import crop_fundus_area, apply_clahe, get_train_transforms, get_val_transforms
+from src.data.dataset import FundusDataset, create_dataloaders
 
 
 def test_crop_fundus_area():
-    # Create black image with a bright circle in center
     img = np.zeros((100, 100, 3), dtype=np.uint8)
     img[20:80, 20:80] = 255
     cropped = crop_fundus_area(img, threshold=10)
@@ -34,3 +34,13 @@ def test_transforms_shape():
     assert out_train.shape == (3, 224, 224)
     assert out_val.shape == (3, 224, 224)
     assert isinstance(out_train, torch.Tensor)
+
+
+def test_fundus_dataset_folder_loading():
+    val_path = Path("data/val")
+    if val_path.exists():
+        dataset = FundusDataset(val_path, transform=get_val_transforms(224))
+        assert len(dataset) > 0
+        img, label = dataset[0]
+        assert img.shape == (3, 224, 224)
+        assert isinstance(label, int)
