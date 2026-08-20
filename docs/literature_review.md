@@ -8,8 +8,9 @@ This document tracks published peer-reviewed studies, competitive benchmarks, an
 | **LIT-002** | PLoS ONE (2023) | Swin Transformer (Swin-T) | Shifted-Window Vision Transformer | **86.8%** | 86.2% | 0.978 | Hierarchical attention captures global fundus context and vascular lesions. |
 | **LIT-003** | EyeFusionNet (IEEE 2023) | DenseNet-169 + TNT | CNN-Transformer Dual-Branch Fusion | **89.2%** | 88.7% | 0.984 | SOTA on this dataset. Fuses local CNN features with patch self-attention. |
 | **LIT-004** | RETFound (Nature 2023) | ViT-Large/16 Masked Autoencoder | Self-Supervised on 1.6M Retinal Scans (Fundus+OCT) | **88.5% - 91.2%** | 89.4% | 0.988 | Moorfields/UCL landmark retinal foundation model. High generalizability. |
-| **LIT-005** | BiomedCLIP (Microsoft / EMNLP 2023) | ViT-Base/16 + PubMedBERT | Contrastive Multimodal on 15M PubMed Images | **83.85%** | **83.69%** | **0.9802** | Evaluated in our project (EXP-002). Superior across all metrics over CNN baseline. |
+| **LIT-005** | BiomedCLIP (Microsoft / EMNLP 2023) | ViT-Base/16 + PubMedBERT | Contrastive Multimodal on 15M PubMed Images | **83.85%** | **83.69%** | **0.9802** | Fine-tuned in our project (EXP-002). Superior across all metrics over CNN baseline. |
 | **LIT-006** | Our CNN Baseline (EXP-001) | EfficientNet-B0 + Focal Loss | ImageNet Pretrained + Cosine Annealing | **83.38%** | **83.11%** | **0.9774** | 100% physically balanced folder split (1,300 test images), 98.15% specificity. |
+| **LIT-007** | **Our Novel Hybrid Model (EXP-003)** 🏆 | **BiomedCLIP + CBAM + Feature Fusion** | **Spatial/Channel Attention + Multi-Scale Pyramid** | **84.23%** | **84.09%** | **0.9796** | **Best overall result (84.23% Acc, 84.09% F1). Boosted Glaucoma F1 from 51.9% to 59.9%.** |
 
 ---
 
