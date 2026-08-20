@@ -187,7 +187,7 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
         [
             Paragraph("<b>EyeFusionNet</b> (2023)", table_text_style),
             Paragraph("DenseNet-169 + TNT", table_text_style),
-            Paragraph("<b>89.20%</b>", table_bold_style),
+            Paragraph("89.20%", table_text_style),
             Paragraph("88.70%", table_text_style),
             Paragraph("0.9840", table_text_style),
             Paragraph("~0.93", table_text_style),
@@ -221,22 +221,32 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
             Paragraph("Fine-tuned on 15M PubMed biomedical pairs.", table_text_style),
         ],
         [
-            Paragraph("<b>Our Model (EXP-003)</b><br/>🏆 <i>Novel Hybrid</i>", table_bold_style),
-            Paragraph("BiomedCLIP + CBAM + Multi-Scale Feature Pyramid", table_text_style),
-            Paragraph("<b>84.23%</b>", table_bold_style),
-            Paragraph("<b>84.09%</b>", table_bold_style),
-            Paragraph("<b>0.9796</b>", table_bold_style),
-            Paragraph("<b>0.9128</b>", table_bold_style),
-            Paragraph("<b>Highest overall performance (84.23% Acc, 84.09% F1). Glaucoma F1 boosted from 51.9% to 59.9%.</b>", table_bold_style),
+            Paragraph("<b>Our Model (EXP-003)</b><br/>⭐ <i>Novel Hybrid</i>", table_bold_style),
+            Paragraph("BiomedCLIP + CBAM + Pyramid", table_text_style),
+            Paragraph("84.23%", table_text_style),
+            Paragraph("84.09%", table_text_style),
+            Paragraph("0.9796", table_text_style),
+            Paragraph("0.9128", table_text_style),
+            Paragraph("Glaucoma F1 boosted from 51.9% to 59.9%.", table_text_style),
+        ],
+        [
+            Paragraph("<b>Our Model (EXP-004)</b><br/>🏆 <i>Ensemble + TTA</i>", table_bold_style),
+            Paragraph("Multi-Model Weighted Ensemble + Flip TTA", table_bold_style),
+            Paragraph("<b>85.85%</b>", table_bold_style),
+            Paragraph("<b>85.72%</b>", table_bold_style),
+            Paragraph("<b>0.9839</b>", table_bold_style),
+            Paragraph("<b>0.9263</b>", table_bold_style),
+            Paragraph("<b>Peak Overall Project Benchmark (85.85% Acc, 98.39% ROC-AUC, 0.9263 Kappa).</b>", table_bold_style),
         ],
     ]
     t_lit = Table([lit_headers] + lit_rows, colWidths=[1.1*inch, 1.3*inch, 0.8*inch, 0.8*inch, 0.7*inch, 0.8*inch, 1.7*inch])
     t_lit.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#0F2942')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E0')),
-        ('ROWBACKGROUNDS', (0,1), (-1,-4), [colors.white, colors.HexColor('#F8FAFC')]),
-        ('BACKGROUND', (0,-3), (-1,-3), colors.HexColor('#EFF6FF')),
-        ('BACKGROUND', (0,-2), (-1,-2), colors.HexColor('#F0FDF4')),
+        ('ROWBACKGROUNDS', (0,1), (-1,-5), [colors.white, colors.HexColor('#F8FAFC')]),
+        ('BACKGROUND', (0,-4), (-1,-4), colors.HexColor('#EFF6FF')),
+        ('BACKGROUND', (0,-3), (-1,-3), colors.HexColor('#F0FDF4')),
+        ('BACKGROUND', (0,-2), (-1,-2), colors.HexColor('#F5F3FF')),
         ('BACKGROUND', (0,-1), (-1,-1), colors.HexColor('#FEF3C7')),
         ('TOPPADDING', (0,0), (-1,-1), 3),
         ('BOTTOMPADDING', (0,0), (-1,-1), 3),
@@ -245,7 +255,7 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
     story.append(Spacer(1, 8))
 
     # Section 3: Head-to-Head Per-Disease Breakdown
-    story.append(Paragraph("3. Per-Disease Test Performance Across All 3 Architectures (1,300 Images)", h1_style))
+    story.append(Paragraph("3. Per-Disease Test Performance Across All Architectures (1,300 Images)", h1_style))
     story.append(Paragraph(
         "Exact class-by-class F1-score comparison for all evaluated models on the 1,300 test images:",
         body_style
@@ -254,16 +264,18 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
     disease_headers = [
         Paragraph("<b>Disease Category (10 Classes)</b>", table_header_style),
         Paragraph("<b>Test Samples</b>", table_header_style),
-        Paragraph("<b>EffNet-B0 F1 (EXP-001)</b>", table_header_style),
-        Paragraph("<b>BiomedCLIP F1 (EXP-002)</b>", table_header_style),
-        Paragraph("<b>Novel CBAM-Fusion F1 (EXP-003)</b>", table_header_style),
-        Paragraph("<b>Novelty Gain / Outcome</b>", table_header_style),
+        Paragraph("<b>EffNet-B0 (EXP-001)</b>", table_header_style),
+        Paragraph("<b>BiomedCLIP (EXP-002)</b>", table_header_style),
+        Paragraph("<b>CBAM-Fusion (EXP-003)</b>", table_header_style),
+        Paragraph("<b>Ensemble + TTA (EXP-004)</b>", table_header_style),
+        Paragraph("<b>Outcome / Winner</b>", table_header_style),
     ]
 
     disease_rows = [
         [
             Paragraph("<b>Pterygium</b>", table_bold_style),
             Paragraph("130", table_text_style),
+            Paragraph("1.0000", table_text_style),
             Paragraph("1.0000", table_text_style),
             Paragraph("1.0000", table_text_style),
             Paragraph("<b>1.0000</b>", table_bold_style),
@@ -273,65 +285,73 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
             Paragraph("<b>Retinal Detachment</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.9692", table_text_style),
-            Paragraph("<b>0.9924</b>", table_bold_style),
+            Paragraph("0.9924", table_text_style),
             Paragraph("0.9769", table_text_style),
-            Paragraph("High accuracy (>97.6%)", table_text_style),
+            Paragraph("<b>0.9962</b>", table_bold_style),
+            Paragraph("Ensemble Best (+2.7%)", table_text_style),
         ],
         [
             Paragraph("<b>Retinitis Pigmentosa</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.9373", table_text_style),
-            Paragraph("<b>0.9615</b>", table_bold_style),
+            Paragraph("0.9615", table_text_style),
             Paragraph("0.9585", table_text_style),
-            Paragraph("High accuracy (>95.8%)", table_text_style),
+            Paragraph("<b>0.9695</b>", table_bold_style),
+            Paragraph("Ensemble Best (+3.2%)", table_text_style),
         ],
         [
             Paragraph("<b>Disc Edema</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.9286", table_text_style),
             Paragraph("0.9358", table_text_style),
-            Paragraph("<b>0.9385</b>", table_bold_style),
-            Paragraph("Novel CBAM Best (+1.0%)", table_text_style),
+            Paragraph("0.9385", table_text_style),
+            Paragraph("<b>0.9582</b>", table_bold_style),
+            Paragraph("Ensemble Best (+3.0%)", table_text_style),
         ],
         [
             Paragraph("<b>Diabetic Retinopathy</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.8659", table_text_style),
-            Paragraph("<b>0.8889</b>", table_bold_style),
+            Paragraph("0.8889", table_text_style),
             Paragraph("0.8571", table_text_style),
-            Paragraph("BiomedCLIP Best (+2.3%)", table_text_style),
+            Paragraph("<b>0.9035</b>", table_bold_style),
+            Paragraph("Ensemble Best (+3.8%)", table_text_style),
         ],
         [
             Paragraph("<b>CSCR [Color Fundus]</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.8971", table_text_style),
             Paragraph("0.8300", table_text_style),
-            Paragraph("<b>0.8750</b>", table_bold_style),
-            Paragraph("CBAM recovered CSCR (+4.5%)", table_text_style),
+            Paragraph("0.8750", table_text_style),
+            Paragraph("<b>0.8889</b>", table_bold_style),
+            Paragraph("Ensemble Recovered CSCR", table_text_style),
         ],
         [
             Paragraph("<b>Myopia</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.7429", table_text_style),
-            Paragraph("<b>0.7879</b>", table_bold_style),
+            Paragraph("0.7879", table_text_style),
             Paragraph("0.7816", table_text_style),
-            Paragraph("BiomedCLIP / CBAM (+3.9%)", table_text_style),
+            Paragraph("<b>0.7907</b>", table_bold_style),
+            Paragraph("Ensemble Best (+4.8%)", table_text_style),
         ],
         [
             Paragraph("<b>Healthy</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.7305", table_text_style),
-            Paragraph("<b>0.7448</b>", table_bold_style),
+            Paragraph("0.7448", table_text_style),
             Paragraph("0.7426", table_text_style),
-            Paragraph("BiomedCLIP / CBAM (+1.4%)", table_text_style),
+            Paragraph("<b>0.7633</b>", table_bold_style),
+            Paragraph("Ensemble Best (+3.3%)", table_text_style),
         ],
         [
             Paragraph("<b>Macular Scar</b>", table_bold_style),
             Paragraph("130", table_text_style),
             Paragraph("0.7209", table_text_style),
             Paragraph("0.6772", table_text_style),
-            Paragraph("<b>0.6798</b>", table_bold_style),
-            Paragraph("Stable performance", table_text_style),
+            Paragraph("0.6798", table_text_style),
+            Paragraph("<b>0.7259</b>", table_bold_style),
+            Paragraph("Ensemble Best (+0.5%)", table_text_style),
         ],
         [
             Paragraph("<b>Glaucoma</b> ⭐", table_bold_style),
@@ -339,19 +359,21 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
             Paragraph("0.5188", table_text_style),
             Paragraph("0.5500", table_text_style),
             Paragraph("<b>0.5992</b>", table_bold_style),
-            Paragraph("<b>Massive CBAM Boost (+8.0%!)</b>", table_bold_style),
+            Paragraph("0.5761", table_text_style),
+            Paragraph("<b>CBAM Attention Best (+8.0%!)</b>", table_bold_style),
         ],
         [
             Paragraph("<b>Macro Average / Overall</b>", table_bold_style),
             Paragraph("<b>1,300</b>", table_bold_style),
-            Paragraph("<b>83.38% Acc / 0.8311 F1</b>", table_text_style),
-            Paragraph("<b>83.85% Acc / 0.8369 F1</b>", table_text_style),
-            Paragraph("<b>84.23% Acc / 0.8409 F1</b>", table_bold_style),
-            Paragraph("<b>Novel CBAM-Fusion Wins 🏆</b>", table_bold_style),
+            Paragraph("83.38% Acc", table_text_style),
+            Paragraph("83.85% Acc", table_text_style),
+            Paragraph("84.23% Acc", table_text_style),
+            Paragraph("<b>85.85% Acc / 0.8572 F1</b>", table_bold_style),
+            Paragraph("<b>Ensemble + TTA Wins 🏆</b>", table_bold_style),
         ]
     ]
 
-    t_dis = Table([disease_headers] + disease_rows, colWidths=[1.5*inch, 0.65*inch, 1.1*inch, 1.1*inch, 1.35*inch, 1.5*inch])
+    t_dis = Table([disease_headers] + disease_rows, colWidths=[1.4*inch, 0.55*inch, 0.95*inch, 0.95*inch, 1.05*inch, 1.35*inch, 1.25*inch])
     t_dis.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#0F2942')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E0')),
@@ -366,10 +388,10 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
 
     # Section 4: Key Research Findings & Insights
     story.append(Paragraph("4. Key Scientific Insights & Final Major Project Accomplishments", h1_style))
-    story.append(Paragraph("1. <b>Highest Test Performance (84.23% Acc / 84.09% F1):</b> Our novel hybrid architecture combining Microsoft BiomedCLIP, CBAM Spatial/Channel Attention, and Multi-Scale Feature Pyramid Fusion achieved the highest test accuracy and Macro F1 score across all experiments.", bullet_style))
-    story.append(Paragraph("2. <b>Solved Glaucoma Bottleneck (+8.0% Boost):</b> The Spatial Attention module focused features directly onto the optic cup/disc region, boosting Glaucoma F1-score from <b>51.88% $\\rightarrow$ 59.92%</b> and sensitivity from <b>47.69% $\\rightarrow$ 56.92%</b>.", bullet_style))
-    story.append(Paragraph("3. <b>High Specificity (98.25%):</b> Zero-compromise clinical screening safety with minimal false-positive diagnoses.", bullet_style))
-    story.append(Paragraph("4. <b>Complete Scientific Methodology:</b> Baseline CNN $\\rightarrow$ Medical Foundation Model $\\rightarrow$ Novel Dual Attention & Multi-Scale Pyramid Fusion.", bullet_style))
+    story.append(Paragraph("1. <b>Peak Overall Performance (85.85% Acc, 98.39% ROC-AUC, 0.9263 Kappa):</b> Multi-model weighted probability averaging combined with Test-Time Augmentation (TTA) established the peak overall benchmark across all metrics.", bullet_style))
+    story.append(Paragraph("2. <b>Solved Glaucoma Bottleneck (+8.0% Boost):</b> The Spatial Attention module focused features directly onto optic cup/disc boundaries, boosting Glaucoma F1-score from <b>51.88% $\\rightarrow$ 59.92%</b> and sensitivity to <b>56.92%</b>.", bullet_style))
+    story.append(Paragraph("3. <b>High Specificity (98.43%):</b> Zero-compromise clinical screening safety with minimal false-positive diagnoses.", bullet_style))
+    story.append(Paragraph("4. <b>Complete Scientific Methodology:</b> Standard Baseline $\\rightarrow$ Medical Foundation Model $\\rightarrow$ Novel Dual Attention & Feature Pyramid $\\rightarrow$ Ensemble + TTA.", bullet_style))
 
     doc.build(story)
     print(f"Publication PDF successfully generated: {filename}")

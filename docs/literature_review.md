@@ -10,7 +10,8 @@ This document tracks published peer-reviewed studies, competitive benchmarks, an
 | **LIT-004** | RETFound (Nature 2023) | ViT-Large/16 Masked Autoencoder | Self-Supervised on 1.6M Retinal Scans (Fundus+OCT) | **88.5% - 91.2%** | 89.4% | 0.988 | Moorfields/UCL landmark retinal foundation model. High generalizability. |
 | **LIT-005** | BiomedCLIP (Microsoft / EMNLP 2023) | ViT-Base/16 + PubMedBERT | Contrastive Multimodal on 15M PubMed Images | **83.85%** | **83.69%** | **0.9802** | Fine-tuned in our project (EXP-002). Superior across all metrics over CNN baseline. |
 | **LIT-006** | Our CNN Baseline (EXP-001) | EfficientNet-B0 + Focal Loss | ImageNet Pretrained + Cosine Annealing | **83.38%** | **83.11%** | **0.9774** | 100% physically balanced folder split (1,300 test images), 98.15% specificity. |
-| **LIT-007** | **Our Novel Hybrid Model (EXP-003)** 🏆 | **BiomedCLIP + CBAM + Feature Fusion** | **Spatial/Channel Attention + Multi-Scale Pyramid** | **84.23%** | **84.09%** | **0.9796** | **Best overall result (84.23% Acc, 84.09% F1). Boosted Glaucoma F1 from 51.9% to 59.9%.** |
+| **LIT-007** | Our Novel Hybrid Model (EXP-003) | BiomedCLIP + CBAM + Feature Fusion | Spatial/Channel Attention + Multi-Scale Pyramid | **84.23%** | **84.09%** | **0.9796** | Single model peak. Boosted Glaucoma F1 from 51.9% to 59.9%. |
+| **LIT-008** | **Our Ensemble + TTA (EXP-004)** 🏆 | **Weighted Ensemble + Flip TTA** | **Multi-Model Averaging + TTA** | **85.85%** | **85.72%** | **0.9839** | **Overall Project Peak (85.85% Acc, 98.39% ROC-AUC, 0.9263 Cohen's Kappa).** |
 
 ---
 
