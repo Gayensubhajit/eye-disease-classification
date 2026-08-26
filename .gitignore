@@ -4,6 +4,10 @@ __pycache__/
 .pytest_cache/
 .coverage
 .venv/
+.venv_win/
+.venv_linux/
+*.egg-info/
+src/*.egg-info/
 
 # Dataset images — never commit these
 Eye Disease Image Dataset/

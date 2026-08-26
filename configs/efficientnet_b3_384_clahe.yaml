@@ -1,0 +1,43 @@
+seed: 42
+
+data:
+  train_dir: "data/train"
+  val_dir: "data/val"
+  test_dir: "data/test"
+  image_size: 384
+  num_classes: 10
+  class_names:
+    - "Central Serous Chorioretinopathy [Color Fundus]"
+    - "Diabetic Retinopathy"
+    - "Disc Edema"
+    - "Glaucoma"
+    - "Healthy"
+    - "Macular Scar"
+    - "Myopia"
+    - "Pterygium"
+    - "Retinal Detachment"
+    - "Retinitis Pigmentosa"
+  crop_fundus: true
+  apply_clahe: true
+
+model:
+  name: efficientnet_b3 # High-capacity compound scaled CNN (as highlighted in PMC12387119)
+  pretrained: true
+  dropout: 0.3
+
+loss:
+  name: "focal" # Focal Loss focusing on hard Glaucoma & Myopia samples
+  gamma: 2.0
+
+training:
+  batch_size: 8 # Optimized for 384x384 resolution on 4GB VRAM
+  epochs: 20
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  num_workers: 4
+  device: auto
+  use_weighted_sampler: true
+  scheduler: cosine
+
+output:
+  directory: outputs/efficientnet_b3_384_clahe

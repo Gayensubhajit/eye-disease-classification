@@ -5,6 +5,8 @@ import glob
 import cv2
 import torch
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from src.models.backbone import build_model
 from src.utils.gradcam import GradCAM, overlay_heatmap

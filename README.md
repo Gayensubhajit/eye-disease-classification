@@ -22,19 +22,19 @@ A reproducible deep learning research pipeline for **multi-class retinal disease
 
 10-class colour fundus image classification (Folder-based structure — no CSV files):
 
-| Class | Train Folders | Val Folders | Test Folders | Total |
+| Class | Train Folders (70%) | Val Folders (15%) | Test Folders (15%) | Total |
 |---|:---:|:---:|:---:|:---:|
-| Central Serous Chorioretinopathy | 140 | 130 | 130 | 400 |
-| Diabetic Retinopathy | 140 | 130 | 130 | 400 |
-| Disc Edema | 140 | 130 | 130 | 400 |
-| Glaucoma | 140 | 130 | 130 | 400 |
-| Healthy | 140 | 130 | 130 | 400 |
-| Macular Scar | 140 | 130 | 130 | 400 |
-| Myopia | 140 | 130 | 130 | 400 |
-| Pterygium | 140 | 130 | 130 | 400 |
-| Retinal Detachment | 140 | 130 | 130 | 400 |
-| Retinitis Pigmentosa | 140 | 130 | 130 | 400 |
-| **Total** | **1,400** | **1,300** | **1,300** | **4,000** |
+| Central Serous Chorioretinopathy | 280 | 60 | 60 | 400 |
+| Diabetic Retinopathy | 280 | 60 | 60 | 400 |
+| Disc Edema | 280 | 60 | 60 | 400 |
+| Glaucoma | 280 | 60 | 60 | 400 |
+| Healthy | 280 | 60 | 60 | 400 |
+| Macular Scar | 280 | 60 | 60 | 400 |
+| Myopia | 280 | 60 | 60 | 400 |
+| Pterygium | 280 | 60 | 60 | 400 |
+| Retinal Detachment | 280 | 60 | 60 | 400 |
+| Retinitis Pigmentosa | 280 | 60 | 60 | 400 |
+| **Total** | **2,800** | **600** | **600** | **4,000** |
 
 Equally balanced split across all 10 disease classes (4,000 total images).
 
@@ -54,15 +54,15 @@ Equally balanced split across all 10 disease classes (4,000 total images).
 ```
 configs/       Experiment configuration YAML files
 data/
-  train/       Training images (140 per class subfolder)
-  val/         Validation images (130 per class subfolder)
-  test/        Test images (130 per class subfolder)
+  train/       Training images (280 per class subfolder)
+  val/         Validation images (60 per class subfolder)
+  test/        Test images (60 per class subfolder)
 docs/          Proposal, literature review, experiment records
 scripts/       Repeatable CLI helpers (e.g. build_balanced_folders.py)
 src/
   data/        Dataset class and preprocessing/augmentations
   losses/      Focal loss and weighted cross-entropy
-  models/      timm backbone wrappers
+  models/      timm backbone wrappers and novel CBAM + Fusion architectures
   utils/       Grad-CAM explainability
   metrics.py   Medical evaluation metrics
   train.py     Training entry point
@@ -84,7 +84,7 @@ source .venv/bin/activate          # Linux/Mac
 # 2. Install dependencies
 pip install -e .[dev]
 
-# 3. Build physical balanced train/val/test folders (one-time setup)
+# 3. Build physical balanced 70/15/15 train/val/test folders
 python scripts/build_balanced_folders.py
 
 # 4. Run training
@@ -98,11 +98,11 @@ python -m src.evaluate --checkpoint outputs/best_model.pth --config configs/conf
 
 ## Research Workflow
 
-1. Literature review → identify baseline models and gaps
-2. Train and document EfficientNet-B0 baseline
-3. Identify a measured limitation from baseline results
-4. Add one justified architectural improvement
-5. Run controlled ablations, report confidence intervals
+1. Literature review -> identify baseline models and gaps
+2. Train and document baseline models (EfficientNet, BiomedCLIP)
+3. Propose novel hybrid architecture (BiomedCLIP + CBAM Dual Attention + Feature Pyramid Fusion)
+4. Multi-view Test-Time Augmentation (TTA) and multi-model probability blending
+5. Controlled ablations and Grad-CAM interpretability
 
 ---
 

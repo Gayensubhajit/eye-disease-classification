@@ -1,11 +1,12 @@
 """Script to build physical, equally balanced train/val/test folders (no CSV files).
 
-Creates:
-  data/train/<class_name>/ -> 140 images per class (1,400 total)
-  data/val/<class_name>/   -> 130 images per class (1,300 total)
-  data/test/<class_name>/  -> 130 images per class (1,300 total)
+Default 70/15/15 Balanced Split:
+  data/train/<class_name>/ -> 280 images per class (2,800 total, 70%)
+  data/val/<class_name>/   -> 60 images per class (600 total, 15%)
+  data/test/<class_name>/  -> 60 images per class (600 total, 15%)
 """
 
+import argparse
 import shutil
 import random
 from pathlib import Path
@@ -16,7 +17,7 @@ import albumentations as A
 
 
 def get_augmenter() -> A.Compose:
-    """Return augmentation pipeline for synthesizing images for minority classes."""
+    """Return offline augmentation pipeline for synthesizing images for minority classes."""
     return A.Compose([
         A.HorizontalFlip(p=0.5),
         A.VerticalFlip(p=0.5),
@@ -30,9 +31,9 @@ def build_balanced_dataset(
     original_dataset_dir: str = "Eye Disease Image Dataset/Original Dataset/Original Dataset",
     augmented_dataset_dir: str = "Eye Disease Image Dataset/Augmented Dataset/Augmented Dataset",
     output_base_dir: str = "data",
-    train_per_class: int = 140,
-    val_per_class: int = 130,
-    test_per_class: int = 130,
+    train_per_class: int = 280,
+    val_per_class: int = 60,
+    test_per_class: int = 60,
     seed: int = 42,
 ) -> None:
     random.seed(seed)
@@ -52,6 +53,7 @@ def build_balanced_dataset(
 
     class_dirs = sorted([d for d in orig_path.iterdir() if d.is_dir()])
     print(f"Found {len(class_dirs)} classes to balance.")
+    print(f"Target Split per class: {train_per_class} train, {val_per_class} val, {test_per_class} test (Total: {total_target})")
 
     augmenter = get_augmenter()
 
@@ -119,11 +121,21 @@ def build_balanced_dataset(
 
             print(f"  Saved {len(imgs)} images to {split_name}/{class_name}")
 
-    print("\n--- Balanced Folder Dataset Created Successfully! ---")
-    print(f"Train: {train_per_class * len(class_dirs)} images ({train_per_class} per class)")
-    print(f"Val:   {val_per_class * len(class_dirs)} images ({val_per_class} per class)")
-    print(f"Test:  {test_per_class * len(class_dirs)} images ({test_per_class} per class)")
+    print("\n--- Balanced 70/15/15 Folder Dataset Created Successfully! ---")
+    print(f"Train: {train_per_class * len(class_dirs)} images ({train_per_class} per class, {train_per_class/total_target*100:.1f} percent)")
+    print(f"Val:   {val_per_class * len(class_dirs)} images ({val_per_class} per class, {val_per_class/total_target*100:.1f} percent)")
+    print(f"Test:  {test_per_class * len(class_dirs)} images ({test_per_class} per class, {test_per_class/total_target*100:.1f} percent)")
 
 
 if __name__ == "__main__":
-    build_balanced_dataset()
+    parser = argparse.ArgumentParser(description="Build physically balanced train/val/test dataset folders")
+    parser.add_argument("--train", type=int, default=280, help="Number of training images per class (default: 280 for 70 percent)")
+    parser.add_argument("--val", type=int, default=60, help="Number of validation images per class (default: 60 for 15 percent)")
+    parser.add_argument("--test", type=int, default=60, help="Number of test images per class (default: 60 for 15 percent)")
+    args = parser.parse_args()
+
+    build_balanced_dataset(
+        train_per_class=args.train,
+        val_per_class=args.val,
+        test_per_class=args.test,
+    )
