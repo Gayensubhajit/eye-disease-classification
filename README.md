@@ -20,7 +20,7 @@ A reproducible deep learning research pipeline for **multi-class retinal disease
 
 ## Dataset
 
-10-class colour fundus image classification (Folder-based structure — no CSV files):
+10-class colour fundus image classification:
 
 | Class | Train Folders (70%) | Val Folders (15%) | Test Folders (15%) | Total |
 |---|:---:|:---:|:---:|:---:|

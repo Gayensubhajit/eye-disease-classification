@@ -1,4 +1,4 @@
-"""PyTorch Dataset and DataLoader module for folder-based fundus eye disease classification (No CSVs)."""
+"""PyTorch Dataset and DataLoader module for folder-based fundus eye disease classification."""
 
 from pathlib import Path
 from typing import Dict, Any, Tuple, Optional, List

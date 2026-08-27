@@ -18,7 +18,7 @@ data:
     - "Retinal Detachment"
     - "Retinitis Pigmentosa"
   crop_fundus: true
-  apply_clahe: false
+  apply_clahe: true
 
 model:
   name: biomedclip_cbam_fusion # Microsoft BiomedCLIP + CBAM Dual Attention + Multi-Scale Feature Pyramid Fusion
@@ -26,12 +26,12 @@ model:
   dropout: 0.3
 
 loss:
-  name: "focal" # Focal Loss focusing on hard Glaucoma samples
+  name: "focal" # Focal Loss focusing on hard Glaucoma & Myopia samples
   gamma: 2.0
 
 training:
   batch_size: 16
-  epochs: 25 # Slightly extended training for multi-scale attention convergence
+  epochs: 25 # Training on 2,800 balanced images
   learning_rate: 0.0001
   weight_decay: 0.0001
   num_workers: 4

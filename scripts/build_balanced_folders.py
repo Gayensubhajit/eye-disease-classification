@@ -1,4 +1,4 @@
-"""Script to build physical, equally balanced train/val/test folders (no CSV files).
+"""Script to build physical, equally balanced train/val/test folders.
 
 Default 70/15/15 Balanced Split:
   data/train/<class_name>/ -> 280 images per class (2,800 total, 70%)
