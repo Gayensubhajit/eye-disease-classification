@@ -1,5 +1,8 @@
 """Training entry point for fundus eye disease classification models."""
 
+import os
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
 import argparse
 import json
 import random

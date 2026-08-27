@@ -231,13 +231,22 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
             Paragraph("Optic disc attention yielded 63.9% Glaucoma F1.", table_text_style),
         ],
         [
-            Paragraph("<b>Our Ensemble + TTA (EXP-007)</b>", table_bold_style),
-            Paragraph("EffNet-B3 (384) + BiomedCLIP-CBAM", table_bold_style),
+            Paragraph("<b>Our ConvNeXt SOTA (EXP-008)</b>", table_bold_style),
+            Paragraph("ConvNeXt-Small + 384x384 + CLAHE", table_bold_style),
             Paragraph("<b>90.50%</b>", table_bold_style),
-            Paragraph("<b>90.44%</b>", table_bold_style),
-            Paragraph("<b>0.9923</b>", table_bold_style),
-            Paragraph("<b>0.9704</b>", table_bold_style),
-            Paragraph("<b>Overall benchmark peak across 600 test images.</b>", table_bold_style),
+            Paragraph("<b>90.48%</b>", table_bold_style),
+            Paragraph("<b>0.9902</b>", table_bold_style),
+            Paragraph("<b>0.9663</b>", table_bold_style),
+            Paragraph("Highest single-model SOTA (Glaucoma F1: 68.3%).", table_bold_style),
+        ],
+        [
+            Paragraph("<b>Our Triple Ensemble (EXP-009)</b>", table_bold_style),
+            Paragraph("ConvNeXt + EffNet + BiomedCLIP", table_bold_style),
+            Paragraph("<b>90.50%</b>", table_bold_style),
+            Paragraph("<b>90.40%</b>", table_bold_style),
+            Paragraph("<b>0.9929</b>", table_bold_style),
+            Paragraph("<b>0.9710</b>", table_bold_style),
+            Paragraph("<b>Peak ROC-AUC (99.29%) & Kappa (0.9710).</b>", table_bold_style),
         ],
     ]
     t_lit = Table([lit_headers] + lit_rows, colWidths=[1.1 * inch, 1.3 * inch, 0.8 * inch, 0.8 * inch, 0.7 * inch, 0.8 * inch, 1.7 * inch])
