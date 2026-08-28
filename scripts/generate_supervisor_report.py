@@ -139,8 +139,8 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
     footer_style = make_style(
         "Footer",
         fontName="Times-Roman",
-        fontSize=7.6,
-        leading=10.5,
+        fontSize=7.8,
+        leading=11.0,
         textColor=TEXT_MUTED,
         alignment=TA_CENTER,
     )
@@ -621,11 +621,11 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
     story.append(PageBreak())
 
     # =========================================================================
-    # PAGE 3: METHODOLOGICAL ROADMAP TO ADVANCE ACCURACY & SYSTEM ENVIRONMENT
+    # PAGE 3: METHODOLOGICAL ROADMAP TO ADVANCE ACCURACY & FORMAL SIGN-OFF
     # =========================================================================
     story.append(Paragraph("6. Architectural Roadmap to Advance Multi-Class Performance", h1_style))
     story.append(Paragraph(
-        "To address the Glaucoma &harr; Myopia &harr; Healthy ambiguity identified in the error breakdown, "
+        "To address the Glaucoma &harr; Myopia &harr; Healthy ambiguity identified in the clinical error breakdown, "
         "the following structured optimization pipeline is currently being executed:",
         body_style
     ))
@@ -675,62 +675,24 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
         ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, ROW_ALT]),
         ("GRID", (0, 0), (-1, -1), 0.4, BORDER_COLOR),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("TOPPADDING", (0, 0), (-1, -1), 3.5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3.5),
+        ("TOPPADDING", (0, 0), (-1, -1), 4.5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4.5),
     ]))
     story.append(t_road)
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 14))
 
-    # Section 7: Hardware & Experimental Environment
-    story.append(Paragraph("7. Hardware Specifications &amp; Computational Protocols", h1_style))
+    # Summary notes on Next Milestones
+    story.append(Paragraph("7. Next Research Milestones &amp; Deliverables", h1_style))
     story.append(Paragraph(
-        "To ensure complete experimental reproducibility within edge-compute constraints, all training and evaluation "
-        "processes adhere to the following environment configuration:",
+        "1. <b>Regularized Re-training</b>: Deploying label smoothing (&epsilon; = 0.08) and stochastic weight averaging across ConvNeXt-Small and EfficientNet-B3 backbones.<br/>"
+        "2. <b>Cross-Attention Vision-Language Fusion</b>: Integrating tokenized PubMed clinical prompts with deep spatial feature maps to enhance discriminatory power on under-represented lesions.<br/>"
+        "3. <b>Automated Optic Disc Localization</b>: Integrating an anchor-free bounding box regressor to extract centered 256&times;256 optic disc crops for specialised glaucomatous cupping analysis.",
         body_style
     ))
-
-    hw_table_data = [
-        [
-            Paragraph("System Component", table_header_style),
-            Paragraph("Configuration / Specification", table_header_style),
-            Paragraph("Operational Parameters &amp; Memory Management", table_header_style),
-        ],
-        [
-            Paragraph("<b>GPU Accelerator</b>", table_cell_style),
-            Paragraph("NVIDIA GeForce RTX 3050 Laptop GPU (4 GB VRAM / ~3.68 GB usable)", table_cell_style),
-            Paragraph("Dynamic allocation via <code>expandable_segments:True</code> to eliminate VRAM fragmentation.", table_cell_style),
-        ],
-        [
-            Paragraph("<b>Training Optimization</b>", table_cell_style),
-            Paragraph("AdamW (lr = 5 &times; 10<sup>-5</sup>), Cosine Annealing, Batch Size = 4", table_cell_style),
-            Paragraph("Mixed precision (FP16/AMP) enabled; gradient accumulation across mini-batches.", table_cell_style),
-        ],
-        [
-            Paragraph("<b>Runtime Performance</b>", table_cell_style),
-            Paragraph("~45&ndash;50 minutes per 20-epoch training run (384&times;384 input)", table_cell_style),
-            Paragraph("Inference latency: ~4.2 minutes for 600 test images across 8 MS-TTA views.", table_cell_style),
-        ],
-        [
-            Paragraph("<b>Software Frameworks</b>", table_cell_style),
-            Paragraph("PyTorch 2.x, torchvision, timm, open_clip, Albumentations, scikit-learn", table_cell_style),
-            Paragraph("Garuda Linux (x86_64, Kernel 6.13), Python 3.10, CUDA 13.3.", table_cell_style),
-        ],
-    ]
-
-    t_hw = Table(hw_table_data, colWidths=["22%", "40%", "38%"])
-    t_hw.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), ROW_HEAD),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, ROW_ALT]),
-        ("GRID", (0, 0), (-1, -1), 0.4, BORDER_COLOR),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING", (0, 0), (-1, -1), 3.0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3.0),
-    ]))
-    story.append(t_hw)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 18))
 
     # Footer note / Sign-off
-    story.append(HRFlowable(width="100%", thickness=0.6, color=BORDER_COLOR, spaceAfter=5))
+    story.append(HRFlowable(width="100%", thickness=0.8, color=BORDER_COLOR, spaceAfter=8))
     story.append(Paragraph(
         "<b>B.Tech Major Project</b> &middot; Department of Computer Science &amp; Engineering, Jadavpur University<br/>"
         "Research Team: Gunjan Basak &middot; Chirantan Biswas &middot; Subhajit Gayen &nbsp;|&nbsp; "
