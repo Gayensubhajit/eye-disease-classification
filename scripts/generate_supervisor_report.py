@@ -153,7 +153,7 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
     story.append(Paragraph("10-Class Retinal Disease Classification from Colour Fundus Images", title_style))
     story.append(Paragraph("Technical Progress &amp; Comparative SOTA Benchmark Analysis", subtitle_style))
     story.append(Paragraph(
-        "Department of Computer Science &amp; Engineering, Jadavpur University<br/>"
+        "Department of Information Technology, Jadavpur University<br/>"
         "Research Team: Gunjan Basak &middot; Chirantan Biswas &middot; Subhajit Gayen &nbsp;|&nbsp; "
         "Supervisor: Dr. Pawan Kumar Singh &nbsp;|&nbsp; August 2026",
         meta_style
@@ -694,7 +694,7 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
     # Footer note / Sign-off
     story.append(HRFlowable(width="100%", thickness=0.8, color=BORDER_COLOR, spaceAfter=8))
     story.append(Paragraph(
-        "<b>B.Tech Major Project</b> &middot; Department of Computer Science &amp; Engineering, Jadavpur University<br/>"
+        "<b>B.Tech Major Project</b> &middot; Department of Information Technology, Jadavpur University<br/>"
         "Research Team: Gunjan Basak &middot; Chirantan Biswas &middot; Subhajit Gayen &nbsp;|&nbsp; "
         "Supervisor: Dr. Pawan Kumar Singh<br/>"
         "Project Repository: <code>https://github.com/Gayensubhajit/eye-disease-classification</code>",

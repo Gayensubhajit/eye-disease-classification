@@ -96,7 +96,7 @@ def build_pdf(filename="docs/Literature_Review_and_SOTA_Benchmarks.pdf"):
     # Title & Metadata
     story.append(Paragraph("10-Class Retinal Disease Classification from Color Fundus Images", title_style))
     story.append(Paragraph(
-        "<b>Department of Computer Science & Engineering, Jadavpur University</b><br/>"
+        "<b>Department of Information Technology, Jadavpur University</b><br/>"
         "<b>Research Project</b> | <b>Supervisor:</b> Dr. Pawan Kumar Singh<br/>"
         "<b>Project Team:</b> Gunjan Basak, Chirantan Biswas, Subhajit Gayen",
         subtitle_style,

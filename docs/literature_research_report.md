@@ -1,6 +1,6 @@
 # 10-Class Retinal Disease Classification from Color Fundus Images: Technical Benchmark & Evaluation Report
 
-**Institution:** Department of Computer Science & Engineering, Jadavpur University  
+**Institution:** Department of Information Technology, Jadavpur University  
 **Project Team:** Gunjan Basak, Chirantan Biswas, Subhajit Gayen  
 **Supervisor:** Dr. Pawan Kumar Singh  
 **Generated PDF:** [`docs/Literature_Review_and_SOTA_Benchmarks.pdf`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/Literature_Review_and_SOTA_Benchmarks.pdf)

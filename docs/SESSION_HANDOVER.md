@@ -10,7 +10,7 @@
 ## 1. Project Identity & Supervision
 
 - **Academic Program:** B.Tech Major Project (Ongoing 7th Semester, final submission in 8th Semester around April 2027)
-- **Institution:** Department of Computer Science & Engineering, Jadavpur University
+- **Institution:** Department of Information Technology, Jadavpur University
 - **Research Team:** Gunjan Basak, Chirantan Biswas, Subhajit Gayen
 - **Supervisor:** Dr. Pawan Kumar Singh
 - **Objective:** Automated classification of 10 distinct retinal conditions from color fundus photography using novel deep learning architectures, attention mechanisms, and high-resolution preprocessing.
