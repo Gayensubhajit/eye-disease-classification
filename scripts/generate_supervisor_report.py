@@ -1,5 +1,6 @@
 """
 Generate an academic, publication-quality Technical Progress & Comparative Benchmark Report in PDF format.
+Uses standard academic serif typography (Times-Roman / Times-Bold) and clean journal-style layout.
 """
 
 import os
@@ -20,22 +21,22 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
     doc = SimpleDocTemplate(
         filename,
         pagesize=A4,
-        leftMargin=1.6 * cm,
-        rightMargin=1.6 * cm,
-        topMargin=1.4 * cm,
-        bottomMargin=1.4 * cm,
+        leftMargin=1.8 * cm,
+        rightMargin=1.8 * cm,
+        topMargin=1.5 * cm,
+        bottomMargin=1.5 * cm,
     )
 
-    # ── Classic Academic Color Palette ──────────────────────────────────────
-    HEADER_NAVY = colors.HexColor("#0F172A")   # Slate 900
-    SECTION_BLUE = colors.HexColor("#1E3A8A")  # Deep Royal Blue
-    TEXT_DARK    = colors.HexColor("#1E293B")  # Slate 800
-    TEXT_MUTED   = colors.HexColor("#475569")  # Slate 600
-    BORDER_COLOR = colors.HexColor("#CBD5E1")  # Slate 300
-    ROW_ALT      = colors.HexColor("#F8FAFC")  # Slate 50
-    ROW_HEAD     = colors.HexColor("#1E293B")  # Slate 800
-    BOX_BG       = colors.HexColor("#F1F5F9")  # Slate 100
-    HIGHLIGHT_BG = colors.HexColor("#E2E8F0")  # Slate 200
+    # ── Classic Academic Paper Color Palette ────────────────────────────────
+    HEADER_DARK  = colors.HexColor("#111827")   # Deep Charcoal
+    SECTION_NAVY = colors.HexColor("#1E3A8A")   # Academic Navy
+    TEXT_MAIN    = colors.HexColor("#1F2937")   # Dark Gray / Off-black
+    TEXT_MUTED   = colors.HexColor("#4B5563")   # Medium Gray
+    BORDER_COLOR = colors.HexColor("#D1D5DB")   # Light Gray Border
+    ROW_ALT      = colors.HexColor("#F9FAFB")   # Crisp Alternate Row
+    ROW_HEAD     = colors.HexColor("#1F2937")   # Header Background
+    BOX_BG       = colors.HexColor("#F3F4F6")   # Note Box Background
+    HIGHLIGHT_BG = colors.HexColor("#E5E7EB")   # Highlighted Row
 
     ss = getSampleStyleSheet()
     def make_style(name, **kwargs):
@@ -43,18 +44,19 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
 
     title_style = make_style(
         "ReportTitle",
-        fontSize=14,
-        leading=18,
-        textColor=HEADER_NAVY,
-        fontName="Helvetica-Bold",
+        fontName="Times-Bold",
+        fontSize=15.5,
+        leading=19,
+        textColor=HEADER_DARK,
         alignment=TA_CENTER,
         spaceAfter=3,
     )
 
     subtitle_style = make_style(
         "ReportSubtitle",
-        fontSize=9.0,
-        leading=12,
+        fontName="Times-Italic",
+        fontSize=10.0,
+        leading=13,
         textColor=TEXT_MUTED,
         alignment=TA_CENTER,
         spaceAfter=2,
@@ -62,8 +64,9 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
 
     meta_style = make_style(
         "ReportMeta",
-        fontSize=7.8,
-        leading=11,
+        fontName="Times-Roman",
+        fontSize=8.5,
+        leading=12,
         textColor=TEXT_MUTED,
         alignment=TA_CENTER,
         spaceAfter=6,
@@ -71,68 +74,73 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
 
     h1_style = make_style(
         "SecH1",
-        fontSize=9.8,
-        leading=13,
-        textColor=SECTION_BLUE,
-        fontName="Helvetica-Bold",
+        fontName="Times-Bold",
+        fontSize=10.8,
+        leading=14,
+        textColor=SECTION_NAVY,
         spaceBefore=6,
         spaceAfter=3,
     )
 
     body_style = make_style(
         "Body",
-        fontSize=7.8,
-        leading=10.8,
-        textColor=TEXT_DARK,
+        fontName="Times-Roman",
+        fontSize=8.6,
+        leading=11.8,
+        textColor=TEXT_MAIN,
         alignment=TA_JUSTIFY,
         spaceAfter=3,
     )
 
     callout_style = make_style(
         "Callout",
-        fontSize=7.6,
-        leading=10.5,
-        textColor=TEXT_DARK,
+        fontName="Times-Roman",
+        fontSize=8.2,
+        leading=11.2,
+        textColor=TEXT_MAIN,
         alignment=TA_JUSTIFY,
     )
 
     table_header_style = make_style(
         "TH",
-        fontSize=7.2,
-        leading=9.0,
+        fontName="Times-Bold",
+        fontSize=7.8,
+        leading=9.5,
         textColor=colors.white,
-        fontName="Helvetica-Bold",
         alignment=TA_CENTER,
     )
 
     table_cell_style = make_style(
         "TD",
-        fontSize=7.0,
-        leading=8.8,
-        textColor=TEXT_DARK,
+        fontName="Times-Roman",
+        fontSize=7.6,
+        leading=9.5,
+        textColor=TEXT_MAIN,
     )
 
     table_cell_center = make_style(
         "TDC",
-        fontSize=7.0,
-        leading=8.8,
-        textColor=TEXT_DARK,
+        fontName="Times-Roman",
+        fontSize=7.6,
+        leading=9.5,
+        textColor=TEXT_MAIN,
         alignment=TA_CENTER,
     )
 
     table_cell_bold = make_style(
         "TDB",
-        fontSize=7.0,
-        leading=8.8,
-        textColor=TEXT_DARK,
-        fontName="Helvetica-Bold",
+        fontName="Times-Bold",
+        fontSize=7.6,
+        leading=9.5,
+        textColor=TEXT_MAIN,
         alignment=TA_CENTER,
     )
 
     footer_style = make_style(
         "Footer",
-        fontSize=7.0,
-        leading=9.5,
+        fontName="Times-Roman",
+        fontSize=7.6,
+        leading=10.5,
         textColor=TEXT_MUTED,
         alignment=TA_CENTER,
     )
@@ -150,14 +158,14 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
         "Supervisor: Dr. Pawan Kumar Singh &nbsp;|&nbsp; August 2026",
         meta_style
     ))
-    story.append(HRFlowable(width="100%", thickness=0.8, color=SECTION_BLUE, spaceAfter=5))
+    story.append(HRFlowable(width="100%", thickness=0.8, color=SECTION_NAVY, spaceAfter=5))
 
     # Section 1: Overview
     story.append(Paragraph("1. Executive Summary &amp; Problem Scope", h1_style))
     story.append(Paragraph(
-        "This document details the latest experimental outcomes for the automated multi-disease classification "
+        "This document presents the latest experimental outcomes for the automated multi-disease classification "
         "system developed for colour fundus photography. The current study evaluates a balanced dataset of 4,000 fundus images "
-        "(400 images per class across 10 diagnostic categories), partitioned strictly into 70% training (2,800 images), "
+        "(400 images per class across 10 diagnostic categories), partitioned into 70% training (2,800 images), "
         "15% validation (600 images), and 15% independent held-out testing (600 images). "
         "Recent experimental iterations incorporating high-resolution inputs (384&times;384), contrast enhancement (CLAHE), "
         "and Multi-Scale Test-Time Augmentation (MS-TTA) have established a new benchmark of <b>91.00% Test Accuracy</b>, "
@@ -207,7 +215,7 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
         ],
     ]
 
-    t_task = Table(task_table_data, colWidths=["22%", "39%", "39%"])
+    t_task = Table(task_table_data, colWidths=["23%", "38%", "39%"])
     t_task.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), ROW_HEAD),
         ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, ROW_ALT]),
@@ -338,7 +346,7 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
         ],
     ]
 
-    t_exp = Table(exp_table_data, colWidths=["12%", "24%", "26%", "10%", "10%", "10%", "8%"])
+    t_exp = Table(exp_table_data, colWidths=["11%", "23%", "25%", "10%", "10%", "12%", "9%"])
     t_exp.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), ROW_HEAD),
         ("ROWBACKGROUNDS", (0, 1), (-1, -3), [colors.white, ROW_ALT]),
@@ -347,7 +355,7 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("TOPPADDING", (0, 0), (-1, -1), 1.8),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 1.8),
-        ("LINEABOVE", (0, -2), (-1, -2), 0.8, SECTION_BLUE),
+        ("LINEABOVE", (0, -2), (-1, -2), 0.8, SECTION_NAVY),
     ]))
     story.append(t_exp)
 
@@ -605,7 +613,7 @@ def build_report(filename="docs/Technical_Progress_and_SOTA_Benchmark_Report.pdf
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("TOPPADDING", (0, 0), (-1, -1), 1.6),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 1.6),
-        ("LINEABOVE", (0, -1), (-1, -1), 0.8, SECTION_BLUE),
+        ("LINEABOVE", (0, -1), (-1, -1), 0.8, SECTION_NAVY),
     ]))
     story.append(t_lit)
 
