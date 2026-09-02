@@ -32,3 +32,6 @@ Thumbs.db
 # Keep placeholder files to preserve folder structure
 !data/**/.gitkeep
 !outputs/**/.gitkeep
+
+# Kaggle 4-class dataset splits
+data_kaggle_4class/
