@@ -1,0 +1,37 @@
+seed: 42
+
+data:
+  train_dir: "data_kaggle_4class/train"
+  val_dir: "data_kaggle_4class/val"
+  test_dir: "data_kaggle_4class/test"
+  image_size: 384
+  num_classes: 4
+  class_names:
+    - "cataract"
+    - "diabetic_retinopathy"
+    - "glaucoma"
+    - "normal"
+  crop_fundus: false
+  apply_clahe: true
+
+model:
+  name: resnet50d
+  pretrained: true
+  dropout: 0.25
+
+loss:
+  name: "focal"
+  gamma: 1.5
+
+training:
+  batch_size: 4
+  epochs: 18
+  learning_rate: 0.00005
+  weight_decay: 0.00005
+  num_workers: 4
+  device: auto
+  use_weighted_sampler: true
+  scheduler: cosine
+
+output:
+  directory: outputs/kaggle_4class_resnet50d

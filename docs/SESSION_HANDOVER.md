@@ -206,3 +206,22 @@ python scripts/evaluate_ms_tta.py \
   --output-dir outputs/kaggle_4class_biomed_convnext_v2_eval
 ```
 
+
+### EXP-021: Quad-Ensemble SOTA Milestone (Sep 3, 2026)
+- **Model Blend:**
+  - BiomedCLIP + CBAM (weight = 0.417)
+  - ConvNeXt-Small v2 (weight = 0.417)
+  - EfficientNet-B3 (weight = 0.083)
+  - DenseNet-121 (weight = 0.083)
+- **Evaluation:** MS-TTA (scales: [1.0, 1.15], 4-view flips)
+- **Accuracy:** **95.51%** (404/423 correct on held-out test set)
+- **Macro F1:** **95.46%**
+- **ROC-AUC:** **0.9936**
+- **Cohen's Kappa:** **0.9241**
+- **Per-Class Breakdown:**
+  - Diabetic Retinopathy: **100.0% Sensitivity, 100.0% Specificity, 100.0% F1**
+  - Cataract: **97.1% Sensitivity, 98.1% Specificity, 95.7% F1**
+  - Glaucoma: **92.1% Sensitivity, 98.8% Specificity, 93.9% F1**
+  - Normal: **92.6% Sensitivity, 97.1% Specificity, 92.2% F1**
+- **Artifacts:** Saved in `outputs/kaggle_4class_quad_sota_eval/`
+
