@@ -225,3 +225,23 @@ python scripts/evaluate_ms_tta.py \
   - Normal: **92.6% Sensitivity, 97.1% Specificity, 92.2% F1**
 - **Artifacts:** Saved in `outputs/kaggle_4class_quad_sota_eval/`
 
+
+### EXP-022: ResNet-Integrated Quad Ensemble SOTA Milestone (Sep 3, 2026)
+- **Model Blend:**
+  - BiomedCLIP + CBAM (weight = 0.312)
+  - ConvNeXt-Small v2 (weight = 0.260)
+  - ResNet-50d (weight = 0.234)
+  - EfficientNet-B3 (weight = 0.195)
+- **Evaluation:** MS-TTA (scales: [1.0, 1.15], 4-view flips)
+- **Accuracy:** **95.74%** (405/423 correct on held-out test set)
+- **Macro F1:** **95.70%**
+- **ROC-AUC:** **0.9929**
+- **Cohen's Kappa:** **0.9326**
+- **Per-Class Breakdown:**
+  - Diabetic Retinopathy: **100.0% Sensitivity, 100.0% Specificity, 100.0% F1**
+  - Cataract: **97.1% Sensitivity, 98.4% Specificity, 96.2% F1**
+  - Glaucoma: **92.1% Sensitivity, 98.8% Specificity, 93.9% F1**
+  - Normal: **93.5% Sensitivity, 97.1% Specificity, 92.7% F1**
+- **Literature Status:** Surpasses Alsohemi et al. (95.12%) and Hybrid Feature Fusion (95.70%, Ref [6]).
+- **Artifacts:** Saved in `outputs/kaggle_4class_quad_resnet_eval/`
+
