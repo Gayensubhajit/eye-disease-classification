@@ -291,6 +291,9 @@ def main():
         df_per_class = pd.DataFrame(rows)
         print(df_per_class.to_string(index=False))
 
+    # Save model probabilities
+    np.savez(output_dir / "model_probs.npz", ground_truth=ground_truth, model_probs=np.array(model_probs_list))
+
     # Save metrics JSON
     with open(output_dir / "ms_tta_metrics.json", "w", encoding="utf-8") as f:
         json.dump(ensemble_metrics, f, indent=2)

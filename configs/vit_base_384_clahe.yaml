@@ -1,0 +1,43 @@
+seed: 42
+
+data:
+  train_dir: "data/train"
+  val_dir: "data/val"
+  test_dir: "data/test"
+  image_size: 384
+  num_classes: 10
+  class_names:
+    - "Central Serous Chorioretinopathy [Color Fundus]"
+    - "Diabetic Retinopathy"
+    - "Disc Edema"
+    - "Glaucoma"
+    - "Healthy"
+    - "Macular Scar"
+    - "Myopia"
+    - "Pterygium"
+    - "Retinal Detachment"
+    - "Retinitis Pigmentosa"
+  crop_fundus: true
+  apply_clahe: true
+
+model:
+  name: vit_base_patch16_384
+  pretrained: true
+  dropout: 0.15
+
+loss:
+  name: "focal"
+  gamma: 2.0
+
+training:
+  batch_size: 4
+  epochs: 18
+  learning_rate: 0.00003
+  weight_decay: 0.00005
+  num_workers: 4
+  device: auto
+  use_weighted_sampler: true
+  scheduler: cosine
+
+output:
+  directory: outputs/vit_base_384_clahe
