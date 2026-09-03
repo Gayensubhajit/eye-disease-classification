@@ -18,6 +18,19 @@ A reproducible deep learning research pipeline for **multi-class retinal disease
 
 ---
 
+## Key Achievements & Benchmarks
+
+| Task / Benchmark | Models & Approach | Accuracy | Macro F1 | ROC-AUC | Status |
+|---|---|:---:|:---:|:---:|:---:|
+| **Kaggle 4-Class Literature SOTA** | Quad-Ensemble MS-TTA (BiomedCLIP + ConvNeXt + ResNet50d + EfficientNet-B3) | **95.74%** | **95.70%** | **0.9929** | 🥇 **Surpasses Published SOTA (95.12%)** |
+| **Primary 10-Class Task** | BiomedCLIP + CBAM + CLAHE Feature Fusion | **91.00%** | **91.30%** | **0.9904** | ✅ **Active B.Tech Baseline** |
+
+- **Zero-Error Diabetic Retinopathy:** 100.0% Sensitivity, 100.0% Specificity, 100.0% F1-Score on the 4-class test set.
+- **Explainability:** Grad-CAM heatmaps verify anatomically grounded clinical focus across all disease categories.
+- **Academic Report:** Full benchmark documentation available in [`docs/Benchmark_Progress_Update.pdf`](docs/Benchmark_Progress_Update.pdf).
+
+---
+
 ## Dataset
 
 10-class colour fundus image classification:
