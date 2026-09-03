@@ -1,6 +1,6 @@
 # Classification of Eye Diseases from Color Fundus Images
 
-A reproducible deep learning research pipeline for **multi-class retinal disease classification** from colour fundus images, developed as a **B.Tech Major Project** at **Jadavpur University**.
+A reproducible deep learning research pipeline for **multi-class retinal disease classification** from colour fundus images, developed at **Jadavpur University**.
 
 > **Research-use only.** This project is not a clinical diagnostic device and must not be used for patient care.
 
@@ -23,7 +23,7 @@ A reproducible deep learning research pipeline for **multi-class retinal disease
 | Task / Benchmark | Models & Approach | Accuracy | Macro F1 | ROC-AUC | Status |
 |---|---|:---:|:---:|:---:|:---:|
 | **Kaggle 4-Class Literature SOTA** | Quad-Ensemble MS-TTA (BiomedCLIP + ConvNeXt + ResNet50d + EfficientNet-B3) | **95.74%** | **95.70%** | **0.9929** | 🥇 **Surpasses Published SOTA (95.12%)** |
-| **Primary 10-Class Task** | BiomedCLIP + CBAM + CLAHE Feature Fusion | **91.00%** | **91.30%** | **0.9904** | ✅ **Active B.Tech Baseline** |
+| **Primary 10-Class Task** | BiomedCLIP + CBAM + CLAHE Feature Fusion | **91.00%** | **91.30%** | **0.9904** | ✅ **Active Research Baseline** |
 
 - **Zero-Error Diabetic Retinopathy:** 100.0% Sensitivity, 100.0% Specificity, 100.0% F1-Score on the 4-class test set.
 - **Explainability:** Grad-CAM heatmaps verify anatomically grounded clinical focus across all disease categories.

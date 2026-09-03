@@ -14,7 +14,7 @@ Dr. Pawan Kumar Singh
 
 ## Duration
 
-7th–8th Semester B.Tech Major Project
+Department of Information Technology, Jadavpur University
 
 ---
 
@@ -153,7 +153,7 @@ Avoid inventing complexity without evidence.
 
 ## Current State-of-the-Art Benchmarks (September 2026)
 
-### 1. Primary 10-Class Retinal Disease Classification (B.Tech Main Deliverable)
+### 1. Primary 10-Class Retinal Disease Classification (Core Research Deliverable)
 - **Dataset:** 4,000 balanced color fundus images (2,800 train / 600 val / 600 test) across 10 disease categories.
 - **Top Architecture:** BiomedCLIP + CBAM Feature Fusion with CLAHE preprocessing (`biomedclip_cbam_fusion`).
 - **Best Performance:** **91.00% Macro Accuracy**, **91.30% Macro F1-Score**, **0.9904 Macro ROC-AUC**.

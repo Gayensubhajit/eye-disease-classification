@@ -114,7 +114,7 @@ def build():
           "multi-architecture pipeline on the standard Kaggle Eye Diseases dataset to verify that "
           "it surpasses recent published state-of-the-art results (specifically Alsohemi &amp; "
           "Dardouri, <i>Journal of Imaging</i>, MDPI, August 2025, 95.12%). "
-          "(2) <b>Primary B.Tech Major Project Contribution (10-Class):</b> Scaling this "
+          "(2) <b>Primary Research Contribution (10-Class):</b> Scaling this "
           "deep-learning pipeline to a fine-grained 10-disease diagnostic system across 4,000 "
           "fundus images, moving far beyond standard 4-class screening into clinically actionable multi-condition diagnosis.",
           s['body']),
@@ -124,7 +124,7 @@ def build():
     summary_rows = [
         [P('Research Dimension', s['cellb']),
          P('4-Class Benchmark (Literature Target)', s['cellb']),
-         P('10-Class Primary Task (B.Tech Contribution)', s['cellb'])],
+         P('10-Class Primary Task (Core Contribution)', s['cellb'])],
         [P('Dataset Scope', s['cell']),
          P('Kaggle Eye Diseases (4,217 images; 4 classes)', s['cell']),
          P('Balanced 10-Class Dataset (4,000 images; 10 classes)', s['cell'])],
@@ -216,7 +216,7 @@ def build():
     # ── 3. Part B: 10-Class Primary Task ─────────────────────────────────────
     story += [
         Spacer(1, 8),
-        P("3. Part B: 10-Class Primary Task (B.Tech Deliverable)", s['h1']),
+        P("3. Part B: 10-Class Primary Task (Core Diagnostic Task)", s['h1']),
         P("While 4-class classification provides a recognized academic benchmark, practical clinical "
           "ophthalmology requires distinguishing a broader spectrum of conditions. Our primary research "
           "focus is a <b>10-Class Retinal Disease Classification</b> system on 4,000 balanced images "
@@ -289,7 +289,7 @@ def build():
         P("In summary, our experimental results validate the strength of our multi-architecture "
           "deep-learning strategy on two critical milestones: (1) on the standard 4-class literature "
           "benchmark, we achieved <b>95.74%</b>, beating the published 95.12% SOTA from <i>Journal of "
-          "Imaging</i> (August 2025); (2) on our primary 10-class B.Tech deliverable, we established a "
+          "Imaging</i> (August 2025); (2) on our primary 10-class system deliverable, we established a "
           "strong <b>91.00% accuracy</b> and <b>0.9921 ROC-AUC</b> across 4,000 balanced images.", s['body']),
         Spacer(1, 3),
         P("Proposed next directions:", s['h2']),
@@ -297,7 +297,7 @@ def build():
     for b in [
         "Deploy the 4-way ensemble weighting methodology directly to the <b>10-class system</b> to push beyond the current 91.00% mark.",
         "Integrate <b>Swin-Transformer</b> backbones for the 10-class task to boost Glaucoma and Macular Scar sensitivity.",
-        "Draft the complete B.Tech thesis manuscript covering architectural design, ablation studies, and clinical interpretability.",
+        "Draft the complete research manuscript covering architectural design, ablation studies, and clinical interpretability.",
         "Prepare a conference / journal manuscript targeting medical imaging venues.",
     ]:
         story.append(P(f"\u2022   {b}", s['bullet']))
