@@ -9,7 +9,7 @@
 
 ## 1. Project Identity & Supervision
 
-- **Academic Program:** B.Tech Major Project (Ongoing 7th Semester, final submission in 8th Semester around April 2027)
+- **Academic Program:** Research Project (Ongoing 7th Semester, final submission in 8th Semester around April 2027)
 - **Institution:** Department of Information Technology, Jadavpur University
 - **Research Team:** Gunjan Basak, Chirantan Biswas, Subhajit Gayen
 - **Supervisor:** Dr. Pawan Kumar Singh
