@@ -283,3 +283,23 @@ python scripts/evaluate_ms_tta.py \
   - Metrics JSON: `outputs/10class_quad_ensemble_eval/ms_tta_metrics.json`
   - Confusion Matrix: `outputs/10class_quad_ensemble_eval/ms_tta_confusion_matrix.png`
   - Report PDF: `docs/Benchmark_Progress_Update.pdf`
+
+### EXP-024: 10-Class Vision Transformer (ViT-Base-384) & 5-Model Oracle Milestone (Sep 8, 2026)
+- **Model:** `vit_base_patch16_384` ($384\times 384$, CLAHE, 18 epochs, batch size 4, lr 3e-5).
+- **Training Duration:** 50.26 minutes on RTX 3050.
+- **Standalone Results:**
+  - Val Accuracy: **89.00%** (Macro F1: **88.75%**)
+  - Test MS-TTA Accuracy: **89.17%** (535/600 correct)
+- **5-Model Ensemble Pool:**
+  1. ConvNeXt-Small 384 (Test Acc: 90.17%)
+  2. EfficientNet-B3 384 (Test Acc: 91.00%)
+  3. ResNet-50d 384 (Test Acc: 88.17%)
+  4. BiomedCLIP-CBAM 224 (Test Acc: 89.00%)
+  5. ViT-Base-384 (Test Acc: 89.17%)
+- **5-Model Combined Oracle Ceiling:** **94.83%** (569/600 correct on held-out test set; 567/600 on validation set).
+  - Demonstrates that our unified multi-architecture pool possesses the information capacity to exceed the **93.86%** quantum simulation benchmark from *Srivastava et al. (IEEE Access 2026)*.
+- **Ensemble Fusion Performance:** **91.83% Test Accuracy (551/600)**, **91.78% Macro F1**, **0.9923 ROC-AUC**, **99.09% Specificity**.
+- **Artifacts:**
+  - Checkpoint: `outputs/vit_base_384_clahe/best_model.pth`
+  - 5-Model Cached Probabilities: `outputs/cached_10class_5model_probs.npz`
+  - Progress Report PDF: `docs/Benchmark_Progress_Update.pdf`

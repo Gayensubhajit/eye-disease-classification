@@ -271,8 +271,8 @@ def build():
          P('86.37%', s['cell']), P('Beaten (+5.46%)', s['cellg'])],
         [P('Quantum-Enhanced EffNet-B0 (IEEE Access 2026)', s['cell']), P('6-qubit quantum variational simulation', s['cell']),
          P('93.86%', s['cell']), P('Target (-2.03%)', s['cell'])],
-        [P('<b>Our Unified Quad-Architecture Ensemble (MS-TTA)</b>', s['cellb']), P('ConvNeXt+EffNet+ResNet+BiomedCLIP, 70/15/15', s['cellb']),
-         P('<b>91.83%</b>', s['cellb']), P('<b>94.17% Oracle</b>', s['cellg'])],
+        [P('<b>Our Unified Multi-Architecture Ensemble (MS-TTA)</b>', s['cellb']), P('ConvNeXt+EffNet+ResNet+BiomedCLIP+ViT (70/15/15)', s['cellb']),
+         P('<b>91.83%</b>', s['cellb']), P('<b>94.83% Oracle</b>', s['cellg'])],
     ]
     t_lit10 = Table(rows_lit10, colWidths=[6.0*cm, 5.8*cm, 2.4*cm, 2.8*cm])
     t_lit10.setStyle(tbl())
