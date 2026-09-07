@@ -1,0 +1,74 @@
+[
+  {
+    "id": "dr_proliferative",
+    "benchmark": "10class",
+    "disease": "Diabetic Retinopathy",
+    "title": "Diabetic Retinopathy",
+    "subtitle": "Microaneurysms & Exudates",
+    "image_url": "/static/samples/sample_dr.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_dr.jpg"
+  },
+  {
+    "id": "glaucoma_advanced",
+    "benchmark": "10class",
+    "disease": "Glaucoma",
+    "title": "Glaucoma",
+    "subtitle": "Severe Optic Cup Excavation",
+    "image_url": "/static/samples/sample_glaucoma.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_glaucoma.jpg"
+  },
+  {
+    "id": "disc_edema",
+    "benchmark": "10class",
+    "disease": "Disc Edema",
+    "title": "Disc Edema",
+    "subtitle": "Blurred Margins & Papilledema",
+    "image_url": "/static/samples/sample_disc_edema.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_disc_edema.jpg"
+  },
+  {
+    "id": "retinal_detachment",
+    "benchmark": "10class",
+    "disease": "Retinal Detachment",
+    "title": "Retinal Detachment",
+    "subtitle": "Folded Neurosensory Layer",
+    "image_url": "/static/samples/sample_retinal_detachment.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_retinal_detachment.jpg"
+  },
+  {
+    "id": "cscr_macular",
+    "benchmark": "10class",
+    "disease": "Central Serous Chorioretinopathy [Color Fundus]",
+    "title": "CSCR",
+    "subtitle": "Subretinal Serous Fluid",
+    "image_url": "/static/samples/sample_cscr.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_cscr.jpg"
+  },
+  {
+    "id": "retinitis_pigmentosa",
+    "benchmark": "10class",
+    "disease": "Retinitis Pigmentosa",
+    "title": "Retinitis Pigmentosa",
+    "subtitle": "Bone-Spicule Pigmentation",
+    "image_url": "/static/samples/sample_retinitis_pigmentosa.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_retinitis_pigmentosa.jpg"
+  },
+  {
+    "id": "healthy_normal",
+    "benchmark": "10class",
+    "disease": "Healthy",
+    "title": "Healthy Retina",
+    "subtitle": "Physiological Optic Nerve",
+    "image_url": "/static/samples/sample_healthy.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_healthy.jpg"
+  },
+  {
+    "id": "cataract_lens",
+    "benchmark": "4class",
+    "disease": "cataract",
+    "title": "Cataract (4-Class)",
+    "subtitle": "Lens Haze & Media Opacity",
+    "image_url": "/static/samples/sample_cataract.jpg",
+    "file_path": "/mnt/windows/Users/subha/Documents/GitHub/eye-disease-classification/src/web/static/samples/sample_cataract.jpg"
+  }
+]

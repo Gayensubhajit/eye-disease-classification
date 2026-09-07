@@ -1,0 +1,36 @@
+seed: 42
+
+data:
+  train_dir: "data/train"
+  val_dir: "data/val"
+  test_dir: "data/test"
+  image_size: 384
+  num_classes: 3
+  class_names:
+    - "Glaucoma"
+    - "Healthy"
+    - "Myopia"
+  crop_fundus: true
+  apply_clahe: true
+
+model:
+  name: convnext_small
+  pretrained: true
+  dropout: 0.3
+
+loss:
+  name: "focal"
+  gamma: 2.0
+
+training:
+  batch_size: 8
+  epochs: 15
+  learning_rate: 0.00004
+  weight_decay: 0.00005
+  num_workers: 4
+  device: auto
+  use_weighted_sampler: true
+  scheduler: cosine
+
+output:
+  directory: outputs/specialist_glaucoma_healthy_myopia

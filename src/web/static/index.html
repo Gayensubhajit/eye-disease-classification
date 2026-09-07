@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retinal Disease Clinical Screening Studio | Jadavpur University Research</title>
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Studio Header -->
+  <header class="studio-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">Retinal Disease Clinical Screening Studio</h1>
+          <p class="brand-sub">Multi-Architecture Deep Learning System &bull; Jadavpur University Research</p>
+        </div>
+      </div>
+      
+      <div class="header-badges">
+        <div class="telemetry-chip" id="gpu-telemetry">
+          <span class="pulse-dot"></span>
+          <span id="gpu-name">Detecting Device...</span>
+          <span id="vram-info" style="color: var(--text-muted); font-size: 0.7rem;"></span>
+        </div>
+        <div class="telemetry-chip" id="sota-badge" style="border-color: rgba(6, 182, 212, 0.4);">
+          <span style="color: var(--accent-cyan); font-weight: 700;">10-Class SOTA: 91.83%</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- Configuration & Model Control Ribbon -->
+    <section class="control-ribbon">
+      <div class="ribbon-group">
+        <span class="ribbon-label">Diagnostic Benchmark:</span>
+        <div class="segmented-control" id="benchmark-toggle">
+          <button class="segment-btn active" data-benchmark="10class" id="btn-bench-10class">
+            <span>10-Class Unified</span>
+          </button>
+          <button class="segment-btn" data-benchmark="4class" id="btn-bench-4class">
+            <span>4-Class Kaggle (95.74%)</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ribbon-group">
+        <span class="ribbon-label">Inference Architecture:</span>
+        <select class="custom-select" id="model-select">
+          <!-- Populated dynamically by JS -->
+        </select>
+      </div>
+
+      <div class="ribbon-group">
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; color: var(--text-secondary);">
+          <input type="checkbox" id="chk-gradcam" checked style="accent-color: var(--accent-cyan);">
+          <span>Generate Grad-CAM Explainability</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Two-Column Clinical Workspace Grid -->
+    <div class="workspace-grid">
+
+      <!-- Left Column: Image Acquisition & Samples -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- Upload & Preview Card -->
+        <div class="glass-card" id="card-upload">
+          <div class="card-title-row">
+            <h2 class="card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                <circle cx="12" cy="13" r="3"/>
+              </svg>
+              <span>Fundus Image Input</span>
+            </h2>
+            <button id="btn-clear-img" style="background: none; border: none; color: var(--text-muted); font-size: 0.75rem; cursor: pointer; display: none;">Clear</button>
+          </div>
+
+          <!-- Drag and Drop Zone -->
+          <div class="drop-zone" id="drop-zone">
+            <input type="file" id="file-input" accept="image/jpeg,image/png,image/jpg">
+            <svg class="drop-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <div class="drop-text-main">Drag & Drop Color Fundus Photo</div>
+            <div class="drop-text-sub">Supports JPG, PNG (automatically cropped & enhanced via CLAHE)</div>
+          </div>
+
+          <!-- Live Preview Box -->
+          <div class="preview-container" id="preview-container" style="display: none;">
+            <div class="preview-wrapper">
+              <img id="preview-img" class="preview-img" src="" alt="Selected Fundus Preview">
+              <div class="preview-badge" id="preview-badge">Ready for Screening</div>
+            </div>
+          </div>
+
+          <button class="btn-primary" id="btn-analyze" disabled>
+            <span id="btn-analyze-text">Run Clinical Screening</span>
+          </button>
+        </div>
+
+        <!-- Curated Clinical Sample Gallery -->
+        <div class="glass-card sample-gallery-section" id="card-samples">
+          <div class="card-title-row">
+            <h2 class="card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M8 12h8"/>
+                <path d="M12 8v8"/>
+              </svg>
+              <span>Sample Case Library</span>
+            </h2>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Click any case to test</span>
+          </div>
+
+          <div class="sample-cards-scroll" id="sample-gallery-container">
+            <!-- Dynamically populated from /api/samples -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Diagnostic Intelligence Dashboard -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- Placeholder when no inference has run -->
+        <div class="glass-card placeholder-state" id="results-placeholder">
+          <div class="placeholder-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: var(--text-primary);">Awaiting Fundus Input</h3>
+          <p style="max-width: 440px; font-size: 0.85rem; line-height: 1.6;">Select a case from the Sample Library on the left, or upload a fundus photograph to trigger multi-model ensemble screening and Grad-CAM lesion explainability.</p>
+        </div>
+
+        <!-- Results Container (Hidden initially by CSS) -->
+        <div id="results-container">
+
+          <!-- Diagnostic Hero Card -->
+          <div class="diagnostic-hero">
+            <div class="hero-left">
+              <span class="hero-tag" id="res-model-badge">Unified Quad Ensemble (SOTA)</span>
+              <div class="hero-disease-name" id="res-top-disease">Pathology Name</div>
+              <div class="hero-badges-row">
+                <span class="urgency-pill urgency-red" id="res-urgency-pill">
+                  <span id="res-urgency-icon">⚠️</span>
+                  <span id="res-urgency-text">High Priority</span>
+                </span>
+                <span class="urgency-pill urgency-blue" id="res-certainty-pill">High Confidence</span>
+              </div>
+            </div>
+
+            <div class="hero-right">
+              <div class="confidence-big" id="res-confidence-num">--%</div>
+              <div class="confidence-sub">Diagnostic Probability</div>
+            </div>
+          </div>
+
+          <!-- Uncertainty Quantification & Telemetry -->
+          <div class="uncertainty-box">
+            <div class="uncertainty-metric">
+              <span class="uncertainty-label">Normalized Shannon Entropy:</span>
+              <span class="uncertainty-value" id="res-entropy-val">0.000 / 1.000</span>
+            </div>
+            <div class="uncertainty-metric">
+              <span class="uncertainty-label">Model Evaluation Mode:</span>
+              <span class="uncertainty-value" id="res-consensus-val">Multi-Model Ensemble</span>
+            </div>
+            <div class="uncertainty-metric">
+              <button id="btn-export-report" style="background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); color: #fff; padding: 0.45rem 1rem; border-radius: var(--radius-sm); font-size: 0.78rem; cursor: pointer; font-weight: 600; transition: var(--transition);">
+                Export Clinical Summary
+              </button>
+            </div>
+          </div>
+
+          <!-- Grad-CAM Visual Explainability Card -->
+          <div class="glass-card" id="card-gradcam">
+            <div class="card-title-row">
+              <h2 class="card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <span>Grad-CAM Visual Explainability</span>
+              </h2>
+              <span style="font-size: 0.75rem; color: var(--accent-cyan);">Anatomical Attention Heatmap</span>
+            </div>
+
+            <div class="gradcam-container">
+              <div class="gradcam-viewers-grid">
+                <div class="cam-view-card">
+                  <div class="cam-img-wrap">
+                    <img id="cam-img-preprocessed" src="" alt="Preprocessed CLAHE Fundus">
+                  </div>
+                  <span class="cam-label">Enhanced Input (CLAHE Contrast)</span>
+                </div>
+                
+                <div class="cam-view-card">
+                  <div class="cam-img-wrap">
+                    <img id="cam-img-overlay" src="" alt="Grad-CAM Overlay">
+                  </div>
+                  <span class="cam-label">Diagnostic Attention Overlay</span>
+                </div>
+              </div>
+
+              <!-- Interactive Blend Slider -->
+              <div class="cam-slider-control">
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Fundus Only</span>
+                <input type="range" id="cam-opacity-slider" min="0" max="100" value="100">
+                <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">Attention Heatmap</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Diagnostic Probability Distribution -->
+          <div class="glass-card">
+            <div class="card-title-row">
+              <h2 class="card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+                <span>Differential Diagnostic Spectrum</span>
+              </h2>
+              <span style="font-size: 0.75rem; color: var(--text-muted);" id="res-num-classes">Target Pathologies</span>
+            </div>
+
+            <div class="prob-bars-list" id="prob-bars-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Clinical Action & Guidance Card -->
+          <div class="clinical-guidance" id="card-clinical-action">
+            <div class="guidance-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+              <span>Pathological Characteristics & Recommended Actions</span>
+            </div>
+            <p class="guidance-desc" id="res-disease-desc">
+              Clinical summary description.
+            </p>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-top: 0.25rem;">
+              Recommended Clinical Follow-Up:
+            </div>
+            <ul class="guidance-list" id="res-recommendations-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Studio Footer -->
+  <footer class="studio-footer">
+    <p>Retinal Disease Classification System &bull; Department of Information Technology, Jadavpur University</p>
+    <p style="margin-top: 0.25rem; opacity: 0.7;">Research Team: Gunjan Basak, Chirantan Biswas, Subhajit Gayen &bull; Supervisor: Dr. Pawan Kumar Singh</p>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="/static/app.js"></script>
+</body>
+</html>
