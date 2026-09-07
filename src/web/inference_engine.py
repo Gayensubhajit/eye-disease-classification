@@ -317,7 +317,12 @@ class InferenceEngine:
     """Manages model loading, caching, execution, and explainability."""
 
     def __init__(self):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            self.device = torch.device("mps")
+        else:
+            self.device = torch.device("cpu")
         self.active_model_key = None
         self.active_model = None
         self.active_config = None

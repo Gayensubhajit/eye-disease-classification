@@ -66,7 +66,12 @@ def get_index():
 def get_health():
     """System telemetry, GPU hardware profile, and memory metrics."""
     cuda_avail = torch.cuda.is_available()
-    gpu_name = torch.cuda.get_device_name(0) if cuda_avail else "CPU (Host)"
+    if cuda_avail:
+        gpu_name = torch.cuda.get_device_name(0)
+    elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+        gpu_name = "Apple Silicon (MPS)"
+    else:
+        gpu_name = "CPU (Host)"
     vram_alloc_mb = round(torch.cuda.memory_allocated(0) / (1024 ** 2), 2) if cuda_avail else 0
     vram_res_mb = round(torch.cuda.memory_reserved(0) / (1024 ** 2), 2) if cuda_avail else 0
 
