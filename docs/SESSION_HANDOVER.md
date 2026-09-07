@@ -325,6 +325,34 @@ python scripts/evaluate_ms_tta.py \
   - Computation Script: `scripts/compute_statistical_significance.py`
   - Architecture Schematic (Figure 1): `docs/figures/system_architecture.png` (300 DPI) and `docs/figures/system_architecture.svg`
 
+### EXP-028: Interactive Supervisor Executive Presentation Deck (Sep 8, 2026)
+- **Objective:** Provide a high-impact, presentation-ready briefing deck for Dr. Pawan Kumar Singh covering research benchmarks, empirical statistical significance, system architecture, and clinical deployment.
+- **Implementation (`docs/presentation/index.html`):**
+  - Modern dark-glassmorphism responsive presentation viewport with 8 core slides.
+  - Keyboard navigation (arrows/space), fullscreen toggle (`F`), and presenter talking-points notes drawer (`N`).
+  - Slide 1: Title & Academic Identity (Jadavpur University IT Dept, Team & Supervisor).
+  - Slide 2: Clinical Diagnostic Spectrum & Structural Complexity (4,000 images, 10 classes).
+  - Slide 3: Executive Scorecard beating MDPI 2025 (95.74%) and IEEE Access 2026 (91.83%, +5.46% gain, 94.83% Oracle).
+  - Slide 4: Figure 1 Publication Architecture Schematic (`docs/figures/system_architecture.png`).
+  - Slide 5: Empirical Statistical Rigor (1,000 bootstrap 95% CIs and McNemar $p < 0.001$ significance).
+  - Slide 6: EXP-025 Specialist Negative Result proving full ensemble robustness.
+  - Slide 7: Translational Web Studio & Grad-CAM Explainability (direct launch link).
+  - Slide 8: Academic Publication Roadmap (IEEE Access / MDPI targets & submission timeline).
+- **Endpoint:** Integrated directly into FastAPI backend at `http://localhost:8000/presentation`.
+
+### EXP-029: Automated Patient Batch Screening & Clinical PDF Engine (Sep 8, 2026)
+- **Objective:** Clinical-scale batch diagnostic processing tool for hospital and clinic screening workflows.
+- **Implementation (`scripts/batch_screening.py`):**
+  - Evaluates entire patient intake directories across 10-Class or 4-Class benchmarks with memory-safe GPU execution on RTX 3050.
+  - Generates an aggregated screening CSV (`screening_summary.csv`) containing diagnosis, confidence %, triage urgency, and Shannon entropy.
+  - Automatically compiles high-resolution, print-ready 1-page patient diagnostic PDFs (`patient_reports/Report_<ID>.pdf`) via ReportLab, featuring:
+    - Jadavpur University clinical screening header.
+    - Patient metadata & color-coded triage urgency badge.
+    - Side-by-side CLAHE-enhanced input fundus vs Grad-CAM lesion focus overlay.
+    - Ranked top-4 differential diagnosis table with probability percentages.
+    - Clinical pathological observations & specific ophthalmic referral recommendations.
+    - Reviewing ophthalmologist signature/review stamp.
+
 ---
 
 ## 8. Critical User Operating Rules

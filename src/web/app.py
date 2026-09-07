@@ -40,6 +40,17 @@ engine = InferenceEngine()
 
 # Mount static files (CSS, JS, sample images)
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+DOCS_DIR = PROJECT_ROOT / "docs"
+app.mount("/figures", StaticFiles(directory=str(DOCS_DIR / "figures")), name="figures")
+
+@app.get("/presentation")
+def get_presentation():
+    """Serve supervisor executive briefing presentation."""
+    presentation_file = DOCS_DIR / "presentation" / "index.html"
+    if not presentation_file.exists():
+        raise HTTPException(status_code=404, detail="Presentation not found")
+    return FileResponse(presentation_file)
+
 
 
 @app.get("/")
