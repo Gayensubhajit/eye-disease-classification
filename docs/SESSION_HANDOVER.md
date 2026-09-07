@@ -303,3 +303,30 @@ python scripts/evaluate_ms_tta.py \
   - Checkpoint: `outputs/vit_base_384_clahe/best_model.pth`
   - 5-Model Cached Probabilities: `outputs/cached_10class_5model_probs.npz`
   - Progress Report PDF: `docs/Benchmark_Progress_Update.pdf`
+
+### EXP-025: Hierarchical Cascaded Experiment & Robustness Finding (Sep 8, 2026)
+- **Hypothesis:** Can a dedicated 3-class specialist (`Glaucoma`, `Healthy`, `Myopia`) resolve borderline optic disc cases and push verified accuracy from 91.83% to 94.0%+?
+- **Execution:** Trained `configs/specialist_glaucoma_healthy_myopia.yaml` (ConvNeXt-Small 384, 15 epochs, 840 images). Reached **76.18% validation F1**.
+- **Finding:** Rerouting ambiguous test samples to the specialist dropped test accuracy to **90.50%**.
+- **Scientific Conclusion:** The full 5-model ensemble (trained on all 2,800 images with multi-scale retinal context) is significantly more robust than a smaller, isolated sub-network. The **91.83% ensemble** is confirmed as our optimal, rock-solid system.
+
+---
+
+## 8. Critical User Operating Rules
+
+1. **TRAINING PERMISSION RULE:**  
+   **NEVER launch model training commands (`python -m src.train ...`) automatically.**  
+   Always provide the exact command, environment variables, and config path in the chat so that the **USER runs it in their own terminal**.
+2. **ACADEMIC TERMINOLOGY RULE:**  
+   Do not use the words *"B.Tech"* or *"B.Tech Major Project"* in papers or formal supervisor reports. Refer to it as *"Research Project"*, *"Research Paper"*, or *"Retinal Disease Classification System"*.
+3. **GROUND TRUTH BENCHMARKS:**
+   - **4-Class:** 95.74% (beats Alsohemi & Dardouri, *Journal of Imaging* 2025 at 95.12%).
+   - **10-Class:** 91.83% test accuracy (beats Srivastava et al., *IEEE Access* 2026 classical baseline at 86.37% by +5.46%; 94.83% Oracle ceiling).
+
+---
+
+## 9. Next Steps on the Agenda
+
+1. **Clinical Screening Web Studio (Interactive GUI):** Modern dark-mode web application for real-time fundus drag-and-drop inference and Grad-CAM lesion visualization.
+2. **Research Manuscript / Paper Draft:** Writing the formal conference/journal paper comparing against MDPI 2025 and IEEE Access 2026.
+3. **Supervisor Meeting:** Presenting [`docs/Benchmark_Progress_Update.pdf`](docs/Benchmark_Progress_Update.pdf) to Dr. Pawan Kumar Singh.
