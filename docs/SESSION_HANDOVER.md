@@ -384,6 +384,27 @@ python scripts/evaluate_ms_tta.py \
 
 ---
 
+### EXP-032: Clinical Screening Studio UI/UX Overhaul & Multi-Tab Workstation
+- **Scope & Aesthetics:** Upgraded the Web Studio (`http://localhost:8000`) into a state-of-the-art clinical ophthalmological workstation with obsidian glassmorphism, glowing radial telemetry, and multi-tab exploration.
+- **Key Upgraded Features:**
+  - **Interactive Before / After Split Comparison Slider:** Draggable slider over the fundus stage to seamlessly contrast Grad-CAM attention heatmaps against the preprocessed fundus image.
+  - **Interactive 2.5× Loupe Magnifier:** Cursor-following circular magnifying glass to inspect optic nerve head cup-to-disc ratio and microaneurysms.
+  - **Ophthalmic Spectral Filter Toolbar:** Live client-side clinical filters: Full Color (RGB), Red-Free Green Channel (vessel/RNFL enhancement), High-Pass CLAHE, and Inverted Contrast.
+  - **Animated Circular SVG Radial Gauge:** Glowing gradient progress ring animating confidence percentages ($0\% \rightarrow \text{Target}\%$) with triage beacon status.
+  - **Normalized Shannon Entropy Safety Meter:** Visual uncertainty bar with clinical safety tags (Cleared / Resident Review / OCT Escalation).
+  - **Multi-Tab Research Ecosystem:**
+    1. *Diagnostic Screener:* The live interactive AI inference workspace.
+    2. *Empirical Rigor:* High-res confusion matrix showcase, 5 flawless classes banner, and dynamic per-class metrics table loaded from `/api/analytics`.
+    3. *Saliency & Errors:* Archetypal failure-case gallery detailing the Glaucoma $\leftrightarrow$ Healthy $\leftrightarrow$ Myopia differential axis.
+    4. *Supervisor Deck:* Direct link to `/presentation`.
+    5. *Overleaf ZIP:* 1-click download button for `Overleaf_Paper_Package.zip`.
+  - **Printable Medical Certificate:** Formatted `@media print` stylesheet for generating official 1-page clinical reports via browser print.
+- **Modified Source Code:**
+  - Frontend: [`src/web/static/index.html`](../src/web/static/index.html), [`src/web/static/style.css`](../src/web/static/style.css), [`src/web/static/app.js`](../src/web/static/app.js)
+  - Backend: [`src/web/app.py`](../src/web/app.py), [`src/web/inference_engine.py`](../src/web/inference_engine.py)
+
+---
+
 ## 8. Critical User Operating Rules
 
 1. **TRAINING PERMISSION RULE:**  

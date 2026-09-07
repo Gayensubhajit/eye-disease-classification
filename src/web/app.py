@@ -92,6 +92,25 @@ def get_models():
     return MODEL_REGISTRY
 
 
+@app.get("/api/analytics")
+def get_analytics():
+    """Return precomputed clinical error analysis and performance metrics."""
+    metrics_file = PROJECT_ROOT / "outputs" / "clinical_error_analysis_data.json"
+    if not metrics_file.exists():
+        raise HTTPException(status_code=404, detail="Analytics data not found")
+    with open(metrics_file, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/api/download/paper-package")
+def download_paper_package():
+    """Download 1-click Overleaf ready-to-import paper package zip."""
+    pkg_file = PROJECT_ROOT / "outputs" / "Overleaf_Paper_Package.zip"
+    if not pkg_file.exists():
+        raise HTTPException(status_code=404, detail="Paper package not found")
+    return FileResponse(pkg_file, filename="Overleaf_Paper_Package.zip", media_type="application/zip")
+
+
 @app.get("/api/samples")
 def get_samples():
     """List curated fundus clinical sample cases."""

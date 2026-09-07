@@ -375,6 +375,8 @@ class InferenceEngine:
         generate_cam: bool = True
     ) -> Dict[str, Any]:
         """Perform clinical inference and Grad-CAM explainability."""
+        import time
+        start_time = time.time()
         if benchmark not in MODEL_REGISTRY:
             benchmark = "10class"
 
@@ -542,9 +544,12 @@ class InferenceEngine:
             "recommendations": ["Comprehensive ocular examination."]
         })
 
+        latency_ms = round((time.time() - start_time) * 1000, 1)
+
         return {
             "benchmark": benchmark,
             "model_id": model_id,
+            "latency_ms": latency_ms,
             "model_name": selected_model_meta["name"],
             "model_accuracy": selected_model_meta["accuracy"],
             "top_prediction": {
