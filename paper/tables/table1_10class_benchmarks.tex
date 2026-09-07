@@ -1,0 +1,27 @@
+\begin{table*}[t]
+\centering
+\caption{Performance Comparison on the 10-Class Eye Disease Image Dataset (600 Untouched Held-Out Test Images, 1,000 Bootstrap 95\% CIs).}
+\label{tab:10class_benchmarks}
+\small
+\begin{tabular}{lcccc}
+\hline
+\textbf{Method / Architecture} & \textbf{Accuracy (95\% CI)} & \textbf{Macro F1 (95\% CI)} & \textbf{Macro ROC-AUC (95\% CI)} & \textbf{Cohen's $\kappa$ (95\% CI)} \\
+\hline
+\multicolumn{5}{l}{\textit{Literature Baselines (IEEE Access 2026)}} \\
+EfficientNet-B0 (No Augmentation) \cite{srivastava2026} & 75.61\% & --- & --- & --- \\
+EfficientNet-B0 + Augmentation (Classical SOTA) \cite{srivastava2026} & 86.37\% & --- & --- & --- \\
+Quantum-Enhanced EfficientNet-B0 (Simulation) \cite{srivastava2026} & 93.86\% & --- & --- & --- \\
+\hline
+\multicolumn{5}{l}{\textit{Our Standalone High-Resolution Architectures ($384\times 384$ CLAHE)}} \\
+ResNet-50d ($384\times 384$) & 88.17\% [85.67\%, 90.67\%] & 88.17\% [85.95\%, 90.43\%] & 0.9904 [0.9867, 0.9935] & 0.8685 [0.8405, 0.8961] \\
+BiomedCLIP-CBAM ($224\times 224$) & 89.00\% [86.50\%, 91.34\%] & 88.98\% [86.63\%, 91.14\%] & 0.9898 [0.9858, 0.9934] & 0.8778 [0.8497, 0.9037] \\
+ViT-Base-384 ($384\times 384$) & 89.17\% [86.50\%, 91.67\%] & 89.15\% [86.78\%, 91.38\%] & 0.9910 [0.9879, 0.9940] & 0.8796 [0.8499, 0.9072] \\
+ConvNeXt-Small ($384\times 384$) & 90.17\% [87.83\%, 92.50\%] & 90.15\% [87.98\%, 92.37\%] & 0.9915 [0.9884, 0.9943] & 0.8907 [0.8646, 0.9165] \\
+EfficientNet-B3 ($384\times 384$) & 91.00\% [88.67\%, 93.17\%] & 90.97\% [88.86\%, 92.97\%] & 0.9907 [0.9870, 0.9939] & 0.9000 [0.8740, 0.9239] \\
+\hline
+\multicolumn{5}{l}{\textit{Multi-Architecture Ensembles}} \\
+\textbf{Unified Quad Ensemble (Ours)} & \textbf{91.83\% [89.67\%, 93.83\%]} & \textbf{91.78\% [89.75\%, 93.76\%]} & \textbf{0.9923 [0.9890, 0.9949]} & \textbf{0.9093 [0.8850, 0.9314]} \\
+\textit{5-Model Oracle Upper Bound (EXP-024)} & \textit{94.83\%} & \textit{---} & \textit{---} & \textit{---} \\
+\hline
+\end{tabular}
+\end{table*}

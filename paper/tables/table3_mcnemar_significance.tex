@@ -1,0 +1,26 @@
+\begin{table*}[t]
+\centering
+\caption{McNemar's Paired Hypothesis Significance Testing of the Multi-Architecture Ensemble Against Individual Standalone Backbones.}
+\label{tab:mcnemar_significance}
+\small
+\begin{tabular}{lccccc}
+\hline
+\textbf{Compared Baseline Architecture} & \textbf{Ensemble-Only Correct ($b$)} & \textbf{Model-Only Correct ($c$)} & \textbf{Continuity $\chi^2$} & \textbf{Exact $p$-value} & \textbf{Significance ($\alpha=0.05$)} \\
+\hline
+\multicolumn{6}{l}{\textit{10-Class Unified Benchmark ($N=600$ Test Samples)}} \\
+vs ConvNeXt-Small 384 & +13 & -3 & 5.06 & 0.0213 & \textbf{Significant ($p < 0.05$)} \\
+vs EfficientNet-B3 384 & +6 & -1 & 2.29 & 0.1250 & Dominant Trend ($b > c$) \\
+vs BiomedCLIP-CBAM 224 & +26 & -9 & 7.31 & 0.0059 & \textbf{Very Significant ($p < 0.01$)} \\
+vs ViT-Base-384 & +23 & -7 & 7.50 & 0.0052 & \textbf{Very Significant ($p < 0.01$)} \\
+vs ResNet-50d 384 & +28 & -6 & 12.97 & $1.95 \times 10^{-4}$ & \textbf{Highly Significant ($p < 0.001$)} \\
+\hline
+\multicolumn{6}{l}{\textit{4-Class Kaggle Benchmark ($N=423$ Test Samples)}} \\
+vs BiomedCLIP + CBAM & +8 & -3 & 1.45 & 0.2266 & Dominant Trend ($b > c$) \\
+vs ConvNeXt-Small v2 & +6 & -0 & 4.17 & 0.0313 & \textbf{Significant ($p < 0.05$)} \\
+vs EfficientNet-B3 & +15 & -3 & 6.72 & 0.0075 & \textbf{Very Significant ($p < 0.01$)} \\
+vs DenseNet-121 & +13 & -2 & 6.67 & 0.0074 & \textbf{Very Significant ($p < 0.01$)} \\
+vs ViT-Base-384 & +11 & -0 & 9.09 & $9.77 \times 10^{-4}$ & \textbf{Highly Significant ($p < 0.001$)} \\
+vs ResNet-50d & +12 & -0 & 10.08 & $4.88 \times 10^{-4}$ & \textbf{Highly Significant ($p < 0.001$)} \\
+\hline
+\end{tabular}
+\end{table*}

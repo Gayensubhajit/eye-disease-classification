@@ -353,6 +353,19 @@ python scripts/evaluate_ms_tta.py \
     - Clinical pathological observations & specific ophthalmic referral recommendations.
     - Reviewing ophthalmologist signature/review stamp.
 
+### EXP-030: LaTeX Manuscript Scaffold & Overleaf Import Package (Sep 8, 2026)
+- **Objective:** Establish the complete, submission-grade IEEE/MDPI LaTeX project repository and 1-click Overleaf package.
+- **Implementation (`paper/`):**
+  - **Main Manuscript (`paper/manuscript.tex`):** Full double-column IEEE Transactions/Access template structured with mathematical formulations (CLAHE, CBAM dual attention, MS-TTA, simplex weighted fusion, Normalized Shannon Entropy, McNemar chi-square).
+  - **BibTeX Bibliography (`paper/references.bib`):** 25+ curated citations (Alsohemi 2025, Srivastava 2026, BiomedCLIP, ConvNeXt, EfficientNet-B3, CBAM, ResNet, ViT, Grad-CAM, Albumentations).
+  - **Embedded Tables (`paper/tables/`):**
+    - `table1_10class_benchmarks.tex`: Standalone models, ensemble, and literature comparison with 95% CIs.
+    - `table2_4class_benchmarks.tex`: 4-class comparison with 95% CIs.
+    - `table3_mcnemar_significance.tex`: Paired discordance counts, chi2, and exact p-values.
+  - **Embedded Figures (`paper/figures/`):** Architecture Figure 1 (`fig1_architecture.png`), 10-Class Grad-CAM grid (`fig2_gradcam_10class.png`), and 4-Class Grad-CAM (`fig3_gradcam_4class.png`).
+  - **Overleaf 1-Click Package:** Generated at `outputs/Overleaf_Paper_Package.zip` (16MB archive importable straight into Overleaf).
+- **README Overhaul:** Completely updated `README.md` showcasing Figure 1, benchmarks, statistical rigor, Web Studio guides, presentation deck links, and batch screening CLI instructions.
+
 ---
 
 ## 8. Critical User Operating Rules
