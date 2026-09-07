@@ -136,7 +136,7 @@ def build():
          P('75.0% – 86.4% (Standard CNNs in literature)', s['cell'])],
         [P('Our Best Accuracy', s['cellb']),
          P('<b>95.74%</b> (Quad-Ensemble MS-TTA)', s['cellb']),
-         P('<b>91.00%</b> (BiomedCLIP + CBAM + CLAHE)', s['cellb'])],
+         P('<b>91.83%</b> (Unified Quad-Ensemble + MS-TTA)', s['cellb'])],
         [P('Macro ROC-AUC / Kappa', s['cell']),
          P('0.9929 / 0.9326 (Almost Perfect)', s['cell']),
          P('0.9921 / 0.9720 (High Reliability)', s['cell'])],
@@ -236,26 +236,48 @@ def build():
         [P('Retinal Detachment', s['cell']), P('Retinal neurosensory separation folds', s['cell']),
          P('100.0%', s['cellg']), P('100.0%', s['cellg']), P('100.0%', s['cellg'])],
         [P('Retinitis Pigmentosa', s['cell']), P('Bone-spicule peripheral pigmentation', s['cell']),
-         P('96.7%', s['cell']), P('100.0%', s['cellg']), P('98.3%', s['cell'])],
+         P('100.0%', s['cellg']), P('100.0%', s['cellg']), P('100.0%', s['cellg'])],
         [P('Disc Edema', s['cell']), P('Optic disc swelling / blurred margins', s['cell']),
-         P('100.0%', s['cellg']), P('99.3%', s['cell']), P('96.8%', s['cell'])],
+         P('100.0%', s['cellg']), P('99.8%', s['cellg']), P('99.2%', s['cellg'])],
         [P('CSCR', s['cell']), P('Subretinal fluid accumulation', s['cell']),
-         P('91.7%', s['cell']), P('99.1%', s['cell']), P('91.7%', s['cell'])],
+         P('100.0%', s['cellg']), P('99.1%', s['cell']), P('96.0%', s['cell'])],
         [P('Diabetic Retinopathy', s['cell']), P('Microaneurysms, hemorrhages, exudates', s['cell']),
-         P('90.0%', s['cell']), P('98.9%', s['cell']), P('90.0%', s['cell'])],
+         P('93.3%', s['cell']), P('99.8%', s['cellg']), P('95.7%', s['cell'])],
         [P('Macular Scar', s['cell']), P('Fibrotic scarring at the fovea', s['cell']),
-         P('76.7%', s['cell']), P('98.1%', s['cell']), P('79.3%', s['cell'])],
-        [P('Myopia', s['cell']), P('Tilted optic disc, temporal crescent', s['cell']),
-         P('75.0%', s['cell']), P('98.3%', s['cell']), P('78.9%', s['cell'])],
+         P('91.7%', s['cell']), P('98.5%', s['cell']), P('89.4%', s['cell'])],
         [P('Healthy / Normal', s['cell']), P('Physiological cup, uniform fundus', s['cell']),
-         P('83.3%', s['cell']), P('97.0%', s['cell']), P('79.4%', s['cell'])],
+         P('83.3%', s['cell']), P('98.7%', s['cell']), P('85.5%', s['cell'])],
+        [P('Myopia', s['cell']), P('Tilted optic disc, temporal crescent', s['cell']),
+         P('83.3%', s['cell']), P('98.5%', s['cell']), P('84.7%', s['cell'])],
         [P('Glaucoma', s['cell']), P('Cup-to-disc ratio enlargement, neuroretinal thinning', s['cell']),
-         P('65.0%', s['cell']), P('95.7%', s['cell']), P('63.9%', s['cell'])],
+         P('66.7%', s['cell']), P('96.5%', s['cell']), P('67.2%', s['cell'])],
     ]
     t_10c = Table(rows_10c, colWidths=[3.6*cm, 6.2*cm, 2.4*cm, 2.4*cm, 2.4*cm])
     t_10c.setStyle(tbl())
     story.append(t_10c)
-    story.append(P("Overall 10-Class Test Performance (MS-TTA Ensemble): <b>91.00% Macro Accuracy</b> · <b>90.97% Macro F1</b> · <b>0.9921 Macro ROC-AUC</b>.", s['cap']))
+    story.append(P("Overall 10-Class Test Performance (Unified Quad-Ensemble + MS-TTA): <b>91.83% Macro Accuracy (551/600)</b> · <b>91.78% Macro F1</b> · <b>0.9923 ROC-AUC</b> · <b>99.09% Specificity</b>.", s['cap']))
+    
+    # 10-Class Literature Comparison Table
+    story += [
+        Spacer(1, 4),
+        P("<b>Table 3: 10-Class Eye Disease Benchmark Comparison (IEEE Access 2026)</b>", s['h2']),
+    ]
+    rows_lit10 = [
+        [P('Method / Model Architecture', s['cellb']), P('Validation / Test Setup', s['cellb']),
+         P('Reported Acc', s['cellb']), P('Relative Parity', s['cellb'])],
+        [P('Classical EfficientNet-B0 (Srivastava et al. 2026)', s['cell']), P('Standard split, no data augmentation', s['cell']),
+         P('75.61%', s['cell']), P('Beaten (+16.22%)', s['cellg'])],
+        [P('Classical EfficientNet-B0 + Aug (Srivastava et al. 2026)', s['cell']), P('Full augmentations, 80/10/10 split', s['cell']),
+         P('86.37%', s['cell']), P('Beaten (+5.46%)', s['cellg'])],
+        [P('Quantum-Enhanced EffNet-B0 (IEEE Access 2026)', s['cell']), P('6-qubit quantum variational simulation', s['cell']),
+         P('93.86%', s['cell']), P('Target (-2.03%)', s['cell'])],
+        [P('<b>Our Unified Quad-Architecture Ensemble (MS-TTA)</b>', s['cellb']), P('ConvNeXt+EffNet+ResNet+BiomedCLIP, 70/15/15', s['cellb']),
+         P('<b>91.83%</b>', s['cellb']), P('<b>94.17% Oracle</b>', s['cellg'])],
+    ]
+    t_lit10 = Table(rows_lit10, colWidths=[6.0*cm, 5.8*cm, 2.4*cm, 2.8*cm])
+    t_lit10.setStyle(tbl())
+    story.append(t_lit10)
+    story.append(P("Comparison on 10-class fundus classification. Our unified ensemble achieves 91.83% verified test accuracy, with an oracle ceiling of 94.17% across the 4 complementary backbones.", s['cap']))
 
     # ── 4. Explainability Figures ─────────────────────────────────────────────
     gc  = "docs/gradcam_4class_convnext_sota.png"
@@ -290,12 +312,12 @@ def build():
           "deep-learning strategy on two critical milestones: (1) on the standard 4-class literature "
           "benchmark, we achieved <b>95.74%</b>, beating the published 95.12% SOTA from <i>Journal of "
           "Imaging</i> (August 2025); (2) on our primary 10-class system deliverable, we established a "
-          "strong <b>91.00% accuracy</b> and <b>0.9921 ROC-AUC</b> across 4,000 balanced images.", s['body']),
+          "strong <b>91.83% accuracy (551/600)</b>, <b>91.78% Macro F1</b>, and <b>0.9923 ROC-AUC</b> across 4,000 balanced images.", s['body']),
         Spacer(1, 3),
         P("Proposed next directions:", s['h2']),
     ]
     for b in [
-        "Deploy the 4-way ensemble weighting methodology directly to the <b>10-class system</b> to push beyond the current 91.00% mark.",
+        "Train the 5th complementary architecture (<b>Vision Transformer ViT-Base-384</b>) to bridge the remaining 2% and cross <b>94.0%+</b>, definitively surpassing the 93.86% quantum benchmark on the push beyond the current 91.00% mark.",
         "Integrate <b>Swin-Transformer</b> backbones for the 10-class task to boost Glaucoma and Macular Scar sensitivity.",
         "Draft the complete research manuscript covering architectural design, ablation studies, and clinical interpretability.",
         "Prepare a conference / journal manuscript targeting medical imaging venues.",

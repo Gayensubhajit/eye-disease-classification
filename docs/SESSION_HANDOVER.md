@@ -245,3 +245,41 @@ python scripts/evaluate_ms_tta.py \
 - **Literature Status:** Surpasses Alsohemi et al. (95.12%) and Hybrid Feature Fusion (95.70%, Ref [6]).
 - **Artifacts:** Saved in `outputs/kaggle_4class_quad_resnet_eval/`
 
+
+
+### EXP-023: 10-Class Unified Quad-Architecture Ensemble Milestone (Sep 7, 2026)
+- **Context:** Supervisor directive: *"Use the exact same model for both 4-class and 10-class, and increase accuracy to beat the 10-class benchmark (93.86% in IEEE Access 2026)."*
+- **Model Blend (Identical to 4-Class Architecture Family):**
+  - `ConvNeXt-Small` ($384\times 384$, CLAHE, weight = 0.143)
+  - `EfficientNet-B3` ($384\times 384$, CLAHE, weight = 0.429)
+  - `ResNet-50d` ($384\times 384$, CLAHE, weight = 0.286)
+  - `BiomedCLIP-CBAM` ($224\times 224$, CLAHE, weight = 0.143)
+- **Evaluation Strategy:** Multi-Scale TTA (scales [1.0, 1.15] with 4-view geometric flips) on the held-out 600-sample test set.
+- **Results:**
+  - **Test Accuracy:** **91.83%** (551/600 correct on held-out test set)
+  - **Macro F1-Score:** **91.78%**
+  - **Macro ROC-AUC:** **0.9923**
+  - **Macro Specificity:** **99.09%**
+  - **Cohen's Kappa:** **0.9093**
+  - **Oracle Accuracy (Union of 4 Models):** **94.17%** (565/600 correct)
+- **Benchmark Comparison (Eye Disease Image Dataset):**
+  - Classical EfficientNet-B0 (No Aug, IEEE 2026): 75.61% -> **Beaten (+16.22%)**
+  - Classical EfficientNet-B0 (With Aug, IEEE 2026): 86.37% -> **Beaten (+5.46%)**
+  - Quantum-Enhanced EfficientNet-B0 (IEEE Access 2026): 93.86% -> Target (gap narrowed to 2.03%; 94.17% oracle potential)
+- **Per-Class Breakdown:**
+  - Pterygium: **100.0% Sens, 100.0% Spec, 100.0% F1**
+  - Retinal Detachment: **100.0% Sens, 100.0% Spec, 100.0% F1**
+  - Retinitis Pigmentosa: **100.0% Sens, 100.0% Spec, 100.0% F1**
+  - Disc Edema: **100.0% Sens, 99.8% Spec, 99.2% F1**
+  - Central Serous Chorioretinopathy: **100.0% Sens, 99.1% Spec, 96.0% F1**
+  - Diabetic Retinopathy: **93.3% Sens, 99.8% Spec, 95.7% F1**
+  - Macular Scar: **91.7% Sens, 98.5% Spec, 89.4% F1**
+  - Healthy / Normal: **83.3% Sens, 98.7% Spec, 85.5% F1**
+  - Myopia: **83.3% Sens, 98.5% Spec, 84.7% F1**
+  - Glaucoma: **66.7% Sens, 96.5% Spec, 67.2% F1**
+- **Artifacts:**
+  - Checkpoint: `outputs/resnet50d_384_clahe/best_model.pth`
+  - Cached MS-TTA probabilities: `outputs/cached_10class_quad_probs.npz`
+  - Metrics JSON: `outputs/10class_quad_ensemble_eval/ms_tta_metrics.json`
+  - Confusion Matrix: `outputs/10class_quad_ensemble_eval/ms_tta_confusion_matrix.png`
+  - Report PDF: `docs/Benchmark_Progress_Update.pdf`
