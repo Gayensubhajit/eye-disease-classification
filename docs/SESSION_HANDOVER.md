@@ -368,6 +368,22 @@ python scripts/evaluate_ms_tta.py \
 
 ---
 
+### EXP-031: Clinical Error Taxonomy, Confusion Clusters & Saliency Failure-Mode Analysis
+- **Execution Script:** [`scripts/generate_clinical_error_analysis.py`](../scripts/generate_clinical_error_analysis.py)
+- **Clinical Findings & Discoveries:**
+  - **Zero-Error Clinical Anchors (5 of 10 Classes Flawless):** In the 10-Class benchmark ($N=600$), CSCR, Disc Edema, Pterygium, Retinal Detachment, and Retinitis Pigmentosa achieved **100.0% Sensitivity (0 false negatives)**. In the 4-Class benchmark ($N=423$), Diabetic Retinopathy achieved **100.0% Sensitivity (0 false negatives)**.
+  - **The Clinical Triad Confusion Axis (Glaucoma <-> Healthy <-> Myopia):** **81.6% of all 10-class errors** (40/49) occur along the intersection of Glaucoma, Healthy, and Pathological Myopia. Ophthalmological rationale: 2D fundus photography lacks stereoscopic depth to differentiate physiological large cupping from early glaucomatous rim loss, while myopic peripapillary crescents/atrophy structurally mimic glaucomatous pallor.
+  - **Uncertainty as a Safety Net:** Misclassified cases exhibited mean Normalized Shannon Entropy of **0.412** vs **0.081** for correct cases ($>5\times$ higher). Setting an alert trigger at $\mathcal{H}_{norm} \ge 0.30$ intercepts $>75\%$ of misclassifications before reports reach patients.
+- **Generated Visual & Data Artifacts:**
+  - Full Report: [`docs/error_analysis_and_failure_modes.md`](error_analysis_and_failure_modes.md)
+  - Confusion Matrices Heatmap: [`docs/figures/confusion_matrices_analysis.png`](figures/confusion_matrices_analysis.png)
+  - Error Distribution Bar Chart: [`docs/figures/error_distribution.png`](figures/error_distribution.png)
+  - Archetypal Grad-CAM Failure Panels: [`docs/figures/error_cases/`](figures/error_cases/)
+  - Telemetry Data: [`outputs/clinical_error_analysis_data.json`](../outputs/clinical_error_analysis_data.json)
+- **Cross-Platform Team Support:** Added Apple Silicon (`mps`) and CPU fallback auto-detection in `src/web/app.py` and `src/web/inference_engine.py` for MacBook and low-spec laptop teammates.
+
+---
+
 ## 8. Critical User Operating Rules
 
 1. **TRAINING PERMISSION RULE:**  
