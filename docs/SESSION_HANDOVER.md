@@ -310,6 +310,21 @@ python scripts/evaluate_ms_tta.py \
 - **Finding:** Rerouting ambiguous test samples to the specialist dropped test accuracy to **90.50%**.
 - **Scientific Conclusion:** The full 5-model ensemble (trained on all 2,800 images with multi-scale retinal context) is significantly more robust than a smaller, isolated sub-network. The **91.83% ensemble** is confirmed as our optimal, rock-solid system.
 
+### EXP-027: Statistical Rigor & Publication Architecture Schematic Milestone (Sep 8, 2026)
+- **Objective:** Establish formal empirical statistical significance and generate publication-grade architectural diagrams (Figure 1).
+- **Execution & Findings:**
+  - **1,000-Iteration Bootstrap 95% Confidence Intervals:**
+    - 10-Class Quad Ensemble: **91.83% [89.67%, 93.83%]** Test Acc, **91.78% [89.75%, 93.76%]** Macro F1, **0.9923 [0.9890, 0.9949]** ROC-AUC.
+    - 4-Class Quad Ensemble: **95.74% [93.62%, 97.64%]** Test Acc, **95.70% [93.63%, 97.55%]** Macro F1, **0.9929 [0.9875, 0.9972]** ROC-AUC.
+  - **McNemar's Paired Hypothesis Testing (Exact Two-Sided):**
+    - 10-Class Ensemble demonstrated statistically significant superiority over ConvNeXt ($p=0.0213$), ResNet-50d ($p=1.95\times 10^{-4}$), BiomedCLIP ($p=0.0059$), and ViT ($p=0.0052$).
+    - 4-Class Ensemble demonstrated statistically significant superiority over ConvNeXt-v2 ($p=0.0313$), ResNet-50d ($p=4.88\times 10^{-4}$), EfficientNet-B3 ($p=0.0075$), DenseNet-121 ($p=0.0074$), and ViT-Base ($p=9.77\times 10^{-4}$).
+- **Artifacts:**
+  - Analysis Report: `docs/statistical_significance_analysis.md`
+  - Results JSON: `outputs/statistical_significance_results.json`
+  - Computation Script: `scripts/compute_statistical_significance.py`
+  - Architecture Schematic (Figure 1): `docs/figures/system_architecture.png` (300 DPI) and `docs/figures/system_architecture.svg`
+
 ---
 
 ## 8. Critical User Operating Rules
