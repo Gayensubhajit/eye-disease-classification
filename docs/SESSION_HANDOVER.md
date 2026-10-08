@@ -405,6 +405,38 @@ python scripts/evaluate_ms_tta.py \
 
 ---
 
+### EXP-033: Disaster Recovery & Full Brain Backup on Windows NTFS Partition
+- **Scope:** Complete persistence preservation prior to Garuda Linux reinstall.
+- **Backup Location:** `/mnt/windows/Users/subha/antigravity_backup/backup_2026_09_29/`
+- **Key Artifacts:**
+  - `gemini_full_backup.tar.gz` (383MB, full `~/.gemini` state).
+  - Uncompressed active mirrors: `conversations/`, `brain/`, `config/`.
+  - Automated restoration script: `restore_antigravity.sh`.
+  - Comprehensive guide: `HOW_TO_RESUME.md`.
+- **Environment Restoration:** Reconstructed virtual environment using `uv python install 3.10` and PyTorch 2.5.1+cu121 with CUDA support on RTX 3050 Laptop GPU.
+
+---
+
+### EXP-034: Split Conformal Prediction Sets & Bilateral Dual-Eye (OD vs. OS) Clinical Screening System
+- **Motivation:** Transitioning the project from standard classification into a clinical-grade decision support platform that guarantees finite-sample patient safety and models bilateral human ophthalmology.
+- **Module 1: Split Conformal Prediction Sets (`src/utils/conformal.py`):**
+  - **Mathematical Formulation:** Applied split conformal inference on held-out calibration distributions ($N=600$ for 10-Class, $N=211$ for 4-Class). Conformal quantile non-conformity score $s_i = 1 - \hat{p}(y_i \mid x_i)$ yields calibrated thresholds:
+    - 10-Class (95% target): $\hat{q} = 0.8356$, probability cutoff $p \ge 0.1644$. Empirical test coverage: **96.83%** (Set size: 81.8% singletons, 15.3% differential pairs, 2.8% triplets).
+    - 4-Class (95% target): $\hat{q} = 0.7812$, probability cutoff $p \ge 0.2188$. Empirical test coverage: **94.81%** (Set size: 100.0% singletons).
+  - **Clinical Safety Guarantee:** When models encounter borderline cases (e.g. Glaucoma $\leftrightarrow$ Normal), conformal inference mathematically expands the prediction set to `['Healthy', 'Glaucoma']` and flags `⚠️ Ambiguity Flagged: Doctor Review Advised` rather than giving false certainty.
+- **Module 2: Bilateral Dual-Eye Inspection Mode (OD vs. OS):**
+  - **Endpoint:** `@app.post("/api/predict-bilateral")` in [`src/web/app.py`](../src/web/app.py).
+  - **Bilateral Asymmetry Index (BAI):** Total variation divergence $\Delta_{	ext{asym}} = rac{1}{2}\sum_{k=1}^K |p_{OD, k} - p_{OS, k}| \in [0, 1]$.
+  - **Clinical Logic:**
+    - *Concordant Systemic Pathology:* Both eyes exhibit identical pathology (e.g., bilateral Diabetic Retinopathy, BAI = 0.0%) -> triggers systemic endocrinology workup and bilateral co-management.
+    - *Discordant Unilateral Finding:* Asymmetry detected (e.g., OD Normal vs. OS Retinal Detachment, BAI = 92.7%) -> flags acute focal ocular pathology requiring urgent surgical/specialist evaluation of the affected eye.
+- **Workstation Frontend Integration (`src/web/static/`):**
+  - Added Inspection Mode toggle in ribbon: `[👁️ Single Eye (Monocular)]` vs `[👁️👁️ Bilateral (OD & OS)]`.
+  - Dedicated **95% Conformal Prediction Risk Set Card** with finite-sample coverage badge, cutoff, singleton status, and included pathology pills.
+  - Interactive **Bilateral Workstation** featuring paired eye viewports, pre-loaded clinical scenarios, live Asymmetry Index gauge, and side-by-side comparative Grad-CAM heatmaps.
+
+---
+
 ## 8. Critical User Operating Rules
 
 1. **TRAINING PERMISSION RULE:**  

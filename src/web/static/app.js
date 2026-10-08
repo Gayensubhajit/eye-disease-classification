@@ -72,6 +72,73 @@ const resDiseaseDesc = document.getElementById("res-disease-desc");
 const resRecommendationsList = document.getElementById("res-recommendations-list");
 const btnExportReport = document.getElementById("btn-export-report");
 
+// Mode Toggle & Workspace Sections
+const modeMonocularBtn = document.getElementById("btn-mode-monocular");
+const modeBilateralBtn = document.getElementById("btn-mode-bilateral");
+const monocularWorkspace = document.getElementById("monocular-workspace");
+const bilateralWorkspace = document.getElementById("bilateral-workspace");
+const samplePickerBar = document.querySelector(".sample-picker-bar");
+
+// Conformal Set DOM
+const confCutoff = document.getElementById("conf-cutoff");
+const confStatusTag = document.getElementById("conf-status-tag");
+const confBadgeText = document.getElementById("conf-badge-text");
+const confSetSize = document.getElementById("conf-set-size");
+const confCoverage = document.getElementById("conf-coverage");
+const confClinicalStatus = document.getElementById("conf-clinical-status");
+const confChipsContainer = document.getElementById("conf-chips-container");
+const confActionText = document.getElementById("conf-action-text");
+
+// Bilateral DOM
+const odDropZone = document.getElementById("od-drop-zone");
+const odFileInput = document.getElementById("od-file-input");
+const odPreviewStage = document.getElementById("od-preview-stage");
+const odPreviewImg = document.getElementById("od-preview-img");
+const odLabel = document.getElementById("od-label");
+const odStatus = document.getElementById("od-status");
+const btnChangeOd = document.getElementById("btn-change-od");
+
+const osDropZone = document.getElementById("os-drop-zone");
+const osFileInput = document.getElementById("os-file-input");
+const osPreviewStage = document.getElementById("os-preview-stage");
+const osPreviewImg = document.getElementById("os-preview-img");
+const osLabel = document.getElementById("os-label");
+const osStatus = document.getElementById("os-status");
+const btnChangeOs = document.getElementById("btn-change-os");
+
+const btnAnalyzeBilateral = document.getElementById("btn-analyze-bilateral");
+const bilateralSpinner = document.getElementById("bilateral-spinner");
+const bilateralIcon = document.getElementById("bilateral-icon");
+const btnBilateralText = document.getElementById("btn-bilateral-text");
+const bilateralResultsContainer = document.getElementById("bilateral-results-container");
+
+const baiStatusBadge = document.getElementById("bai-status-badge");
+const baiAsymmetryVal = document.getElementById("bai-asymmetry-val");
+const baiMeterBar = document.getElementById("bai-meter-bar");
+const baiCategoryTitle = document.getElementById("bai-category-title");
+const baiSummaryText = document.getElementById("bai-summary-text");
+const baiActionText = document.getElementById("bai-action-text");
+
+const odResLatency = document.getElementById("od-res-latency");
+const odResDisease = document.getElementById("od-res-disease");
+const odResConf = document.getElementById("od-res-conf");
+const odResConformalChips = document.getElementById("od-res-conformal-chips");
+const odResCamImg = document.getElementById("od-res-cam-img");
+
+const osResLatency = document.getElementById("os-res-latency");
+const osResDisease = document.getElementById("os-res-disease");
+const osResConf = document.getElementById("os-res-conf");
+const osResConformalChips = document.getElementById("os-res-conformal-chips");
+const osResCamImg = document.getElementById("os-res-cam-img");
+
+const presetBtns = document.querySelectorAll(".btn-preset-case");
+
+let activeMode = "monocular";
+let currentOdFile = null;
+let currentOdSampleId = "dr_proliferative";
+let currentOsFile = null;
+let currentOsSampleId = "dr_proliferative";
+
 // ================= Initialization =================
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchTelemetry();
@@ -84,6 +151,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupMagnifierLoupe();
   setupOpticalFilters();
   setupReportExport();
+  setupModeToggle();
+  setupBilateralMode();
   setInterval(fetchTelemetry, 12000);
 });
 
@@ -544,6 +613,27 @@ function renderDiagnosticFindings(data) {
     safetyStatusBadge.textContent = "🚨 High Uncertainty (OCT Escalation)";
   }
 
+  // Conformal Prediction Risk Set Rendering
+  if (data.conformal && confChipsContainer) {
+    const conf = data.conformal;
+    if (confCutoff) confCutoff.textContent = `p ≥ ${conf.probability_cutoff}`;
+    if (confSetSize) confSetSize.textContent = `${conf.set_size} ${conf.set_size === 1 ? 'Pathology' : 'Pathologies'}`;
+    if (confCoverage) confCoverage.textContent = conf.empirical_test_coverage;
+    if (confClinicalStatus) confClinicalStatus.textContent = conf.clinical_status;
+    if (confBadgeText) confBadgeText.textContent = conf.clinical_badge;
+    if (confStatusTag) confStatusTag.className = `conformal-status-tag ${conf.badge_color}`;
+    if (confActionText) confActionText.textContent = conf.clinical_action;
+
+    confChipsContainer.innerHTML = "";
+    conf.prediction_set.forEach((clsName, idx) => {
+      const p = conf.prediction_set_probabilities[idx];
+      const chip = document.createElement("div");
+      chip.className = "conformal-chip";
+      chip.innerHTML = `<span>${clsName}</span><span class="conformal-chip-prob">${p}%</span>`;
+      confChipsContainer.appendChild(chip);
+    });
+  }
+
   // Grad-CAM Layer Update
   if (data.gradcam && data.gradcam.overlay_b64) {
     fundusImgOverlay.src = data.gradcam.overlay_b64;
@@ -643,4 +733,254 @@ function setupReportExport() {
   btnExportReport.addEventListener("click", () => {
     window.print();
   });
+}
+
+
+// ================= Inspection Mode (Monocular vs Bilateral) =================
+function setupModeToggle() {
+  if (!modeMonocularBtn || !modeBilateralBtn) return;
+  modeMonocularBtn.addEventListener("click", () => setMode("monocular"));
+  modeBilateralBtn.addEventListener("click", () => setMode("bilateral"));
+}
+
+function setMode(mode) {
+  activeMode = mode;
+  if (mode === "monocular") {
+    modeMonocularBtn.classList.add("active");
+    modeBilateralBtn.classList.remove("active");
+    monocularWorkspace.style.display = "grid";
+    bilateralWorkspace.style.display = "none";
+    if (samplePickerBar) samplePickerBar.style.display = "block";
+  } else {
+    modeBilateralBtn.classList.add("active");
+    modeMonocularBtn.classList.remove("active");
+    monocularWorkspace.style.display = "none";
+    bilateralWorkspace.style.display = "flex";
+    if (samplePickerBar) samplePickerBar.style.display = "none";
+    initBilateralPreset("dr_proliferative", "dr_proliferative");
+  }
+}
+
+// ================= Bilateral Dual-Eye Screening Logic =================
+function setupBilateralMode() {
+  if (!btnAnalyzeBilateral) return;
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      presetBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const odId = btn.dataset.od;
+      const osId = btn.dataset.os;
+      initBilateralPreset(odId, osId);
+    });
+  });
+
+  if (btnChangeOd) {
+    btnChangeOd.addEventListener("click", () => odFileInput.click());
+  }
+  if (odFileInput) {
+    odFileInput.addEventListener("change", (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleBilateralFile("OD", e.target.files[0]);
+      }
+    });
+  }
+  if (odDropZone) {
+    odDropZone.addEventListener("click", () => odFileInput.click());
+    odDropZone.addEventListener("dragover", (e) => { e.preventDefault(); odDropZone.classList.add("dragover"); });
+    odDropZone.addEventListener("dragleave", () => odDropZone.classList.remove("dragover"));
+    odDropZone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      odDropZone.classList.remove("dragover");
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleBilateralFile("OD", e.dataTransfer.files[0]);
+      }
+    });
+  }
+
+  if (btnChangeOs) {
+    btnChangeOs.addEventListener("click", () => osFileInput.click());
+  }
+  if (osFileInput) {
+    osFileInput.addEventListener("change", (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleBilateralFile("OS", e.target.files[0]);
+      }
+    });
+  }
+  if (osDropZone) {
+    osDropZone.addEventListener("click", () => osFileInput.click());
+    osDropZone.addEventListener("dragover", (e) => { e.preventDefault(); osDropZone.classList.add("dragover"); });
+    osDropZone.addEventListener("dragleave", () => osDropZone.classList.remove("dragover"));
+    osDropZone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      osDropZone.classList.remove("dragover");
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleBilateralFile("OS", e.dataTransfer.files[0]);
+      }
+    });
+  }
+
+  btnAnalyzeBilateral.addEventListener("click", executeBilateralInference);
+}
+
+function initBilateralPreset(odId, osId) {
+  currentOdSampleId = odId;
+  currentOdFile = null;
+  currentOsSampleId = osId;
+  currentOsFile = null;
+
+  const odSample = allSamples.find(s => s.id === odId);
+  if (odSample && odPreviewImg) {
+    odPreviewImg.src = odSample.image_url;
+    odPreviewStage.style.display = "block";
+    odDropZone.style.display = "none";
+    odLabel.textContent = `OD: ${odSample.title}`;
+    odStatus.textContent = "Ready";
+  }
+
+  const osSample = allSamples.find(s => s.id === osId);
+  if (osSample && osPreviewImg) {
+    osPreviewImg.src = osSample.image_url;
+    osPreviewStage.style.display = "block";
+    osDropZone.style.display = "none";
+    osLabel.textContent = `OS: ${osSample.title}`;
+    osStatus.textContent = "Ready";
+  }
+}
+
+function handleBilateralFile(eye, file) {
+  if (!file.type.startsWith("image/")) {
+    alert("Please upload a valid fundus image file.");
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    if (eye === "OD") {
+      currentOdFile = file;
+      currentOdSampleId = null;
+      odPreviewImg.src = e.target.result;
+      odPreviewStage.style.display = "block";
+      odDropZone.style.display = "none";
+      odLabel.textContent = `OD: ${file.name}`;
+      odStatus.textContent = "Custom Image";
+    } else {
+      currentOsFile = file;
+      currentOsSampleId = null;
+      osPreviewImg.src = e.target.result;
+      osPreviewStage.style.display = "block";
+      osDropZone.style.display = "none";
+      osLabel.textContent = `OS: ${file.name}`;
+      osStatus.textContent = "Custom Image";
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+async function executeBilateralInference() {
+  if ((!currentOdFile && !currentOdSampleId) || (!currentOsFile && !currentOsSampleId)) {
+    alert("Please provide both OD (Right Eye) and OS (Left Eye) images.");
+    return;
+  }
+
+  btnAnalyzeBilateral.disabled = true;
+  bilateralSpinner.style.display = "block";
+  bilateralIcon.style.display = "none";
+  btnBilateralText.textContent = "Comparing Inter-Ocular Morphologies...";
+
+  try {
+    const formData = new FormData();
+    formData.append("benchmark", activeBenchmark);
+    formData.append("model_id", modelSelect.value);
+    formData.append("generate_cam", chkGradcam.checked ? "true" : "false");
+
+    if (currentOdFile) {
+      formData.append("od_file", currentOdFile);
+    } else {
+      formData.append("od_sample_id", currentOdSampleId);
+    }
+
+    if (currentOsFile) {
+      formData.append("os_file", currentOsFile);
+    } else {
+      formData.append("os_sample_id", currentOsSampleId);
+    }
+
+    const res = await fetch("/api/predict-bilateral", {
+      method: "POST",
+      body: formData
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || "Bilateral analysis failed");
+    }
+
+    const data = await res.json();
+    renderBilateralFindings(data);
+  } catch (err) {
+    alert(`Bilateral Screening Error: ${err.message}`);
+  } finally {
+    btnAnalyzeBilateral.disabled = false;
+    bilateralSpinner.style.display = "none";
+    bilateralIcon.style.display = "block";
+    btnBilateralText.textContent = "Re-Evaluate Bilateral Comparative Screening";
+  }
+}
+
+function renderBilateralFindings(data) {
+  bilateralResultsContainer.style.display = "flex";
+
+  const analysis = data.bilateral_analysis;
+  const od = data.od;
+  const os = data.os;
+
+  // Synthesis Hero
+  baiStatusBadge.className = `bai-status-badge ${analysis.badge_color || 'emerald'}`;
+  baiStatusBadge.textContent = analysis.concordant ? "Concordant Systemic Pathology" : "Discordant Unilateral Asymmetry";
+
+  baiAsymmetryVal.textContent = `${analysis.asymmetry_percentage.toFixed(1)}%`;
+  baiMeterBar.style.width = `${Math.min(analysis.asymmetry_percentage, 100)}%`;
+
+  baiCategoryTitle.textContent = analysis.clinical_category;
+  baiSummaryText.textContent = analysis.clinical_summary;
+  baiActionText.textContent = `Recommended Clinical Protocol: ${analysis.recommended_action}`;
+
+  // OD Column
+  odResLatency.textContent = `⏱️ ${od.latency_ms} ms`;
+  odResDisease.textContent = od.top_prediction.short_name || od.top_prediction.class_name;
+  odResConf.textContent = `${od.top_prediction.percentage.toFixed(1)}% Confidence`;
+  if (od.gradcam && od.gradcam.overlay_b64) {
+    odResCamImg.src = od.gradcam.overlay_b64;
+  }
+  odResConformalChips.innerHTML = "";
+  if (od.conformal && od.conformal.prediction_set) {
+    od.conformal.prediction_set.forEach((cls, i) => {
+      const p = od.conformal.prediction_set_probabilities[i];
+      const chip = document.createElement("span");
+      chip.className = "conformal-chip";
+      chip.innerHTML = `${cls} <span class="conformal-chip-prob">${p}%</span>`;
+      odResConformalChips.appendChild(chip);
+    });
+  }
+
+  // OS Column
+  osResLatency.textContent = `⏱️ ${os.latency_ms} ms`;
+  osResDisease.textContent = os.top_prediction.short_name || os.top_prediction.class_name;
+  osResConf.textContent = `${os.top_prediction.percentage.toFixed(1)}% Confidence`;
+  if (os.gradcam && os.gradcam.overlay_b64) {
+    osResCamImg.src = os.gradcam.overlay_b64;
+  }
+  osResConformalChips.innerHTML = "";
+  if (os.conformal && os.conformal.prediction_set) {
+    os.conformal.prediction_set.forEach((cls, i) => {
+      const p = os.conformal.prediction_set_probabilities[i];
+      const chip = document.createElement("span");
+      chip.className = "conformal-chip";
+      chip.innerHTML = `${cls} <span class="conformal-chip-prob">${p}%</span>`;
+      osResConformalChips.appendChild(chip);
+    });
+  }
+
+  bilateralResultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }

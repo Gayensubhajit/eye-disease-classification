@@ -19,6 +19,7 @@ from PIL import Image
 from src.data.preprocessing import crop_fundus_area, apply_clahe
 from src.models.backbone import FundusClassifier
 from src.utils.gradcam import GradCAM, overlay_heatmap
+from src.utils.conformal import get_conformal_prediction_set
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -544,6 +545,14 @@ class InferenceEngine:
             "recommendations": ["Comprehensive ocular examination."]
         })
 
+        # Conformal Prediction Sets (Mathematically guaranteed finite-sample 95% coverage)
+        conformal_data = get_conformal_prediction_set(
+            probabilities=final_probs,
+            class_names=class_names,
+            benchmark=benchmark,
+            confidence_level=0.95
+        )
+
         latency_ms = round((time.time() - start_time) * 1000, 1)
 
         return {
@@ -569,5 +578,6 @@ class InferenceEngine:
                 "certainty_badge": certainty_badge
             },
             "distribution": distribution,
+            "conformal": conformal_data,
             "gradcam": gradcam_data
         }
