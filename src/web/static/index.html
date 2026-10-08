@@ -125,6 +125,20 @@
           </div>
         </div>
 
+        <div class="ribbon-group">
+          <span class="ribbon-label">Inspection Mode:</span>
+          <div class="segmented-control" id="mode-toggle">
+            <button class="segment-btn active" data-mode="monocular" id="btn-mode-monocular">
+              <span class="seg-icon">👁️</span>
+              <span>Single Eye (Monocular)</span>
+            </button>
+            <button class="segment-btn" data-mode="bilateral" id="btn-mode-bilateral">
+              <span class="seg-icon">👁️👁️</span>
+              <span>Bilateral (OD &amp; OS)</span>
+            </button>
+          </div>
+        </div>
+
         <div class="ribbon-group grow-group">
           <span class="ribbon-label">Inference Architecture:</span>
           <div class="select-wrapper">
@@ -169,7 +183,7 @@
       </div>
 
       <!-- Main Clinical Grid: Left Viewport + Right HUD -->
-      <div class="workspace-grid">
+      <div class="workspace-grid" id="monocular-workspace">
 
         <!-- Left Column: Patient Fundus Viewport & Diagnostic Tools -->
         <div class="workspace-left">
@@ -384,6 +398,48 @@
               </div>
             </div>
 
+            <!-- 95% Split Conformal Prediction Risk Set Card -->
+            <div class="glass-card conformal-card" id="card-conformal-set">
+              <div class="conformal-header">
+                <div class="conformal-header-left">
+                  <div class="conformal-badge-icon">🎯</div>
+                  <div>
+                    <h4 class="conformal-title">95% Conformal Prediction Risk Set</h4>
+                    <span class="conformal-subtitle">Finite-Sample Guaranteed Mathematical Coverage &bull; Cutoff <span id="conf-cutoff" class="mono-text">p ≥ 0.1644</span></span>
+                  </div>
+                </div>
+                <div class="conformal-status-tag emerald" id="conf-status-tag">
+                  <span id="conf-badge-text">✅ High Certainty</span>
+                </div>
+              </div>
+
+              <div class="conformal-body">
+                <div class="conformal-stats-row">
+                  <div class="conf-stat-item">
+                    <span class="conf-stat-label">Conformal Set Size:</span>
+                    <span class="conf-stat-val" id="conf-set-size">1 Pathology</span>
+                  </div>
+                  <div class="conf-stat-item">
+                    <span class="conf-stat-label">Empirical Test Coverage:</span>
+                    <span class="conf-stat-val text-emerald" id="conf-coverage">96.83%</span>
+                  </div>
+                  <div class="conf-stat-item">
+                    <span class="conf-stat-label">Clinical Class:</span>
+                    <span class="conf-stat-val" id="conf-clinical-status">Definitive Singleton</span>
+                  </div>
+                </div>
+
+                <div class="conformal-chips-container" id="conf-chips-container">
+                  <!-- Dynamically populated -->
+                </div>
+
+                <div class="conformal-action-box" id="conf-action-box">
+                  <div class="conf-action-icon">📋</div>
+                  <div class="conf-action-text" id="conf-action-text">Autonomous Clinical Clearance (95% Guaranteed Mathematical Coverage)</div>
+                </div>
+              </div>
+            </div>
+
             <!-- Full Differential Diagnostic Spectrum -->
             <div class="glass-card spectrum-card">
               <div class="card-title-row">
@@ -433,6 +489,212 @@
                   </svg>
                   <span>Print Clinical Screening Certificate</span>
                 </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- ================= BILATERAL DUAL-EYE WORKSPACE ================= -->
+      <div class="workspace-bilateral" id="bilateral-workspace" style="display: none;">
+
+        <!-- Bilateral Presets Bar -->
+        <div class="bilateral-presets-bar">
+          <div class="presets-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Preset Bilateral Clinical Scenarios:</span>
+          </div>
+          <div class="presets-btns">
+            <button type="button" class="btn-preset-case active" data-od="dr_proliferative" data-os="dr_proliferative" id="preset-dr-bilateral">
+              Case 1: Bilateral Proliferative DR
+            </button>
+            <button type="button" class="btn-preset-case" data-od="healthy_normal" data-os="retinal_detachment" id="preset-rd-unilateral">
+              Case 2: Acute Unilateral RD (OD Normal / OS Detached)
+            </button>
+            <button type="button" class="btn-preset-case" data-od="healthy_normal" data-os="healthy_normal" id="preset-healthy-bilateral">
+              Case 3: Bilateral Normal Fundus
+            </button>
+            <button type="button" class="btn-preset-case" data-od="glaucoma_advanced" data-os="healthy_normal" id="preset-glaucoma-unilateral">
+              Case 4: Glaucomatous Asymmetry
+            </button>
+          </div>
+        </div>
+
+        <!-- Dual Viewports Grid -->
+        <div class="bilateral-viewports-grid">
+          
+          <!-- OD: Oculus Dexter (Right Eye) -->
+          <div class="glass-card bilateral-viewport-card">
+            <div class="eye-title-row">
+              <div class="eye-title-badge">
+                <span>👁️ Right Eye</span>
+                <span class="eye-tag">OD (Oculus Dexter)</span>
+              </div>
+              <span class="status-chip ready-chip" id="od-status">Sample Loaded</span>
+            </div>
+
+            <!-- OD Drop Zone -->
+            <div class="bilateral-dropzone" id="od-drop-zone">
+              <input type="file" id="od-file-input" accept="image/*" style="display: none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <div>
+                <p style="font-weight: 600; font-size: 0.9rem;">Drop OD Right Eye Fundus</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">or click to select custom image</p>
+              </div>
+            </div>
+
+            <!-- OD Preview Stage -->
+            <div class="bilateral-preview-stage" id="od-preview-stage" style="display: none;">
+              <img id="od-preview-img" class="bilateral-preview-img" src="" alt="OD Fundus">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+              <span id="od-label" style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono);">OD: dr_proliferative</span>
+              <button type="button" class="btn-secondary" id="btn-change-od" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">Upload Custom OD</button>
+            </div>
+          </div>
+
+          <!-- OS: Oculus Sinister (Left Eye) -->
+          <div class="glass-card bilateral-viewport-card">
+            <div class="eye-title-row">
+              <div class="eye-title-badge">
+                <span>👁️ Left Eye</span>
+                <span class="eye-tag">OS (Oculus Sinister)</span>
+              </div>
+              <span class="status-chip ready-chip" id="os-status">Sample Loaded</span>
+            </div>
+
+            <!-- OS Drop Zone -->
+            <div class="bilateral-dropzone" id="os-drop-zone">
+              <input type="file" id="os-file-input" accept="image/*" style="display: none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <div>
+                <p style="font-weight: 600; font-size: 0.9rem;">Drop OS Left Eye Fundus</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">or click to select custom image</p>
+              </div>
+            </div>
+
+            <!-- OS Preview Stage -->
+            <div class="bilateral-preview-stage" id="os-preview-stage" style="display: none;">
+              <img id="os-preview-img" class="bilateral-preview-img" src="" alt="OS Fundus">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+              <span id="os-label" style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono);">OS: dr_proliferative</span>
+              <button type="button" class="btn-secondary" id="btn-change-os" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">Upload Custom OS</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bilateral Action Button -->
+        <div class="bilateral-action-row">
+          <button type="button" class="btn-bilateral-execute" id="btn-analyze-bilateral">
+            <div class="btn-spinner" id="bilateral-spinner" style="display: none;"></div>
+            <svg id="bilateral-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span id="btn-bilateral-text">Execute Bilateral Comparative Screening (OD vs OS)</span>
+          </button>
+        </div>
+
+        <!-- Bilateral Results Container -->
+        <div id="bilateral-results-container" style="display: none; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Hero Asymmetry Card -->
+          <div class="glass-card bilateral-hero-card">
+            <div class="bai-header-row">
+              <div class="bai-title">
+                <span>⚖️ Bilateral Asymmetry &amp; Concordance Synthesis</span>
+              </div>
+              <div class="bai-status-badge emerald" id="bai-status-badge">
+                Bilateral Concordant Systemic Pathology
+              </div>
+            </div>
+
+            <div class="bai-metrics-flex">
+              <div class="bai-gauge-item">
+                <span class="bai-gauge-label">Bilateral Asymmetry Index (BAI):</span>
+                <span class="bai-gauge-val" id="bai-asymmetry-val">0.0%</span>
+                <div class="bai-meter-track">
+                  <div class="bai-meter-bar" id="bai-meter-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div class="bai-narrative-box">
+                <div class="bai-category-title" id="bai-category-title">Bilateral Concordant Diabetic Retinopathy</div>
+                <div class="bai-summary-text" id="bai-summary-text">
+                  Both eyes exhibit concordant signs of disease. Symmetrical findings strongly indicate systemic vascular involvement.
+                </div>
+              </div>
+            </div>
+
+            <div class="bai-action-notice">
+              <span>🩺</span>
+              <span id="bai-action-text">Recommended Clinical Protocol: Comprehensive systemic co-management and bilateral follow-up.</span>
+            </div>
+          </div>
+
+          <!-- Dual Eye Comparative Inspection Columns -->
+          <div class="bilateral-comparison-columns">
+            
+            <!-- OD Results Column -->
+            <div class="glass-card eye-result-card">
+              <div class="eye-result-header">
+                <span class="eye-tag">OD (Right Eye)</span>
+                <span class="mono-text" id="od-res-latency">⏱️ 35 ms</span>
+              </div>
+              <div class="eye-result-top">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Diagnosis:</div>
+                <div class="eye-diag-name" id="od-res-disease">Diabetic Retinopathy</div>
+                <div class="eye-conf-pill" id="od-res-conf">92.6% Confidence</div>
+              </div>
+
+              <!-- Conformal Set Box -->
+              <div class="conformal-body" style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-glass);">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem;">🎯 95% Conformal Set:</div>
+                <div id="od-res-conformal-chips" style="display: flex; gap: 0.4rem; flex-wrap: wrap;"></div>
+              </div>
+
+              <div class="eye-cam-box">
+                <img id="od-res-cam-img" class="eye-cam-img" src="" alt="OD Heatmap">
+              </div>
+            </div>
+
+            <!-- OS Results Column -->
+            <div class="glass-card eye-result-card">
+              <div class="eye-result-header">
+                <span class="eye-tag">OS (Left Eye)</span>
+                <span class="mono-text" id="os-res-latency">⏱️ 35 ms</span>
+              </div>
+              <div class="eye-result-top">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Diagnosis:</div>
+                <div class="eye-diag-name" id="os-res-disease">Diabetic Retinopathy</div>
+                <div class="eye-conf-pill" id="os-res-conf">92.6% Confidence</div>
+              </div>
+
+              <!-- Conformal Set Box -->
+              <div class="conformal-body" style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-glass);">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem;">🎯 95% Conformal Set:</div>
+                <div id="os-res-conformal-chips" style="display: flex; gap: 0.4rem; flex-wrap: wrap;"></div>
+              </div>
+
+              <div class="eye-cam-box">
+                <img id="os-res-cam-img" class="eye-cam-img" src="" alt="OS Heatmap">
               </div>
             </div>
 
