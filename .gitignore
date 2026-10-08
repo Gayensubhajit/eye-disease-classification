@@ -35,3 +35,7 @@ Thumbs.db
 
 # Kaggle 4-class dataset splits
 data_kaggle_4class/
+
+# Clean dataset images — never commit binaries
+data_clean/*
+!data_clean/***/.gitkeep
