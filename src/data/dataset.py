@@ -115,7 +115,11 @@ def create_dataloaders(
     apply_clahe_flag = config["data"].get("apply_clahe", False)
     class_names = config["data"].get("class_names", None)
 
-    train_transforms = get_train_transforms(image_size)
+    conservative_aug = (
+        config['data'].get('augmentation_mode') == 'conservative'
+        or config['data'].get('conservative_augmentation', False)
+    )
+    train_transforms = get_train_transforms(image_size, conservative=conservative_aug)
     val_transforms = get_val_transforms(image_size)
 
     train_dataset = FundusDataset(

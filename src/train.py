@@ -3,6 +3,10 @@
 import os
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import argparse
 import json
 import random
@@ -234,6 +238,48 @@ def main() -> None:
     # Save history log
     with open(output_dir / "training_history.json", "w", encoding="utf-8") as f:
         json.dump(history, f, indent=2)
+
+    # Final independent test set evaluation using the best validation checkpoint
+    print("\n--- Running Final Independent Test Evaluation (Best Checkpoint) ---")
+    checkpoint = torch.load(best_model_path, map_location=device)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    test_loss, test_metrics, test_true, test_pred, test_probs = evaluate_epoch(
+        model, test_loader, criterion, device, class_names, dry_run=args.dry_run
+    )
+    print(
+        f"Test Loss: {test_loss:.4f} | Test Acc: {test_metrics['accuracy']:.4f} | "
+        f"Test Macro F1: {test_metrics['macro_f1']:.4f} | "
+        f"Test Balanced Acc: {test_metrics['balanced_accuracy']:.4f}"
+    )
+
+    import hashlib
+    sha256 = hashlib.sha256()
+    with open(best_model_path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            sha256.update(chunk)
+    ckpt_hash = sha256.hexdigest()
+    print(f"Best Checkpoint SHA-256: {ckpt_hash}")
+
+    test_results = {
+        "best_epoch": checkpoint["epoch"],
+        "checkpoint_path": str(best_model_path),
+        "checkpoint_sha256": ckpt_hash,
+        "val_macro_f1_at_best_epoch": float(best_macro_f1),
+        "test_loss": float(test_loss),
+        "test_metrics": test_metrics,
+        "device": str(device),
+        "training_time_minutes": float(total_time / 60.0),
+    }
+    with open(output_dir / "test_evaluation_results.json", "w", encoding="utf-8") as f:
+        json.dump(test_results, f, indent=2)
+
+    plot_confusion_matrix(
+        test_true,
+        test_pred,
+        class_names,
+        str(output_dir / "test_confusion_matrix.png"),
+        title=f"Test Confusion Matrix (Best Model from Epoch {checkpoint['epoch']})",
+    )
 
 
 if __name__ == "__main__":
