@@ -1,4 +1,20 @@
-# Final Source-Image & Burst-Cluster Audit Report (V2 Final)
+import pandas as pd
+
+REPORT_PATH = 'docs/audit/FINAL_SOURCE_CLUSTER_AUDIT_V2.md'
+
+dist_df = pd.read_csv('outputs/audit/final_class_distribution_v2.csv')
+dist_lines = [
+    '| Disease Class | Train (70.0%) | Val (15.0%) | Test (15.0%) | Total |',
+    '|---|---:|---:|---:|---:|'
+]
+for _, r in dist_df.iterrows():
+    if r['class'] == 'TOTAL':
+        dist_lines.append(f"| **TOTAL** | **{r['train']}** ({r['train_pct']}%) | **{r['val']}** ({r['val_pct']}%) | **{r['test']}** ({r['test_pct']}%) | **{r['total']}** |")
+    else:
+        dist_lines.append(f"| **{r['class']}** | {r['train']} | {r['val']} | {r['test']} | {r['total']} |")
+dist_table_str = '\n'.join(dist_lines)
+
+report_content = f"""# Final Source-Image & Burst-Cluster Audit Report (V2 Final)
 
 **Project Title:** Classification of Eye Diseases from Color Fundus Images  
 **Investigation:** Complete 4,387-Image Pool Perceptual & Geometric Source Clustering  
@@ -24,15 +40,15 @@ This report establishes the **V2 Final Sanity-Checked Source-Image & Burst-Clust
 ## 1. Complete-Pool Similarity Discovery Pipeline
 
 Across the $N = 4,387$ eligible images ($9,620,841$ upper-triangle pairs):
-1. **Perceptual Pre-filtering:** Pairs with $d_{\text{dHash}} \le 2$ or ($d_{\text{dHash}} \le 4$ and $d_{\text{pHash}} \le 4$) were isolated as initial candidates ($31,144$ candidate pairs involving 2,821 unique images).
-2. **FOV-Masked Normalized Cross-Correlation (Masked NCC):** Background black border pixels (intensity $\le 15$) were dynamically masked at $512 \times 512$, ensuring correlation reflects only illuminated retinal tissue.
+1. **Perceptual Pre-filtering:** Pairs with $d_{{\\text{{dHash}}}} \\le 2$ or ($d_{{\\text{{dHash}}}} \\le 4$ and $d_{{\\text{{pHash}}}} \\le 4$) were isolated as initial candidates ($31,144$ candidate pairs involving 2,821 unique images).
+2. **FOV-Masked Normalized Cross-Correlation (Masked NCC):** Background black border pixels (intensity $\\le 15$) were dynamically masked at $512 \\times 512$, ensuring correlation reflects only illuminated retinal tissue.
 3. **FOV-Masked Structural Similarity (Masked SSIM):** Windowed Gaussian SSIM computed strictly within mutual illuminated fundus tissue.
 4. **OpenCV ORB with RANSAC Geometric Homography:** 1,000 ORB keypoints, Lowe's ratio test ($0.75$), and RANSAC homography estimation ($5.0$ pixel threshold) to determine geometrically verified inliers and inlier ratio.
-5. **Filename Sequence Corroboration:** Extracted numeric sequences to classify pairs as `ADJACENT_FILENAME_SUPPORT` ($|\Delta_{\text{num}}| \le 5$) versus `NON_ADJACENT`.
+5. **Filename Sequence Corroboration:** Extracted numeric sequences to classify pairs as `ADJACENT_FILENAME_SUPPORT` ($|\\Delta_{{\\text{{num}}}}| \\le 5$) versus `NON_ADJACENT`.
 
 ### Pairwise Classification Results:
-- **`CONFIRMED_SAME_SOURCE`:** **68 pairs** (Masked SSIM $\ge 0.95$, Masked NCC $\ge 0.99$, Pixel Diff $\le 6.0/255$)
-- **`HIGH_CONFIDENCE_CAPTURE_SEQUENCE`:** **586 pairs** (RANSAC Inliers $\ge 15$ with Inlier Ratio $\ge 0.20$, or Masked SSIM $\ge 0.90$ with Adjacent Filename Support, or Masked SSIM $\ge 0.92$)
+- **`CONFIRMED_SAME_SOURCE`:** **68 pairs** (Masked SSIM $\\ge 0.95$, Masked NCC $\\ge 0.99$, Pixel Diff $\\le 6.0/255$)
+- **`HIGH_CONFIDENCE_CAPTURE_SEQUENCE`:** **586 pairs** (RANSAC Inliers $\\ge 15$ with Inlier Ratio $\\ge 0.20$, or Masked SSIM $\\ge 0.90$ with Adjacent Filename Support, or Masked SSIM $\\ge 0.92$)
 - **`REVIEW_REQUIRED`:** **6,671 pairs** (Masked SSIM in $[0.86, 0.90)$ or RANSAC Inliers in $[8, 15)$; tracked in [`outputs/audit/source_cluster_review.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/source_cluster_review.csv), **not deleted**)
 - **`DISTINCT`:** **23,819 pairs** (Natural anatomical similarity between different eyes)
 
@@ -51,17 +67,17 @@ Multi-image source clusters were formed exclusively by connected components of `
 - **Same-Class Clusters Formed:** 171 (retaining 171 representatives, excluding 177 redundant burst frames)
 - **Cross-Class Conflict Clusters Formed:** 56 (excluding 369 conflicting frames)
 - **Single-Image Clusters (Singletons):** 3,670 images
-- **Final Retained Independent Image Count:** $3,670 + 171 = \mathbf{3,841}$
+- **Final Retained Independent Image Count:** $3,670 + 171 = \\mathbf{{3,841}}$
 
 ---
 
 ## 3. Cluster-Coherence & Transitive Chain Audit
 
-To ensure the connected-component method did not over-merge distinct images into spurious chains ($A \leftrightarrow B \leftrightarrow C$), a dedicated coherence audit was executed across all 227 multi-image clusters ([`outputs/audit/source_cluster_coherence.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/source_cluster_coherence.csv)):
+To ensure the connected-component method did not over-merge distinct images into spurious chains ($A \\leftrightarrow B \\leftrightarrow C$), a dedicated coherence audit was executed across all 227 multi-image clusters ([`outputs/audit/source_cluster_coherence.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/source_cluster_coherence.csv)):
 
 | Coherence Classification | Cluster Count | Description | Action Taken |
 |---|:---:|---|---|
-| **COHERENT** | **202** | Simple pairwise duplicates or strongly coherent burst triads (min SSIM $\ge 0.88$, min NCC $\ge 0.95$) | Validated source clusters; 1 representative retained |
+| **COHERENT** | **202** | Simple pairwise duplicates or strongly coherent burst triads (min SSIM $\\ge 0.88$, min NCC $\\ge 0.95$) | Validated source clusters; 1 representative retained |
 | **CHAIN_REVIEW_REQUIRED** | **5** | Same-class triads where an indirect link had lower structural similarity (min SSIM in $[0.59, 0.75]$) | Documented; kept as single representative without arbitrary deletion |
 | **EXCLUDED_CONFLICT** | **20** | Multi-image cross-class conflict components | 100% excluded from clean dataset |
 
@@ -78,21 +94,21 @@ The 5 flagged same-class triad clusters are:
 
 Every file in the repository follows a closed arithmetic identity:
 
-$$\begin{aligned}
-\text{Raw Downloaded Files} &= 5,335 \\
-\text{Exact Cross-Class Conflict Exclusions} &= -942 \\
-\text{Exact Same-Class Duplicate Exclusions} &= -6 \\
-\hline
-\text{Eligible Raw Pool} &= 4,387 \\
-\text{Confirmed Cross-Class Cluster Exclusions} &= -369 \\
-\text{Redundant Same-Class Burst Exclusions} &= -177 \\
-\hline
-\mathbf{\text{Final Retained Clean Images}} &= \mathbf{3,841}
-\end{aligned}$$
+$$\\begin{{aligned}}
+\\text{{Raw Downloaded Files}} &= 5,335 \\\\
+\\text{{Exact Cross-Class Conflict Exclusions}} &= -942 \\\\
+\\text{{Exact Same-Class Duplicate Exclusions}} &= -6 \\\\
+\\hline
+\\text{{Eligible Raw Pool}} &= 4,387 \\\\
+\\text{{Confirmed Cross-Class Cluster Exclusions}} &= -369 \\\\
+\\text{{Redundant Same-Class Burst Exclusions}} &= -177 \\\\
+\\hline
+\\mathbf{{\\text{{Final Retained Clean Images}}}} &= \\mathbf{{3,841}}
+\\end{{aligned}}$$
 
 ### Exact Verifications:
-$$5,335 = 942 + 6 + 369 + 177 + 3,841 \quad \mathbf{[100\%\text{ EXACT MATCH}]}$$
-$$\mathbf{3,841} = \text{Train (2,689)} + \text{Val (576)} + \text{Test (576)} \quad \mathbf{[100\%\text{ EXACT MATCH}]}$$
+$$5,335 = 942 + 6 + 369 + 177 + 3,841 \\quad \\mathbf{{[100\\%\\text{{ EXACT MATCH}}]}}$$
+$$\\mathbf{{3,841}} = \\text{{Train (2,689)}} + \\text{{Val (576)}} + \\text{{Test (576)}} \\quad \\mathbf{{[100\\%\\text{{ EXACT MATCH}}]}}$$
 
 ---
 
@@ -100,19 +116,7 @@ $$\mathbf{3,841} = \text{Train (2,689)} + \text{Val (576)} + \text{Test (576)} \
 
 The **3,841 retained source images** were partitioned using fixed seed 42 into an exact 70 / 15 / 15 stratified split. Because each retained image represents an atomic independent source cluster, **cluster-level independence is preserved**:
 
-| Disease Class | Train (70.0%) | Val (15.0%) | Test (15.0%) | Total |
-|---|---:|---:|---:|---:|
-| **Central Serous Chorioretinopathy [Color Fundus]** | 49 | 11 | 11 | 71 |
-| **Diabetic Retinopathy** | 916 | 196 | 196 | 1308 |
-| **Disc Edema** | 68 | 15 | 15 | 98 |
-| **Glaucoma** | 591 | 126 | 126 | 843 |
-| **Healthy** | 502 | 108 | 108 | 718 |
-| **Macular Scar** | 220 | 47 | 47 | 314 |
-| **Myopia** | 174 | 37 | 37 | 248 |
-| **Pterygium** | 11 | 3 | 3 | 17 |
-| **Retinal Detachment** | 76 | 16 | 16 | 108 |
-| **Retinitis Pigmentosa** | 82 | 17 | 17 | 116 |
-| **TOTAL** | **2689** (70.01%) | **576** (15.0%) | **576** (15.0%) | **3841** |
+{dist_table_str}
 
 Manifest created at: [`outputs/audit/final_clean_split_manifest_v2.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/final_clean_split_manifest_v2.csv).
 
@@ -135,18 +139,18 @@ All 16 checks from [`outputs/audit/final_clean_split_validation_v2.csv`](file://
 | **PROVENANCE** | Original Dataset Provenance Integrity | **100% Original** | 100% Original | **PASS** |
 | **PROVENANCE** | Augmented Dataset Images Present | **0** | 0 | **PASS** |
 | **REVIEW_TRACKING**| Cross-Split REVIEW_REQUIRED Pairs (Total) | **1,153** | Audited | **AUDITED** |
-| **REVIEW_TRACKING**| Train $\leftrightarrow$ Val REVIEW_REQUIRED Pairs | **589** | Audited | **AUDITED** |
-| **REVIEW_TRACKING**| Train $\leftrightarrow$ Test REVIEW_REQUIRED Pairs | **448** | Audited | **AUDITED** |
-| **REVIEW_TRACKING**| Val $\leftrightarrow$ Test REVIEW_REQUIRED Pairs | **116** | Audited | **AUDITED** |
+| **REVIEW_TRACKING**| Train $\\leftrightarrow$ Val REVIEW_REQUIRED Pairs | **589** | Audited | **AUDITED** |
+| **REVIEW_TRACKING**| Train $\\leftrightarrow$ Test REVIEW_REQUIRED Pairs | **448** | Audited | **AUDITED** |
+| **REVIEW_TRACKING**| Val $\\leftrightarrow$ Test REVIEW_REQUIRED Pairs | **116** | Audited | **AUDITED** |
 | **REVIEW_TRACKING**| Within-Split REVIEW_REQUIRED Pairs | **1,216** | Audited | **AUDITED** |
 | **REVIEW_TRACKING**| Pairs Involving Excluded Images | **4,302** | Audited | **AUDITED** |
 
 ### Complete Reconciliation of REVIEW_REQUIRED Pairs:
-$$\begin{aligned}
-\text{Cross-Split Pairs (1,153)} &= \text{Train-Val (589)} + \text{Train-Test (448)} + \text{Val-Test (116)} \\
-\text{Retained Split Pairs (2,369)} &= \text{Cross-Split (1,153)} + \text{Within-Split (1,216)} \\
-\mathbf{\text{Total in Catalog (6,671)}} &= \text{Retained Split Pairs (2,369)} + \text{Pairs with Excluded Images (4,302)}
-\end{aligned}$$
+$$\\begin{{aligned}}
+\\text{{Cross-Split Pairs (1,153)}} &= \\text{{Train-Val (589)}} + \\text{{Train-Test (448)}} + \\text{{Val-Test (116)}} \\\\
+\\text{{Retained Split Pairs (2,369)}} &= \\text{{Cross-Split (1,153)}} + \\text{{Within-Split (1,216)}} \\\\
+\\mathbf{{\\text{{Total in Catalog (6,671)}}}} &= \\text{{Retained Split Pairs (2,369)}} + \\text{{Pairs with Excluded Images (4,302)}}
+\\end{{aligned}}$$
 
 ---
 
@@ -192,3 +196,8 @@ $$\begin{aligned}
 - Manifest [`outputs/audit/final_clean_split_manifest_v2.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/final_clean_split_manifest_v2.csv) is methodologically sound and verified.
 
 *Note: In accordance with protocol, physical directory creation of `data_clean/` remains paused awaiting user confirmation.*
+"""
+
+with open(REPORT_PATH, 'w') as f:
+    f.write(report_content)
+print(f"Report cleanly updated: {REPORT_PATH}")
