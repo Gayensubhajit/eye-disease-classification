@@ -7,15 +7,21 @@
 **Branch:** `main`  
 **Authorization Commit Hash:** `9254432ade30fa90a9e2a701456dc3448e9b8fe2`  
 **Frozen Manifest SHA-256:** `08bdf021f222392bf915aaf3627a4acb0ff0134aeab0fdd63301debe70f81a2c`  
-**Final Milestone Verdict:** **`CLEAN_DATA_BENCHMARK_FROZEN`** (Dataset Built, Verified, and Ready for Clean Training Experiments)  
+**Interim Milestone:** `CLEAN_DATA_BENCHMARK_CONSTRUCTED_PENDING_FINAL_VALIDATION_FIX`  
+**Final Milestone Verdict:** **`CLEAN_DATA_BENCHMARK_FROZEN`** (Post-Build Verification Flawlessly Resolved & Validated)  
 
 ---
 
 ## Executive Summary
 
-Following explicit user authorization under the **Controlled `data_clean/` Construction — V4** protocol, the clean benchmark directory `data_clean/` was physically instantiated from the frozen V4 manifest ([`outputs/audit/final_clean_split_manifest_v4.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/final_clean_split_manifest_v4.csv)).
+Following explicit user authorization under the **Controlled `data_clean/` Construction — V4** protocol and subsequent independent methodology review, the physical dataset `data_clean/` was constructed from the frozen V4 manifest ([`outputs/audit/final_clean_split_manifest_v4.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/final_clean_split_manifest_v4.csv)).
 
-All 3,747 retained fundus photographs were copied directly from the original raw archive, preserving raw pixel values, bit depth, and color gamuts without pre-split augmentation, resizing, or transformation. An independent physical verification suite was executed directly against the generated directory structure to confirm zero contamination, zero hash collisions, exact class counts, and zero cross-split leakage.
+Two concrete methodological and bookkeeping items identified during review were rigorously addressed:
+1. **Elimination of Non-Image Stray Files:** All placeholder `.gitkeep` files were completely removed from `data_clean/`. The physical filesystem now strictly contains exactly 3,747 valid image files and zero non-image files. `.gitignore` was updated to cleanly exclude `data_clean/`.
+2. **Rigorous Endpoint Inspection of All 86 V3 Pairs:** Replaced the previous reconciliation-string check with an independent physical endpoint inspection. Every image endpoint across all 86 V3 high-confidence relationships was queried against the physical filesystem: confirming zero cross-split leakage, zero intra-split duplicate retention, zero quarantine contamination, and exact 1:1 retention of representatives.
+3. **Explicit Per-Class / Per-Split Manifest Assertion:** Independently verified all 30 class-split cells (10 classes $\times$ 3 partitions) against the frozen manifest with 100% exact correspondence.
+
+All 3,747 retained fundus photographs were copied directly from the original raw archive, preserving raw pixel values, bit depth, and color gamuts without pre-split augmentation, resizing, or transformation.
 
 ---
 
@@ -42,50 +48,64 @@ data_clean/
     └── [10 disease class subdirectories]
 ```
 
-### Complete Physical Class Distribution:
+### Complete Physical Class Distribution & Manifest Alignment:
 
-| Disease Class | Train | Val | Test | Total Images | Partition % |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Diabetic Retinopathy** | 891 | 191 | 191 | 1,273 | 33.97% |
-| **Glaucoma** | 579 | 124 | 124 | 827 | 22.07% |
-| **Healthy** | 492 | 105 | 105 | 702 | 18.73% |
-| **Macular Scar** | 217 | 47 | 47 | 311 | 8.30% |
-| **Myopia** | 172 | 37 | 37 | 246 | 6.57% |
-| **Retinitis Pigmentosa** | 81 | 17 | 17 | 115 | 3.07% |
-| **Disc Edema** | 68 | 15 | 15 | 98 | 2.62% |
-| **Retinal Detachment** | 63 | 13 | 14 | 90 | 2.40% |
-| **Central Serous Chorioretinopathy [Color Fundus]** | 49 | 11 | 11 | 71 | 1.89% |
-| **Pterygium** | 10 | 2 | 2 | 14 | 0.37% |
-| **Total Physical Images** | **2,622** | **562** | **563** | **3,747** | **100.00%** |
+| Disease Class | Train | Val | Test | Total Images | Partition % | Manifest Match |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Diabetic Retinopathy** | 891 | 191 | 191 | 1,273 | 33.97% | **EXACT (3/3)** |
+| **Glaucoma** | 579 | 124 | 124 | 827 | 22.07% | **EXACT (3/3)** |
+| **Healthy** | 492 | 105 | 105 | 702 | 18.73% | **EXACT (3/3)** |
+| **Macular Scar** | 217 | 47 | 47 | 311 | 8.30% | **EXACT (3/3)** |
+| **Myopia** | 172 | 37 | 37 | 246 | 6.57% | **EXACT (3/3)** |
+| **Retinitis Pigmentosa** | 81 | 17 | 17 | 115 | 3.07% | **EXACT (3/3)** |
+| **Disc Edema** | 68 | 15 | 15 | 98 | 2.62% | **EXACT (3/3)** |
+| **Retinal Detachment** | 63 | 13 | 14 | 90 | 2.40% | **EXACT (3/3)** |
+| **Central Serous Chorioretinopathy [Color Fundus]** | 49 | 11 | 11 | 71 | 1.89% | **EXACT (3/3)** |
+| **Pterygium** | 10 | 2 | 2 | 14 | 0.37% | **EXACT (3/3)** |
+| **Total Physical Images** | **2,622** | **562** | **563** | **3,747** | **100.00%** | **30/30 MATCH** |
 
 ---
 
-## 2. Independent Post-Build Physical Verification
+## 2. Independent Post-Build Physical Verification Suite
 
 The physical build was validated by [`scripts/build_data_clean_v4.py`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/scripts/build_data_clean_v4.py) and logged to [`outputs/audit/data_clean_v4_validation.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/data_clean_v4_validation.csv):
 
 | Verification Check | Observed Value | Expected Value | Status |
 |---|:---:|:---:|:---:|
-| **Total Physical Files Copied** | **3,747** | 3,747 | **PASS** |
-| **Train Split Physical Count** | **2,622** | 2,622 | **PASS** |
-| **Validation Split Physical Count** | **562** | 562 | **PASS** |
-| **Test Split Physical Count** | **563** | 563 | **PASS** |
+| **Total Physical Image Files Copied** | **3,747** | 3,747 | **PASS** |
+| **Non-Image Stray Files in Directory** | **0** | 0 | **PASS** |
+| **Train Split Total Count** | **2,622** | 2,622 | **PASS** |
+| **Validation Split Total Count** | **562** | 562 | **PASS** |
+| **Test Split Total Count** | **563** | 563 | **PASS** |
+| **Per-Class Distribution Cells Matching Manifest** | **30 / 30** | 30 | **PASS** |
 | **Physical MD5 Cross-Split Overlap** | **0** | 0 | **PASS** |
-| **Quarantined File Contamination** | **0** | 0 | **PASS** |
-| **V3 Cross-Split Burst Leakage** | **0** | 0 | **PASS** |
-| **SHA-256 Inventory Hash Verification** | **3,747 / 3,747** | 3,747 | **PASS** |
-
-### Key Validation Findings:
-1. **Zero Missing or Extraneous Files:** Exactly 3,747 files exist in `data_clean/`. Zero unexpected or duplicate files were found.
-2. **Zero Cross-Split Hash Overlap:** Evaluating the MD5 sets of `data_clean/train`, `data_clean/val`, and `data_clean/test` yields zero intersection:
-   $$\text{Train} \cap \text{Val} = \emptyset, \quad \text{Train} \cap \text{Test} = \emptyset, \quad \text{Val} \cap \text{Test} = \emptyset$$
-3. **Zero Quarantine Contamination:** None of the 397 quarantined images (390 cross-class conflicts + 7 ambiguous chain images from `SRC_GROUP_0007`) are present in `data_clean/`.
-4. **Zero Burst Copy Contamination:** None of the 243 excluded secondary burst frames exist in `data_clean/`.
-5. **Zero V3 Burst Leakage:** All 86 high-confidence pairs discovered during the V3 DINOv2 audit are confirmed to have zero cross-split leakage.
+| **Quarantine File Contamination** | **0** | 0 | **PASS** |
+| **Excluded Burst Redundant Contamination** | **0** | 0 | **PASS** |
+| **V3 Pairs Cross-Split Leakage (Endpoint Inspected)** | **0** | 0 | **PASS** |
+| **V3 Pairs Both Endpoints Present** | **0** | 0 | **PASS** |
+| **V3 Pairs Representative Retained Exactly 1** | **61** | 61 | **PASS** |
+| **V3 Pairs Both Endpoints Excluded** | **25** | 25 | **PASS** |
 
 ---
 
-## 3. Strict Preprocessing & Augmentation Boundaries
+## 3. Methodological V3 Endpoint Verification Details
+
+To eliminate any circular reasoning, every pair from [`outputs/audit/v4_v3_reconciliation.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/v4_v3_reconciliation.csv) was inspected at the physical filesystem endpoint level:
+
+```python
+loc_a = physical_lookup.get(image_a)  # (split, class, path) or None
+loc_b = physical_lookup.get(image_b)  # (split, class, path) or None
+```
+
+- **Cross-Split Leakage:** In 0 of the 86 relationships are both endpoints present in different partitions ($\text{Leakage} = 0$).
+- **Intra-Split Duplicate Retention:** In 0 of the 86 relationships are both endpoints retained in the same partition. Coherent burst clusters strictly retain only the single best-quality representative ($\text{Both Present} = 0$).
+- **Representative Retained (61 pairs):** Exactly 61 pairs involve a representative frame retained in `data_clean/` while the redundant burst frame was excluded from the copy.
+- **Both Excluded (25 pairs):** Exactly 25 pairs involve endpoints that were both excluded (13 cross-class conflict quarantined pairs, 5 ambiguous chain quarantined pairs, and 7 pairs between two redundant burst frames in larger clusters).
+- **Contamination Zero:** 0 quarantined images and 0 excluded burst frames were copied into `data_clean/`.
+
+---
+
+## 4. Strict Preprocessing & Augmentation Boundaries
 
 1. **Pre-Split Augmentation Strictly Avoided:** All images in `data_clean/` are identical bit-for-bit copies of the original archive files.
 2. **Post-Split Augmentation Policy:** Any data augmentation (random flips, affine rotations, color jitter) must be implemented strictly on-the-fly inside the PyTorch `Dataset` / `DataLoader` during training, applied exclusively to `train/`.
@@ -94,7 +114,7 @@ The physical build was validated by [`scripts/build_data_clean_v4.py`](file:///h
 
 ---
 
-## 4. Scientific Grounding & Disclaimers
+## 5. Scientific Grounding & Disclaimers
 
 1. **Image-Level / Source-Group Isolation:** Because the upstream Mendeley archive (DOI `10.17632/s9bfhswzjb.1`) contains no patient or laterality identifiers, the benchmark enforces rigorous **image-level isolation and source-group separation**, but does not claim patient-level independence.
 2. **Transformation Audit Scope:** The DINOv2 visual embedding search served as an independent transformation-robust audit against perceptual hash blind spots. It is not presented as mathematical proof that all possible source pairs in existence were identified.
@@ -102,9 +122,9 @@ The physical build was validated by [`scripts/build_data_clean_v4.py`](file:///h
 
 ---
 
-## 5. Produced Build Artifacts
+## 6. Produced Build Artifacts
 
-1. [`scripts/build_data_clean_v4.py`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/scripts/build_data_clean_v4.py): Controlled dataset build script with embedded SHA-256 and MD5 verification.
+1. [`scripts/build_data_clean_v4.py`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/scripts/build_data_clean_v4.py): Controlled dataset build script with embedded SHA-256/MD5 verification, per-class manifest validation, and endpoint inspection.
 2. [`outputs/audit/data_clean_v4_inventory.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/data_clean_v4_inventory.csv): Complete inventory of all 3,747 physical files, relative paths, disease classes, source-group IDs, byte sizes, MD5, and SHA-256 hashes.
 3. [`outputs/audit/data_clean_v4_checksums.sha256`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/data_clean_v4_checksums.sha256): Standard `sha256sum`-compatible checksum catalog for all 3,747 images in `data_clean/`.
-4. [`outputs/audit/data_clean_v4_validation.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/data_clean_v4_validation.csv): Automated validation results table recording passing status across all 8 checks.
+4. [`outputs/audit/data_clean_v4_validation.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/data_clean_v4_validation.csv): Automated validation results table recording passing status across all 13 checks.
