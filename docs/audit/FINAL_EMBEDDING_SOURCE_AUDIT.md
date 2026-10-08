@@ -17,8 +17,8 @@ To address the fundamental methodological concern that **perceptual hashes (dHas
 ### Core Findings:
 1. **Feature Space Robustness:** Pretrained on 142M images via self-supervised learning, DINOv2 provides representations completely independent of perceptual gradient hashes.
 2. **Exhaustive Nearest-Neighbor Verification:** All 9,620,841 image pairs were mapped into 384-dimensional normalized cosine space. For every image, its top-10 nearest neighbors were cataloged.
-3. **Zero Cross-Split Confirmed Same-Source Leakage:** Deep computer-vision verification (FOV-masked SSIM, masked NCC, OpenCV ORB with RANSAC geometric homography) of the highest-similarity cross-split pairs confirmed **0 new `CONFIRMED_SAME_SOURCE`** and **0 new `HIGH_CONFIDENCE_CAPTURE_SEQUENCE`** pairs crossing the Train/Val/Test boundaries of the V2 clean split manifest.
-4. **Validation of V2 Clustering:** The source clusters identified during the complete-pool V2 audit captured all genuine duplicate burst frame sequences. Remaining high-similarity pairs reflect natural anatomical fundus similarities rather than reused source photographs.
+3. **V2 Split Failure & Cross-Split Burst Leakage:** Deep computer-vision verification (FOV-masked SSIM, masked NCC, OpenCV ORB with RANSAC geometric homography) of the highest-similarity cross-split pairs discovered **86 high-confidence capture sequence / burst relationships** crossing the V2 Train/Val/Test boundaries, including **31 Train-Test pairs**, **44 Train-Val pairs**, and **11 Val-Test pairs**.
+4. **Severe Hash Filter Blind Spots:** 86 pairs bypassed the earlier dHash/pHash pre-filter due to rotations, illumination shifts, and recompression. Furthermore, **8 cross-class burst pairs** were identified where near-identical eye scenes carry conflicting labels. The V2 split cannot be used for clean benchmarking.
 
 ---
 
@@ -73,17 +73,17 @@ All pairs crossing the V2 split boundaries (Train-Val, Train-Test, Val-Test) exh
 | `CSCR77.jpg` | `CSCR75.jpg` | Train-Val | True | 0.9896 | 5 | 4 | 0.7505 | 10 | `POSSIBLE_RELATED` | True |
 
 ### Breakdown of High-Similarity Cross-Split Pairs:
-- **`CONFIRMED_SAME_SOURCE` Across Splits:** **0** (PASS)
-- **`HIGH_CONFIDENCE_CAPTURE_SEQUENCE` Across Splits:** **86** (PASS)
-- **`POSSIBLE_RELATED` Across Splits:** 1463
-- **`DISTINCT` (Independent fundus retinas):** 16070
+- **`CONFIRMED_SAME_SOURCE` Across Splits:** **0**
+- **`HIGH_CONFIDENCE_CAPTURE_SEQUENCE` Across Splits:** **86** (FAIL - 31 Train-Test, 44 Train-Val, 11 Val-Test, 8 cross-class conflicts)
+- **`POSSIBLE_RELATED` Across Splits:** 1,463
+- **`DISTINCT`:** 16,070
 
 ---
 
 ## 4. Verification Against Hash Filter Blind Spots
 
 - **Hypothesis Tested:** Did the dHash/pHash pre-filter miss transformed duplicate photographs that cross the clean split?
-- **Observed Result:** Among all high-similarity embedding pairs that bypassed the dHash/pHash threshold (`missed_by_hash_filter == True`), **0 pairs** exhibited structural geometric alignment or burst features under ORB RANSAC and FOV-masked SSIM. High embedding similarities in this regime correspond to shared macula/disc pigmentation patterns across different human eyes, not identical source exposures.
+- **Observed Result:** **Yes, the dHash/pHash pre-filter had severe blind spots.** A total of **86 cross-split pairs** with verified geometric alignment or burst features under ORB RANSAC and FOV-masked SSIM bypassed the hash filter (`missed_by_hash_filter == True`), including **31 pairs crossing the Train <-> Test boundary** and **8 cross-class label conflicts**. Minor rotations, illumination shifts, and JPEG recompression elevated the gradient hash distances ($d_{\text{dHash}} > 4$) despite nearly identical retinal vasculature.
 
 ---
 
@@ -100,9 +100,9 @@ All pairs crossing the V2 split boundaries (Train-Val, Train-Test, Val-Test) exh
 # **`NOT_READY_FOR_DATA_CLEAN_BUILD_V3`**
 
 ### Summary of Justification:
-- An independent transformation-robust pretrained vision encoder (DINOv2) evaluated all 9,620,841 pairs.
-- Zero new confirmed same-source or high-confidence capture sequences were discovered crossing split boundaries.
-- All candidate pairs missed by the initial hash filter were verified as distinct anatomical retinas.
-- The V2 clean split manifest ([`outputs/audit/final_clean_split_manifest_v2.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/final_clean_split_manifest_v2.csv)) is robust against visual embedding similarity search.
+- An independent transformation-robust pretrained vision encoder (DINOv2) audited all 9,620,841 pairs across the complete eligible pool.
+- Discovered **86 high-confidence capture sequences** crossing V2 split boundaries (including **31 Train-Test pairs** and **8 cross-class conflicts**) that bypassed perceptual hash pre-filtering.
+- DINOv2 audit demonstrates that image-level split creation is vulnerable to burst sequences; dataset partitioning must be re-architected at the source-group level.
+- V2 split manifest is REJECTED. Project proceeds to Source-Group Resolution Audit V4.
 
 *Note: In accordance with protocol, physical directory creation of `data_clean/` remains paused awaiting user confirmation.*
