@@ -129,6 +129,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Train fundus classification model")
     parser.add_argument("--config", default="configs/config.yaml", help="Path to config file")
     parser.add_argument("--dry-run", action="store_true", help="Perform fast sanity check run")
+    parser.add_argument("--evaluate-test", action="store_true", default=None, help="Force evaluation on test set")
+    parser.add_argument("--no-test-eval", action="store_true", default=False, help="Disable evaluation on test set")
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -239,19 +241,6 @@ def main() -> None:
     with open(output_dir / "training_history.json", "w", encoding="utf-8") as f:
         json.dump(history, f, indent=2)
 
-    # Final independent test set evaluation using the best validation checkpoint
-    print("\n--- Running Final Independent Test Evaluation (Best Checkpoint) ---")
-    checkpoint = torch.load(best_model_path, map_location=device)
-    model.load_state_dict(checkpoint["model_state_dict"])
-    test_loss, test_metrics, test_true, test_pred, test_probs = evaluate_epoch(
-        model, test_loader, criterion, device, class_names, dry_run=args.dry_run
-    )
-    print(
-        f"Test Loss: {test_loss:.4f} | Test Acc: {test_metrics['accuracy']:.4f} | "
-        f"Test Macro F1: {test_metrics['macro_f1']:.4f} | "
-        f"Test Balanced Acc: {test_metrics['balanced_accuracy']:.4f}"
-    )
-
     import hashlib
     sha256 = hashlib.sha256()
     with open(best_model_path, "rb") as f:
@@ -260,26 +249,61 @@ def main() -> None:
     ckpt_hash = sha256.hexdigest()
     print(f"Best Checkpoint SHA-256: {ckpt_hash}")
 
-    test_results = {
-        "best_epoch": checkpoint["epoch"],
-        "checkpoint_path": str(best_model_path),
-        "checkpoint_sha256": ckpt_hash,
-        "val_macro_f1_at_best_epoch": float(best_macro_f1),
-        "test_loss": float(test_loss),
-        "test_metrics": test_metrics,
-        "device": str(device),
-        "training_time_minutes": float(total_time / 60.0),
-    }
-    with open(output_dir / "test_evaluation_results.json", "w", encoding="utf-8") as f:
-        json.dump(test_results, f, indent=2)
+    checkpoint = torch.load(best_model_path, map_location=device, weights_only=False)
 
-    plot_confusion_matrix(
-        test_true,
-        test_pred,
-        class_names,
-        str(output_dir / "test_confusion_matrix.png"),
-        title=f"Test Confusion Matrix (Best Model from Epoch {checkpoint['epoch']})",
-    )
+    # Determine whether test set evaluation is enabled
+    if args.no_test_eval:
+        evaluate_test = False
+    elif args.evaluate_test is not None:
+        evaluate_test = args.evaluate_test
+    else:
+        evaluate_test = config.get("training", {}).get("evaluate_test", False)
+
+    if evaluate_test:
+        print("\n--- Running Final Independent Test Evaluation (Best Checkpoint) ---")
+        model.load_state_dict(checkpoint["model_state_dict"])
+        test_loss, test_metrics, test_true, test_pred, test_probs = evaluate_epoch(
+            model, test_loader, criterion, device, class_names, dry_run=args.dry_run
+        )
+        print(
+            f"Test Loss: {test_loss:.4f} | Test Acc: {test_metrics['accuracy']:.4f} | "
+            f"Test Macro F1: {test_metrics['macro_f1']:.4f} | "
+            f"Test Balanced Acc: {test_metrics['balanced_accuracy']:.4f}"
+        )
+        test_results = {
+            "best_epoch": checkpoint["epoch"],
+            "checkpoint_path": str(best_model_path),
+            "checkpoint_sha256": ckpt_hash,
+            "val_macro_f1_at_best_epoch": float(best_macro_f1),
+            "test_loss": float(test_loss),
+            "test_metrics": test_metrics,
+            "device": str(device),
+            "training_time_minutes": float(total_time / 60.0),
+        }
+        with open(output_dir / "test_evaluation_results.json", "w", encoding="utf-8") as f:
+            json.dump(test_results, f, indent=2)
+
+        plot_confusion_matrix(
+            test_true,
+            test_pred,
+            class_names,
+            str(output_dir / "test_confusion_matrix.png"),
+            title=f"Test Confusion Matrix (Best Model from Epoch {checkpoint['epoch']})",
+        )
+    else:
+        print("\n[NOTE] Test set evaluation is DISABLED for this experiment to preserve test partition integrity.")
+        val_summary = {
+            "best_epoch": checkpoint["epoch"],
+            "checkpoint_path": str(best_model_path),
+            "checkpoint_sha256": ckpt_hash,
+            "val_macro_f1_at_best_epoch": float(best_macro_f1),
+            "val_metrics_at_best_epoch": checkpoint["val_metrics"],
+            "device": str(device),
+            "training_time_minutes": float(total_time / 60.0),
+            "test_evaluated": False,
+        }
+        with open(output_dir / "val_evaluation_summary.json", "w", encoding="utf-8") as f:
+            json.dump(val_summary, f, indent=2)
 
 
 if __name__ == "__main__":
