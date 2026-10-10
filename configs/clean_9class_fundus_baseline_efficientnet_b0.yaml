@@ -1,0 +1,45 @@
+# Stage 4 Scientific Research Protocol: 9-Class Fundus-Only Baseline
+# Excludes Pterygium (anterior-segment modality mismatch) to ensure pure posterior-segment retinal evaluation.
+seed: 42
+
+data:
+  train_dir: "data_clean/train"
+  val_dir: "data_clean/val"
+  test_dir: "data_clean/test"
+  image_size: 224
+  num_classes: 9
+  class_names:
+    - "Central Serous Chorioretinopathy [Color Fundus]"
+    - "Diabetic Retinopathy"
+    - "Disc Edema"
+    - "Glaucoma"
+    - "Healthy"
+    - "Macular Scar"
+    - "Myopia"
+    - "Retinal Detachment"
+    - "Retinitis Pigmentosa"
+  crop_fundus: true
+  apply_clahe: false
+  augmentation_mode: "conservative"
+
+model:
+  name: "efficientnet_b0"
+  pretrained: true
+  dropout: 0.2
+
+loss:
+  name: "cross_entropy"
+
+training:
+  batch_size: 16
+  epochs: 20
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  num_workers: 2
+  device: "cuda"
+  use_weighted_sampler: false
+  scheduler: "cosine"
+  evaluate_test: false  # Strict test set quarantine until protocol sign-off
+
+output:
+  directory: "outputs/clean_9class_baseline_efficientnet_b0"
