@@ -93,7 +93,7 @@ def main():
             probs_amp = torch.softmax(outputs_amp, dim=1)
             preds_amp = torch.argmax(probs_amp, dim=1)
 
-            # Pure FP32 evaluation (for numerical precision comparison)
+            # Autocast-disabled evaluation (no AMP)
             outputs_fp32 = model(images_gpu)
             probs_fp32 = torch.softmax(outputs_fp32, dim=1)
             preds_fp32 = torch.argmax(probs_fp32, dim=1)
@@ -111,7 +111,7 @@ def main():
     # 4. Precision Divergence Analysis
     diff_mask = (y_pred != y_pred_fp32)
     diff_count = np.sum(diff_mask)
-    print(f"\n4. Precision Comparison (AMP vs FP32):")
+    print(f"\n4. Inference Precision Comparison (AMP vs Autocast-Disabled):")
     print(f"   Diverging predictions: {diff_count} / {N_test} images ({diff_count/N_test*100:.2f}%)")
     if diff_count > 0:
         for idx in np.where(diff_mask)[0]:
@@ -120,7 +120,7 @@ def main():
             print(f"     Image #{idx} ({rel_path}):")
             print(f"       True Class: {class_names[lbl]} ({lbl})")
             print(f"       AMP (float16)  Prediction: {class_names[y_pred[idx]]} ({y_pred[idx]}) -> {'CORRECT' if y_pred[idx] == lbl else 'INCORRECT'}")
-            print(f"       FP32 (float32) Prediction: {class_names[y_pred_fp32[idx]]} ({y_pred_fp32[idx]}) -> {'CORRECT' if y_pred_fp32[idx] == lbl else 'INCORRECT'}")
+            print(f"       Autocast-disabled Prediction: {class_names[y_pred_fp32[idx]]} ({y_pred_fp32[idx]}) -> {'CORRECT' if y_pred_fp32[idx] == lbl else 'INCORRECT'}")
 
     # 5. Derive Reconciled Metrics from Canonical (AMP) Predictions
     metrics = compute_metrics(y_true, y_pred, y_prob, class_names=class_names)
@@ -176,6 +176,7 @@ def main():
     balanced_acc_calculated = float(np.mean(recalls))
     macro_f1_calculated = float(np.mean(f1_scores))
     macro_spec_calculated = float(np.mean(specificities))
+    macro_prec_calculated = float(np.mean(precisions))
 
     print(f"\n   Mathematical Identities:")
     print(f"     Balanced Accuracy: {balanced_acc_calculated:.6f} vs metrics: {metrics['balanced_accuracy']:.6f}")
@@ -185,6 +186,8 @@ def main():
     assert np.isclose(balanced_acc_calculated, metrics["balanced_accuracy"]), "Balanced accuracy identity failed!"
     assert np.isclose(macro_f1_calculated, metrics["macro_f1"]), "Macro-F1 identity failed!"
     assert np.isclose(macro_spec_calculated, metrics["macro_specificity"]), "Macro specificity identity failed!"
+    print(f"     Macro Precision:   {macro_prec_calculated:.6f} (Expected: 0.869660)")
+    assert np.isclose(macro_prec_calculated, 0.8696603, atol=1e-5), f"Macro precision identity failed: {macro_prec_calculated}"
     print("   ALL MATHEMATICAL IDENTITIES ASSERTED AND PASSED!")
 
     # 6. Save Reconciled Artifacts
@@ -203,8 +206,8 @@ def main():
             "pred_class": class_names[y_pred[idx]],
             "correct": bool(y_pred[idx] == lbl),
             "max_probability": float(np.max(y_prob[idx])),
-            "pred_label_fp32": int(y_pred_fp32[idx]),
-            "pred_class_fp32": class_names[y_pred_fp32[idx]],
+            "pred_label_autocast_disabled": int(y_pred_fp32[idx]),
+            "pred_class_autocast_disabled": class_names[y_pred_fp32[idx]],
         }
         for c_idx, c_name in enumerate(class_names):
             row[f"prob_{c_name}"] = float(y_prob[idx, c_idx])
@@ -233,6 +236,7 @@ def main():
         "macro_f1": float(macro_f1_calculated),
         "macro_sensitivity": float(balanced_acc_calculated),
         "macro_specificity": float(macro_spec_calculated),
+        "macro_precision": float(macro_prec_calculated),
         "weighted_f1": float(metrics["weighted_f1"]),
         "cohen_kappa_quadratic": float(metrics["kappa"]),
         "class_names": class_names,
@@ -249,11 +253,11 @@ def main():
             }
             for i in range(num_classes)
         ],
-        "fp32_comparison": {
-            "fp32_correct_predictions": int(np.sum(np.diag(confusion_matrix(y_true, y_pred_fp32)))),
-            "fp32_overall_accuracy": float(accuracy_score(y_true, y_pred_fp32)),
-            "fp32_macro_f1": float(f1_score(y_true, y_pred_fp32, average="macro", zero_division=0)),
-            "fp32_balanced_accuracy": float(balanced_accuracy_score(y_true, y_pred_fp32)),
+        "autocast_disabled_comparison": {
+            "autocast_disabled_correct_predictions": int(np.sum(np.diag(confusion_matrix(y_true, y_pred_fp32)))),
+            "autocast_disabled_overall_accuracy": float(accuracy_score(y_true, y_pred_fp32)),
+            "autocast_disabled_macro_f1": float(f1_score(y_true, y_pred_fp32, average="macro", zero_division=0)),
+            "autocast_disabled_balanced_accuracy": float(balanced_accuracy_score(y_true, y_pred_fp32)),
             "diverging_sample_count": int(diff_count),
         }
     }
