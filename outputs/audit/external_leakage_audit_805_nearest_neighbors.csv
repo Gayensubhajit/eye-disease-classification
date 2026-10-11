@@ -1,0 +1,806 @@
+external_image,external_partition,internal_image,internal_class,top1_cosine_similarity,phash_hamming_distance,masked_ssim,masked_ncc,orb_inliers,disposition
+112.png,Evaluation_Set,Glaucoma/Glaucoma747.jpg,Glaucoma,0.9512,28,0.7458,0.597,0,DISTINCT_ANATOMIC_SIMILARITY
+116.png,Evaluation_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9555,26,0.7321,-0.4008,0,DISTINCT_ANATOMIC_SIMILARITY
+122.png,Evaluation_Set,Disc Edema/Disc Edema96.jpg,Disc Edema,0.9506,28,0.6419,-0.1918,0,DISTINCT_ANATOMIC_SIMILARITY
+126.png,Evaluation_Set,Healthy/Healthy750.jpg,Healthy,0.9568,26,0.791,0.6244,0,DISTINCT_ANATOMIC_SIMILARITY
+127.png,Evaluation_Set,Diabetic Retinopathy/DR330.jpg,Diabetic Retinopathy,0.9643,32,0.7506,0.3877,0,DISTINCT_ANATOMIC_SIMILARITY
+138.png,Evaluation_Set,Diabetic Retinopathy/DR403.jpg,Diabetic Retinopathy,0.958,20,0.7105,0.2499,0,DISTINCT_ANATOMIC_SIMILARITY
+14.png,Evaluation_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9526,20,0.8878,0.5699,0,DISTINCT_ANATOMIC_SIMILARITY
+156.png,Evaluation_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9584,30,0.784,0.3061,0,DISTINCT_ANATOMIC_SIMILARITY
+164.png,Evaluation_Set,Glaucoma/Glaucoma944.jpg,Glaucoma,0.96,22,0.7449,0.6328,0,DISTINCT_ANATOMIC_SIMILARITY
+165.png,Evaluation_Set,Macular Scar/Macular Scar378.jpg,Macular Scar,0.9566,32,0.7305,0.7238,0,DISTINCT_ANATOMIC_SIMILARITY
+166.png,Evaluation_Set,Healthy/Healthy680.jpg,Healthy,0.9529,30,0.7249,0.5411,0,DISTINCT_ANATOMIC_SIMILARITY
+179.png,Evaluation_Set,Glaucoma/Glaucoma566.jpg,Glaucoma,0.951,28,0.6845,-0.2599,0,DISTINCT_ANATOMIC_SIMILARITY
+182.png,Evaluation_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9512,30,0.8006,0.0597,0,DISTINCT_ANATOMIC_SIMILARITY
+184.png,Evaluation_Set,Healthy/Healthy445.jpg,Healthy,0.9592,20,0.7372,0.6611,0,DISTINCT_ANATOMIC_SIMILARITY
+185.png,Evaluation_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9621,16,0.7586,0.6435,0,DISTINCT_ANATOMIC_SIMILARITY
+186.png,Evaluation_Set,Glaucoma/Glaucoma747.jpg,Glaucoma,0.964,30,0.7081,-0.1295,0,DISTINCT_ANATOMIC_SIMILARITY
+188.png,Evaluation_Set,Healthy/Healthy684.jpg,Healthy,0.9549,26,0.7274,0.6588,4,DISTINCT_ANATOMIC_SIMILARITY
+189.png,Evaluation_Set,Healthy/Healthy445.jpg,Healthy,0.9522,24,0.7464,0.6578,0,DISTINCT_ANATOMIC_SIMILARITY
+198.png,Evaluation_Set,Healthy/Healthy445.jpg,Healthy,0.9553,30,0.7507,0.3325,0,DISTINCT_ANATOMIC_SIMILARITY
+199.png,Evaluation_Set,Diabetic Retinopathy/DR398.jpg,Diabetic Retinopathy,0.9536,30,0.6603,0.5438,0,DISTINCT_ANATOMIC_SIMILARITY
+20.png,Evaluation_Set,Glaucoma/Glaucoma2.jpg,Glaucoma,0.9564,24,0.734,0.6765,0,DISTINCT_ANATOMIC_SIMILARITY
+201.png,Evaluation_Set,Disc Edema/Disc Edema49.jpg,Disc Edema,0.9571,24,0.6298,0.6667,5,DISTINCT_ANATOMIC_SIMILARITY
+202.png,Evaluation_Set,Disc Edema/Disc Edema35.jpg,Disc Edema,0.9508,30,0.7155,0.7225,0,DISTINCT_ANATOMIC_SIMILARITY
+215.png,Evaluation_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9556,36,0.7435,0.7135,0,DISTINCT_ANATOMIC_SIMILARITY
+216.png,Evaluation_Set,Glaucoma/Glaucoma566.jpg,Glaucoma,0.9552,30,0.6699,0.5312,0,DISTINCT_ANATOMIC_SIMILARITY
+229.png,Evaluation_Set,Glaucoma/Glaucoma306.jpg,Glaucoma,0.9564,24,0.7344,0.785,0,DISTINCT_ANATOMIC_SIMILARITY
+236.png,Evaluation_Set,Glaucoma/Glaucoma711.jpg,Glaucoma,0.9514,20,0.8,0.69,0,DISTINCT_ANATOMIC_SIMILARITY
+239.png,Evaluation_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9561,22,0.7041,0.5051,0,DISTINCT_ANATOMIC_SIMILARITY
+241.png,Evaluation_Set,Diabetic Retinopathy/DR329.jpg,Diabetic Retinopathy,0.9601,26,0.8065,0.4263,0,DISTINCT_ANATOMIC_SIMILARITY
+242.png,Evaluation_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9584,20,0.8422,0.5386,0,DISTINCT_ANATOMIC_SIMILARITY
+246.png,Evaluation_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9602,24,0.7995,0.0852,0,DISTINCT_ANATOMIC_SIMILARITY
+249.png,Evaluation_Set,Healthy/Healthy679.jpg,Healthy,0.952,22,0.7363,0.3927,0,DISTINCT_ANATOMIC_SIMILARITY
+260.png,Evaluation_Set,Glaucoma/Glaucoma1336.jpg,Glaucoma,0.9599,20,0.7164,0.39,0,DISTINCT_ANATOMIC_SIMILARITY
+268.png,Evaluation_Set,Healthy/Healthy553.jpg,Healthy,0.9616,24,0.6508,0.3002,4,DISTINCT_ANATOMIC_SIMILARITY
+271.png,Evaluation_Set,Diabetic Retinopathy/DR1473.jpg,Diabetic Retinopathy,0.9603,26,0.6627,0.0355,0,DISTINCT_ANATOMIC_SIMILARITY
+28.png,Evaluation_Set,Macular Scar/Macular Scar163.jpg,Macular Scar,0.9537,22,0.7064,0.4637,0,DISTINCT_ANATOMIC_SIMILARITY
+285.png,Evaluation_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9683,22,0.7442,0.4476,0,DISTINCT_ANATOMIC_SIMILARITY
+287.png,Evaluation_Set,Disc Edema/Disc Edema78.jpg,Disc Edema,0.9529,22,0.7408,0.4881,0,DISTINCT_ANATOMIC_SIMILARITY
+289.png,Evaluation_Set,Glaucoma/Glaucoma911.jpg,Glaucoma,0.9517,34,0.6911,0.35,0,DISTINCT_ANATOMIC_SIMILARITY
+29.png,Evaluation_Set,Glaucoma/Glaucoma1260.jpg,Glaucoma,0.9525,26,0.6785,0.6107,0,DISTINCT_ANATOMIC_SIMILARITY
+293.png,Evaluation_Set,Diabetic Retinopathy/DR1464.jpg,Diabetic Retinopathy,0.9647,22,0.8403,0.4353,0,DISTINCT_ANATOMIC_SIMILARITY
+294.png,Evaluation_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9594,20,0.8005,0.2183,0,DISTINCT_ANATOMIC_SIMILARITY
+297.png,Evaluation_Set,Diabetic Retinopathy/DR113.jpg,Diabetic Retinopathy,0.9568,26,0.771,0.6217,0,DISTINCT_ANATOMIC_SIMILARITY
+30.png,Evaluation_Set,Glaucoma/Glaucoma796.jpg,Glaucoma,0.9504,26,0.7467,0.1955,4,DISTINCT_ANATOMIC_SIMILARITY
+305.png,Evaluation_Set,Diabetic Retinopathy/DR407.jpg,Diabetic Retinopathy,0.9523,24,0.7686,0.4005,0,DISTINCT_ANATOMIC_SIMILARITY
+31.png,Evaluation_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9549,24,0.7847,0.3699,0,DISTINCT_ANATOMIC_SIMILARITY
+313.png,Evaluation_Set,Glaucoma/Glaucoma569.jpg,Glaucoma,0.9502,24,0.6476,0.6952,0,DISTINCT_ANATOMIC_SIMILARITY
+316.png,Evaluation_Set,Disc Edema/Disc Edema78.jpg,Disc Edema,0.9595,18,0.759,0.5254,0,DISTINCT_ANATOMIC_SIMILARITY
+322.png,Evaluation_Set,Disc Edema/Disc Edema12.jpg,Disc Edema,0.9548,32,0.4956,0.5735,4,DISTINCT_ANATOMIC_SIMILARITY
+323.png,Evaluation_Set,Diabetic Retinopathy/DR628.jpg,Diabetic Retinopathy,0.9518,34,0.5935,0.5126,6,DISTINCT_ANATOMIC_SIMILARITY
+336.png,Evaluation_Set,Glaucoma/Glaucoma1337.jpg,Glaucoma,0.9653,22,0.721,0.5426,0,DISTINCT_ANATOMIC_SIMILARITY
+337.png,Evaluation_Set,Glaucoma/Glaucoma1349.jpg,Glaucoma,0.9629,28,0.7033,-0.179,0,DISTINCT_ANATOMIC_SIMILARITY
+345.png,Evaluation_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9582,28,0.6802,-0.0787,0,DISTINCT_ANATOMIC_SIMILARITY
+353.png,Evaluation_Set,Healthy/Healthy747.jpg,Healthy,0.9628,26,0.7678,0.7102,0,DISTINCT_ANATOMIC_SIMILARITY
+358.png,Evaluation_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR62.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9595,28,0.7148,0.2328,0,DISTINCT_ANATOMIC_SIMILARITY
+359.png,Evaluation_Set,Glaucoma/Glaucoma566.jpg,Glaucoma,0.9625,18,0.7422,0.6899,0,DISTINCT_ANATOMIC_SIMILARITY
+364.png,Evaluation_Set,Glaucoma/Glaucoma745.jpg,Glaucoma,0.9543,28,0.8607,0.5332,0,DISTINCT_ANATOMIC_SIMILARITY
+369.png,Evaluation_Set,Glaucoma/Glaucoma59.jpg,Glaucoma,0.9549,18,0.6496,0.7746,0,DISTINCT_ANATOMIC_SIMILARITY
+376.png,Evaluation_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9565,22,0.6662,0.3587,4,DISTINCT_ANATOMIC_SIMILARITY
+378.png,Evaluation_Set,Diabetic Retinopathy/DR257.jpg,Diabetic Retinopathy,0.9575,34,0.6709,0.0009,0,DISTINCT_ANATOMIC_SIMILARITY
+38.png,Evaluation_Set,Disc Edema/Disc Edema119.jpg,Disc Edema,0.952,32,0.7563,-0.1312,0,DISTINCT_ANATOMIC_SIMILARITY
+382.png,Evaluation_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.961,22,0.7166,0.5268,4,DISTINCT_ANATOMIC_SIMILARITY
+383.png,Evaluation_Set,Healthy/Healthy774.jpg,Healthy,0.9507,24,0.7014,0.4331,0,DISTINCT_ANATOMIC_SIMILARITY
+398.png,Evaluation_Set,Diabetic Retinopathy/DR353.jpg,Diabetic Retinopathy,0.9553,32,0.7126,0.5024,0,DISTINCT_ANATOMIC_SIMILARITY
+399.png,Evaluation_Set,Diabetic Retinopathy/DR560.jpg,Diabetic Retinopathy,0.9632,24,0.7218,0.4883,0,DISTINCT_ANATOMIC_SIMILARITY
+40.png,Evaluation_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9581,22,0.7879,0.4843,0,DISTINCT_ANATOMIC_SIMILARITY
+410.png,Evaluation_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9574,30,0.844,0.549,0,DISTINCT_ANATOMIC_SIMILARITY
+420.png,Evaluation_Set,Diabetic Retinopathy/DR1312.jpg,Diabetic Retinopathy,0.9513,22,0.7351,0.709,0,DISTINCT_ANATOMIC_SIMILARITY
+423.png,Evaluation_Set,Healthy/Healthy445.jpg,Healthy,0.9682,24,0.728,0.4677,0,DISTINCT_ANATOMIC_SIMILARITY
+429.png,Evaluation_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9501,30,0.8325,-0.0918,0,DISTINCT_ANATOMIC_SIMILARITY
+431.png,Evaluation_Set,Glaucoma/Glaucoma944.jpg,Glaucoma,0.9555,22,0.7402,0.6853,0,DISTINCT_ANATOMIC_SIMILARITY
+433.png,Evaluation_Set,Glaucoma/Glaucoma305.jpg,Glaucoma,0.962,22,0.707,0.7045,4,DISTINCT_ANATOMIC_SIMILARITY
+436.png,Evaluation_Set,Glaucoma/Glaucoma545.jpg,Glaucoma,0.9512,30,0.7191,-0.1428,4,DISTINCT_ANATOMIC_SIMILARITY
+437.png,Evaluation_Set,Glaucoma/Glaucoma838.jpg,Glaucoma,0.9505,28,0.6382,0.4707,0,DISTINCT_ANATOMIC_SIMILARITY
+440.png,Evaluation_Set,Glaucoma/Glaucoma723.jpg,Glaucoma,0.9576,18,0.7406,0.8341,5,DISTINCT_ANATOMIC_SIMILARITY
+448.png,Evaluation_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9663,36,0.8233,0.1664,4,DISTINCT_ANATOMIC_SIMILARITY
+455.png,Evaluation_Set,Macular Scar/Macular Scar344.jpg,Macular Scar,0.9534,22,0.6452,0.6726,4,DISTINCT_ANATOMIC_SIMILARITY
+456.png,Evaluation_Set,Diabetic Retinopathy/DR667.jpg,Diabetic Retinopathy,0.95,24,0.632,0.1705,0,DISTINCT_ANATOMIC_SIMILARITY
+459.png,Evaluation_Set,Healthy/Healthy684.jpg,Healthy,0.9534,24,0.7193,0.5667,4,DISTINCT_ANATOMIC_SIMILARITY
+46.png,Evaluation_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9503,18,0.7411,0.6915,0,DISTINCT_ANATOMIC_SIMILARITY
+465.png,Evaluation_Set,Macular Scar/Macular Scar134.jpg,Macular Scar,0.9507,26,0.7109,0.585,0,DISTINCT_ANATOMIC_SIMILARITY
+466.png,Evaluation_Set,Disc Edema/Disc Edema78.jpg,Disc Edema,0.9541,24,0.744,0.4538,0,DISTINCT_ANATOMIC_SIMILARITY
+47.png,Evaluation_Set,Glaucoma/Glaucoma545.jpg,Glaucoma,0.9572,30,0.696,0.1571,0,DISTINCT_ANATOMIC_SIMILARITY
+476.png,Evaluation_Set,Macular Scar/Macular Scar157.jpg,Macular Scar,0.9595,28,0.7939,0.0426,0,DISTINCT_ANATOMIC_SIMILARITY
+477.png,Evaluation_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.9597,22,0.6947,0.6471,0,DISTINCT_ANATOMIC_SIMILARITY
+48.png,Evaluation_Set,Glaucoma/Glaucoma1260.jpg,Glaucoma,0.9524,34,0.6922,0.6451,0,DISTINCT_ANATOMIC_SIMILARITY
+481.png,Evaluation_Set,Healthy/Healthy747.jpg,Healthy,0.9637,18,0.7418,0.8123,7,DISTINCT_ANATOMIC_SIMILARITY
+489.png,Evaluation_Set,Glaucoma/Glaucoma1244.jpg,Glaucoma,0.9597,18,0.6696,0.398,0,DISTINCT_ANATOMIC_SIMILARITY
+49.png,Evaluation_Set,Glaucoma/Glaucoma380.jpg,Glaucoma,0.9525,24,0.7275,0.3266,0,DISTINCT_ANATOMIC_SIMILARITY
+491.png,Evaluation_Set,Healthy/Healthy731.jpg,Healthy,0.9519,20,0.8837,0.0449,0,DISTINCT_ANATOMIC_SIMILARITY
+498.png,Evaluation_Set,Glaucoma/Glaucoma501.jpg,Glaucoma,0.959,14,0.7485,0.515,0,DISTINCT_ANATOMIC_SIMILARITY
+500.png,Evaluation_Set,Healthy/Healthy488.jpg,Healthy,0.9587,32,0.7174,0.4011,0,DISTINCT_ANATOMIC_SIMILARITY
+509.png,Evaluation_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9612,20,0.8502,0.2475,0,DISTINCT_ANATOMIC_SIMILARITY
+515.png,Evaluation_Set,Healthy/Healthy69.jpg,Healthy,0.9524,22,0.7226,0.535,0,DISTINCT_ANATOMIC_SIMILARITY
+517.png,Evaluation_Set,Diabetic Retinopathy/DR1405.jpg,Diabetic Retinopathy,0.9584,22,0.7316,0.0131,0,DISTINCT_ANATOMIC_SIMILARITY
+519.png,Evaluation_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9553,10,0.7482,0.5624,0,DISTINCT_ANATOMIC_SIMILARITY
+52.png,Evaluation_Set,Macular Scar/Macular Scar341.jpg,Macular Scar,0.9522,30,0.7048,0.5157,0,DISTINCT_ANATOMIC_SIMILARITY
+520.png,Evaluation_Set,Diabetic Retinopathy/DR609.jpg,Diabetic Retinopathy,0.954,8,0.8167,0.5292,0,DISTINCT_ANATOMIC_SIMILARITY
+523.png,Evaluation_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9563,18,0.778,0.3884,0,DISTINCT_ANATOMIC_SIMILARITY
+525.png,Evaluation_Set,Glaucoma/Glaucoma442.jpg,Glaucoma,0.9644,10,0.7987,0.4405,0,DISTINCT_ANATOMIC_SIMILARITY
+526.png,Evaluation_Set,Diabetic Retinopathy/DR616.jpg,Diabetic Retinopathy,0.9624,18,0.8101,0.4954,0,DISTINCT_ANATOMIC_SIMILARITY
+531.png,Evaluation_Set,Glaucoma/Glaucoma558.jpg,Glaucoma,0.955,26,0.5907,0.4615,0,DISTINCT_ANATOMIC_SIMILARITY
+554.png,Evaluation_Set,Healthy/Healthy684.jpg,Healthy,0.9594,32,0.6729,-0.1451,0,DISTINCT_ANATOMIC_SIMILARITY
+556.png,Evaluation_Set,Glaucoma/Glaucoma683.jpg,Glaucoma,0.9617,18,0.7177,0.6608,7,DISTINCT_ANATOMIC_SIMILARITY
+559.png,Evaluation_Set,Healthy/Healthy599.jpg,Healthy,0.9563,18,0.7099,0.4258,0,DISTINCT_ANATOMIC_SIMILARITY
+562.png,Evaluation_Set,Healthy/Healthy655.jpg,Healthy,0.9599,26,0.7036,0.6365,4,DISTINCT_ANATOMIC_SIMILARITY
+563.png,Evaluation_Set,Glaucoma/Glaucoma463.jpg,Glaucoma,0.9604,18,0.6974,0.6568,0,DISTINCT_ANATOMIC_SIMILARITY
+564.png,Evaluation_Set,Glaucoma/Glaucoma657.jpg,Glaucoma,0.9609,30,0.6819,0.1564,8,DISTINCT_ANATOMIC_SIMILARITY
+566.png,Evaluation_Set,Myopia/Myopia398.jpg,Myopia,0.9616,30,0.6521,-0.1926,0,DISTINCT_ANATOMIC_SIMILARITY
+568.png,Evaluation_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9575,32,0.7251,0.4558,4,DISTINCT_ANATOMIC_SIMILARITY
+569.png,Evaluation_Set,Glaucoma/Glaucoma741.jpg,Glaucoma,0.9701,22,0.6924,0.5647,4,DISTINCT_ANATOMIC_SIMILARITY
+570.png,Evaluation_Set,Diabetic Retinopathy/DR422.jpg,Diabetic Retinopathy,0.9602,20,0.8046,0.4376,0,DISTINCT_ANATOMIC_SIMILARITY
+571.png,Evaluation_Set,Healthy/Healthy747.jpg,Healthy,0.9582,24,0.7633,0.4816,0,DISTINCT_ANATOMIC_SIMILARITY
+572.png,Evaluation_Set,Myopia/Myopia398.jpg,Myopia,0.9506,24,0.6653,0.4058,0,DISTINCT_ANATOMIC_SIMILARITY
+573.png,Evaluation_Set,Healthy/Healthy267.jpg,Healthy,0.9541,18,0.6537,0.5822,5,DISTINCT_ANATOMIC_SIMILARITY
+577.png,Evaluation_Set,Healthy/Healthy463.jpg,Healthy,0.9637,18,0.7129,0.5555,5,DISTINCT_ANATOMIC_SIMILARITY
+578.png,Evaluation_Set,Glaucoma/Glaucoma890.jpg,Glaucoma,0.9502,28,0.7001,0.5671,7,DISTINCT_ANATOMIC_SIMILARITY
+581.png,Evaluation_Set,Glaucoma/Glaucoma111.jpg,Glaucoma,0.968,28,0.7192,0.0077,4,DISTINCT_ANATOMIC_SIMILARITY
+582.png,Evaluation_Set,Healthy/Healthy823.jpg,Healthy,0.9559,14,0.6843,0.564,0,DISTINCT_ANATOMIC_SIMILARITY
+583.png,Evaluation_Set,Healthy/Healthy646.jpg,Healthy,0.9545,20,0.5504,-0.057,0,DISTINCT_ANATOMIC_SIMILARITY
+585.png,Evaluation_Set,Myopia/Myopia398.jpg,Myopia,0.9577,24,0.6272,-0.2992,0,DISTINCT_ANATOMIC_SIMILARITY
+586.png,Evaluation_Set,Glaucoma/Glaucoma1273.jpg,Glaucoma,0.9669,26,0.6484,0.6105,0,DISTINCT_ANATOMIC_SIMILARITY
+589.png,Evaluation_Set,Healthy/Healthy204.jpg,Healthy,0.9682,12,0.5832,0.5247,5,DISTINCT_ANATOMIC_SIMILARITY
+590.png,Evaluation_Set,Disc Edema/Disc Edema30.jpg,Disc Edema,0.9503,22,0.7258,-0.1671,0,DISTINCT_ANATOMIC_SIMILARITY
+592.png,Evaluation_Set,Glaucoma/Glaucoma651.jpg,Glaucoma,0.9592,10,0.6949,0.7291,6,DISTINCT_ANATOMIC_SIMILARITY
+594.png,Evaluation_Set,Glaucoma/Glaucoma792.jpg,Glaucoma,0.9538,30,0.66,-0.1968,0,DISTINCT_ANATOMIC_SIMILARITY
+595.png,Evaluation_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9612,34,0.7564,0.5263,0,DISTINCT_ANATOMIC_SIMILARITY
+596.png,Evaluation_Set,Disc Edema/Disc Edema95.jpg,Disc Edema,0.9515,30,0.6407,0.0655,0,DISTINCT_ANATOMIC_SIMILARITY
+600.png,Evaluation_Set,Glaucoma/Glaucoma23.jpg,Glaucoma,0.9684,26,0.7212,-0.146,0,DISTINCT_ANATOMIC_SIMILARITY
+604.png,Evaluation_Set,Healthy/Healthy525.jpg,Healthy,0.9622,24,0.6561,0.1537,0,DISTINCT_ANATOMIC_SIMILARITY
+605.png,Evaluation_Set,Glaucoma/Glaucoma789.jpg,Glaucoma,0.9621,30,0.6732,0.2801,0,DISTINCT_ANATOMIC_SIMILARITY
+606.png,Evaluation_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9506,16,0.8002,0.3497,0,DISTINCT_ANATOMIC_SIMILARITY
+609.png,Evaluation_Set,Glaucoma/Glaucoma1274.jpg,Glaucoma,0.9567,4,0.6663,0.6277,0,DISTINCT_ANATOMIC_SIMILARITY
+611.png,Evaluation_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.96,22,0.8019,0.5617,0,DISTINCT_ANATOMIC_SIMILARITY
+612.png,Evaluation_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.9514,22,0.6908,0.2645,0,DISTINCT_ANATOMIC_SIMILARITY
+614.png,Evaluation_Set,Macular Scar/Macular Scar212.jpg,Macular Scar,0.9669,16,0.6683,0.7818,0,DISTINCT_ANATOMIC_SIMILARITY
+615.png,Evaluation_Set,Diabetic Retinopathy/DR536.jpg,Diabetic Retinopathy,0.955,26,0.6742,0.2256,0,DISTINCT_ANATOMIC_SIMILARITY
+618.png,Evaluation_Set,Glaucoma/Glaucoma5.jpg,Glaucoma,0.9581,30,0.6257,0.5225,0,DISTINCT_ANATOMIC_SIMILARITY
+619.png,Evaluation_Set,Healthy/Healthy597.jpg,Healthy,0.9627,24,0.7177,0.6206,0,DISTINCT_ANATOMIC_SIMILARITY
+62.png,Evaluation_Set,Healthy/Healthy730.jpg,Healthy,0.959,32,0.8407,0.4025,0,DISTINCT_ANATOMIC_SIMILARITY
+620.png,Evaluation_Set,Healthy/Healthy951.jpg,Healthy,0.9554,24,0.7271,0.6565,0,DISTINCT_ANATOMIC_SIMILARITY
+621.png,Evaluation_Set,Healthy/Healthy951.jpg,Healthy,0.9632,32,0.7413,0.6598,0,DISTINCT_ANATOMIC_SIMILARITY
+624.png,Evaluation_Set,Glaucoma/Glaucoma625.jpg,Glaucoma,0.9503,14,0.7416,0.2506,0,DISTINCT_ANATOMIC_SIMILARITY
+625.png,Evaluation_Set,Healthy/Healthy270.jpg,Healthy,0.9598,14,0.6356,0.5722,0,DISTINCT_ANATOMIC_SIMILARITY
+626.png,Evaluation_Set,Healthy/Healthy329.jpg,Healthy,0.9565,24,0.5869,0.592,0,DISTINCT_ANATOMIC_SIMILARITY
+627.png,Evaluation_Set,Glaucoma/Glaucoma1349.jpg,Glaucoma,0.9699,14,0.7434,0.6076,0,DISTINCT_ANATOMIC_SIMILARITY
+628.png,Evaluation_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9545,20,0.7472,0.6013,0,DISTINCT_ANATOMIC_SIMILARITY
+629.png,Evaluation_Set,Healthy/Healthy766.jpg,Healthy,0.9535,32,0.5671,0.3145,0,DISTINCT_ANATOMIC_SIMILARITY
+63.png,Evaluation_Set,Diabetic Retinopathy/DR916.jpg,Diabetic Retinopathy,0.9608,28,0.8126,0.4714,0,DISTINCT_ANATOMIC_SIMILARITY
+631.png,Evaluation_Set,Glaucoma/Glaucoma795.jpg,Glaucoma,0.9673,14,0.7836,0.5443,0,DISTINCT_ANATOMIC_SIMILARITY
+633.png,Evaluation_Set,Glaucoma/Glaucoma911.jpg,Glaucoma,0.9535,24,0.7086,0.6086,0,DISTINCT_ANATOMIC_SIMILARITY
+634.png,Evaluation_Set,Glaucoma/Glaucoma795.jpg,Glaucoma,0.9576,20,0.7308,0.5286,0,DISTINCT_ANATOMIC_SIMILARITY
+635.png,Evaluation_Set,Glaucoma/Glaucoma1254.jpg,Glaucoma,0.9524,20,0.6798,0.3439,0,DISTINCT_ANATOMIC_SIMILARITY
+636.png,Evaluation_Set,Glaucoma/Glaucoma1145.jpg,Glaucoma,0.9592,14,0.7646,0.7117,0,DISTINCT_ANATOMIC_SIMILARITY
+637.png,Evaluation_Set,Diabetic Retinopathy/DR191.jpg,Diabetic Retinopathy,0.956,20,0.7288,0.3316,0,DISTINCT_ANATOMIC_SIMILARITY
+65.png,Evaluation_Set,Healthy/Healthy684.jpg,Healthy,0.9529,22,0.7585,0.6436,0,DISTINCT_ANATOMIC_SIMILARITY
+115.png,Test_Set,Diabetic Retinopathy/DR23.jpg,Diabetic Retinopathy,0.9515,26,0.7931,0.6756,0,DISTINCT_ANATOMIC_SIMILARITY
+121.png,Test_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.951,24,0.7915,0.0904,0,DISTINCT_ANATOMIC_SIMILARITY
+125.png,Test_Set,Glaucoma/Glaucoma306.jpg,Glaucoma,0.9529,30,0.704,0.7385,0,DISTINCT_ANATOMIC_SIMILARITY
+126.png,Test_Set,Glaucoma/Glaucoma932.jpg,Glaucoma,0.9531,30,0.758,0.491,0,DISTINCT_ANATOMIC_SIMILARITY
+142.png,Test_Set,Diabetic Retinopathy/DR1396.jpg,Diabetic Retinopathy,0.951,30,0.8486,0.0588,0,DISTINCT_ANATOMIC_SIMILARITY
+161.png,Test_Set,Diabetic Retinopathy/DR751.jpg,Diabetic Retinopathy,0.9521,22,0.7883,0.5877,7,DISTINCT_ANATOMIC_SIMILARITY
+163.png,Test_Set,Glaucoma/Glaucoma306.jpg,Glaucoma,0.9637,20,0.7126,0.6283,8,DISTINCT_ANATOMIC_SIMILARITY
+165.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9515,26,0.7498,0.6534,0,DISTINCT_ANATOMIC_SIMILARITY
+173.png,Test_Set,Glaucoma/Glaucoma595.jpg,Glaucoma,0.9641,20,0.8106,0.1759,11,DISTINCT_ANATOMIC_SIMILARITY
+174.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9602,24,0.79,0.5331,0,DISTINCT_ANATOMIC_SIMILARITY
+176.png,Test_Set,Diabetic Retinopathy/DR883.jpg,Diabetic Retinopathy,0.9514,28,0.6816,0.229,0,DISTINCT_ANATOMIC_SIMILARITY
+18.png,Test_Set,Glaucoma/Glaucoma306.jpg,Glaucoma,0.9545,38,0.7165,0.614,0,DISTINCT_ANATOMIC_SIMILARITY
+185.png,Test_Set,Macular Scar/Macular Scar134.jpg,Macular Scar,0.9514,26,0.6428,0.5233,4,DISTINCT_ANATOMIC_SIMILARITY
+193.png,Test_Set,Diabetic Retinopathy/DR160.jpg,Diabetic Retinopathy,0.9504,28,0.7635,0.1761,0,DISTINCT_ANATOMIC_SIMILARITY
+203.png,Test_Set,Glaucoma/Glaucoma916.jpg,Glaucoma,0.9559,22,0.7993,0.5494,0,DISTINCT_ANATOMIC_SIMILARITY
+227.png,Test_Set,Glaucoma/Glaucoma931.jpg,Glaucoma,0.9557,28,0.8006,0.4327,0,DISTINCT_ANATOMIC_SIMILARITY
+228.png,Test_Set,Glaucoma/Glaucoma722.jpg,Glaucoma,0.9647,24,0.7737,0.3009,0,DISTINCT_ANATOMIC_SIMILARITY
+231.png,Test_Set,Healthy/Healthy445.jpg,Healthy,0.9623,16,0.7606,0.4909,0,DISTINCT_ANATOMIC_SIMILARITY
+246.png,Test_Set,Glaucoma/Glaucoma1336.jpg,Glaucoma,0.9642,34,0.6683,0.363,0,DISTINCT_ANATOMIC_SIMILARITY
+248.png,Test_Set,Diabetic Retinopathy/DR254.jpg,Diabetic Retinopathy,0.9506,32,0.7358,0.0337,0,DISTINCT_ANATOMIC_SIMILARITY
+249.png,Test_Set,Diabetic Retinopathy/DR799.jpg,Diabetic Retinopathy,0.9548,28,0.7739,0.6617,0,DISTINCT_ANATOMIC_SIMILARITY
+250.png,Test_Set,Glaucoma/Glaucoma501.jpg,Glaucoma,0.9611,20,0.7521,0.255,0,DISTINCT_ANATOMIC_SIMILARITY
+260.png,Test_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9567,32,0.7322,0.0412,0,DISTINCT_ANATOMIC_SIMILARITY
+266.png,Test_Set,Diabetic Retinopathy/DR981.jpg,Diabetic Retinopathy,0.9513,22,0.7321,0.0851,6,DISTINCT_ANATOMIC_SIMILARITY
+268.png,Test_Set,Healthy/Healthy684.jpg,Healthy,0.9658,24,0.731,0.5984,0,DISTINCT_ANATOMIC_SIMILARITY
+269.png,Test_Set,Glaucoma/Glaucoma595.jpg,Glaucoma,0.9558,22,0.768,0.0782,0,DISTINCT_ANATOMIC_SIMILARITY
+27.png,Test_Set,Glaucoma/Glaucoma363.jpg,Glaucoma,0.9508,22,0.6924,0.6897,0,DISTINCT_ANATOMIC_SIMILARITY
+271.png,Test_Set,Glaucoma/Glaucoma912.jpg,Glaucoma,0.9504,24,0.7301,0.7464,0,DISTINCT_ANATOMIC_SIMILARITY
+272.png,Test_Set,Diabetic Retinopathy/DR519.jpg,Diabetic Retinopathy,0.9611,28,0.7649,0.5438,0,DISTINCT_ANATOMIC_SIMILARITY
+273.png,Test_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9658,22,0.8438,0.3878,0,DISTINCT_ANATOMIC_SIMILARITY
+276.png,Test_Set,Macular Scar/Macular Scar377.jpg,Macular Scar,0.9507,20,0.7196,0.6227,6,DISTINCT_ANATOMIC_SIMILARITY
+279.png,Test_Set,Glaucoma/Glaucoma368.jpg,Glaucoma,0.9503,26,0.5339,0.0275,0,DISTINCT_ANATOMIC_SIMILARITY
+280.png,Test_Set,Glaucoma/Glaucoma1336.jpg,Glaucoma,0.953,22,0.6079,0.515,5,DISTINCT_ANATOMIC_SIMILARITY
+281.png,Test_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9645,22,0.6856,0.5395,0,DISTINCT_ANATOMIC_SIMILARITY
+294.png,Test_Set,Glaucoma/Glaucoma596.jpg,Glaucoma,0.9544,16,0.6796,0.7582,5,DISTINCT_ANATOMIC_SIMILARITY
+295.png,Test_Set,Glaucoma/Glaucoma112.jpg,Glaucoma,0.954,18,0.6102,0.622,4,DISTINCT_ANATOMIC_SIMILARITY
+298.png,Test_Set,Diabetic Retinopathy/DR1464.jpg,Diabetic Retinopathy,0.966,34,0.7873,-0.0713,0,DISTINCT_ANATOMIC_SIMILARITY
+299.png,Test_Set,Healthy/Healthy684.jpg,Healthy,0.9681,22,0.7685,0.5323,6,DISTINCT_ANATOMIC_SIMILARITY
+305.png,Test_Set,Myopia/Myopia398.jpg,Myopia,0.9567,24,0.6044,0.6936,0,DISTINCT_ANATOMIC_SIMILARITY
+312.png,Test_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9552,32,0.7706,0.6543,0,DISTINCT_ANATOMIC_SIMILARITY
+313.png,Test_Set,Glaucoma/Glaucoma1222.jpg,Glaucoma,0.9578,28,0.572,0.6199,0,DISTINCT_ANATOMIC_SIMILARITY
+321.png,Test_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR71.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9572,18,0.6286,0.677,5,DISTINCT_ANATOMIC_SIMILARITY
+322.png,Test_Set,Diabetic Retinopathy/DR667.jpg,Diabetic Retinopathy,0.9542,28,0.6385,0.2945,0,DISTINCT_ANATOMIC_SIMILARITY
+325.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9508,36,0.749,-0.1652,0,DISTINCT_ANATOMIC_SIMILARITY
+333.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9577,24,0.6732,0.6236,4,DISTINCT_ANATOMIC_SIMILARITY
+334.png,Test_Set,Diabetic Retinopathy/DR1426.jpg,Diabetic Retinopathy,0.9506,26,0.7358,0.2136,0,DISTINCT_ANATOMIC_SIMILARITY
+335.png,Test_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.957,30,0.7246,-0.0117,0,DISTINCT_ANATOMIC_SIMILARITY
+339.png,Test_Set,Macular Scar/Macular Scar163.jpg,Macular Scar,0.9547,20,0.7346,0.3143,4,DISTINCT_ANATOMIC_SIMILARITY
+340.png,Test_Set,Healthy/Healthy445.jpg,Healthy,0.96,24,0.6901,0.6105,0,DISTINCT_ANATOMIC_SIMILARITY
+348.png,Test_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9618,24,0.684,0.5434,0,DISTINCT_ANATOMIC_SIMILARITY
+350.png,Test_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9509,28,0.6574,0.0329,0,DISTINCT_ANATOMIC_SIMILARITY
+352.png,Test_Set,Diabetic Retinopathy/DR257.jpg,Diabetic Retinopathy,0.9533,30,0.6784,0.5508,0,DISTINCT_ANATOMIC_SIMILARITY
+356.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9528,36,0.6922,-0.1122,4,DISTINCT_ANATOMIC_SIMILARITY
+357.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9638,20,0.7275,0.6979,7,DISTINCT_ANATOMIC_SIMILARITY
+359.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9625,20,0.7638,0.4398,0,DISTINCT_ANATOMIC_SIMILARITY
+361.png,Test_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9514,28,0.8184,-0.1883,0,DISTINCT_ANATOMIC_SIMILARITY
+367.png,Test_Set,Healthy/Healthy750.jpg,Healthy,0.9635,30,0.7141,0.5587,7,DISTINCT_ANATOMIC_SIMILARITY
+368.png,Test_Set,Diabetic Retinopathy/DR330.jpg,Diabetic Retinopathy,0.9589,20,0.6999,0.5902,0,DISTINCT_ANATOMIC_SIMILARITY
+373.png,Test_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9505,32,0.733,0.5492,0,DISTINCT_ANATOMIC_SIMILARITY
+379.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9554,22,0.7442,0.2718,0,DISTINCT_ANATOMIC_SIMILARITY
+389.png,Test_Set,Glaucoma/Glaucoma1336.jpg,Glaucoma,0.9536,26,0.7015,0.5285,0,DISTINCT_ANATOMIC_SIMILARITY
+395.png,Test_Set,Glaucoma/Glaucoma380.jpg,Glaucoma,0.9543,22,0.7263,0.3297,0,DISTINCT_ANATOMIC_SIMILARITY
+417.png,Test_Set,Glaucoma/Glaucoma473.jpg,Glaucoma,0.9538,30,0.7494,-0.0916,0,DISTINCT_ANATOMIC_SIMILARITY
+437.png,Test_Set,Retinitis Pigmentosa/Retinitis Pigmentosa135.jpg,Retinitis Pigmentosa,0.9525,34,0.6099,-0.311,0,DISTINCT_ANATOMIC_SIMILARITY
+441.png,Test_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9607,20,0.6907,0.0866,0,DISTINCT_ANATOMIC_SIMILARITY
+442.png,Test_Set,Glaucoma/Glaucoma911.jpg,Glaucoma,0.9655,16,0.7057,0.6668,0,DISTINCT_ANATOMIC_SIMILARITY
+445.png,Test_Set,Healthy/Healthy488.jpg,Healthy,0.9539,30,0.6439,0.3046,0,DISTINCT_ANATOMIC_SIMILARITY
+447.png,Test_Set,Glaucoma/Glaucoma747.jpg,Glaucoma,0.9643,10,0.7373,0.6538,0,DISTINCT_ANATOMIC_SIMILARITY
+448.png,Test_Set,Glaucoma/Glaucoma1224.jpg,Glaucoma,0.954,24,0.6172,0.3538,0,DISTINCT_ANATOMIC_SIMILARITY
+452.png,Test_Set,Diabetic Retinopathy/DR805.jpg,Diabetic Retinopathy,0.9564,18,0.7027,0.1458,0,DISTINCT_ANATOMIC_SIMILARITY
+457.png,Test_Set,Myopia/Myopia364.jpg,Myopia,0.9516,28,0.7691,0.1104,0,DISTINCT_ANATOMIC_SIMILARITY
+461.png,Test_Set,Glaucoma/Glaucoma661.jpg,Glaucoma,0.9591,24,0.7295,0.4047,0,DISTINCT_ANATOMIC_SIMILARITY
+462.png,Test_Set,Macular Scar/Macular Scar399.jpg,Macular Scar,0.9559,26,0.6222,0.4742,0,DISTINCT_ANATOMIC_SIMILARITY
+464.png,Test_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9536,12,0.5874,0.4491,0,DISTINCT_ANATOMIC_SIMILARITY
+465.png,Test_Set,Glaucoma/Glaucoma305.jpg,Glaucoma,0.9532,26,0.6779,0.2602,0,DISTINCT_ANATOMIC_SIMILARITY
+467.png,Test_Set,Glaucoma/Glaucoma624.jpg,Glaucoma,0.9587,20,0.5248,0.5099,0,DISTINCT_ANATOMIC_SIMILARITY
+471.png,Test_Set,Glaucoma/Glaucoma1274.jpg,Glaucoma,0.9515,18,0.6428,0.4807,0,DISTINCT_ANATOMIC_SIMILARITY
+474.png,Test_Set,Healthy/Healthy490.jpg,Healthy,0.9614,26,0.6741,0.5202,0,DISTINCT_ANATOMIC_SIMILARITY
+475.png,Test_Set,Healthy/Healthy823.jpg,Healthy,0.955,12,0.6419,0.4969,0,DISTINCT_ANATOMIC_SIMILARITY
+476.png,Test_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9585,32,0.6274,0.5727,4,DISTINCT_ANATOMIC_SIMILARITY
+477.png,Test_Set,Diabetic Retinopathy/DR516.jpg,Diabetic Retinopathy,0.958,24,0.7347,0.5186,0,DISTINCT_ANATOMIC_SIMILARITY
+481.png,Test_Set,Glaucoma/Glaucoma1276.jpg,Glaucoma,0.9511,22,0.7789,0.1457,0,DISTINCT_ANATOMIC_SIMILARITY
+482.png,Test_Set,Diabetic Retinopathy/DR539.jpg,Diabetic Retinopathy,0.9502,20,0.7495,0.2903,0,DISTINCT_ANATOMIC_SIMILARITY
+494.png,Test_Set,Healthy/Healthy624.jpg,Healthy,0.9551,20,0.6646,0.5555,0,DISTINCT_ANATOMIC_SIMILARITY
+495.png,Test_Set,Disc Edema/Disc Edema51.jpg,Disc Edema,0.9596,24,0.6772,0.5158,0,DISTINCT_ANATOMIC_SIMILARITY
+499.png,Test_Set,Glaucoma/Glaucoma618.jpg,Glaucoma,0.9513,22,0.6486,0.4641,0,DISTINCT_ANATOMIC_SIMILARITY
+503.png,Test_Set,Glaucoma/Glaucoma1148.jpg,Glaucoma,0.9614,28,0.5944,0.7113,0,DISTINCT_ANATOMIC_SIMILARITY
+504.png,Test_Set,Healthy/Healthy618.jpg,Healthy,0.9553,32,0.7554,0.1943,0,DISTINCT_ANATOMIC_SIMILARITY
+507.png,Test_Set,Diabetic Retinopathy/DR113.jpg,Diabetic Retinopathy,0.9514,18,0.7623,0.3702,0,DISTINCT_ANATOMIC_SIMILARITY
+510.png,Test_Set,Glaucoma/Glaucoma937.jpg,Glaucoma,0.9625,24,0.7115,0.65,0,DISTINCT_ANATOMIC_SIMILARITY
+512.png,Test_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9569,12,0.7861,0.5227,0,DISTINCT_ANATOMIC_SIMILARITY
+513.png,Test_Set,Glaucoma/Glaucoma618.jpg,Glaucoma,0.955,12,0.5815,0.5146,0,DISTINCT_ANATOMIC_SIMILARITY
+515.png,Test_Set,Glaucoma/Glaucoma305.jpg,Glaucoma,0.9627,32,0.6452,0.6573,0,DISTINCT_ANATOMIC_SIMILARITY
+517.png,Test_Set,Healthy/Healthy142.jpg,Healthy,0.9568,32,0.4873,0.3151,0,DISTINCT_ANATOMIC_SIMILARITY
+519.png,Test_Set,Healthy/Healthy142.jpg,Healthy,0.9603,16,0.5241,0.7264,0,DISTINCT_ANATOMIC_SIMILARITY
+522.png,Test_Set,Glaucoma/Glaucoma640.jpg,Glaucoma,0.9575,24,0.7653,-0.0711,0,DISTINCT_ANATOMIC_SIMILARITY
+523.png,Test_Set,Glaucoma/Glaucoma247.jpg,Glaucoma,0.9625,16,0.6427,0.5214,0,DISTINCT_ANATOMIC_SIMILARITY
+524.png,Test_Set,Glaucoma/Glaucoma295.jpg,Glaucoma,0.9668,32,0.787,0.2988,0,DISTINCT_ANATOMIC_SIMILARITY
+526.png,Test_Set,Healthy/Healthy495.jpg,Healthy,0.9558,30,0.5447,0.5281,0,DISTINCT_ANATOMIC_SIMILARITY
+527.png,Test_Set,Healthy/Healthy977.jpg,Healthy,0.9581,20,0.6311,0.7036,0,DISTINCT_ANATOMIC_SIMILARITY
+529.png,Test_Set,Glaucoma/Glaucoma640.jpg,Glaucoma,0.9658,16,0.7809,0.5532,0,DISTINCT_ANATOMIC_SIMILARITY
+532.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.965,20,0.6385,0.5508,0,DISTINCT_ANATOMIC_SIMILARITY
+533.png,Test_Set,Healthy/Healthy823.jpg,Healthy,0.9595,22,0.7006,0.5609,0,DISTINCT_ANATOMIC_SIMILARITY
+534.png,Test_Set,Healthy/Healthy664.jpg,Healthy,0.952,8,0.8176,0.4469,0,DISTINCT_ANATOMIC_SIMILARITY
+535.png,Test_Set,Glaucoma/Glaucoma1274.jpg,Glaucoma,0.9575,28,0.6769,0.5523,0,DISTINCT_ANATOMIC_SIMILARITY
+536.png,Test_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9575,12,0.7357,0.4761,0,DISTINCT_ANATOMIC_SIMILARITY
+538.png,Test_Set,Healthy/Healthy745.jpg,Healthy,0.9596,14,0.678,0.753,0,DISTINCT_ANATOMIC_SIMILARITY
+541.png,Test_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9546,28,0.7819,0.3335,0,DISTINCT_ANATOMIC_SIMILARITY
+547.png,Test_Set,Glaucoma/Glaucoma610.jpg,Glaucoma,0.9515,24,0.5845,0.6375,8,DISTINCT_ANATOMIC_SIMILARITY
+548.png,Test_Set,Glaucoma/Glaucoma953.jpg,Glaucoma,0.9536,34,0.6028,0.3827,0,DISTINCT_ANATOMIC_SIMILARITY
+550.png,Test_Set,Healthy/Healthy204.jpg,Healthy,0.9549,34,0.6101,0.1829,5,DISTINCT_ANATOMIC_SIMILARITY
+551.png,Test_Set,Glaucoma/Glaucoma845.jpg,Glaucoma,0.9551,16,0.7103,0.6128,0,DISTINCT_ANATOMIC_SIMILARITY
+552.png,Test_Set,Healthy/Healthy463.jpg,Healthy,0.9504,20,0.6472,0.6781,6,DISTINCT_ANATOMIC_SIMILARITY
+555.png,Test_Set,Glaucoma/Glaucoma569.jpg,Glaucoma,0.9508,36,0.6283,-0.1232,0,DISTINCT_ANATOMIC_SIMILARITY
+556.png,Test_Set,Glaucoma/Glaucoma864.jpg,Glaucoma,0.9532,20,0.6546,0.5247,0,DISTINCT_ANATOMIC_SIMILARITY
+557.png,Test_Set,Glaucoma/Glaucoma303.jpg,Glaucoma,0.957,20,0.7054,0.732,0,DISTINCT_ANATOMIC_SIMILARITY
+559.png,Test_Set,Glaucoma/Glaucoma592.jpg,Glaucoma,0.9577,12,0.7804,0.695,0,DISTINCT_ANATOMIC_SIMILARITY
+560.png,Test_Set,Diabetic Retinopathy/DR849.jpg,Diabetic Retinopathy,0.9534,24,0.7622,0.3232,5,DISTINCT_ANATOMIC_SIMILARITY
+561.png,Test_Set,Glaucoma/Glaucoma447.jpg,Glaucoma,0.9619,20,0.7208,0.5615,8,DISTINCT_ANATOMIC_SIMILARITY
+562.png,Test_Set,Healthy/Healthy329.jpg,Healthy,0.9581,20,0.6074,0.5975,0,DISTINCT_ANATOMIC_SIMILARITY
+563.png,Test_Set,Glaucoma/Glaucoma681.jpg,Glaucoma,0.9665,26,0.6118,0.5459,10,DISTINCT_ANATOMIC_SIMILARITY
+564.png,Test_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR33.jpg,Central Serous Chorioretinopathy [Color Fundus],0.953,22,0.5914,-0.0425,4,DISTINCT_ANATOMIC_SIMILARITY
+567.png,Test_Set,Glaucoma/Glaucoma533.jpg,Glaucoma,0.9582,22,0.6449,0.6724,4,DISTINCT_ANATOMIC_SIMILARITY
+568.png,Test_Set,Glaucoma/Glaucoma111.jpg,Glaucoma,0.9634,16,0.5588,0.5599,5,DISTINCT_ANATOMIC_SIMILARITY
+569.png,Test_Set,Glaucoma/Glaucoma1258.jpg,Glaucoma,0.9548,18,0.6438,0.6575,0,DISTINCT_ANATOMIC_SIMILARITY
+570.png,Test_Set,Glaucoma/Glaucoma1349.jpg,Glaucoma,0.963,14,0.6918,0.6613,5,DISTINCT_ANATOMIC_SIMILARITY
+571.png,Test_Set,Glaucoma/Glaucoma682.jpg,Glaucoma,0.954,26,0.6788,0.4987,0,DISTINCT_ANATOMIC_SIMILARITY
+573.png,Test_Set,Healthy/Healthy684.jpg,Healthy,0.9536,22,0.7088,0.5739,4,DISTINCT_ANATOMIC_SIMILARITY
+574.png,Test_Set,Glaucoma/Glaucoma1314.jpg,Glaucoma,0.9593,18,0.6729,0.6055,0,DISTINCT_ANATOMIC_SIMILARITY
+575.png,Test_Set,Disc Edema/Disc Edema30.jpg,Disc Edema,0.9537,36,0.7633,0.4574,7,DISTINCT_ANATOMIC_SIMILARITY
+577.png,Test_Set,Glaucoma/Glaucoma719.jpg,Glaucoma,0.9541,22,0.6473,0.7208,0,DISTINCT_ANATOMIC_SIMILARITY
+580.png,Test_Set,Healthy/Healthy269.jpg,Healthy,0.9509,20,0.6354,0.7219,4,DISTINCT_ANATOMIC_SIMILARITY
+581.png,Test_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.955,16,0.7245,0.7091,7,DISTINCT_ANATOMIC_SIMILARITY
+582.png,Test_Set,Healthy/Healthy809.jpg,Healthy,0.9649,26,0.6667,0.6528,0,DISTINCT_ANATOMIC_SIMILARITY
+583.png,Test_Set,Healthy/Healthy551.jpg,Healthy,0.951,16,0.6941,0.605,0,DISTINCT_ANATOMIC_SIMILARITY
+585.png,Test_Set,Glaucoma/Glaucoma111.jpg,Glaucoma,0.9563,26,0.6765,-0.1533,4,DISTINCT_ANATOMIC_SIMILARITY
+587.png,Test_Set,Healthy/Healthy679.jpg,Healthy,0.9595,22,0.6197,0.566,0,DISTINCT_ANATOMIC_SIMILARITY
+588.png,Test_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR25.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9515,18,0.6737,0.6606,0,DISTINCT_ANATOMIC_SIMILARITY
+589.png,Test_Set,Glaucoma/Glaucoma367.jpg,Glaucoma,0.9592,34,0.6421,0.1703,5,DISTINCT_ANATOMIC_SIMILARITY
+59.png,Test_Set,Macular Scar/Macular Scar377.jpg,Macular Scar,0.9502,22,0.7609,0.6339,0,DISTINCT_ANATOMIC_SIMILARITY
+590.png,Test_Set,Glaucoma/Glaucoma682.jpg,Glaucoma,0.9557,16,0.549,0.6723,0,DISTINCT_ANATOMIC_SIMILARITY
+591.png,Test_Set,Glaucoma/Glaucoma488.jpg,Glaucoma,0.9594,18,0.5013,0.6348,0,DISTINCT_ANATOMIC_SIMILARITY
+592.png,Test_Set,Healthy/Healthy684.jpg,Healthy,0.9558,24,0.6016,0.534,4,DISTINCT_ANATOMIC_SIMILARITY
+593.png,Test_Set,Healthy/Healthy267.jpg,Healthy,0.9539,16,0.5246,0.6715,9,DISTINCT_ANATOMIC_SIMILARITY
+599.png,Test_Set,Glaucoma/Glaucoma1337.jpg,Glaucoma,0.9599,6,0.7229,0.5697,0,DISTINCT_ANATOMIC_SIMILARITY
+601.png,Test_Set,Glaucoma/Glaucoma911.jpg,Glaucoma,0.9588,26,0.6943,0.0976,0,DISTINCT_ANATOMIC_SIMILARITY
+602.png,Test_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9514,30,0.7508,0.2222,0,DISTINCT_ANATOMIC_SIMILARITY
+605.png,Test_Set,Healthy/Healthy624.jpg,Healthy,0.9505,26,0.7181,0.459,0,DISTINCT_ANATOMIC_SIMILARITY
+609.png,Test_Set,Macular Scar/Macular Scar107.jpg,Macular Scar,0.9545,18,0.7735,0.2525,0,DISTINCT_ANATOMIC_SIMILARITY
+612.png,Test_Set,Glaucoma/Glaucoma795.jpg,Glaucoma,0.9551,12,0.7716,0.618,0,DISTINCT_ANATOMIC_SIMILARITY
+613.png,Test_Set,Healthy/Healthy670.jpg,Healthy,0.9546,22,0.6941,0.6801,0,DISTINCT_ANATOMIC_SIMILARITY
+614.png,Test_Set,Healthy/Healthy980.jpg,Healthy,0.9531,24,0.6142,0.5499,0,DISTINCT_ANATOMIC_SIMILARITY
+615.png,Test_Set,Glaucoma/Glaucoma776.jpg,Glaucoma,0.9546,14,0.5381,0.6254,5,DISTINCT_ANATOMIC_SIMILARITY
+617.png,Test_Set,Glaucoma/Glaucoma532.jpg,Glaucoma,0.9544,18,0.5774,0.6553,0,DISTINCT_ANATOMIC_SIMILARITY
+619.png,Test_Set,Glaucoma/Glaucoma592.jpg,Glaucoma,0.9502,32,0.6419,-0.1371,0,DISTINCT_ANATOMIC_SIMILARITY
+620.png,Test_Set,Healthy/Healthy204.jpg,Healthy,0.9602,16,0.5347,0.5856,0,DISTINCT_ANATOMIC_SIMILARITY
+621.png,Test_Set,Glaucoma/Glaucoma545.jpg,Glaucoma,0.9551,16,0.6498,0.5025,0,DISTINCT_ANATOMIC_SIMILARITY
+622.png,Test_Set,Glaucoma/Glaucoma1254.jpg,Glaucoma,0.9515,18,0.6004,0.5922,0,DISTINCT_ANATOMIC_SIMILARITY
+624.png,Test_Set,Glaucoma/Glaucoma489.jpg,Glaucoma,0.9649,14,0.5216,0.5411,0,DISTINCT_ANATOMIC_SIMILARITY
+625.png,Test_Set,Glaucoma/Glaucoma938.jpg,Glaucoma,0.9627,32,0.5147,0.5526,5,DISTINCT_ANATOMIC_SIMILARITY
+626.png,Test_Set,Glaucoma/Glaucoma680.jpg,Glaucoma,0.9632,28,0.6453,0.4881,9,DISTINCT_ANATOMIC_SIMILARITY
+627.png,Test_Set,Healthy/Healthy267.jpg,Healthy,0.9524,20,0.5503,0.6924,0,DISTINCT_ANATOMIC_SIMILARITY
+628.png,Test_Set,Glaucoma/Glaucoma250.jpg,Glaucoma,0.958,16,0.547,0.639,0,DISTINCT_ANATOMIC_SIMILARITY
+629.png,Test_Set,Glaucoma/Glaucoma651.jpg,Glaucoma,0.9601,20,0.5633,0.689,4,DISTINCT_ANATOMIC_SIMILARITY
+632.png,Test_Set,Glaucoma/Glaucoma601.jpg,Glaucoma,0.9524,14,0.7076,0.1188,0,DISTINCT_ANATOMIC_SIMILARITY
+64.png,Test_Set,Healthy/Healthy775.jpg,Healthy,0.9507,30,0.6823,0.6531,5,DISTINCT_ANATOMIC_SIMILARITY
+65.png,Test_Set,Disc Edema/Disc Edema66.jpg,Disc Edema,0.9528,24,0.6536,0.6682,0,DISTINCT_ANATOMIC_SIMILARITY
+77.png,Test_Set,Glaucoma/Glaucoma566.jpg,Glaucoma,0.9636,20,0.7276,0.7375,7,DISTINCT_ANATOMIC_SIMILARITY
+86.png,Test_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.959,28,0.7013,0.6269,0,DISTINCT_ANATOMIC_SIMILARITY
+1002.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9565,20,0.8093,0.5621,0,DISTINCT_ANATOMIC_SIMILARITY
+1017.png,Training_Set,Diabetic Retinopathy/DR688.jpg,Diabetic Retinopathy,0.9558,24,0.8018,0.3345,0,DISTINCT_ANATOMIC_SIMILARITY
+1024.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9597,22,0.7623,0.5261,0,DISTINCT_ANATOMIC_SIMILARITY
+1027.png,Training_Set,Macular Scar/Macular Scar134.jpg,Macular Scar,0.9522,26,0.7963,0.3206,4,DISTINCT_ANATOMIC_SIMILARITY
+1032.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9581,22,0.7131,0.6384,0,DISTINCT_ANATOMIC_SIMILARITY
+1036.png,Training_Set,Diabetic Retinopathy/DR1467.jpg,Diabetic Retinopathy,0.9552,20,0.8142,0.5406,0,DISTINCT_ANATOMIC_SIMILARITY
+1039.png,Training_Set,Diabetic Retinopathy/DR881.jpg,Diabetic Retinopathy,0.9566,24,0.7198,0.601,0,DISTINCT_ANATOMIC_SIMILARITY
+1040.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9517,26,0.7103,0.4626,0,DISTINCT_ANATOMIC_SIMILARITY
+1041.png,Training_Set,Glaucoma/Glaucoma914.jpg,Glaucoma,0.9627,30,0.8131,0.3619,0,DISTINCT_ANATOMIC_SIMILARITY
+1045.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.957,34,0.7679,0.4915,0,DISTINCT_ANATOMIC_SIMILARITY
+1046.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9599,30,0.7879,0.5453,0,DISTINCT_ANATOMIC_SIMILARITY
+1064.png,Training_Set,Healthy/Healthy205.jpg,Healthy,0.9548,32,0.6856,0.6733,4,DISTINCT_ANATOMIC_SIMILARITY
+1069.png,Training_Set,Diabetic Retinopathy/DR540.jpg,Diabetic Retinopathy,0.9655,28,0.8141,0.264,0,DISTINCT_ANATOMIC_SIMILARITY
+1070.png,Training_Set,Diabetic Retinopathy/DR191.jpg,Diabetic Retinopathy,0.9598,20,0.7697,0.6361,4,DISTINCT_ANATOMIC_SIMILARITY
+1077.png,Training_Set,Glaucoma/Glaucoma29.jpg,Glaucoma,0.954,20,0.7585,0.296,0,DISTINCT_ANATOMIC_SIMILARITY
+1086.png,Training_Set,Healthy/Healthy489.jpg,Healthy,0.9568,28,0.695,0.6621,0,DISTINCT_ANATOMIC_SIMILARITY
+1098.png,Training_Set,Diabetic Retinopathy/DR1464.jpg,Diabetic Retinopathy,0.9557,20,0.8003,0.4981,5,DISTINCT_ANATOMIC_SIMILARITY
+1099.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9599,28,0.7676,0.5847,0,DISTINCT_ANATOMIC_SIMILARITY
+1100.png,Training_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9605,24,0.7873,0.2517,0,DISTINCT_ANATOMIC_SIMILARITY
+1106.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9597,26,0.7253,0.5089,0,DISTINCT_ANATOMIC_SIMILARITY
+1107.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9641,24,0.7723,0.5573,0,DISTINCT_ANATOMIC_SIMILARITY
+1109.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9582,22,0.7559,0.7152,0,DISTINCT_ANATOMIC_SIMILARITY
+1112.png,Training_Set,Macular Scar/Macular Scar186.jpg,Macular Scar,0.9512,28,0.7779,0.0445,0,DISTINCT_ANATOMIC_SIMILARITY
+1113.png,Training_Set,Glaucoma/Glaucoma776.jpg,Glaucoma,0.9524,20,0.6676,0.7754,0,DISTINCT_ANATOMIC_SIMILARITY
+1117.png,Training_Set,Disc Edema/Disc Edema78.jpg,Disc Edema,0.9537,18,0.7209,0.4752,4,DISTINCT_ANATOMIC_SIMILARITY
+1124.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9589,30,0.7132,-0.1466,0,DISTINCT_ANATOMIC_SIMILARITY
+1126.png,Training_Set,Glaucoma/Glaucoma291.jpg,Glaucoma,0.9585,22,0.6928,0.7653,0,DISTINCT_ANATOMIC_SIMILARITY
+1132.png,Training_Set,Glaucoma/Glaucoma1288.jpg,Glaucoma,0.9554,24,0.7628,0.0226,0,DISTINCT_ANATOMIC_SIMILARITY
+1133.png,Training_Set,Diabetic Retinopathy/DR833.jpg,Diabetic Retinopathy,0.9509,20,0.7951,0.3073,0,DISTINCT_ANATOMIC_SIMILARITY
+1134.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9661,24,0.731,0.4615,8,DISTINCT_ANATOMIC_SIMILARITY
+1140.png,Training_Set,Healthy/Healthy978.jpg,Healthy,0.9621,30,0.7046,0.6045,8,DISTINCT_ANATOMIC_SIMILARITY
+1142.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9575,30,0.7718,-0.0817,0,DISTINCT_ANATOMIC_SIMILARITY
+1145.png,Training_Set,Healthy/Healthy747.jpg,Healthy,0.9521,34,0.753,-0.304,0,DISTINCT_ANATOMIC_SIMILARITY
+1147.png,Training_Set,Healthy/Healthy747.jpg,Healthy,0.9512,30,0.7295,-0.2745,0,DISTINCT_ANATOMIC_SIMILARITY
+1148.png,Training_Set,Diabetic Retinopathy/DR799.jpg,Diabetic Retinopathy,0.9583,20,0.7403,0.6826,0,DISTINCT_ANATOMIC_SIMILARITY
+1155.png,Training_Set,Healthy/Healthy747.jpg,Healthy,0.9573,26,0.775,0.7168,0,DISTINCT_ANATOMIC_SIMILARITY
+1156.png,Training_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9505,34,0.7952,-0.1033,0,DISTINCT_ANATOMIC_SIMILARITY
+1164.png,Training_Set,Glaucoma/Glaucoma558.jpg,Glaucoma,0.9533,32,0.6734,0.2909,0,DISTINCT_ANATOMIC_SIMILARITY
+1168.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9587,26,0.7239,-0.0727,0,DISTINCT_ANATOMIC_SIMILARITY
+117.png,Training_Set,Glaucoma/Glaucoma842.jpg,Glaucoma,0.9616,22,0.7324,0.2389,0,DISTINCT_ANATOMIC_SIMILARITY
+1173.png,Training_Set,Disc Edema/Disc Edema56.jpg,Disc Edema,0.9524,34,0.6658,0.7363,0,DISTINCT_ANATOMIC_SIMILARITY
+1174.png,Training_Set,Disc Edema/Disc Edema56.jpg,Disc Edema,0.9526,30,0.656,0.7028,0,DISTINCT_ANATOMIC_SIMILARITY
+118.png,Training_Set,Glaucoma/Glaucoma1337.jpg,Glaucoma,0.9605,40,0.746,0.4082,0,DISTINCT_ANATOMIC_SIMILARITY
+1180.png,Training_Set,Diabetic Retinopathy/DR178.jpg,Diabetic Retinopathy,0.9578,24,0.7594,0.6387,0,DISTINCT_ANATOMIC_SIMILARITY
+1185.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.95,20,0.7197,0.6085,0,DISTINCT_ANATOMIC_SIMILARITY
+119.png,Training_Set,Glaucoma/Glaucoma741.jpg,Glaucoma,0.9667,38,0.7285,0.446,0,DISTINCT_ANATOMIC_SIMILARITY
+1193.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9501,32,0.7266,-0.0311,0,DISTINCT_ANATOMIC_SIMILARITY
+120.png,Training_Set,Diabetic Retinopathy/DR403.jpg,Diabetic Retinopathy,0.9649,24,0.7456,0.4038,0,DISTINCT_ANATOMIC_SIMILARITY
+1208.png,Training_Set,Retinitis Pigmentosa/Retinitis Pigmentosa135.jpg,Retinitis Pigmentosa,0.9503,20,0.7861,0.6283,0,DISTINCT_ANATOMIC_SIMILARITY
+1209.png,Training_Set,Glaucoma/Glaucoma1337.jpg,Glaucoma,0.9537,34,0.7122,-0.0702,0,DISTINCT_ANATOMIC_SIMILARITY
+1210.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9515,32,0.7943,0.5477,0,DISTINCT_ANATOMIC_SIMILARITY
+1214.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9655,22,0.7114,0.5257,0,DISTINCT_ANATOMIC_SIMILARITY
+1219.png,Training_Set,Healthy/Healthy823.jpg,Healthy,0.9654,22,0.6966,0.1082,4,DISTINCT_ANATOMIC_SIMILARITY
+1224.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9592,30,0.6526,-0.1044,0,DISTINCT_ANATOMIC_SIMILARITY
+1225.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9632,24,0.711,0.5191,5,DISTINCT_ANATOMIC_SIMILARITY
+1231.png,Training_Set,Glaucoma/Glaucoma442.jpg,Glaucoma,0.9533,24,0.8171,0.632,0,DISTINCT_ANATOMIC_SIMILARITY
+1238.png,Training_Set,Glaucoma/Glaucoma442.jpg,Glaucoma,0.9634,24,0.7852,0.6516,0,DISTINCT_ANATOMIC_SIMILARITY
+1239.png,Training_Set,Glaucoma/Glaucoma473.jpg,Glaucoma,0.9596,32,0.7197,-0.2517,0,DISTINCT_ANATOMIC_SIMILARITY
+124.png,Training_Set,Healthy/Healthy749.jpg,Healthy,0.959,34,0.7923,0.3453,0,DISTINCT_ANATOMIC_SIMILARITY
+1244.png,Training_Set,Macular Scar/Macular Scar344.jpg,Macular Scar,0.9524,34,0.6812,-0.0593,4,DISTINCT_ANATOMIC_SIMILARITY
+1245.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9595,20,0.7437,0.5771,0,DISTINCT_ANATOMIC_SIMILARITY
+1253.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9648,24,0.7933,0.6246,8,DISTINCT_ANATOMIC_SIMILARITY
+1254.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9662,24,0.7661,0.5688,4,DISTINCT_ANATOMIC_SIMILARITY
+1257.png,Training_Set,Diabetic Retinopathy/DR1464.jpg,Diabetic Retinopathy,0.9566,22,0.7632,0.5395,0,DISTINCT_ANATOMIC_SIMILARITY
+1258.png,Training_Set,Diabetic Retinopathy/DR690.jpg,Diabetic Retinopathy,0.9554,22,0.7416,0.3523,0,DISTINCT_ANATOMIC_SIMILARITY
+126.png,Training_Set,Glaucoma/Glaucoma914.jpg,Glaucoma,0.9508,30,0.7548,0.4748,4,DISTINCT_ANATOMIC_SIMILARITY
+1264.png,Training_Set,Disc Edema/Disc Edema96.jpg,Disc Edema,0.952,22,0.682,0.6624,0,DISTINCT_ANATOMIC_SIMILARITY
+1265.png,Training_Set,Healthy/Healthy267.jpg,Healthy,0.9543,24,0.6288,0.3843,0,DISTINCT_ANATOMIC_SIMILARITY
+1267.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9521,22,0.747,0.4789,0,DISTINCT_ANATOMIC_SIMILARITY
+1272.png,Training_Set,Macular Scar/Macular Scar314.jpg,Macular Scar,0.9508,34,0.7495,0.6465,0,DISTINCT_ANATOMIC_SIMILARITY
+1275.png,Training_Set,Diabetic Retinopathy/DR339.jpg,Diabetic Retinopathy,0.9713,26,0.7763,0.5033,10,DISTINCT_ANATOMIC_SIMILARITY
+1277.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9535,30,0.7611,0.4862,0,DISTINCT_ANATOMIC_SIMILARITY
+1280.png,Training_Set,Glaucoma/Glaucoma306.jpg,Glaucoma,0.9621,32,0.738,0.5821,0,DISTINCT_ANATOMIC_SIMILARITY
+1281.png,Training_Set,Diabetic Retinopathy/DR1472.jpg,Diabetic Retinopathy,0.9657,28,0.7467,0.5806,7,DISTINCT_ANATOMIC_SIMILARITY
+1283.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9613,32,0.7122,0.4069,8,DISTINCT_ANATOMIC_SIMILARITY
+1291.png,Training_Set,Diabetic Retinopathy/DR1467.jpg,Diabetic Retinopathy,0.9511,38,0.7837,0.0016,0,DISTINCT_ANATOMIC_SIMILARITY
+1295.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.962,22,0.7145,0.5057,8,DISTINCT_ANATOMIC_SIMILARITY
+1299.png,Training_Set,Glaucoma/Glaucoma900.jpg,Glaucoma,0.9519,32,0.8291,-0.3386,0,DISTINCT_ANATOMIC_SIMILARITY
+1301.png,Training_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.958,24,0.6935,0.6562,10,DISTINCT_ANATOMIC_SIMILARITY
+1302.png,Training_Set,Healthy/Healthy68.jpg,Healthy,0.9585,26,0.6354,0.6306,0,DISTINCT_ANATOMIC_SIMILARITY
+1306.png,Training_Set,Diabetic Retinopathy/DR330.jpg,Diabetic Retinopathy,0.9527,22,0.7475,0.5404,0,DISTINCT_ANATOMIC_SIMILARITY
+131.png,Training_Set,Diabetic Retinopathy/DR749.jpg,Diabetic Retinopathy,0.9509,24,0.8891,0.0707,4,DISTINCT_ANATOMIC_SIMILARITY
+1311.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9586,24,0.7129,0.4887,0,DISTINCT_ANATOMIC_SIMILARITY
+1312.png,Training_Set,Healthy/Healthy599.jpg,Healthy,0.955,20,0.6686,0.7567,0,DISTINCT_ANATOMIC_SIMILARITY
+1314.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9507,26,0.7818,-0.0639,0,DISTINCT_ANATOMIC_SIMILARITY
+1319.png,Training_Set,Healthy/Healthy774.jpg,Healthy,0.9512,30,0.6471,0.2334,0,DISTINCT_ANATOMIC_SIMILARITY
+1322.png,Training_Set,Diabetic Retinopathy/DR981.jpg,Diabetic Retinopathy,0.9554,30,0.7834,0.1284,0,DISTINCT_ANATOMIC_SIMILARITY
+1323.png,Training_Set,Diabetic Retinopathy/DR329.jpg,Diabetic Retinopathy,0.9571,26,0.7749,-0.0913,4,DISTINCT_ANATOMIC_SIMILARITY
+1326.png,Training_Set,Diabetic Retinopathy/DR405.jpg,Diabetic Retinopathy,0.9501,30,0.6798,0.6092,0,DISTINCT_ANATOMIC_SIMILARITY
+1329.png,Training_Set,Healthy/Healthy747.jpg,Healthy,0.9503,20,0.7634,0.7773,0,DISTINCT_ANATOMIC_SIMILARITY
+1333.png,Training_Set,Glaucoma/Glaucoma747.jpg,Glaucoma,0.9574,20,0.7477,0.671,0,DISTINCT_ANATOMIC_SIMILARITY
+1339.png,Training_Set,Glaucoma/Glaucoma1210.jpg,Glaucoma,0.9572,20,0.7624,0.6143,0,DISTINCT_ANATOMIC_SIMILARITY
+1342.png,Training_Set,Disc Edema/Disc Edema66.jpg,Disc Edema,0.9571,24,0.6591,0.4687,0,DISTINCT_ANATOMIC_SIMILARITY
+1363.png,Training_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9561,30,0.8418,-0.4308,0,DISTINCT_ANATOMIC_SIMILARITY
+1364.png,Training_Set,Glaucoma/Glaucoma446.jpg,Glaucoma,0.9592,20,0.7343,0.5176,0,DISTINCT_ANATOMIC_SIMILARITY
+1365.png,Training_Set,Glaucoma/Glaucoma558.jpg,Glaucoma,0.9504,26,0.7011,0.2193,0,DISTINCT_ANATOMIC_SIMILARITY
+1369.png,Training_Set,Glaucoma/Glaucoma1253.jpg,Glaucoma,0.9696,20,0.6965,0.4414,0,DISTINCT_ANATOMIC_SIMILARITY
+1370.png,Training_Set,Glaucoma/Glaucoma1253.jpg,Glaucoma,0.9589,32,0.6378,-0.0572,0,DISTINCT_ANATOMIC_SIMILARITY
+1372.png,Training_Set,Diabetic Retinopathy/DR1464.jpg,Diabetic Retinopathy,0.9555,20,0.7936,0.5569,0,DISTINCT_ANATOMIC_SIMILARITY
+1374.png,Training_Set,Myopia/Myopia455.jpg,Myopia,0.9572,28,0.8607,0.3554,0,DISTINCT_ANATOMIC_SIMILARITY
+1379.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9573,22,0.7134,0.3656,0,DISTINCT_ANATOMIC_SIMILARITY
+1380.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9595,24,0.7788,0.5456,0,DISTINCT_ANATOMIC_SIMILARITY
+1381.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9593,26,0.7519,0.5241,0,DISTINCT_ANATOMIC_SIMILARITY
+1388.png,Training_Set,Healthy/Healthy518.jpg,Healthy,0.9571,22,0.6608,0.7553,0,DISTINCT_ANATOMIC_SIMILARITY
+1392.png,Training_Set,Glaucoma/Glaucoma1254.jpg,Glaucoma,0.9553,22,0.68,0.6646,0,DISTINCT_ANATOMIC_SIMILARITY
+1394.png,Training_Set,Diabetic Retinopathy/DR113.jpg,Diabetic Retinopathy,0.9559,26,0.7806,0.6336,0,DISTINCT_ANATOMIC_SIMILARITY
+1395.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9503,14,0.779,0.3258,0,DISTINCT_ANATOMIC_SIMILARITY
+1396.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9534,16,0.7924,0.7857,0,DISTINCT_ANATOMIC_SIMILARITY
+1397.png,Training_Set,Myopia/Myopia336.jpg,Myopia,0.952,28,0.8082,0.6463,0,DISTINCT_ANATOMIC_SIMILARITY
+1399.png,Training_Set,Healthy/Healthy655.jpg,Healthy,0.9598,18,0.7175,0.2808,0,DISTINCT_ANATOMIC_SIMILARITY
+14.png,Training_Set,Glaucoma/Glaucoma501.jpg,Glaucoma,0.9515,32,0.7485,-0.1434,0,DISTINCT_ANATOMIC_SIMILARITY
+1401.png,Training_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9583,20,0.8489,0.57,0,DISTINCT_ANATOMIC_SIMILARITY
+1404.png,Training_Set,Glaucoma/Glaucoma656.jpg,Glaucoma,0.9582,20,0.7421,0.6176,0,DISTINCT_ANATOMIC_SIMILARITY
+1408.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9596,28,0.7215,0.1474,0,DISTINCT_ANATOMIC_SIMILARITY
+1409.png,Training_Set,Diabetic Retinopathy/DR1469.jpg,Diabetic Retinopathy,0.9542,24,0.7889,-0.0682,0,DISTINCT_ANATOMIC_SIMILARITY
+1411.png,Training_Set,Glaucoma/Glaucoma572.jpg,Glaucoma,0.9521,32,0.5803,0.617,5,DISTINCT_ANATOMIC_SIMILARITY
+1412.png,Training_Set,Diabetic Retinopathy/DR257.jpg,Diabetic Retinopathy,0.9549,28,0.7568,0.5984,4,DISTINCT_ANATOMIC_SIMILARITY
+1414.png,Training_Set,Diabetic Retinopathy/DR339.jpg,Diabetic Retinopathy,0.9538,20,0.7523,0.6637,7,DISTINCT_ANATOMIC_SIMILARITY
+1415.png,Training_Set,Diabetic Retinopathy/DR254.jpg,Diabetic Retinopathy,0.9507,26,0.737,0.352,0,DISTINCT_ANATOMIC_SIMILARITY
+1418.png,Training_Set,Glaucoma/Glaucoma595.jpg,Glaucoma,0.9591,28,0.8399,0.2259,0,DISTINCT_ANATOMIC_SIMILARITY
+1419.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9636,30,0.7352,-0.1305,0,DISTINCT_ANATOMIC_SIMILARITY
+1422.png,Training_Set,Disc Edema/Disc Edema50.jpg,Disc Edema,0.9633,30,0.7408,0.4319,0,DISTINCT_ANATOMIC_SIMILARITY
+1423.png,Training_Set,Disc Edema/Disc Edema123.jpg,Disc Edema,0.9598,24,0.7958,0.6677,0,DISTINCT_ANATOMIC_SIMILARITY
+1433.png,Training_Set,Glaucoma/Glaucoma884.jpg,Glaucoma,0.9508,24,0.6845,0.0218,4,DISTINCT_ANATOMIC_SIMILARITY
+1437.png,Training_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9545,18,0.7768,0.4563,0,DISTINCT_ANATOMIC_SIMILARITY
+1444.png,Training_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9541,26,0.764,0.3133,0,DISTINCT_ANATOMIC_SIMILARITY
+1451.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9653,18,0.7807,0.4783,9,DISTINCT_ANATOMIC_SIMILARITY
+1452.png,Training_Set,Glaucoma/Glaucoma241.jpg,Glaucoma,0.958,30,0.598,0.7228,0,DISTINCT_ANATOMIC_SIMILARITY
+1457.png,Training_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9519,18,0.7567,0.2403,0,DISTINCT_ANATOMIC_SIMILARITY
+1458.png,Training_Set,Glaucoma/Glaucoma501.jpg,Glaucoma,0.9591,24,0.7376,0.2728,0,DISTINCT_ANATOMIC_SIMILARITY
+1459.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9631,26,0.781,0.5683,8,DISTINCT_ANATOMIC_SIMILARITY
+1463.png,Training_Set,Glaucoma/Glaucoma546.jpg,Glaucoma,0.9512,22,0.7444,0.6449,0,DISTINCT_ANATOMIC_SIMILARITY
+1464.png,Training_Set,Glaucoma/Glaucoma442.jpg,Glaucoma,0.9655,22,0.8145,0.5698,0,DISTINCT_ANATOMIC_SIMILARITY
+1465.png,Training_Set,Glaucoma/Glaucoma680.jpg,Glaucoma,0.9635,32,0.7648,0.0918,0,DISTINCT_ANATOMIC_SIMILARITY
+1468.png,Training_Set,Glaucoma/Glaucoma912.jpg,Glaucoma,0.9568,30,0.7371,0.6417,0,DISTINCT_ANATOMIC_SIMILARITY
+1472.png,Training_Set,Glaucoma/Glaucoma291.jpg,Glaucoma,0.9707,26,0.7158,0.8078,17,DISTINCT_ANATOMIC_SIMILARITY
+1478.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9587,28,0.6714,0.1713,0,DISTINCT_ANATOMIC_SIMILARITY
+148.png,Training_Set,Glaucoma/Glaucoma944.jpg,Glaucoma,0.9506,30,0.7187,-0.1706,0,DISTINCT_ANATOMIC_SIMILARITY
+1482.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.955,20,0.7488,0.6678,0,DISTINCT_ANATOMIC_SIMILARITY
+1485.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9546,20,0.7057,0.7247,4,DISTINCT_ANATOMIC_SIMILARITY
+1499.png,Training_Set,Diabetic Retinopathy/DR178.jpg,Diabetic Retinopathy,0.9549,20,0.7643,0.4319,0,DISTINCT_ANATOMIC_SIMILARITY
+1504.png,Training_Set,Healthy/Healthy752.jpg,Healthy,0.9509,32,0.7148,0.3564,0,DISTINCT_ANATOMIC_SIMILARITY
+1510.png,Training_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9605,24,0.6809,0.2347,0,DISTINCT_ANATOMIC_SIMILARITY
+1513.png,Training_Set,Myopia/Myopia137.jpg,Myopia,0.9551,26,0.7521,0.7197,0,DISTINCT_ANATOMIC_SIMILARITY
+1514.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9602,22,0.7151,0.3369,0,DISTINCT_ANATOMIC_SIMILARITY
+1515.png,Training_Set,Diabetic Retinopathy/DR257.jpg,Diabetic Retinopathy,0.9574,24,0.6725,0.4302,0,DISTINCT_ANATOMIC_SIMILARITY
+1517.png,Training_Set,Diabetic Retinopathy/DR5.jpg,Diabetic Retinopathy,0.9557,26,0.6733,0.342,0,DISTINCT_ANATOMIC_SIMILARITY
+152.png,Training_Set,Healthy/Healthy684.jpg,Healthy,0.9536,34,0.774,0.5065,0,DISTINCT_ANATOMIC_SIMILARITY
+1523.png,Training_Set,Diabetic Retinopathy/DR1374.jpg,Diabetic Retinopathy,0.9524,18,0.6788,0.1999,0,DISTINCT_ANATOMIC_SIMILARITY
+1526.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9548,30,0.6777,0.3209,0,DISTINCT_ANATOMIC_SIMILARITY
+1529.png,Training_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9659,12,0.7964,0.19,0,DISTINCT_ANATOMIC_SIMILARITY
+153.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9537,30,0.8037,0.4442,0,DISTINCT_ANATOMIC_SIMILARITY
+1541.png,Training_Set,Glaucoma/Glaucoma841.jpg,Glaucoma,0.958,24,0.6783,0.4228,0,DISTINCT_ANATOMIC_SIMILARITY
+1542.png,Training_Set,Diabetic Retinopathy/DR539.jpg,Diabetic Retinopathy,0.9644,26,0.7956,0.5219,0,DISTINCT_ANATOMIC_SIMILARITY
+1544.png,Training_Set,Healthy/Healthy942.jpg,Healthy,0.9535,26,0.7256,0.5567,0,DISTINCT_ANATOMIC_SIMILARITY
+155.png,Training_Set,Healthy/Healthy304.jpg,Healthy,0.9537,24,0.6821,0.4639,5,DISTINCT_ANATOMIC_SIMILARITY
+1553.png,Training_Set,Healthy/Healthy645.jpg,Healthy,0.9523,20,0.5809,0.5474,0,DISTINCT_ANATOMIC_SIMILARITY
+1555.png,Training_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9524,12,0.6797,0.552,0,DISTINCT_ANATOMIC_SIMILARITY
+1557.png,Training_Set,Retinitis Pigmentosa/Retinitis Pigmentosa135.jpg,Retinitis Pigmentosa,0.9541,24,0.7385,0.4775,0,DISTINCT_ANATOMIC_SIMILARITY
+1562.png,Training_Set,Diabetic Retinopathy/DR667.jpg,Diabetic Retinopathy,0.9523,28,0.6687,0.5886,0,DISTINCT_ANATOMIC_SIMILARITY
+1564.png,Training_Set,Diabetic Retinopathy/DR113.jpg,Diabetic Retinopathy,0.9529,22,0.7095,0.3914,0,DISTINCT_ANATOMIC_SIMILARITY
+1569.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9617,16,0.7699,0.2579,0,DISTINCT_ANATOMIC_SIMILARITY
+1585.png,Training_Set,Glaucoma/Glaucoma901.jpg,Glaucoma,0.9512,26,0.8029,0.3135,0,DISTINCT_ANATOMIC_SIMILARITY
+1586.png,Training_Set,Healthy/Healthy497.jpg,Healthy,0.9644,18,0.7083,0.5248,0,DISTINCT_ANATOMIC_SIMILARITY
+1588.png,Training_Set,Glaucoma/Glaucoma902.jpg,Glaucoma,0.9553,28,0.6798,0.5486,0,DISTINCT_ANATOMIC_SIMILARITY
+159.png,Training_Set,Diabetic Retinopathy/DR1472.jpg,Diabetic Retinopathy,0.9579,30,0.7396,0.491,0,DISTINCT_ANATOMIC_SIMILARITY
+1597.png,Training_Set,Diabetic Retinopathy/DR917.jpg,Diabetic Retinopathy,0.9565,18,0.7471,0.3542,0,DISTINCT_ANATOMIC_SIMILARITY
+16.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9554,32,0.8173,0.3981,0,DISTINCT_ANATOMIC_SIMILARITY
+160.png,Training_Set,Glaucoma/Glaucoma291.jpg,Glaucoma,0.9584,26,0.7268,0.5352,0,DISTINCT_ANATOMIC_SIMILARITY
+1602.png,Training_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9555,20,0.7394,0.2385,0,DISTINCT_ANATOMIC_SIMILARITY
+1608.png,Training_Set,Diabetic Retinopathy/DR564.jpg,Diabetic Retinopathy,0.9585,6,0.7543,0.5055,0,DISTINCT_ANATOMIC_SIMILARITY
+1609.png,Training_Set,Diabetic Retinopathy/DR5.jpg,Diabetic Retinopathy,0.9521,20,0.8224,0.3129,0,DISTINCT_ANATOMIC_SIMILARITY
+1610.png,Training_Set,Glaucoma/Glaucoma380.jpg,Glaucoma,0.9512,20,0.735,0.4351,0,DISTINCT_ANATOMIC_SIMILARITY
+1614.png,Training_Set,Glaucoma/Glaucoma202.jpg,Glaucoma,0.9584,26,0.6425,0.6569,0,DISTINCT_ANATOMIC_SIMILARITY
+1619.png,Training_Set,Diabetic Retinopathy/DR259.jpg,Diabetic Retinopathy,0.9528,20,0.7243,0.5075,0,DISTINCT_ANATOMIC_SIMILARITY
+1626.png,Training_Set,Diabetic Retinopathy/DR477.jpg,Diabetic Retinopathy,0.9525,8,0.7809,0.5672,0,DISTINCT_ANATOMIC_SIMILARITY
+1628.png,Training_Set,Diabetic Retinopathy/DR686.jpg,Diabetic Retinopathy,0.9517,14,0.7424,0.5151,0,DISTINCT_ANATOMIC_SIMILARITY
+1635.png,Training_Set,Diabetic Retinopathy/DR258.jpg,Diabetic Retinopathy,0.9507,22,0.715,0.3207,0,DISTINCT_ANATOMIC_SIMILARITY
+1637.png,Training_Set,Diabetic Retinopathy/DR682.jpg,Diabetic Retinopathy,0.9557,18,0.7516,0.463,0,DISTINCT_ANATOMIC_SIMILARITY
+1643.png,Training_Set,Diabetic Retinopathy/DR624.jpg,Diabetic Retinopathy,0.9531,22,0.7189,0.0288,0,DISTINCT_ANATOMIC_SIMILARITY
+1644.png,Training_Set,Glaucoma/Glaucoma111.jpg,Glaucoma,0.9624,14,0.7416,0.6546,0,DISTINCT_ANATOMIC_SIMILARITY
+1645.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9704,18,0.7025,0.516,0,DISTINCT_ANATOMIC_SIMILARITY
+1647.png,Training_Set,Glaucoma/Glaucoma1274.jpg,Glaucoma,0.9637,26,0.7253,-0.1872,0,DISTINCT_ANATOMIC_SIMILARITY
+1658.png,Training_Set,Retinal Detachment/Retinal Detachment72.jpg,Retinal Detachment,0.9562,20,0.7579,0.3614,0,DISTINCT_ANATOMIC_SIMILARITY
+1659.png,Training_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9596,14,0.6629,0.6299,0,DISTINCT_ANATOMIC_SIMILARITY
+1661.png,Training_Set,Glaucoma/Glaucoma852.jpg,Glaucoma,0.9525,14,0.7426,0.2093,0,DISTINCT_ANATOMIC_SIMILARITY
+1662.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9511,20,0.7133,0.4391,0,DISTINCT_ANATOMIC_SIMILARITY
+1663.png,Training_Set,Retinitis Pigmentosa/Retinitis Pigmentosa135.jpg,Retinitis Pigmentosa,0.9532,22,0.7093,0.4203,0,DISTINCT_ANATOMIC_SIMILARITY
+1675.png,Training_Set,Glaucoma/Glaucoma475.jpg,Glaucoma,0.9571,20,0.6704,0.2435,0,DISTINCT_ANATOMIC_SIMILARITY
+1681.png,Training_Set,Diabetic Retinopathy/DR630.jpg,Diabetic Retinopathy,0.9518,8,0.772,0.6126,0,DISTINCT_ANATOMIC_SIMILARITY
+1682.png,Training_Set,Diabetic Retinopathy/DR178.jpg,Diabetic Retinopathy,0.9654,22,0.7955,0.5282,0,DISTINCT_ANATOMIC_SIMILARITY
+1684.png,Training_Set,Diabetic Retinopathy/DR1449.jpg,Diabetic Retinopathy,0.9621,18,0.7165,0.5633,0,DISTINCT_ANATOMIC_SIMILARITY
+1687.png,Training_Set,Diabetic Retinopathy/DR1408.jpg,Diabetic Retinopathy,0.9594,28,0.7576,0.604,0,DISTINCT_ANATOMIC_SIMILARITY
+1688.png,Training_Set,Diabetic Retinopathy/DR539.jpg,Diabetic Retinopathy,0.9551,22,0.7652,0.2204,0,DISTINCT_ANATOMIC_SIMILARITY
+1689.png,Training_Set,Glaucoma/Glaucoma1233.jpg,Glaucoma,0.95,18,0.6597,0.325,0,DISTINCT_ANATOMIC_SIMILARITY
+1691.png,Training_Set,Glaucoma/Glaucoma305.jpg,Glaucoma,0.9504,20,0.6797,0.2434,0,DISTINCT_ANATOMIC_SIMILARITY
+1697.png,Training_Set,Glaucoma/Glaucoma149.jpg,Glaucoma,0.9575,22,0.739,0.7878,0,DISTINCT_ANATOMIC_SIMILARITY
+1698.png,Training_Set,Healthy/Healthy984.jpg,Healthy,0.9521,20,0.6984,0.6912,0,DISTINCT_ANATOMIC_SIMILARITY
+1699.png,Training_Set,Macular Scar/Macular Scar153.jpg,Macular Scar,0.9591,24,0.7286,0.5118,0,DISTINCT_ANATOMIC_SIMILARITY
+1701.png,Training_Set,Glaucoma/Glaucoma1254.jpg,Glaucoma,0.9537,26,0.6528,0.4601,0,DISTINCT_ANATOMIC_SIMILARITY
+1703.png,Training_Set,Glaucoma/Glaucoma711.jpg,Glaucoma,0.9532,16,0.7189,0.5031,0,DISTINCT_ANATOMIC_SIMILARITY
+1707.png,Training_Set,Healthy/Healthy156.jpg,Healthy,0.96,32,0.6148,0.2111,0,DISTINCT_ANATOMIC_SIMILARITY
+1709.png,Training_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.9596,10,0.6389,0.5626,0,DISTINCT_ANATOMIC_SIMILARITY
+171.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9524,20,0.7072,0.5545,8,DISTINCT_ANATOMIC_SIMILARITY
+1714.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9512,14,0.7577,0.4772,0,DISTINCT_ANATOMIC_SIMILARITY
+1717.png,Training_Set,Diabetic Retinopathy/DR160.jpg,Diabetic Retinopathy,0.9511,18,0.7396,0.4001,0,DISTINCT_ANATOMIC_SIMILARITY
+172.png,Training_Set,Macular Scar/Macular Scar344.jpg,Macular Scar,0.9503,38,0.7192,0.5466,0,DISTINCT_ANATOMIC_SIMILARITY
+1726.png,Training_Set,Glaucoma/Glaucoma99.jpg,Glaucoma,0.9502,14,0.7501,0.4318,0,DISTINCT_ANATOMIC_SIMILARITY
+1727.png,Training_Set,Glaucoma/Glaucoma442.jpg,Glaucoma,0.9575,18,0.7658,0.244,0,DISTINCT_ANATOMIC_SIMILARITY
+1732.png,Training_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9612,24,0.6323,0.5946,0,DISTINCT_ANATOMIC_SIMILARITY
+1733.png,Training_Set,Glaucoma/Glaucoma576.jpg,Glaucoma,0.9559,34,0.4973,0.5768,0,DISTINCT_ANATOMIC_SIMILARITY
+1737.png,Training_Set,Diabetic Retinopathy/DR66.jpg,Diabetic Retinopathy,0.951,20,0.8036,0.4686,0,DISTINCT_ANATOMIC_SIMILARITY
+1739.png,Training_Set,Diabetic Retinopathy/DR917.jpg,Diabetic Retinopathy,0.951,18,0.7359,0.4654,0,DISTINCT_ANATOMIC_SIMILARITY
+1740.png,Training_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9508,26,0.6817,0.5147,0,DISTINCT_ANATOMIC_SIMILARITY
+1742.png,Training_Set,Healthy/Healthy930.jpg,Healthy,0.9528,26,0.6458,0.5901,0,DISTINCT_ANATOMIC_SIMILARITY
+1743.png,Training_Set,Healthy/Healthy679.jpg,Healthy,0.9511,22,0.6579,0.5713,0,DISTINCT_ANATOMIC_SIMILARITY
+1745.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.9612,38,0.5521,-0.2186,0,DISTINCT_ANATOMIC_SIMILARITY
+1746.png,Training_Set,Myopia/Myopia398.jpg,Myopia,0.9584,18,0.6343,0.4091,0,DISTINCT_ANATOMIC_SIMILARITY
+1748.png,Training_Set,Glaucoma/Glaucoma533.jpg,Glaucoma,0.9523,30,0.5772,0.2084,0,DISTINCT_ANATOMIC_SIMILARITY
+1752.png,Training_Set,Glaucoma/Glaucoma1209.jpg,Glaucoma,0.9539,22,0.7215,0.3703,0,DISTINCT_ANATOMIC_SIMILARITY
+1754.png,Training_Set,Glaucoma/Glaucoma461.jpg,Glaucoma,0.9573,20,0.5687,0.5714,4,DISTINCT_ANATOMIC_SIMILARITY
+1755.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.961,22,0.7393,0.5316,0,DISTINCT_ANATOMIC_SIMILARITY
+1760.png,Training_Set,Healthy/Healthy220.jpg,Healthy,0.9592,22,0.683,0.5834,0,DISTINCT_ANATOMIC_SIMILARITY
+1761.png,Training_Set,Healthy/Healthy745.jpg,Healthy,0.9565,32,0.6413,0.1236,0,DISTINCT_ANATOMIC_SIMILARITY
+1764.png,Training_Set,Healthy/Healthy774.jpg,Healthy,0.9569,22,0.6057,0.2949,0,DISTINCT_ANATOMIC_SIMILARITY
+1766.png,Training_Set,Glaucoma/Glaucoma748.jpg,Glaucoma,0.9587,12,0.6418,0.6475,0,DISTINCT_ANATOMIC_SIMILARITY
+1768.png,Training_Set,Healthy/Healthy644.jpg,Healthy,0.9567,16,0.57,0.5892,4,DISTINCT_ANATOMIC_SIMILARITY
+1771.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.954,28,0.5664,0.6076,0,DISTINCT_ANATOMIC_SIMILARITY
+1773.png,Training_Set,Glaucoma/Glaucoma112.jpg,Glaucoma,0.9607,18,0.6914,0.3489,6,DISTINCT_ANATOMIC_SIMILARITY
+1774.png,Training_Set,Glaucoma/Glaucoma742.jpg,Glaucoma,0.9651,14,0.6036,0.7148,4,DISTINCT_ANATOMIC_SIMILARITY
+1775.png,Training_Set,Glaucoma/Glaucoma795.jpg,Glaucoma,0.9741,14,0.7051,0.6299,0,DISTINCT_ANATOMIC_SIMILARITY
+1780.png,Training_Set,Glaucoma/Glaucoma367.jpg,Glaucoma,0.9546,20,0.6023,0.5944,0,DISTINCT_ANATOMIC_SIMILARITY
+1781.png,Training_Set,Diabetic Retinopathy/DR341.jpg,Diabetic Retinopathy,0.9516,26,0.7543,-0.2384,6,DISTINCT_ANATOMIC_SIMILARITY
+1782.png,Training_Set,Diabetic Retinopathy/DR516.jpg,Diabetic Retinopathy,0.9522,26,0.5996,0.6191,0,DISTINCT_ANATOMIC_SIMILARITY
+1783.png,Training_Set,Diabetic Retinopathy/DR403.jpg,Diabetic Retinopathy,0.9502,16,0.7557,0.4697,4,DISTINCT_ANATOMIC_SIMILARITY
+1784.png,Training_Set,Glaucoma/Glaucoma44.jpg,Glaucoma,0.9616,16,0.6397,0.6266,8,DISTINCT_ANATOMIC_SIMILARITY
+1787.png,Training_Set,Healthy/Healthy267.jpg,Healthy,0.9608,18,0.6034,0.6525,0,DISTINCT_ANATOMIC_SIMILARITY
+1788.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR33.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9582,16,0.7071,0.6013,4,DISTINCT_ANATOMIC_SIMILARITY
+1791.png,Training_Set,Healthy/Healthy219.jpg,Healthy,0.9579,24,0.6378,0.5686,0,DISTINCT_ANATOMIC_SIMILARITY
+1795.png,Training_Set,Healthy/Healthy269.jpg,Healthy,0.953,20,0.6646,0.618,5,DISTINCT_ANATOMIC_SIMILARITY
+1796.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.9594,28,0.6793,0.6541,0,DISTINCT_ANATOMIC_SIMILARITY
+1800.png,Training_Set,Healthy/Healthy749.jpg,Healthy,0.9551,32,0.6786,0.1696,4,DISTINCT_ANATOMIC_SIMILARITY
+1801.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.9564,32,0.7565,0.0428,0,DISTINCT_ANATOMIC_SIMILARITY
+1803.png,Training_Set,Glaucoma/Glaucoma463.jpg,Glaucoma,0.9659,22,0.6812,0.6372,0,DISTINCT_ANATOMIC_SIMILARITY
+1805.png,Training_Set,Healthy/Healthy684.jpg,Healthy,0.9577,20,0.7621,0.4876,0,DISTINCT_ANATOMIC_SIMILARITY
+1808.png,Training_Set,Healthy/Healthy463.jpg,Healthy,0.9596,26,0.6145,0.0989,0,DISTINCT_ANATOMIC_SIMILARITY
+1809.png,Training_Set,Glaucoma/Glaucoma592.jpg,Glaucoma,0.954,14,0.7515,0.7671,0,DISTINCT_ANATOMIC_SIMILARITY
+1811.png,Training_Set,Glaucoma/Glaucoma314.jpg,Glaucoma,0.9549,34,0.6511,0.2014,6,DISTINCT_ANATOMIC_SIMILARITY
+1812.png,Training_Set,Glaucoma/Glaucoma838.jpg,Glaucoma,0.9545,30,0.6762,0.4568,0,DISTINCT_ANATOMIC_SIMILARITY
+1814.png,Training_Set,Glaucoma/Glaucoma682.jpg,Glaucoma,0.954,22,0.6667,0.6268,0,DISTINCT_ANATOMIC_SIMILARITY
+1817.png,Training_Set,Glaucoma/Glaucoma838.jpg,Glaucoma,0.9552,30,0.6654,0.3885,4,DISTINCT_ANATOMIC_SIMILARITY
+1818.png,Training_Set,Glaucoma/Glaucoma682.jpg,Glaucoma,0.9552,16,0.6856,0.5254,4,DISTINCT_ANATOMIC_SIMILARITY
+1819.png,Training_Set,Glaucoma/Glaucoma1258.jpg,Glaucoma,0.9599,16,0.6309,0.6269,0,DISTINCT_ANATOMIC_SIMILARITY
+1821.png,Training_Set,Glaucoma/Glaucoma250.jpg,Glaucoma,0.9522,12,0.6496,0.6633,0,DISTINCT_ANATOMIC_SIMILARITY
+1827.png,Training_Set,Diabetic Retinopathy/DR799.jpg,Diabetic Retinopathy,0.966,22,0.7658,0.5529,0,DISTINCT_ANATOMIC_SIMILARITY
+1828.png,Training_Set,Glaucoma/Glaucoma111.jpg,Glaucoma,0.9698,16,0.6899,0.4946,4,DISTINCT_ANATOMIC_SIMILARITY
+1832.png,Training_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9605,18,0.7331,0.596,0,DISTINCT_ANATOMIC_SIMILARITY
+1833.png,Training_Set,Glaucoma/Glaucoma501.jpg,Glaucoma,0.9687,26,0.7196,0.3941,4,DISTINCT_ANATOMIC_SIMILARITY
+1834.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9546,30,0.6666,0.0759,0,DISTINCT_ANATOMIC_SIMILARITY
+1838.png,Training_Set,Glaucoma/Glaucoma593.jpg,Glaucoma,0.9566,12,0.7398,0.7261,4,DISTINCT_ANATOMIC_SIMILARITY
+1839.png,Training_Set,Glaucoma/Glaucoma596.jpg,Glaucoma,0.9507,36,0.6346,0.4839,0,DISTINCT_ANATOMIC_SIMILARITY
+1842.png,Training_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9575,18,0.7261,0.3499,0,DISTINCT_ANATOMIC_SIMILARITY
+1843.png,Training_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9507,22,0.6221,0.4877,0,DISTINCT_ANATOMIC_SIMILARITY
+1844.png,Training_Set,Glaucoma/Glaucoma326.jpg,Glaucoma,0.9512,26,0.6618,0.164,7,DISTINCT_ANATOMIC_SIMILARITY
+1848.png,Training_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9719,20,0.734,0.5867,0,DISTINCT_ANATOMIC_SIMILARITY
+1849.png,Training_Set,Glaucoma/Glaucoma764.jpg,Glaucoma,0.9563,24,0.6577,0.3951,0,DISTINCT_ANATOMIC_SIMILARITY
+1852.png,Training_Set,Glaucoma/Glaucoma1314.jpg,Glaucoma,0.9506,18,0.6596,0.5732,0,DISTINCT_ANATOMIC_SIMILARITY
+1853.png,Training_Set,Healthy/Healthy553.jpg,Healthy,0.9661,24,0.6659,0.5923,7,DISTINCT_ANATOMIC_SIMILARITY
+1855.png,Training_Set,Healthy/Healthy774.jpg,Healthy,0.9504,24,0.666,0.2951,0,DISTINCT_ANATOMIC_SIMILARITY
+1857.png,Training_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9574,10,0.7436,0.7959,0,DISTINCT_ANATOMIC_SIMILARITY
+1858.png,Training_Set,Glaucoma/Glaucoma287.jpg,Glaucoma,0.9648,14,0.6763,0.636,7,DISTINCT_ANATOMIC_SIMILARITY
+1859.png,Training_Set,Glaucoma/Glaucoma545.jpg,Glaucoma,0.9502,22,0.6513,-0.0872,0,DISTINCT_ANATOMIC_SIMILARITY
+1860.png,Training_Set,Glaucoma/Glaucoma798.jpg,Glaucoma,0.9537,16,0.6703,0.4873,6,DISTINCT_ANATOMIC_SIMILARITY
+1861.png,Training_Set,Glaucoma/Glaucoma890.jpg,Glaucoma,0.9571,32,0.6764,0.2121,0,DISTINCT_ANATOMIC_SIMILARITY
+1862.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.9608,20,0.6592,0.6319,0,DISTINCT_ANATOMIC_SIMILARITY
+1863.png,Training_Set,Disc Edema/Disc Edema96.jpg,Disc Edema,0.9503,20,0.6781,0.6767,0,DISTINCT_ANATOMIC_SIMILARITY
+1867.png,Training_Set,Macular Scar/Macular Scar157.jpg,Macular Scar,0.9598,22,0.7846,0.6586,0,DISTINCT_ANATOMIC_SIMILARITY
+1868.png,Training_Set,Glaucoma/Glaucoma695.jpg,Glaucoma,0.9645,14,0.7077,0.4185,0,DISTINCT_ANATOMIC_SIMILARITY
+1870.png,Training_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9567,16,0.761,0.6731,4,DISTINCT_ANATOMIC_SIMILARITY
+1873.png,Training_Set,Glaucoma/Glaucoma463.jpg,Glaucoma,0.963,18,0.648,0.639,6,DISTINCT_ANATOMIC_SIMILARITY
+1875.png,Training_Set,Glaucoma/Glaucoma603.jpg,Glaucoma,0.9565,16,0.6885,0.6129,0,DISTINCT_ANATOMIC_SIMILARITY
+1877.png,Training_Set,Diabetic Retinopathy/DR403.jpg,Diabetic Retinopathy,0.9557,28,0.7669,0.1349,0,DISTINCT_ANATOMIC_SIMILARITY
+1878.png,Training_Set,Healthy/Healthy809.jpg,Healthy,0.9528,32,0.6109,0.2925,0,DISTINCT_ANATOMIC_SIMILARITY
+1880.png,Training_Set,Healthy/Healthy329.jpg,Healthy,0.9548,20,0.657,0.6452,9,DISTINCT_ANATOMIC_SIMILARITY
+1881.png,Training_Set,Diabetic Retinopathy/DR516.jpg,Diabetic Retinopathy,0.9567,24,0.7644,0.0051,7,DISTINCT_ANATOMIC_SIMILARITY
+1883.png,Training_Set,Glaucoma/Glaucoma501.jpg,Glaucoma,0.9608,32,0.7228,0.3606,4,DISTINCT_ANATOMIC_SIMILARITY
+1886.png,Training_Set,Healthy/Healthy731.jpg,Healthy,0.9509,28,0.6807,0.5877,0,DISTINCT_ANATOMIC_SIMILARITY
+1887.png,Training_Set,Glaucoma/Glaucoma932.jpg,Glaucoma,0.9599,18,0.7882,0.7301,0,DISTINCT_ANATOMIC_SIMILARITY
+1889.png,Training_Set,Glaucoma/Glaucoma1262.jpg,Glaucoma,0.9654,18,0.7418,0.4533,14,DISTINCT_ANATOMIC_SIMILARITY
+189.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9576,22,0.7009,0.5064,5,DISTINCT_ANATOMIC_SIMILARITY
+1893.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9591,24,0.6267,0.4357,4,DISTINCT_ANATOMIC_SIMILARITY
+1895.png,Training_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.959,30,0.6916,0.5182,0,DISTINCT_ANATOMIC_SIMILARITY
+1896.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9654,12,0.7072,0.5171,0,DISTINCT_ANATOMIC_SIMILARITY
+1897.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9562,22,0.5988,0.4394,0,DISTINCT_ANATOMIC_SIMILARITY
+1900.png,Training_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9515,26,0.7131,0.2843,0,DISTINCT_ANATOMIC_SIMILARITY
+1905.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9509,12,0.7135,0.4257,0,DISTINCT_ANATOMIC_SIMILARITY
+1906.png,Training_Set,Glaucoma/Glaucoma931.jpg,Glaucoma,0.9518,20,0.7251,0.3856,0,DISTINCT_ANATOMIC_SIMILARITY
+1907.png,Training_Set,Diabetic Retinopathy/DR1463.jpg,Diabetic Retinopathy,0.9531,28,0.7426,0.314,0,DISTINCT_ANATOMIC_SIMILARITY
+1910.png,Training_Set,Glaucoma/Glaucoma1244.jpg,Glaucoma,0.95,28,0.6689,0.5165,0,DISTINCT_ANATOMIC_SIMILARITY
+1912.png,Training_Set,Glaucoma/Glaucoma884.jpg,Glaucoma,0.9539,22,0.6798,0.6042,0,DISTINCT_ANATOMIC_SIMILARITY
+1913.png,Training_Set,Glaucoma/Glaucoma720.jpg,Glaucoma,0.9552,32,0.7452,0.457,0,DISTINCT_ANATOMIC_SIMILARITY
+1918.png,Training_Set,Glaucoma/Glaucoma1337.jpg,Glaucoma,0.9505,16,0.6652,0.449,0,DISTINCT_ANATOMIC_SIMILARITY
+1920.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR60.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9505,28,0.5792,0.201,0,DISTINCT_ANATOMIC_SIMILARITY
+193.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9565,32,0.7698,-0.4561,0,DISTINCT_ANATOMIC_SIMILARITY
+202.png,Training_Set,Diabetic Retinopathy/DR265.jpg,Diabetic Retinopathy,0.9546,32,0.8047,0.3222,0,DISTINCT_ANATOMIC_SIMILARITY
+203.png,Training_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9508,32,0.7971,-0.0118,0,DISTINCT_ANATOMIC_SIMILARITY
+204.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9551,30,0.8374,0.309,0,DISTINCT_ANATOMIC_SIMILARITY
+206.png,Training_Set,Glaucoma/Glaucoma719.jpg,Glaucoma,0.9591,24,0.7247,0.6866,0,DISTINCT_ANATOMIC_SIMILARITY
+209.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR43.jpg,Central Serous Chorioretinopathy [Color Fundus],0.957,34,0.682,0.2572,0,DISTINCT_ANATOMIC_SIMILARITY
+21.png,Training_Set,Glaucoma/Glaucoma566.jpg,Glaucoma,0.958,26,0.688,0.5055,0,DISTINCT_ANATOMIC_SIMILARITY
+220.png,Training_Set,Glaucoma/Glaucoma2.jpg,Glaucoma,0.9512,26,0.6941,0.6821,0,DISTINCT_ANATOMIC_SIMILARITY
+221.png,Training_Set,Glaucoma/Glaucoma506.jpg,Glaucoma,0.9529,30,0.7514,-0.0061,0,DISTINCT_ANATOMIC_SIMILARITY
+23.png,Training_Set,Healthy/Healthy731.jpg,Healthy,0.9637,28,0.8478,0.231,0,DISTINCT_ANATOMIC_SIMILARITY
+25.png,Training_Set,Glaucoma/Glaucoma1274.jpg,Glaucoma,0.9508,38,0.7549,0.4405,0,DISTINCT_ANATOMIC_SIMILARITY
+253.png,Training_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9506,30,0.6837,-0.136,0,DISTINCT_ANATOMIC_SIMILARITY
+256.png,Training_Set,Macular Scar/Macular Scar378.jpg,Macular Scar,0.9564,32,0.7621,0.5949,0,DISTINCT_ANATOMIC_SIMILARITY
+258.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9613,30,0.7033,-0.1263,0,DISTINCT_ANATOMIC_SIMILARITY
+260.png,Training_Set,Glaucoma/Glaucoma1296.jpg,Glaucoma,0.9607,32,0.8002,0.2443,0,DISTINCT_ANATOMIC_SIMILARITY
+261.png,Training_Set,Disc Edema/Disc Edema96.jpg,Disc Edema,0.9518,30,0.6747,-0.2397,0,DISTINCT_ANATOMIC_SIMILARITY
+269.png,Training_Set,Glaucoma/Glaucoma944.jpg,Glaucoma,0.9556,22,0.7832,0.5453,0,DISTINCT_ANATOMIC_SIMILARITY
+270.png,Training_Set,Glaucoma/Glaucoma1336.jpg,Glaucoma,0.9544,22,0.7414,0.5761,0,DISTINCT_ANATOMIC_SIMILARITY
+271.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9501,32,0.6667,-0.1622,0,DISTINCT_ANATOMIC_SIMILARITY
+28.png,Training_Set,Glaucoma/Glaucoma655.jpg,Glaucoma,0.9528,26,0.8228,0.1317,0,DISTINCT_ANATOMIC_SIMILARITY
+284.png,Training_Set,Diabetic Retinopathy/DR1365.jpg,Diabetic Retinopathy,0.9522,30,0.7392,0.0789,0,DISTINCT_ANATOMIC_SIMILARITY
+290.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9529,24,0.7933,0.6764,0,DISTINCT_ANATOMIC_SIMILARITY
+292.png,Training_Set,Macular Scar/Macular Scar378.jpg,Macular Scar,0.9524,32,0.7489,0.5659,4,DISTINCT_ANATOMIC_SIMILARITY
+293.png,Training_Set,Healthy/Healthy221.jpg,Healthy,0.9586,28,0.7146,0.4573,0,DISTINCT_ANATOMIC_SIMILARITY
+295.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9566,28,0.7195,-0.1133,0,DISTINCT_ANATOMIC_SIMILARITY
+297.png,Training_Set,Macular Scar/Macular Scar164.jpg,Macular Scar,0.9521,22,0.7339,0.6025,4,DISTINCT_ANATOMIC_SIMILARITY
+298.png,Training_Set,Diabetic Retinopathy/DR1450.jpg,Diabetic Retinopathy,0.9575,32,0.724,0.3785,0,DISTINCT_ANATOMIC_SIMILARITY
+302.png,Training_Set,Disc Edema/Disc Edema86.jpg,Disc Edema,0.9507,26,0.8051,0.3973,0,DISTINCT_ANATOMIC_SIMILARITY
+310.png,Training_Set,Glaucoma/Glaucoma292.jpg,Glaucoma,0.9505,22,0.7093,0.6096,0,DISTINCT_ANATOMIC_SIMILARITY
+312.png,Training_Set,Macular Scar/Macular Scar344.jpg,Macular Scar,0.9506,22,0.704,0.729,0,DISTINCT_ANATOMIC_SIMILARITY
+317.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9612,22,0.8245,0.5003,0,DISTINCT_ANATOMIC_SIMILARITY
+325.png,Training_Set,Healthy/Healthy269.jpg,Healthy,0.9518,24,0.6506,0.2855,4,DISTINCT_ANATOMIC_SIMILARITY
+336.png,Training_Set,Glaucoma/Glaucoma113.jpg,Glaucoma,0.95,26,0.5905,0.6329,0,DISTINCT_ANATOMIC_SIMILARITY
+339.png,Training_Set,Macular Scar/Macular Scar384.jpg,Macular Scar,0.9503,34,0.6776,0.2032,0,DISTINCT_ANATOMIC_SIMILARITY
+364.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9516,20,0.8022,0.5891,6,DISTINCT_ANATOMIC_SIMILARITY
+37.png,Training_Set,Glaucoma/Glaucoma443.jpg,Glaucoma,0.9508,26,0.8253,0.3075,0,DISTINCT_ANATOMIC_SIMILARITY
+374.png,Training_Set,Glaucoma/Glaucoma363.jpg,Glaucoma,0.9526,28,0.7104,-0.1015,0,DISTINCT_ANATOMIC_SIMILARITY
+376.png,Training_Set,Diabetic Retinopathy/DR1468.jpg,Diabetic Retinopathy,0.9512,24,0.792,0.6437,0,DISTINCT_ANATOMIC_SIMILARITY
+382.png,Training_Set,Glaucoma/Glaucoma112.jpg,Glaucoma,0.9603,24,0.707,0.5467,0,DISTINCT_ANATOMIC_SIMILARITY
+383.png,Training_Set,Glaucoma/Glaucoma462.jpg,Glaucoma,0.9606,32,0.7066,-0.1277,4,DISTINCT_ANATOMIC_SIMILARITY
+387.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR20.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9545,28,0.68,0.5113,0,DISTINCT_ANATOMIC_SIMILARITY
+395.png,Training_Set,Diabetic Retinopathy/DR520.jpg,Diabetic Retinopathy,0.9596,16,0.7542,0.5923,0,DISTINCT_ANATOMIC_SIMILARITY
+406.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9664,26,0.6611,0.35,6,DISTINCT_ANATOMIC_SIMILARITY
+408.png,Training_Set,Glaucoma/Glaucoma566.jpg,Glaucoma,0.9523,32,0.6805,0.3238,0,DISTINCT_ANATOMIC_SIMILARITY
+410.png,Training_Set,Disc Edema/Disc Edema96.jpg,Disc Edema,0.95,30,0.6247,-0.2098,5,DISTINCT_ANATOMIC_SIMILARITY
+414.png,Training_Set,Glaucoma/Glaucoma863.jpg,Glaucoma,0.963,30,0.7407,-0.2568,0,DISTINCT_ANATOMIC_SIMILARITY
+420.png,Training_Set,Healthy/Healthy703.jpg,Healthy,0.9506,24,0.6024,0.6079,0,DISTINCT_ANATOMIC_SIMILARITY
+431.png,Training_Set,Glaucoma/Glaucoma363.jpg,Glaucoma,0.9569,32,0.7333,0.5207,0,DISTINCT_ANATOMIC_SIMILARITY
+434.png,Training_Set,Healthy/Healthy829.jpg,Healthy,0.9597,20,0.6744,0.5752,0,DISTINCT_ANATOMIC_SIMILARITY
+435.png,Training_Set,Healthy/Healthy200.jpg,Healthy,0.9609,34,0.5637,0.3353,0,DISTINCT_ANATOMIC_SIMILARITY
+44.png,Training_Set,Diabetic Retinopathy/DR254.jpg,Diabetic Retinopathy,0.9518,30,0.7183,0.0956,4,DISTINCT_ANATOMIC_SIMILARITY
+442.png,Training_Set,Glaucoma/Glaucoma545.jpg,Glaucoma,0.958,26,0.7008,-0.0019,0,DISTINCT_ANATOMIC_SIMILARITY
+449.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9618,22,0.7107,0.3588,4,DISTINCT_ANATOMIC_SIMILARITY
+458.png,Training_Set,Glaucoma/Glaucoma305.jpg,Glaucoma,0.9599,40,0.7418,0.4667,0,DISTINCT_ANATOMIC_SIMILARITY
+46.png,Training_Set,Glaucoma/Glaucoma742.jpg,Glaucoma,0.952,20,0.543,0.4231,0,DISTINCT_ANATOMIC_SIMILARITY
+462.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR15.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9637,28,0.6388,0.4488,0,DISTINCT_ANATOMIC_SIMILARITY
+463.png,Training_Set,Diabetic Retinopathy/DR260.jpg,Diabetic Retinopathy,0.9553,30,0.6915,0.0224,4,DISTINCT_ANATOMIC_SIMILARITY
+466.png,Training_Set,Healthy/Healthy829.jpg,Healthy,0.9546,34,0.7044,0.4532,0,DISTINCT_ANATOMIC_SIMILARITY
+471.png,Training_Set,Healthy/Healthy293.jpg,Healthy,0.9514,22,0.7125,0.5711,0,DISTINCT_ANATOMIC_SIMILARITY
+478.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9683,38,0.8007,0.4442,6,DISTINCT_ANATOMIC_SIMILARITY
+479.png,Training_Set,Diabetic Retinopathy/DR254.jpg,Diabetic Retinopathy,0.9561,34,0.7494,0.1715,0,DISTINCT_ANATOMIC_SIMILARITY
+482.png,Training_Set,Healthy/Healthy599.jpg,Healthy,0.9501,36,0.6441,0.1783,0,DISTINCT_ANATOMIC_SIMILARITY
+504.png,Training_Set,Glaucoma/Glaucoma911.jpg,Glaucoma,0.9597,32,0.7169,-0.1388,0,DISTINCT_ANATOMIC_SIMILARITY
+51.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9611,32,0.8425,0.054,0,DISTINCT_ANATOMIC_SIMILARITY
+516.png,Training_Set,Glaucoma/Glaucoma931.jpg,Glaucoma,0.9552,26,0.7796,0.4889,5,DISTINCT_ANATOMIC_SIMILARITY
+52.png,Training_Set,Disc Edema/Disc Edema84.jpg,Disc Edema,0.9505,26,0.8631,-0.2418,0,DISTINCT_ANATOMIC_SIMILARITY
+520.png,Training_Set,Glaucoma/Glaucoma1258.jpg,Glaucoma,0.9565,30,0.602,0.2619,0,DISTINCT_ANATOMIC_SIMILARITY
+524.png,Training_Set,Healthy/Healthy252.jpg,Healthy,0.9656,30,0.6724,0.3565,0,DISTINCT_ANATOMIC_SIMILARITY
+529.png,Training_Set,Glaucoma/Glaucoma29.jpg,Glaucoma,0.9617,28,0.833,0.1159,7,DISTINCT_ANATOMIC_SIMILARITY
+531.png,Training_Set,Diabetic Retinopathy/DR726.jpg,Diabetic Retinopathy,0.9618,20,0.8247,0.7101,0,DISTINCT_ANATOMIC_SIMILARITY
+532.png,Training_Set,Glaucoma/Glaucoma269.jpg,Glaucoma,0.9616,16,0.7456,0.4133,0,DISTINCT_ANATOMIC_SIMILARITY
+537.png,Training_Set,Glaucoma/Glaucoma776.jpg,Glaucoma,0.9626,18,0.6733,0.681,7,DISTINCT_ANATOMIC_SIMILARITY
+538.png,Training_Set,Diabetic Retinopathy/DR480.jpg,Diabetic Retinopathy,0.9609,28,0.7335,0.0587,0,DISTINCT_ANATOMIC_SIMILARITY
+539.png,Training_Set,Diabetic Retinopathy/DR239.jpg,Diabetic Retinopathy,0.9578,24,0.7149,0.5105,0,DISTINCT_ANATOMIC_SIMILARITY
+541.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9568,34,0.6708,-0.0778,0,DISTINCT_ANATOMIC_SIMILARITY
+55.png,Training_Set,Healthy/Healthy268.jpg,Healthy,0.9553,22,0.6622,0.6292,0,DISTINCT_ANATOMIC_SIMILARITY
+553.png,Training_Set,Disc Edema/Disc Edema35.jpg,Disc Edema,0.955,34,0.6997,0.7174,0,DISTINCT_ANATOMIC_SIMILARITY
+554.png,Training_Set,Glaucoma/Glaucoma292.jpg,Glaucoma,0.954,22,0.6752,0.6863,6,DISTINCT_ANATOMIC_SIMILARITY
+558.png,Training_Set,Disc Edema/Disc Edema86.jpg,Disc Edema,0.9538,22,0.7392,0.7288,0,DISTINCT_ANATOMIC_SIMILARITY
+560.png,Training_Set,Disc Edema/Disc Edema83.jpg,Disc Edema,0.9562,30,0.8719,0.0455,0,DISTINCT_ANATOMIC_SIMILARITY
+574.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9532,30,0.7341,-0.4106,0,DISTINCT_ANATOMIC_SIMILARITY
+578.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9587,26,0.8154,-0.0412,0,DISTINCT_ANATOMIC_SIMILARITY
+579.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9586,26,0.8035,0.4177,0,DISTINCT_ANATOMIC_SIMILARITY
+585.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9572,20,0.7814,0.395,0,DISTINCT_ANATOMIC_SIMILARITY
+586.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9635,22,0.7978,0.3497,5,DISTINCT_ANATOMIC_SIMILARITY
+591.png,Training_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9585,20,0.7204,0.525,4,DISTINCT_ANATOMIC_SIMILARITY
+593.png,Training_Set,Diabetic Retinopathy/DR1472.jpg,Diabetic Retinopathy,0.9536,28,0.7724,0.5401,0,DISTINCT_ANATOMIC_SIMILARITY
+594.png,Training_Set,Glaucoma/Glaucoma472.jpg,Glaucoma,0.96,26,0.816,0.3646,0,DISTINCT_ANATOMIC_SIMILARITY
+595.png,Training_Set,Glaucoma/Glaucoma595.jpg,Glaucoma,0.9519,16,0.8683,0.3439,0,DISTINCT_ANATOMIC_SIMILARITY
+6.png,Training_Set,Glaucoma/Glaucoma257.jpg,Glaucoma,0.9517,26,0.7895,-0.031,0,DISTINCT_ANATOMIC_SIMILARITY
+60.png,Training_Set,Healthy/Healthy829.jpg,Healthy,0.9581,26,0.7402,0.4477,0,DISTINCT_ANATOMIC_SIMILARITY
+602.png,Training_Set,Disc Edema/Disc Edema96.jpg,Disc Edema,0.9519,26,0.6766,0.6292,0,DISTINCT_ANATOMIC_SIMILARITY
+610.png,Training_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9565,22,0.8092,0.6793,0,DISTINCT_ANATOMIC_SIMILARITY
+611.png,Training_Set,Healthy/Healthy684.jpg,Healthy,0.9559,24,0.7558,0.5968,0,DISTINCT_ANATOMIC_SIMILARITY
+614.png,Training_Set,Diabetic Retinopathy/DR333.jpg,Diabetic Retinopathy,0.9533,24,0.8012,0.0231,0,DISTINCT_ANATOMIC_SIMILARITY
+624.png,Training_Set,Diabetic Retinopathy/DR624.jpg,Diabetic Retinopathy,0.9525,28,0.8873,0.0859,0,DISTINCT_ANATOMIC_SIMILARITY
+626.png,Training_Set,Glaucoma/Glaucoma595.jpg,Glaucoma,0.9596,22,0.8045,0.2555,0,DISTINCT_ANATOMIC_SIMILARITY
+649.png,Training_Set,Disc Edema/Disc Edema78.jpg,Disc Edema,0.9533,24,0.7734,0.3349,0,DISTINCT_ANATOMIC_SIMILARITY
+651.png,Training_Set,Glaucoma/Glaucoma957.jpg,Glaucoma,0.9563,30,0.7798,0.5648,0,DISTINCT_ANATOMIC_SIMILARITY
+658.png,Training_Set,Healthy/Healthy747.jpg,Healthy,0.9544,24,0.7859,0.6702,0,DISTINCT_ANATOMIC_SIMILARITY
+659.png,Training_Set,Glaucoma/Glaucoma305.jpg,Glaucoma,0.9554,22,0.7016,-0.1807,0,DISTINCT_ANATOMIC_SIMILARITY
+664.png,Training_Set,Glaucoma/Glaucoma932.jpg,Glaucoma,0.9545,18,0.7984,0.5587,0,DISTINCT_ANATOMIC_SIMILARITY
+67.png,Training_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.96,28,0.7142,0.5252,8,DISTINCT_ANATOMIC_SIMILARITY
+673.png,Training_Set,Glaucoma/Glaucoma363.jpg,Glaucoma,0.9537,14,0.767,0.8077,5,DISTINCT_ANATOMIC_SIMILARITY
+674.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9526,24,0.7297,0.4627,4,DISTINCT_ANATOMIC_SIMILARITY
+677.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.951,22,0.7789,0.6675,0,DISTINCT_ANATOMIC_SIMILARITY
+68.png,Training_Set,Macular Scar/Macular Scar157.jpg,Macular Scar,0.9569,34,0.7467,0.3609,0,DISTINCT_ANATOMIC_SIMILARITY
+687.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9574,22,0.7897,0.4139,4,DISTINCT_ANATOMIC_SIMILARITY
+69.png,Training_Set,Glaucoma/Glaucoma363.jpg,Glaucoma,0.9513,32,0.6913,0.0384,0,DISTINCT_ANATOMIC_SIMILARITY
+693.png,Training_Set,Healthy/Healthy749.jpg,Healthy,0.9598,20,0.8168,0.1517,0,DISTINCT_ANATOMIC_SIMILARITY
+698.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9572,26,0.714,0.5859,0,DISTINCT_ANATOMIC_SIMILARITY
+701.png,Training_Set,Glaucoma/Glaucoma945.jpg,Glaucoma,0.9504,22,0.7454,0.2625,0,DISTINCT_ANATOMIC_SIMILARITY
+703.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9612,20,0.7564,0.536,4,DISTINCT_ANATOMIC_SIMILARITY
+704.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9669,18,0.7528,0.4957,0,DISTINCT_ANATOMIC_SIMILARITY
+705.png,Training_Set,Diabetic Retinopathy/DR207.jpg,Diabetic Retinopathy,0.9506,26,0.8393,0.2043,0,DISTINCT_ANATOMIC_SIMILARITY
+716.png,Training_Set,Diabetic Retinopathy/DR1463.jpg,Diabetic Retinopathy,0.9591,28,0.7635,0.4019,0,DISTINCT_ANATOMIC_SIMILARITY
+717.png,Training_Set,Glaucoma/Glaucoma400.jpg,Glaucoma,0.9503,32,0.7233,0.4924,0,DISTINCT_ANATOMIC_SIMILARITY
+723.png,Training_Set,Glaucoma/Glaucoma910.jpg,Glaucoma,0.9555,24,0.8508,0.6092,0,DISTINCT_ANATOMIC_SIMILARITY
+730.png,Training_Set,Glaucoma/Glaucoma925.jpg,Glaucoma,0.9557,22,0.6474,0.7053,5,DISTINCT_ANATOMIC_SIMILARITY
+732.png,Training_Set,Glaucoma/Glaucoma626.jpg,Glaucoma,0.9573,28,0.742,0.5688,0,DISTINCT_ANATOMIC_SIMILARITY
+733.png,Training_Set,Glaucoma/Glaucoma626.jpg,Glaucoma,0.9582,24,0.7535,0.5228,0,DISTINCT_ANATOMIC_SIMILARITY
+735.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9517,20,0.8025,0.6699,0,DISTINCT_ANATOMIC_SIMILARITY
+740.png,Training_Set,Glaucoma/Glaucoma546.jpg,Glaucoma,0.9511,34,0.774,0.5807,0,DISTINCT_ANATOMIC_SIMILARITY
+75.png,Training_Set,Healthy/Healthy952.jpg,Healthy,0.9596,34,0.8064,0.2892,0,DISTINCT_ANATOMIC_SIMILARITY
+753.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9592,34,0.7903,0.6335,0,DISTINCT_ANATOMIC_SIMILARITY
+757.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9665,20,0.6346,0.6771,8,DISTINCT_ANATOMIC_SIMILARITY
+758.png,Training_Set,Glaucoma/Glaucoma651.jpg,Glaucoma,0.9547,16,0.4822,0.6701,0,DISTINCT_ANATOMIC_SIMILARITY
+764.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9613,30,0.722,0.3985,0,DISTINCT_ANATOMIC_SIMILARITY
+765.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9629,22,0.7765,0.6485,7,DISTINCT_ANATOMIC_SIMILARITY
+766.png,Training_Set,Glaucoma/Glaucoma256.jpg,Glaucoma,0.9573,24,0.8206,0.6333,0,DISTINCT_ANATOMIC_SIMILARITY
+776.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9557,18,0.7459,0.5935,0,DISTINCT_ANATOMIC_SIMILARITY
+782.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9595,28,0.7519,0.6154,4,DISTINCT_ANATOMIC_SIMILARITY
+793.png,Training_Set,Glaucoma/Glaucoma1288.jpg,Glaucoma,0.9524,18,0.8167,0.5473,0,DISTINCT_ANATOMIC_SIMILARITY
+802.png,Training_Set,Glaucoma/Glaucoma409.jpg,Glaucoma,0.9553,14,0.679,0.6005,4,DISTINCT_ANATOMIC_SIMILARITY
+805.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9573,22,0.7463,0.6258,4,DISTINCT_ANATOMIC_SIMILARITY
+81.png,Training_Set,Myopia/Myopia494.jpg,Myopia,0.9541,30,0.7489,0.2009,0,DISTINCT_ANATOMIC_SIMILARITY
+810.png,Training_Set,Diabetic Retinopathy/DR66.jpg,Diabetic Retinopathy,0.9541,30,0.813,0.063,0,DISTINCT_ANATOMIC_SIMILARITY
+811.png,Training_Set,Glaucoma/Glaucoma506.jpg,Glaucoma,0.9643,22,0.8258,0.4952,0,DISTINCT_ANATOMIC_SIMILARITY
+814.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR33.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9584,26,0.6776,0.4835,4,DISTINCT_ANATOMIC_SIMILARITY
+815.png,Training_Set,Glaucoma/Glaucoma558.jpg,Glaucoma,0.9528,30,0.6191,0.273,0,DISTINCT_ANATOMIC_SIMILARITY
+817.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9537,22,0.7147,0.3045,0,DISTINCT_ANATOMIC_SIMILARITY
+818.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9715,24,0.7646,0.4642,0,DISTINCT_ANATOMIC_SIMILARITY
+826.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9505,30,0.7584,-0.1645,0,DISTINCT_ANATOMIC_SIMILARITY
+830.png,Training_Set,Disc Edema/Disc Edema78.jpg,Disc Edema,0.9526,34,0.6754,-0.0778,0,DISTINCT_ANATOMIC_SIMILARITY
+833.png,Training_Set,Diabetic Retinopathy/DR1472.jpg,Diabetic Retinopathy,0.9562,34,0.7025,0.6549,5,DISTINCT_ANATOMIC_SIMILARITY
+85.png,Training_Set,Diabetic Retinopathy/DR113.jpg,Diabetic Retinopathy,0.9528,32,0.7951,-0.1727,0,DISTINCT_ANATOMIC_SIMILARITY
+850.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9611,20,0.7351,0.491,9,DISTINCT_ANATOMIC_SIMILARITY
+854.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9564,30,0.7952,0.5005,0,DISTINCT_ANATOMIC_SIMILARITY
+860.png,Training_Set,Glaucoma/Glaucoma290.jpg,Glaucoma,0.9539,26,0.7212,0.4758,0,DISTINCT_ANATOMIC_SIMILARITY
+863.png,Training_Set,Healthy/Healthy503.jpg,Healthy,0.9528,22,0.6503,0.7013,0,DISTINCT_ANATOMIC_SIMILARITY
+872.png,Training_Set,Healthy/Healthy684.jpg,Healthy,0.956,26,0.6882,-0.0661,0,DISTINCT_ANATOMIC_SIMILARITY
+882.png,Training_Set,Glaucoma/Glaucoma912.jpg,Glaucoma,0.9519,22,0.721,0.7197,0,DISTINCT_ANATOMIC_SIMILARITY
+883.png,Training_Set,Disc Edema/Disc Edema121.jpg,Disc Edema,0.9505,30,0.7125,-0.3588,0,DISTINCT_ANATOMIC_SIMILARITY
+898.png,Training_Set,Glaucoma/Glaucoma910.jpg,Glaucoma,0.954,24,0.8245,-0.3675,0,DISTINCT_ANATOMIC_SIMILARITY
+90.png,Training_Set,Healthy/Healthy488.jpg,Healthy,0.9514,34,0.6531,0.0478,6,DISTINCT_ANATOMIC_SIMILARITY
+901.png,Training_Set,Glaucoma/Glaucoma247.jpg,Glaucoma,0.9615,30,0.6297,0.6547,0,DISTINCT_ANATOMIC_SIMILARITY
+904.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9614,20,0.7928,0.5446,9,DISTINCT_ANATOMIC_SIMILARITY
+908.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9612,20,0.7433,0.5585,4,DISTINCT_ANATOMIC_SIMILARITY
+909.png,Training_Set,Healthy/Healthy684.jpg,Healthy,0.9589,26,0.7239,0.6248,0,DISTINCT_ANATOMIC_SIMILARITY
+910.png,Training_Set,Glaucoma/Glaucoma558.jpg,Glaucoma,0.9528,30,0.6706,0.2162,0,DISTINCT_ANATOMIC_SIMILARITY
+92.png,Training_Set,Glaucoma/Glaucoma1336.jpg,Glaucoma,0.9594,30,0.7233,0.3897,0,DISTINCT_ANATOMIC_SIMILARITY
+926.png,Training_Set,Healthy/Healthy599.jpg,Healthy,0.9537,18,0.6898,0.7035,0,DISTINCT_ANATOMIC_SIMILARITY
+94.png,Training_Set,Glaucoma/Glaucoma489.jpg,Glaucoma,0.9593,20,0.667,0.3736,0,DISTINCT_ANATOMIC_SIMILARITY
+941.png,Training_Set,Glaucoma/Glaucoma265.jpg,Glaucoma,0.9557,32,0.7595,-0.0999,0,DISTINCT_ANATOMIC_SIMILARITY
+942.png,Training_Set,Glaucoma/Glaucoma609.jpg,Glaucoma,0.9593,26,0.7227,0.3993,0,DISTINCT_ANATOMIC_SIMILARITY
+949.png,Training_Set,Diabetic Retinopathy/DR399.jpg,Diabetic Retinopathy,0.9566,20,0.726,0.0611,0,DISTINCT_ANATOMIC_SIMILARITY
+95.png,Training_Set,Glaucoma/Glaucoma478.jpg,Glaucoma,0.951,24,0.7042,0.4825,4,DISTINCT_ANATOMIC_SIMILARITY
+956.png,Training_Set,Healthy/Healthy684.jpg,Healthy,0.9557,22,0.7458,0.4714,4,DISTINCT_ANATOMIC_SIMILARITY
+957.png,Training_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.9524,32,0.7152,-0.1589,0,DISTINCT_ANATOMIC_SIMILARITY
+958.png,Training_Set,Glaucoma/Glaucoma306.jpg,Glaucoma,0.9549,34,0.7445,0.5291,0,DISTINCT_ANATOMIC_SIMILARITY
+969.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9585,16,0.7069,0.5884,0,DISTINCT_ANATOMIC_SIMILARITY
+970.png,Training_Set,Glaucoma/Glaucoma735.jpg,Glaucoma,0.9546,22,0.7461,0.4681,0,DISTINCT_ANATOMIC_SIMILARITY
+973.png,Training_Set,Healthy/Healthy445.jpg,Healthy,0.9539,18,0.7422,0.5581,0,DISTINCT_ANATOMIC_SIMILARITY
+975.png,Training_Set,Central Serous Chorioretinopathy [Color Fundus]/CSCR24.jpg,Central Serous Chorioretinopathy [Color Fundus],0.9566,20,0.7441,0.2761,7,DISTINCT_ANATOMIC_SIMILARITY
+978.png,Training_Set,Disc Edema/Disc Edema76.jpg,Disc Edema,0.9636,26,0.7297,0.5757,0,DISTINCT_ANATOMIC_SIMILARITY
+988.png,Training_Set,Glaucoma/Glaucoma363.jpg,Glaucoma,0.9563,36,0.7384,-0.1601,0,DISTINCT_ANATOMIC_SIMILARITY
+997.png,Training_Set,Healthy/Healthy664.jpg,Healthy,0.9523,28,0.866,-0.3317,0,DISTINCT_ANATOMIC_SIMILARITY

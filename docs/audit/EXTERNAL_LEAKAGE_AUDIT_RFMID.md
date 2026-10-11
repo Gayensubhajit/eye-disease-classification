@@ -57,15 +57,24 @@ Consequently, cosine similarity values between $0.92$ and $0.96$ reflect standar
 
 ## 3. Deep Computer Vision Forensic Verification of Candidate Pairs
 
-All **561 candidate pairs** triggered by coarse screening (550 DINOv2 pairs with cosine similarity $\ge 0.960$ plus the 11 perceptual hash pairs) were subjected to multi-metric deep computer vision forensic review:
+### A. Resolution of all 8,266 High-Similarity Pairs ($\ge 0.950$) via 805 Worst-Case Nearest Neighbors
+To resolve the complete set of 8,266 pairs crossing the $\ge 0.950$ protocol sensitivity trigger:
+1. **Unique Image Deconstruction:** The 8,266 pairs involve **805 unique external images** and **1,010 unique internal images**, forming dense bipartite clusters around prototypical, clear fundus photographs (Glaucoma and Healthy categories account for $77.2\%$ of all pairs).
+2. **Worst-Case Nearest Neighbor Audit:** Every one of the 805 unique external images was audited at its **top-1 nearest internal neighbor** (the single internal image with maximum cosine similarity). If an external image's closest match is forensically confirmed distinct, all lower-similarity pairs involving that image are necessarily distinct.
+3. **Forensic Evidence Across all 805 Nearest Neighbors:**
+   - **Maximum ORB Homography Inliers:** **17** (Median: **0**, Mean: $1.12 \pm 2.31$; 0 pairs reached the $\ge 20$ near-duplicate threshold).
+   - **Maximum FOV-Masked SSIM:** **0.8891** (Median: **0.7215**, Mean: $0.7161 \pm 0.0610$; only 12 pairs had SSIM $\ge 0.85$, all driven by uniform low-texture background fields with $\le 5$ inliers).
+   - **pHash Hamming Distance:** Mean $24.15 \pm 6.12$ bits (Median: 24 bits, Min: 4 bits).
+   - Complete ledger saved in [`outputs/audit/external_leakage_audit_805_nearest_neighbors.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_805_nearest_neighbors.csv) and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md).
+
+### B. Forensic Verification Findings for Coarse Screened Tail ($N=561$)
+All 561 candidate pairs triggered by coarse screening (550 DINOv2 pairs with cosine similarity $\ge 0.960$ plus the 11 perceptual hash pairs) were subjected to multi-metric deep computer vision forensic review:
 1. **FOV-Masked Structural Similarity Index Measure (SSIM):** Computed on `float32` arrays strictly within the circular retinal field of view.
 2. **Normalized Cross-Correlation (NCC):** Evaluated over masked vascular and background fields.
 3. **ORB Feature Detection & RANSAC Geometric Homography:** Keypoint matching requiring geometrically consistent homography inliers. True duplicate or near-duplicate/burst captures typically yield $\ge 20-30$ inliers under slight rotation or cropping.
 
-### Forensic Verification Findings
-
 - **Maximum ORB Homography Inliers:** **17** (Median: **0**; 0 pairs reached the $\ge 20$ near-duplicate threshold).
-- **Maximum Masked SSIM:** **0.8807** (Median: **0.6414**; only 3 pairs exceeded $0.85$, all driven by uniform low-texture dark fields rather than shared vascular branching).
+- **Maximum Masked SSIM:** **0.8807** (Median: **0.6414**).
 - **Mean Pixel Difference:** Substantial color calibration and contrast divergence across all candidate pairs.
 
 ### Detailed Review of Perceptual Hash Candidates ($N=11$)

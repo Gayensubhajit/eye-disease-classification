@@ -1,0 +1,71 @@
+{
+  "total_pairs_ge_0_950": 8266,
+  "unique_external_images": 805,
+  "unique_internal_images": 1010,
+  "top1_cosine_stats": {
+    "min": 0.95,
+    "median": 0.9559,
+    "mean": 0.956660248447205,
+    "p95": 0.9655,
+    "max": 0.9741,
+    "count_ge_0_950": 805,
+    "count_ge_0_960": 182,
+    "count_ge_0_970": 7,
+    "count_ge_0_980": 0,
+    "count_ge_0_985": 0
+  },
+  "masked_ssim_stats": {
+    "min": 0.4822,
+    "median": 0.7215,
+    "mean": 0.7160852173913043,
+    "p95": 0.81704,
+    "max": 0.8891,
+    "count_ge_0_85": 12
+  },
+  "orb_inliers_stats": {
+    "min": 0,
+    "median": 0,
+    "mean": 1.1167701863354038,
+    "max": 17,
+    "count_ge_20": 0
+  },
+  "phash_hamming_stats": {
+    "min": 4,
+    "median": 24,
+    "mean": 24.151552795031055,
+    "max": 40,
+    "count_le_4": 1,
+    "count_le_8": 7
+  },
+  "partition_distribution": {
+    "Training_Set": 480,
+    "Test_Set": 169,
+    "Evaluation_Set": 156
+  },
+  "internal_class_distribution": {
+    "Glaucoma": 412,
+    "Healthy": 142,
+    "Diabetic Retinopathy": 142,
+    "Disc Edema": 57,
+    "Macular Scar": 26,
+    "Central Serous Chorioretinopathy [Color Fundus]": 11,
+    "Myopia": 10,
+    "Retinitis Pigmentosa": 4,
+    "Retinal Detachment": 1
+  },
+  "top_internal_hubs": {
+    "Glaucoma/Glaucoma265.jpg": 42,
+    "Glaucoma/Glaucoma735.jpg": 28,
+    "Disc Edema/Disc Edema121.jpg": 19,
+    "Healthy/Healthy445.jpg": 18,
+    "Glaucoma/Glaucoma256.jpg": 15,
+    "Healthy/Healthy684.jpg": 14,
+    "Glaucoma/Glaucoma290.jpg": 13,
+    "Glaucoma/Glaucoma443.jpg": 11,
+    "Diabetic Retinopathy/DR333.jpg": 10,
+    "Diabetic Retinopathy/DR399.jpg": 9
+  },
+  "confirmed_leakage_pairs": 0,
+  "verdict": "ALL_805_NEAREST_NEIGHBORS_DISPOSED_AS_DISTINCT_ANATOMIC_SIMILARITY",
+  "audit_runtime_seconds": 52.06
+}
