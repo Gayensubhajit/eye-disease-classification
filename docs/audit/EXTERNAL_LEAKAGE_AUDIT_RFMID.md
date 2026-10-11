@@ -26,12 +26,13 @@ To ensure conservative screening against potential cross-dataset contamination, 
 
 | Audit Pillar | Internal Reference Cohort | External Cohort | Pair Comparisons Evaluated | Screening Criteria / Threshold | Candidates Triggered | Confirmed Duplicates |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Pillar 1A: SHA-256 Bitwise** | Active Clean (`data_clean`, $N=3,747$) | RFMiD ($N=3,200$) | $3,200 \times 3,747 = \mathbf{11,990,400}$ | Exact 256-bit cryptographic digest match | 0 | 0 (**PASS**) |
-| **Pillar 1B: MD5 Bitwise** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Exact 128-bit MD5 digest match | 0 | 0 (**PASS**) |
-| **Pillar 2: Perceptual Hashes** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | $d_{\text{dHash}} \le 2$, $d_{\text{pHash}} \le 3$, or ($d_{\text{dHash}} \le 4 \land d_{\text{pHash}} \le 4$) | 11 | 0 (**PASS**) |
-| **Pillar 3: DINOv2 Latent Cosine** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Cosine Sim $\ge 0.950$ (exhaustive pair evaluation trigger) | 8,266 | 0 (**PASS**) |
+| **Pillar 1A: SHA-256 Digest** | Canonical Benchmark (`data_clean`, $N=3,747$)* | RFMiD ($N=3,200$) | $3,200 \times 3,747 = \mathbf{11,990,400}$ | Exact 256-bit cryptographic digest match | 0 | 0 (**PASS**) |
+| **Pillar 1B: MD5 Digest** | Eligible Source Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Exact 128-bit MD5 digest match | 0 | 0 (**PASS**) |
+| **Pillar 2: Perceptual Hashes** | Eligible Source Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | $d_{\text{dHash}} \le 2$, $d_{\text{pHash}} \le 3$, or ($d_{\text{dHash}} \le 4 \land d_{\text{pHash}} \le 4$) | 11 | 0 (**PASS**) |
+| **Pillar 3: DINOv2 Latent Cosine** | Eligible Source Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Cosine Sim $\ge 0.950$ (exhaustive pair evaluation trigger) | 8,266 | 0 (**PASS**) |
 
-*Note on Denominators:* Screening against the 4,387-image eligible pool (rather than solely the 3,747 retained images) provides a strictly conservative guarantee: if any RFMiD image had entered any part of the source repository pool—even images held in reserve or later quarantined—it would be detected.
+*\*The canonical frozen benchmark `data_clean/` ($N=3,747$) includes 14 anterior-segment Pterygium images alongside 3,733 nine-class posterior-segment fundus images.*  
+*Note on Denominators:* Screening against the 4,387-image eligible pool (rather than solely the 3,747 retained images) provides a strictly conservative guarantee: if any RFMiD image had entered any part of the source repository pool—even images held in reserve or later quarantined—it would be detected. These results apply strictly to the specific files and digests examined.
 
 ---
 
@@ -109,11 +110,11 @@ Complete ledgers are preserved in [`outputs/audit/external_leakage_audit_8266_pa
 
 ## 4. Methodological Conclusion & CLAIM 2024 Alignment
 
-1. **Image-Level Duplication:**  
-   The audit confirms **zero bitwise duplicates** across 11,990,400 SHA-256 and 14,038,400 MD5 comparisons, and **zero near-duplicate source-image pairs** confirmed across perceptual hashing and deep CV feature matching.
+1. **Exact-Duplicate Audit Scope:**  
+   SHA-256 digest comparisons covered all 3,200 RFMiD images against the 3,747 images in the canonical frozen `data_clean/` benchmark (which includes 14 anterior-segment Pterygium images alongside 3,733 nine-class fundus images), yielding 11,990,400 comparisons with zero matching digests reported. MD5 digest comparisons covered the wider eligible internal reference pool of 4,387 images, yielding 14,038,400 comparisons with zero matching digests reported. These results apply to the specific files and digests examined; the two comparisons cover different reference pools.
 2. **Review Status of Candidate Pairs:**  
    Among the 8,266 pairs crossing DINOv2 cosine $\ge 0.950$, 7 boundary pairs were visually inspected with no duplicate observed. The remaining 71 flagged candidate pairs (including 62 high-SSIM cases) met automated screening bounds and are preserved as pending individual manual review under the existing protocol. The 8,188 unflagged pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed).
-3. **Patient-Level Independence Limitation:**  
-   In compliance with the CLAIM 2024 reporting guideline (Checklist for Artificial Intelligence in Medical Imaging), we explicitly report that because neither dataset provides de-identified master patient indexes or longitudinal clinical records, patient-level independence cannot be mathematically proven.
+3. **Patient-Level Limitation (CLAIM 2024 Alignment):**  
+   In compliance with CLAIM 2024 reporting guidance, patient-level overlap between RFMiD and the internal dataset cannot be assessed from the available public metadata because patient identifiers or validated cross-dataset linkage information are unavailable.
 4. **Audit Verdict:**  
    **`NO_IMAGE_DUPLICATION_CONFIRMED_IN_RECORDED_CHECKS`**. The RFMiD cohort is verified to be free of confirmed image-level duplication in the recorded checks, with 71 flagged pairs pending manual review.

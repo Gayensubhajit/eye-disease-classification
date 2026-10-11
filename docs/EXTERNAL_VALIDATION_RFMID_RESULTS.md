@@ -105,8 +105,8 @@ The Macro-AUROC variation across partitions was $<1.13\%$, confirming that featu
 In accordance with CLAIM 2024 reporting guidance, the exact comparison cohorts and denominators are documented:
 
 1. **Denominators by Pillar:**
-   - **SHA-256 Bitwise:** 3,200 external images vs. 3,747 active clean benchmark images (`data_clean/`) = **11,990,400** comparisons (0 matches).
-   - **MD5 Bitwise:** 3,200 external images vs. 4,387 eligible pool manifest records (`clean_split_manifest.csv`) = **14,038,400** comparisons (0 matches).
+   - **SHA-256 Digest Comparisons:** 3,200 external images vs. 3,747 canonical frozen benchmark images (`data_clean/`, including 14 anterior-segment Pterygium images alongside 3,733 nine-class fundus images) = **11,990,400** comparisons (0 matching digests reported).
+   - **MD5 Digest Comparisons:** 3,200 external images vs. 4,387 eligible reference pool manifest records (`clean_split_manifest.csv`) = **14,038,400** comparisons (0 matching digests reported).
    - **Perceptual Hashing (dHash/pHash):** 3,200 external images vs. 4,387 eligible pool images = **14,038,400** pairs (11 coarse candidate pairs identified).
    - **DINOv2 Latent Cosine Space:** 3,200 external images vs. 4,387 eligible pool embeddings = **14,038,400** pairs.
 2. **DINOv2 Threshold Reconciliation & Exhaustive Resolution of All 8,266 Pairs:**
