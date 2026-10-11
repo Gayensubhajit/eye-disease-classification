@@ -88,7 +88,7 @@
   "disposition_breakdown": {
     "no_duplicate_observed_on_visual_review": 7,
     "automated_screen_only_manual_review_pending": 71,
-    "automated_screen_pass_unflagged": 8188
+    "automated_screen_no_configured_flag": 8188
   },
   "flagged_pairs_visually_reviewed": 7,
   "flagged_pairs_pending_review": 71,
@@ -97,7 +97,8 @@
     "low_phash_le_4": 3,
     "dino_ge_0_970": 6
   },
+  "unflagged_pairs_count": 8188,
   "audit_verdict": "NO_IMAGE_DUPLICATION_CONFIRMED_IN_RECORDED_CHECKS",
-  "audit_statement": "Every one of the 8,266 image pairs with DINOv2 cosine similarity >= 0.950 was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. Exactly 78 pairs triggered automated sensitivity screening flags (63 SSIM >= 0.85, 4 ORB inliers >= 20, 4 pHash <= 4, 7 DINOv2 >= 0.970; exact disjoint union: 78 pairs, zero overlapping flags). A dedicated review ledger records that 7 boundary pairs were individually evaluated via direct manual visual inspection (with no duplicate observed under the visual review procedure), while 71 pairs met automated metric screening bounds with individual manual review remaining pending under the protocol. In the 4 pairs with ORB inliers >= 20, geometric matches concentrate around the fundus-image aperture boundary notch or low-contrast fields rather than corresponding retinal structures; available metadata do not establish a camera-specific cause. No image duplicates were confirmed in the recorded checks. Patient-level overlap remains unverifiable from the available metadata.",
-  "runtime_seconds": 142.32
+  "audit_statement": "Every one of the 8,266 image pairs with DINOv2 cosine similarity >= 0.950 was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. Exactly 78 pairs triggered automated sensitivity screening flags (63 SSIM >= 0.85, 4 ORB inliers >= 20, 4 pHash <= 4, 7 DINOv2 >= 0.970; exact disjoint union: 78 pairs, zero overlapping flags). A dedicated review ledger records that 7 boundary pairs were individually evaluated via direct manual visual inspection (with no duplicate observed under the visual review procedure), while 71 pairs met automated metric screening bounds with individual manual review remaining pending under the protocol. The remaining 8,188 pairs did not trigger any configured screening flags (AUTOMATED_SCREEN_NO_CONFIGURED_FLAG; individual visual review was not performed). In the 4 pairs with ORB inliers >= 20, geometric matches concentrate around the fundus-image aperture boundary notch or low-contrast fields rather than corresponding retinal structures; available metadata do not establish a camera-specific cause. No image duplicates were confirmed in the recorded checks. Patient-level overlap remains unverifiable from the available metadata.",
+  "runtime_seconds": 138.5
 }

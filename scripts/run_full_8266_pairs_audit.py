@@ -303,7 +303,7 @@ def main():
             triggered_flags.append("DINO_BURST_GE_0.985")
 
         needs_review = len(triggered_flags) > 0
-        disposition = "AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING" if needs_review else "AUTOMATED_SCREEN_PASS_DISTINCT_ANATOMIC_SIMILARITY"
+        disposition = "AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING" if needs_review else "AUTOMATED_SCREEN_NO_CONFIGURED_FLAG"
 
         row = {
             "pair_id": k,
@@ -330,6 +330,7 @@ def main():
             "triggered_flags_count": len(triggered_flags),
             "triggered_flags": ";".join(triggered_flags) if triggered_flags else "NONE",
             "disposition": disposition,
+            "visual_review_performed": False,
             "visual_inspection_notes": "",
         }
 
@@ -387,6 +388,7 @@ def main():
             ev = f"Automated metric screening: flags={flag_str}; contact sheet rendered on disk."
 
         r_dict["disposition"] = disp
+        r_dict["visual_review_performed"] = is_direct
         r_dict["visual_inspection_notes"] = f"[{rev_mod}] {ev}; Disposition: {disp}."
         r_dict["contact_sheet_path"] = str(cs_path.relative_to(REPO_ROOT))
 
@@ -404,6 +406,7 @@ def main():
             "phash_distance": r_dict["phash_distance"],
             "dhash_distance": r_dict["dhash_distance"],
             "review_modality": rev_mod,
+            "visual_review_performed": is_direct,
             "observed_evidence": ev,
             "forensic_disposition": disp,
             "contact_sheet_local_path": str(cs_path.relative_to(REPO_ROOT)),
@@ -503,7 +506,7 @@ def main():
         "disposition_breakdown": {
             "no_duplicate_observed_on_visual_review": 7,
             "automated_screen_only_manual_review_pending": len(flagged_pairs) - 7,
-            "automated_screen_pass_unflagged": len(df_complete) - len(flagged_pairs),
+            "automated_screen_no_configured_flag": len(df_complete) - len(flagged_pairs),
         },
         "flagged_pairs_visually_reviewed": 7,
         "flagged_pairs_pending_review": len(flagged_pairs) - 7,
@@ -512,12 +515,14 @@ def main():
             "low_phash_le_4": int((df_complete["flag_low_phash"] & (df_complete["disposition"] == "AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING")).sum()),
             "dino_ge_0_970": int((df_complete["flag_high_dino"] & (df_complete["disposition"] == "AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING")).sum()),
         },
+        "unflagged_pairs_count": len(df_complete) - len(flagged_pairs),
         "audit_verdict": "NO_IMAGE_DUPLICATION_CONFIRMED_IN_RECORDED_CHECKS",
         "audit_statement": (
             "Every one of the 8,266 image pairs with DINOv2 cosine similarity >= 0.950 "
             "was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. "
             "Exactly 78 pairs triggered automated sensitivity screening flags (63 SSIM >= 0.85, 4 ORB inliers >= 20, 4 pHash <= 4, 7 DINOv2 >= 0.970; exact disjoint union: 78 pairs, zero overlapping flags). "
             "A dedicated review ledger records that 7 boundary pairs were individually evaluated via direct manual visual inspection (with no duplicate observed under the visual review procedure), while 71 pairs met automated metric screening bounds with individual manual review remaining pending under the protocol. "
+            "The remaining 8,188 pairs did not trigger any configured screening flags (AUTOMATED_SCREEN_NO_CONFIGURED_FLAG; individual visual review was not performed). "
             "In the 4 pairs with ORB inliers >= 20, geometric matches concentrate around the fundus-image aperture boundary notch or low-contrast fields rather than corresponding retinal structures; "
             "available metadata do not establish a camera-specific cause. "
             "No image duplicates were confirmed in the recorded checks. Patient-level overlap remains unverifiable from the available metadata."
@@ -542,8 +547,9 @@ def main():
 **Confirmed Image Duplicates:** **0**  
 **Visually Inspected Flagged Pairs:** **7** (`NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`)  
 **Automated-Screening-Only Flagged Pairs:** **71** (`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`)  
+**Unflagged Candidate Pairs:** **8,188** (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed)  
 **Formal Patient Overlap Disclosure (CLAIM 2024 Alignment):**  
-> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\\ge 0.950$ was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. Patient-level overlap remains unverifiable from the available metadata.*
+> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. The remaining 8,188 pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed). Patient-level overlap remains unverifiable from the available metadata.*
 
 **Internal Test Set Historical Exposure Disclosure:**  
 > *The internal benchmark test partition (`data_clean/test`, $N=561$ nine-class posterior-segment fundus images) was not evaluated during the 9-class baseline training or during this RFMiD cross-dataset audit run. However, the underlying images were previously evaluated in earlier 10-class baseline experiments in the project's development history. Therefore, the internal test partition cannot be described as a pristine, never-before-accessed confirmatory test cohort. Any future confirmatory validation will require an independent external cohort.*
@@ -556,7 +562,7 @@ In response to methodological feedback that nearest-neighbour ranking does not l
 
 ### Audit Methodology
 1. **Full Pair Set Enumeration:**
-   - All 8,266 pairs satisfying DINOv2 cosine similarity $\\ge 0.950$ were extracted from the complete $3,200 \\times 4,387 = 14,038,400$ cross-dataset cosine similarity matrix.
+   - All 8,266 pairs satisfying DINOv2 cosine similarity $\ge 0.950$ were extracted from the complete $3,200 \times 4,387 = 14,038,400$ cross-dataset cosine similarity matrix.
    - The pairs involve **{len(unique_ext_indices)} unique external images** and **{len(unique_int_indices)} unique internal images**.
 2. **Individual Pair-Level Computation:**
    - Every single pair was individually loaded and tested with:
@@ -567,27 +573,27 @@ In response to methodological feedback that nearest-neighbour ranking does not l
      - pHash and dHash Hamming distances
 3. **Threshold Flags & Systematic Investigation:**
    - Pre-specified sensitivity review criteria were tracked for all 8,266 pairs:
-     - `HIGH_SSIM`: Masked SSIM $\\ge 0.85$
-     - `HIGH_NCC`: Masked NCC $\\ge 0.85$
-     - `ORB_HOMOGRAPHY`: ORB RANSAC inliers $\\ge 20$
-     - `LOW_PHASH`: pHash distance $\\le 4$ bits
-     - `LOW_DHASH`: dHash distance $\\le 2$ bits
-     - `TOP_DINO`: DINOv2 Cosine Similarity $\\ge 0.970$
-     - `DINO_BURST`: DINOv2 Cosine Similarity $\\ge 0.985$
+     - `HIGH_SSIM`: Masked SSIM $\ge 0.85$
+     - `HIGH_NCC`: Masked NCC $\ge 0.85$
+     - `ORB_HOMOGRAPHY`: ORB RANSAC inliers $\ge 20$
+     - `LOW_PHASH`: pHash distance $\le 4$ bits
+     - `LOW_DHASH`: dHash distance $\le 2$ bits
+     - `TOP_DINO`: DINOv2 Cosine Similarity $\ge 0.970$
+     - `DINO_BURST`: DINOv2 Cosine Similarity $\ge 0.985$
    - All pairs triggering any sensitivity criterion were exported into high-resolution side-by-side contact sheets with difference heatmaps in `outputs/audit/flagged_pair_contact_sheets/` and evaluated via a structured review protocol.
 
 ---
 
 ## 2. Quantitative Forensic Summary Across All 8,266 Pairs
 
-| Forensic Metric | Minimum | Median | Mean $\\pm$ SD | 95th Percentile | Maximum | Duplication Threshold | Flagged Pairs |
+| Forensic Metric | Minimum | Median | Mean $\pm$ SD | 95th Percentile | Maximum | Duplication Threshold | Flagged Pairs |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **DINOv2 Cosine Similarity** | {dino_sims.min():.4f} | {dino_sims.median():.4f} | {dino_sims.mean():.4f} $\\pm$ {dino_sims.std():.4f} | {np.percentile(dino_sims, 95):.4f} | **{dino_sims.max():.4f}** | $\\ge 0.985$ | **0** ($\\ge 0.970$: **{(dino_sims >= 0.970).sum()}**) |
-| **FOV-Masked SSIM (float32)** | {ssims.min():.4f} | {ssims.median():.4f} | {ssims.mean():.4f} $\\pm$ {ssims.std():.4f} | {np.percentile(ssims, 95):.4f} | **{ssims.max():.4f}** | $\\ge 0.85$ | **{(ssims >= 0.85).sum()}** |
-| **Masked NCC** | {nccs.min():.4f} | {nccs.median():.4f} | {nccs.mean():.4f} $\\pm$ {nccs.std():.4f} | {np.percentile(nccs, 95):.4f} | **{nccs.max():.4f}** | $\\ge 0.85$ | **{(nccs >= 0.85).sum()}** |
-| **ORB RANSAC Homography Inliers** | {int(orbs.min())} | {int(orbs.median())} | {orbs.mean():.2f} $\\pm$ {orbs.std():.2f} | {np.percentile(orbs, 95):.1f} | **{int(orbs.max())}** | $\\ge 20$ inliers | **{(orbs >= 20).sum()}** |
-| **pHash Hamming Distance (bits)** | {int(phashes.min())} | {int(phashes.median())} | {phashes.mean():.2f} $\\pm$ {phashes.std():.2f} | {np.percentile(phashes, 95):.1f} | **{int(phashes.max())}** | $\\le 4$ bits | **{(phashes <= 4).sum()}** |
-| **dHash Hamming Distance (bits)** | {int(dhashes.min())} | {int(dhashes.median())} | {dhashes.mean():.2f} $\\pm$ {dhashes.std():.2f} | {np.percentile(dhashes, 95):.1f} | **{int(dhashes.max())}** | $\\le 2$ bits | **{(dhashes <= 2).sum()}** |
+| **DINOv2 Cosine Similarity** | {dino_sims.min():.4f} | {dino_sims.median():.4f} | {dino_sims.mean():.4f} $\pm$ {dino_sims.std():.4f} | {np.percentile(dino_sims, 95):.4f} | **{dino_sims.max():.4f}** | $\ge 0.985$ | **0** ($\ge 0.970$: **{(dino_sims >= 0.970).sum()}**) |
+| **FOV-Masked SSIM (float32)** | {ssims.min():.4f} | {ssims.median():.4f} | {ssims.mean():.4f} $\pm$ {ssims.std():.4f} | {np.percentile(ssims, 95):.4f} | **{ssims.max():.4f}** | $\ge 0.85$ | **{(ssims >= 0.85).sum()}** |
+| **Masked NCC** | {nccs.min():.4f} | {nccs.median():.4f} | {nccs.mean():.4f} $\pm$ {nccs.std():.4f} | {np.percentile(nccs, 95):.4f} | **{nccs.max():.4f}** | $\ge 0.85$ | **{(nccs >= 0.85).sum()}** |
+| **ORB RANSAC Homography Inliers** | {int(orbs.min())} | {int(orbs.median())} | {orbs.mean():.2f} $\pm$ {orbs.std():.2f} | {np.percentile(orbs, 95):.1f} | **{int(orbs.max())}** | $\ge 20$ inliers | **{(orbs >= 20).sum()}** |
+| **pHash Hamming Distance (bits)** | {int(phashes.min())} | {int(phashes.median())} | {phashes.mean():.2f} $\pm$ {phashes.std():.2f} | {np.percentile(phashes, 95):.1f} | **{int(phashes.max())}** | $\le 4$ bits | **{(phashes <= 4).sum()}** |
+| **dHash Hamming Distance (bits)** | {int(dhashes.min())} | {int(dhashes.median())} | {dhashes.mean():.2f} $\pm$ {dhashes.std():.2f} | {np.percentile(dhashes, 95):.1f} | **{int(dhashes.max())}** | $\le 2$ bits | **{(dhashes <= 2).sum()}** |
 
 ---
 
@@ -598,10 +604,10 @@ Across all 8,266 pairs, exactly **{len(flagged_pairs)} pairs** triggered one or 
 A dedicated review record ([`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv)) explicitly distinguishes the pairs evaluated via direct visual review from those evaluated solely via automated metric screening:
 - **Direct Manual Visual Inspection ($N=7$):**
   - The 4 pairs with ORB inliers $\ge 20$ (Pairs 7192, 1080, 1379, 5901) and 3 boundary metric anchors (Pair 52 for max SSIM, Pair 2630 for min pHash, Pair 5951 for max DINOv2) underwent direct manual visual inspection of high-resolution contact sheets and spatial keypoint distributions.
-  - Disposition: **`NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`** (7 pairs).
+  - Disposition: **`NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`** (7 pairs; `visual_review_performed = True`).
 - **Automated Metric Screening Only; Manual Review Pending ($N=71$):**
   - The remaining 71 candidate pairs (62 high-SSIM, 3 low-pHash, 6 top-DINOv2) were evaluated via quantitative threshold screening bounds (e.g. ORB inliers < 20, NCC < 0.85).
-  - Disposition: **`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`** (71 pairs). While comparative contact sheets and difference heatmaps were generated on disk, these 71 pairs are not represented as manually verified or confirmed independent retinas; they remain pending individual manual review under the existing protocol.
+  - Disposition: **`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`** (71 pairs; `visual_review_performed = False`). While comparative contact sheets and difference heatmaps were generated on disk, these 71 pairs are not represented as manually verified or confirmed independent retinas; they remain pending individual manual review under the existing protocol.
 
 ### A. Direct Visual Review of High-ORB Pairs ($N={(orbs >= 20).sum()}$)
 Four candidate pairs exceeded the pre-specified threshold of 20 ORB inliers and were individually visually inspected:
@@ -635,13 +641,19 @@ Four candidate pairs exceeded the pre-specified threshold of 20 ORB inliers and 
   - **Pair 5951 (Maximum DINOv2 Cosine 0.9741):** Individually visually inspected. Standard optic-nerve-head centered fundus; peripapillary atrophy halo and vessel layout diverge; ORB inliers=0. Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
   - **Remaining 6 Pairs:** Automated screening only (DINOv2 cosine 0.9701–0.9723, SSIM 0.6924–0.7763, ORB inliers 0–17). Disposition: `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING` ($N=6$).
 
+### E. Unflagged Candidate Pairs ($N={len(df_complete) - len(flagged_pairs)}$)
+- Exactly {len(df_complete) - len(flagged_pairs):,} candidate pairs did not trigger any configured screening flags and are classified as **`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`**.
+- **Visual Review Status:** Individual visual review was not performed for these pairs (`visual_review_performed = False`).
+- **Empirical Metric Distributions:** Observed metric distributions for this unflagged cohort: median FOV-masked SSIM: {ssims.median():.4f} (mean: {ssims.mean():.4f} $\\pm$ {ssims.std():.4f}), median masked NCC: {nccs.median():.4f} (mean: {nccs.mean():.4f} $\\pm$ {nccs.std():.4f}), median ORB inliers: {int(orbs.median())} (mean: {orbs.mean():.2f} $\\pm$ {orbs.std():.2f}).
+- **Scope Limitation:** The label `AUTOMATED_SCREEN_NO_CONFIGURED_FLAG` denotes strictly that the pair did not meet any configured sensitivity threshold. It is not interpreted as positive proof of distinct retinas, biological independence, or patient-level independence.
+
 ---
 
 ## 4. Reconciled Pair-Level Artifacts
 
 The complete forensic ledger and summary records are preserved:
-1. **Exhaustive Pair-Level Ledger:** [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) (8,266 rows with all CV metrics, flags, review modality tags, notes, and individual dispositions).
-2. **Dedicated Flagged Pairs Review Ledger:** [`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv) (78 rows detailing review modality, forensic evidence, and specific disposition: 7 `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW` vs 71 `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`).
+1. **Exhaustive Pair-Level Ledger:** [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) ({len(df_complete):,} rows with all CV metrics, flags, review modality tags, `visual_review_performed` indicator, notes, and individual dispositions: 7 `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`, 71 `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`, {len(df_complete) - len(flagged_pairs):,} `AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`).
+2. **Dedicated Flagged Pairs Review Ledger:** [`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv) (78 rows detailing review modality, `visual_review_performed` indicator, forensic evidence, and specific disposition: 7 `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW` vs 71 `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`).
 3. **Summary Metrics JSON:** [`outputs/audit/external_leakage_audit_8266_pairs_complete_summary.json`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete_summary.json).
 4. **Visual Contact Sheets:** `outputs/audit/flagged_pair_contact_sheets/` (78 comparative PNGs with difference heatmaps; 56 MB preserved locally on disk, excluded from git tracking via `.gitignore` to prevent repository binary bloat, and fully reproducible via the audit script).
 5. **Audit Execution Script:** [`scripts/run_full_8266_pairs_audit.py`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/scripts/run_full_8266_pairs_audit.py).
@@ -651,7 +663,7 @@ The complete forensic ledger and summary records are preserved:
 ## 5. Final Audit Conclusion
 
 1. **Computational Scope:** All 8,266 pairs with DINOv2 cosine similarity $\\ge 0.950$ have been computationally evaluated using computer vision forensic tests (circular FOV-masked float32 SSIM, NCC, and ORB RANSAC). No pair was skipped, approximated, or inferred from nearest-neighbour rankings.
-2. **Duplication Finding:** **No image-level duplication was confirmed in the recorded checks.** In the 7 boundary pairs directly visually inspected, no duplicate was observed under the stated review procedure. The remaining 71 flagged candidate pairs (including 62 high-SSIM pairs) met automated screening bounds and are preserved as pending individual manual review under the existing protocol.
+2. **Duplication Finding:** **No image-level duplication was confirmed in the recorded checks.** In the 7 boundary pairs directly visually inspected, no duplicate was observed under the stated review procedure. The remaining 71 flagged candidate pairs (including 62 high-SSIM pairs) met automated screening bounds and are preserved as pending individual manual review under the existing protocol. The {len(df_complete) - len(flagged_pairs):,} unflagged pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review was not performed).
 3. **CLAIM 2024 Scope Limitation:** While no duplication was observed in the evaluated pairs, **patient-level overlap remains unverifiable** in the absence of longitudinal patient identifiers.
 """
 
