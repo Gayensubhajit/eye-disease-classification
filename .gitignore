@@ -17,12 +17,17 @@ data/train/
 data/val/
 data/test/
 
-# Model checkpoints and outputs — never commit these
-outputs/
+# Model checkpoints and outputs — never commit binaries
+outputs/*
 !outputs/**/.gitkeep
-!outputs/audit/**
+!outputs/audit/
+outputs/audit/*.npz
+!outputs/clean_9class_baseline_effnet/
+outputs/clean_9class_baseline_effnet/*
 !outputs/clean_9class_baseline_effnet/*.json
 !outputs/clean_9class_baseline_effnet/**/*.sha256
+!outputs/external_evaluation_rfmid/
+!outputs/external_evaluation_rfmid/**
 *.pt
 *.pth
 *.ckpt
@@ -42,3 +47,6 @@ data_kaggle_4class/
 
 # Clean dataset images — never commit binaries
 data_clean/
+
+# External dataset images — never commit binaries
+data_external/

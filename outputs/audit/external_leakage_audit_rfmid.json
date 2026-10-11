@@ -1,0 +1,53 @@
+{
+  "audit_name": "Three-Pillar Pre-Inference External Data Leakage Audit",
+  "external_dataset": "RFMiD v1.0",
+  "external_image_count": 3200,
+  "internal_active_clean_benchmark_count": 3747,
+  "internal_eligible_reference_pool_count": 4387,
+  "pillar_1_cryptographic_hashes": {
+    "sha256_comparison_cohort": 3747,
+    "sha256_pair_comparisons": 11990400,
+    "sha256_exact_matches": 0,
+    "md5_comparison_cohort": 4387,
+    "md5_pair_comparisons": 14038400,
+    "md5_exact_matches": 0,
+    "status": "PASS"
+  },
+  "pillar_2_perceptual_hashes": {
+    "internal_cohort": 4387,
+    "pair_comparisons": 14038400,
+    "min_dhash_distance": 1,
+    "median_dhash_distance": 11.0,
+    "min_phash_distance": 2,
+    "median_phash_distance": 14.0,
+    "hash_candidate_pairs": 11,
+    "status": "CANDIDATES_SCREENED"
+  },
+  "pillar_3_dinov2_embeddings": {
+    "encoder": "vit_small_patch14_dinov2.lvd142m",
+    "internal_cohort": 4387,
+    "pair_comparisons": 14038400,
+    "top1_cosine_min": 0.7607635259628296,
+    "top1_cosine_median": 0.9368612170219421,
+    "top1_cosine_p95": 0.9605882167816162,
+    "top1_cosine_p99": 0.9659744501113892,
+    "top1_cosine_max": 0.9740968942642212,
+    "pairs_ge_0_950": 8266,
+    "pairs_ge_0_960": 550,
+    "pairs_ge_0_970": 7,
+    "pairs_ge_0_985": 0,
+    "status": "CANDIDATES_SCREENED"
+  },
+  "forensic_candidate_verification": {
+    "total_candidate_pairs_evaluated": 561,
+    "dino_candidates_ge_0_960": 550,
+    "perceptual_hash_candidates": 11,
+    "max_masked_ssim": 0.8807,
+    "max_orb_inliers": 17,
+    "confirmed_image_duplicates": 0,
+    "patient_overlap_status": "UNVERIFIABLE_WITHOUT_PATIENT_IDENTIFIERS"
+  },
+  "final_audit_verdict": "NO_IMAGE_DUPLICATION_CONFIRMED",
+  "audit_statement": "No exact image duplicates or high-confidence near-duplicate source-image pairs were confirmed under the documented audit procedures. Patient-level overlap remains unverifiable from the available metadata.",
+  "total_audit_runtime_seconds": 55.87
+}

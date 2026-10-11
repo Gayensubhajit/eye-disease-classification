@@ -1,0 +1,2170 @@
+{
+  "Full_Cohort": {
+    "partition": "Full_Cohort",
+    "n_samples": 3200,
+    "primary_exact_macro": {
+      "macro_auroc": 0.8854620847612654,
+      "macro_pr_auc": 0.468924218085877,
+      "macro_f1": 0.4698700692388277,
+      "macro_sensitivity": 0.5829644475728049,
+      "macro_specificity": 0.9235527894006583
+    },
+    "all_mappings_macro": {
+      "macro_auroc": 0.8224987688904535,
+      "macro_pr_auc": 0.3907166571411389,
+      "macro_f1": 0.3732410228307229,
+      "macro_sensitivity": 0.5336018817897762,
+      "macro_specificity": 0.9279023298801385
+    },
+    "per_class": {
+      "Diabetic Retinopathy": {
+        "n_total": 3200,
+        "n_pos": 632,
+        "n_neg": 2568,
+        "prevalence_pct": 19.75,
+        "auroc": 0.8789325905004142,
+        "auroc_ci95": [
+          0.8648077436142001,
+          0.8932904660943847
+        ],
+        "pr_auc": 0.5907504661194272,
+        "pr_auc_ci95": [
+          0.5573476263960867,
+          0.6245743372668313
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.8607594936708861,
+        "sensitivity_ci95": [
+          0.8338607594936709,
+          0.8892405063291139
+        ],
+        "specificity": 0.7577881619937694,
+        "specificity_ci95": [
+          0.741822429906542,
+          0.774542445482866
+        ],
+        "precision": 0.4665523156089194,
+        "precision_ci95": [
+          0.44865262211152623,
+          0.4860271849252205
+        ],
+        "f1": 0.6051167964404894,
+        "f1_ci95": [
+          0.585998635150026,
+          0.625083035741599
+        ],
+        "balanced_accuracy": 0.8092738278323277,
+        "balanced_accuracy_ci95": [
+          0.7932202940770534,
+          0.8253874364131077
+        ],
+        "confusion": {
+          "tp": 544,
+          "fp": 622,
+          "fn": 88,
+          "tn": 1946
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.91,
+          "optimal_sensitivity": 0.8164556962025317,
+          "optimal_specificity": 0.8150311526479751,
+          "optimal_j": 0.6314868488505068
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=632 >= 200)",
+        "is_primary": true,
+        "notes": "Direct correspondence to non-proliferative and proliferative DR vascular lesions."
+      },
+      "Healthy": {
+        "n_total": 3200,
+        "n_pos": 669,
+        "n_neg": 2531,
+        "prevalence_pct": 20.906,
+        "auroc": 0.8826019244772887,
+        "auroc_ci95": [
+          0.8696318564597201,
+          0.895311456327193
+        ],
+        "pr_auc": 0.6641145955900106,
+        "pr_auc_ci95": [
+          0.6304931269459757,
+          0.6987782528286225
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.46038863976083705,
+        "sensitivity_ci95": [
+          0.42148729446935723,
+          0.4977578475336323
+        ],
+        "specificity": 0.9514026076649545,
+        "specificity_ci95": [
+          0.9427103911497432,
+          0.9596997234294745
+        ],
+        "precision": 0.7146171693735499,
+        "precision_ci95": [
+          0.675903505953598,
+          0.7533077711687204
+        ],
+        "f1": 0.5599999999999999,
+        "f1_ci95": [
+          0.5246488781602259,
+          0.5924047311679608
+        ],
+        "balanced_accuracy": 0.7058956237128958,
+        "balanced_accuracy_ci95": [
+          0.6864201613003245,
+          0.7243837476575958
+        ],
+        "confusion": {
+          "tp": 308,
+          "fp": 123,
+          "fn": 361,
+          "tn": 2408
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.6831091180866966,
+          "optimal_specificity": 0.8719873567759778,
+          "optimal_j": 0.5550964748626743
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=669 >= 200)",
+        "is_primary": true,
+        "notes": "Disease_Risk == 0 indicates absence of any detectable retinal risk/lesions."
+      },
+      "Macular Scar": {
+        "n_total": 3200,
+        "n_pos": 27,
+        "n_neg": 3173,
+        "prevalence_pct": 0.844,
+        "auroc": 0.8090952597728518,
+        "auroc_ci95": [
+          0.7156018372611502,
+          0.8874476193811208
+        ],
+        "pr_auc": 0.05699187889881363,
+        "pr_auc_ci95": [
+          0.03303071989189948,
+          0.12079782686308549
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.48148148148148145,
+        "sensitivity_ci95": [
+          0.2962962962962963,
+          0.6666666666666666
+        ],
+        "specificity": 0.9325559407500787,
+        "specificity_ci95": [
+          0.9237314843996218,
+          0.9413803971005358
+        ],
+        "precision": 0.05726872246696035,
+        "precision_ci95": [
+          0.03571428571428571,
+          0.07983613445378149
+        ],
+        "f1": 0.10236220472440946,
+        "f1_ci95": [
+          0.064,
+          0.14285714285714285
+        ],
+        "balanced_accuracy": 0.7070187111157801,
+        "balanced_accuracy_ci95": [
+          0.6142685389455008,
+          0.7999264628637461
+        ],
+        "confusion": {
+          "tp": 13,
+          "fp": 214,
+          "fn": 14,
+          "tn": 2959
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.05,
+          "optimal_sensitivity": 0.6296296296296297,
+          "optimal_specificity": 0.8796092026473369,
+          "optimal_j": 0.5092388322769665
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+        "is_primary": true,
+        "notes": "RFMiD MS denotes Macular Scars (27 cases total). Wide bootstrap CIs required."
+      },
+      "Central Serous Chorioretinopathy [Color Fundus]": {
+        "n_total": 3200,
+        "n_pos": 61,
+        "n_neg": 3139,
+        "prevalence_pct": 1.906,
+        "auroc": 0.9118597861906528,
+        "auroc_ci95": [
+          0.870914826168927,
+          0.9481508416066513
+        ],
+        "pr_auc": 0.32473388390418906,
+        "pr_auc_ci95": [
+          0.22602739103461486,
+          0.45625663632284014
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.39344262295081966,
+        "sensitivity_ci95": [
+          0.2786885245901639,
+          0.5081967213114754
+        ],
+        "specificity": 0.9840713603058299,
+        "specificity_ci95": [
+          0.9796033768716151,
+          0.9885313794201975
+        ],
+        "precision": 0.32432432432432434,
+        "precision_ci95": [
+          0.23748355263157894,
+          0.41980142793395775
+        ],
+        "f1": 0.3555555555555555,
+        "f1_ci95": [
+          0.26153846153846155,
+          0.4520672932706729
+        ],
+        "balanced_accuracy": 0.6887569916283247,
+        "balanced_accuracy_ci95": [
+          0.6310613696541134,
+          0.7477348690979168
+        ],
+        "confusion": {
+          "tp": 24,
+          "fp": 50,
+          "fn": 37,
+          "tn": 3089
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.6557377049180327,
+          "optimal_specificity": 0.9318254221089519,
+          "optimal_j": 0.5875631270269848
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Central Serous Retinopathy / Chorioretinopathy (61 cases total)."
+      },
+      "Disc Edema": {
+        "n_total": 3200,
+        "n_pos": 96,
+        "n_neg": 3104,
+        "prevalence_pct": 3.0,
+        "auroc": 0.9448208628651202,
+        "auroc_ci95": [
+          0.9121567768739262,
+          0.9731614365200817
+        ],
+        "pr_auc": 0.7080302659169442,
+        "pr_auc_ci95": [
+          0.610318351166598,
+          0.8049887330528651
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.71875,
+        "sensitivity_ci95": [
+          0.625,
+          0.8125
+        ],
+        "specificity": 0.9919458762886598,
+        "specificity_ci95": [
+          0.9884020618556701,
+          0.9948453608247423
+        ],
+        "precision": 0.7340425531914894,
+        "precision_ci95": [
+          0.65,
+          0.818209200438116
+        ],
+        "f1": 0.7263157894736842,
+        "f1_ci95": [
+          0.6526259499014916,
+          0.7956989247311829
+        ],
+        "balanced_accuracy": 0.8553479381443299,
+        "balanced_accuracy_ci95": [
+          0.8089521585051547,
+          0.9006161404639176
+        ],
+        "confusion": {
+          "tp": 69,
+          "fp": 25,
+          "fn": 27,
+          "tn": 3079
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.8333333333333334,
+          "optimal_specificity": 0.9700386597938144,
+          "optimal_j": 0.8033719931271479
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Optic Disc Edema (96 cases total; distinct from Drusen DN)."
+      },
+      "Retinitis Pigmentosa": {
+        "n_total": 3200,
+        "n_pos": 10,
+        "n_neg": 3190,
+        "prevalence_pct": 0.312,
+        "auroc": 0.8942163009404389,
+        "auroc_ci95": [
+          0.7537194357366771,
+          0.9978530564263324
+        ],
+        "pr_auc": 0.4033370285352159,
+        "pr_auc_ci95": [
+          0.1745030127794127,
+          0.7677564438956629
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.8,
+        "sensitivity_ci95": [
+          0.5,
+          1.0
+        ],
+        "specificity": 0.9727272727272728,
+        "specificity_ci95": [
+          0.9670846394984326,
+          0.9783699059561128
+        ],
+        "precision": 0.08421052631578947,
+        "precision_ci95": [
+          0.05503336113427857,
+          0.11392405063291139
+        ],
+        "f1": 0.15238095238095237,
+        "f1_ci95": [
+          0.09999999999999999,
+          0.20229305205228132
+        ],
+        "balanced_accuracy": 0.8863636363636365,
+        "balanced_accuracy_ci95": [
+          0.7382366771159875,
+          0.9873040752351097
+        ],
+        "confusion": {
+          "tp": 8,
+          "fp": 87,
+          "fn": 2,
+          "tn": 3103
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.62,
+          "optimal_sensitivity": 0.8,
+          "optimal_specificity": 0.9752351097178683,
+          "optimal_j": 0.7752351097178685
+        },
+        "mapping_status": "Exact (Underpowered)",
+        "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+        "is_primary": false,
+        "notes": "Severely inadequate sample size (N=10 in 3,200). Descriptive analysis only."
+      },
+      "Myopia": {
+        "n_total": 3200,
+        "n_pos": 167,
+        "n_neg": 3033,
+        "prevalence_pct": 5.219,
+        "auroc": 0.8159793173297323,
+        "auroc_ci95": [
+          0.7766713111857393,
+          0.8534402263721813
+        ],
+        "pr_auc": 0.3552446664558307,
+        "pr_auc_ci95": [
+          0.28672456622988945,
+          0.43123062453022537
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.46107784431137727,
+        "sensitivity_ci95": [
+          0.38323353293413176,
+          0.5329341317365269
+        ],
+        "specificity": 0.9469172436531487,
+        "specificity_ci95": [
+          0.9386745796241345,
+          0.9548302011210023
+        ],
+        "precision": 0.3235294117647059,
+        "precision_ci95": [
+          0.27586206896551724,
+          0.3772076023391812
+        ],
+        "f1": 0.3802469135802469,
+        "f1_ci95": [
+          0.3222300876872488,
+          0.4370221932283525
+        ],
+        "balanced_accuracy": 0.703997543982263,
+        "balanced_accuracy_ci95": [
+          0.6639125063424092,
+          0.7409490366448113
+        ],
+        "confusion": {
+          "tp": 77,
+          "fp": 161,
+          "fn": 90,
+          "tn": 2872
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.03,
+          "optimal_sensitivity": 0.6287425149700598,
+          "optimal_specificity": 0.8674579624134521,
+          "optimal_j": 0.4962004773835118
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": false,
+        "notes": "RFMiD MYA denotes Myopic Atrophy (167 cases). Feature-level morphological evaluation."
+      },
+      "Glaucoma": {
+        "n_total": 3200,
+        "n_pos": 445,
+        "n_neg": 2755,
+        "prevalence_pct": 13.906,
+        "auroc": 0.7635151614021493,
+        "auroc_ci95": [
+          0.7384585635922429,
+          0.7879702277778912
+        ],
+        "pr_auc": 0.38235682119208114,
+        "pr_auc_ci95": [
+          0.34311381196111845,
+          0.428625881147875
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.5865168539325842,
+        "sensitivity_ci95": [
+          0.5415730337078651,
+          0.6314606741573033
+        ],
+        "specificity": 0.8203266787658802,
+        "specificity_ci95": [
+          0.8054446460980036,
+          0.8341197822141561
+        ],
+        "precision": 0.34523809523809523,
+        "precision_ci95": [
+          0.3195105013550136,
+          0.36878477528310016
+        ],
+        "f1": 0.43463780183180684,
+        "f1_ci95": [
+          0.40403998069547103,
+          0.4630954329677525
+        ],
+        "balanced_accuracy": 0.7034217663492321,
+        "balanced_accuracy_ci95": [
+          0.6787693978262199,
+          0.7262941230449234
+        ],
+        "confusion": {
+          "tp": 261,
+          "fp": 495,
+          "fn": 184,
+          "tn": 2260
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.2,
+          "optimal_sensitivity": 0.6426966292134831,
+          "optimal_specificity": 0.785480943738657,
+          "optimal_j": 0.4281775729521402
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+        "is_primary": false,
+        "notes": "RFMiD ODC denotes Optic Disc Cupping (an anatomic sign, not clinical glaucoma diagnosis)."
+      },
+      "Retinal Detachment": {
+        "n_total": 3200,
+        "n_pos": 25,
+        "n_neg": 3175,
+        "prevalence_pct": 0.781,
+        "auroc": 0.5014677165354331,
+        "auroc_ci95": [
+          0.37553165354330703,
+          0.6239341732283463
+        ],
+        "pr_auc": 0.03089030765773794,
+        "pr_auc_ci95": [
+          0.006871861074658031,
+          0.13318466734878945
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.04,
+        "sensitivity_ci95": [
+          0.0,
+          0.12
+        ],
+        "specificity": 0.9933858267716535,
+        "specificity_ci95": [
+          0.990236220472441,
+          0.9959055118110236
+        ],
+        "precision": 0.045454545454545456,
+        "precision_ci95": [
+          0.0,
+          0.15
+        ],
+        "f1": 0.0425531914893617,
+        "f1_ci95": [
+          0.0,
+          0.13636363636363635
+        ],
+        "balanced_accuracy": 0.5166929133858268,
+        "balanced_accuracy_ci95": [
+          0.49559055118110235,
+          0.55748031496063
+        ],
+        "confusion": {
+          "tp": 1,
+          "fp": 21,
+          "fn": 24,
+          "tn": 3154
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.060000000000000005,
+          "optimal_sensitivity": 0.12,
+          "optimal_specificity": 0.9801574803149606,
+          "optimal_j": 0.10015748031496052
+        },
+        "mapping_status": "Unavailable",
+        "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+        "is_primary": false,
+        "notes": "Direct evaluation UNAVAILABLE. RFMiD RT denotes Retinal Traction Detachment (25 cases)."
+      }
+    }
+  },
+  "Training_Set": {
+    "partition": "Training_Set",
+    "n_samples": 1920,
+    "primary_exact_macro": {
+      "macro_auroc": 0.8786604034450123,
+      "macro_pr_auc": 0.46149358314099975,
+      "macro_f1": 0.4629906213707504,
+      "macro_sensitivity": 0.5681900709153926,
+      "macro_specificity": 0.9260774955874058
+    },
+    "all_mappings_macro": {
+      "macro_auroc": 0.8121020111251119,
+      "macro_pr_auc": 0.3853531057128947,
+      "macro_f1": 0.3716035773856563,
+      "macro_sensitivity": 0.5160622949796347,
+      "macro_specificity": 0.9287376592368403
+    },
+    "per_class": {
+      "Diabetic Retinopathy": {
+        "n_total": 1920,
+        "n_pos": 376,
+        "n_neg": 1544,
+        "prevalence_pct": 19.583,
+        "auroc": 0.8890316668504025,
+        "auroc_ci95": [
+          0.8718372336980487,
+          0.9058468651816228
+        ],
+        "pr_auc": 0.6183887801758104,
+        "pr_auc_ci95": [
+          0.5754841378426055,
+          0.6647094590205023
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.8723404255319149,
+        "sensitivity_ci95": [
+          0.8377659574468085,
+          0.9042553191489362
+        ],
+        "specificity": 0.7629533678756477,
+        "specificity_ci95": [
+          0.7409326424870466,
+          0.7830310880829016
+        ],
+        "precision": 0.47262247838616717,
+        "precision_ci95": [
+          0.44827354156031,
+          0.496952137819571
+        ],
+        "f1": 0.6130841121495327,
+        "f1_ci95": [
+          0.5873712849079892,
+          0.6374087445862363
+        ],
+        "balanced_accuracy": 0.8176468967037813,
+        "balanced_accuracy_ci95": [
+          0.7972238107705876,
+          0.8368447525079925
+        ],
+        "confusion": {
+          "tp": 328,
+          "fp": 366,
+          "fn": 48,
+          "tn": 1178
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.88,
+          "optimal_sensitivity": 0.8377659574468085,
+          "optimal_specificity": 0.8180051813471503,
+          "optimal_j": 0.6557711387939587
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=632 >= 200)",
+        "is_primary": true,
+        "notes": "Direct correspondence to non-proliferative and proliferative DR vascular lesions."
+      },
+      "Healthy": {
+        "n_total": 1920,
+        "n_pos": 401,
+        "n_neg": 1519,
+        "prevalence_pct": 20.885,
+        "auroc": 0.8791024413948669,
+        "auroc_ci95": [
+          0.8626389096383466,
+          0.8959098714701068
+        ],
+        "pr_auc": 0.654309783922264,
+        "pr_auc_ci95": [
+          0.6102056398877421,
+          0.7027356679295306
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.44139650872817954,
+        "sensitivity_ci95": [
+          0.3939526184538653,
+          0.4912718204488778
+        ],
+        "specificity": 0.956550362080316,
+        "specificity_ci95": [
+          0.946017116524029,
+          0.9664252797893351
+        ],
+        "precision": 0.7283950617283951,
+        "precision_ci95": [
+          0.6782551054018445,
+          0.7801724137931034
+        ],
+        "f1": 0.5496894409937888,
+        "f1_ci95": [
+          0.5022803797057929,
+          0.5949239971278771
+        ],
+        "balanced_accuracy": 0.6989734354042477,
+        "balanced_accuracy_ci95": [
+          0.6738914932878469,
+          0.7245729077569407
+        ],
+        "confusion": {
+          "tp": 177,
+          "fp": 66,
+          "fn": 224,
+          "tn": 1453
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.6458852867830424,
+          "optimal_specificity": 0.8821593153390388,
+          "optimal_j": 0.528044602122081
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=669 >= 200)",
+        "is_primary": true,
+        "notes": "Disease_Risk == 0 indicates absence of any detectable retinal risk/lesions."
+      },
+      "Macular Scar": {
+        "n_total": 1920,
+        "n_pos": 15,
+        "n_neg": 1905,
+        "prevalence_pct": 0.781,
+        "auroc": 0.7691338582677165,
+        "auroc_ci95": [
+          0.6352265966754156,
+          0.8911391076115486
+        ],
+        "pr_auc": 0.048978577549802914,
+        "pr_auc_ci95": [
+          0.02029741317332936,
+          0.13814676691598532
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.4,
+        "sensitivity_ci95": [
+          0.13333333333333333,
+          0.6666666666666666
+        ],
+        "specificity": 0.937007874015748,
+        "specificity_ci95": [
+          0.9254593175853019,
+          0.94751968503937
+        ],
+        "precision": 0.047619047619047616,
+        "precision_ci95": [
+          0.017237695254936635,
+          0.078125
+        ],
+        "f1": 0.0851063829787234,
+        "f1_ci95": [
+          0.03052856812398797,
+          0.13986013986013984
+        ],
+        "balanced_accuracy": 0.668503937007874,
+        "balanced_accuracy_ci95": [
+          0.5367388451443569,
+          0.8005314960629921
+        ],
+        "confusion": {
+          "tp": 6,
+          "fp": 120,
+          "fn": 9,
+          "tn": 1785
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.48000000000000004,
+          "optimal_sensitivity": 0.4666666666666667,
+          "optimal_specificity": 0.9364829396325459,
+          "optimal_j": 0.4031496062992126
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+        "is_primary": true,
+        "notes": "RFMiD MS denotes Macular Scars (27 cases total). Wide bootstrap CIs required."
+      },
+      "Central Serous Chorioretinopathy [Color Fundus]": {
+        "n_total": 1920,
+        "n_pos": 37,
+        "n_neg": 1883,
+        "prevalence_pct": 1.927,
+        "auroc": 0.8913177649237128,
+        "auroc_ci95": [
+          0.8259311621765153,
+          0.9463632644859411
+        ],
+        "pr_auc": 0.265944105968517,
+        "pr_auc_ci95": [
+          0.17018596002106662,
+          0.44564119403196256
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.35135135135135137,
+        "sensitivity_ci95": [
+          0.2155405405405406,
+          0.5135135135135135
+        ],
+        "specificity": 0.9830058417419012,
+        "specificity_ci95": [
+          0.9771508231545406,
+          0.9888475836431226
+        ],
+        "precision": 0.28888888888888886,
+        "precision_ci95": [
+          0.18177272727272728,
+          0.42113237639553386
+        ],
+        "f1": 0.31707317073170727,
+        "f1_ci95": [
+          0.19277108433734938,
+          0.4523809523809524
+        ],
+        "balanced_accuracy": 0.6671785965466263,
+        "balanced_accuracy_ci95": [
+          0.5957084009128619,
+          0.7496006229277604
+        ],
+        "confusion": {
+          "tp": 13,
+          "fp": 32,
+          "fn": 24,
+          "tn": 1851
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.6216216216216216,
+          "optimal_specificity": 0.9330855018587361,
+          "optimal_j": 0.5547071234803576
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Central Serous Retinopathy / Chorioretinopathy (61 cases total)."
+      },
+      "Disc Edema": {
+        "n_total": 1920,
+        "n_pos": 58,
+        "n_neg": 1862,
+        "prevalence_pct": 3.021,
+        "auroc": 0.9647162857883627,
+        "auroc_ci95": [
+          0.9300743777547317,
+          0.9889463498648098
+        ],
+        "pr_auc": 0.7198466680886042,
+        "pr_auc_ci95": [
+          0.5999444365882199,
+          0.8466188904083017
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.7758620689655172,
+        "sensitivity_ci95": [
+          0.6724137931034483,
+          0.8793103448275862
+        ],
+        "specificity": 0.9908700322234156,
+        "specificity_ci95": [
+          0.9860365198711063,
+          0.9951664876476907
+        ],
+        "precision": 0.7258064516129032,
+        "precision_ci95": [
+          0.6285714285714286,
+          0.8305084745762712
+        ],
+        "f1": 0.7500000000000001,
+        "f1_ci95": [
+          0.6666666666666666,
+          0.8320000000000001
+        ],
+        "balanced_accuracy": 0.8833660505944665,
+        "balanced_accuracy_ci95": [
+          0.830299270343346,
+          0.9356272454535353
+        ],
+        "confusion": {
+          "tp": 45,
+          "fp": 17,
+          "fn": 13,
+          "tn": 1845
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.8793103448275862,
+          "optimal_specificity": 0.9736842105263158,
+          "optimal_j": 0.852994555353902
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Optic Disc Edema (96 cases total; distinct from Drusen DN)."
+      },
+      "Retinitis Pigmentosa": {
+        "n_total": 1920,
+        "n_pos": 6,
+        "n_neg": 1914,
+        "prevalence_pct": 0.312,
+        "auroc": 0.8295019157088123,
+        "auroc_ci95": [
+          0.6180773249738767,
+          0.9990421455938697
+        ],
+        "pr_auc": 0.3402903666218561,
+        "pr_auc_ci95": [
+          0.08710953357724427,
+          0.7992762445887445
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.6666666666666666,
+        "sensitivity_ci95": [
+          0.3333333333333333,
+          1.0
+        ],
+        "specificity": 0.96760710553814,
+        "specificity_ci95": [
+          0.9587251828631139,
+          0.9754440961337513
+        ],
+        "precision": 0.06060606060606061,
+        "precision_ci95": [
+          0.026657894736842106,
+          0.09803921568627451
+        ],
+        "f1": 0.1111111111111111,
+        "f1_ci95": [
+          0.04936766034327011,
+          0.17647058823529413
+        ],
+        "balanced_accuracy": 0.8171368861024033,
+        "balanced_accuracy_ci95": [
+          0.6475901253918496,
+          0.9851097178683386
+        ],
+        "confusion": {
+          "tp": 4,
+          "fp": 62,
+          "fn": 2,
+          "tn": 1852
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.99,
+          "optimal_sensitivity": 0.6666666666666666,
+          "optimal_specificity": 0.9895506792058516,
+          "optimal_j": 0.6562173458725182
+        },
+        "mapping_status": "Exact (Underpowered)",
+        "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+        "is_primary": false,
+        "notes": "Severely inadequate sample size (N=10 in 3,200). Descriptive analysis only."
+      },
+      "Myopia": {
+        "n_total": 1920,
+        "n_pos": 101,
+        "n_neg": 1819,
+        "prevalence_pct": 5.26,
+        "auroc": 0.8028510932456633,
+        "auroc_ci95": [
+          0.7511080780975293,
+          0.8528257828531616
+        ],
+        "pr_auc": 0.34560948695218024,
+        "pr_auc_ci95": [
+          0.2626580568895565,
+          0.44284687352888064
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.40594059405940597,
+        "sensitivity_ci95": [
+          0.31683168316831684,
+          0.504950495049505
+        ],
+        "specificity": 0.959868059373282,
+        "specificity_ci95": [
+          0.9505222649807586,
+          0.9686641011544805
+        ],
+        "precision": 0.35964912280701755,
+        "precision_ci95": [
+          0.2879782178217822,
+          0.4356499111449606
+        ],
+        "f1": 0.3813953488372093,
+        "f1_ci95": [
+          0.3033034044958477,
+          0.4574048035266398
+        ],
+        "balanced_accuracy": 0.6829043267163439,
+        "balanced_accuracy_ci95": [
+          0.6366910880202918,
+          0.7315915202020477
+        ],
+        "confusion": {
+          "tp": 41,
+          "fp": 73,
+          "fn": 60,
+          "tn": 1746
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.03,
+          "optimal_sensitivity": 0.6039603960396039,
+          "optimal_specificity": 0.8845519516217702,
+          "optimal_j": 0.4885123476613742
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": false,
+        "notes": "RFMiD MYA denotes Myopic Atrophy (167 cases). Feature-level morphological evaluation."
+      },
+      "Glaucoma": {
+        "n_total": 1920,
+        "n_pos": 282,
+        "n_neg": 1638,
+        "prevalence_pct": 14.688,
+        "auroc": 0.800426917448194,
+        "auroc_ci95": [
+          0.770545266888352,
+          0.827232548775102
+        ],
+        "pr_auc": 0.4288560514266786,
+        "pr_auc_ci95": [
+          0.3780977520304827,
+          0.48801618731721025
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.6595744680851063,
+        "sensitivity_ci95": [
+          0.6063829787234043,
+          0.7127659574468085
+        ],
+        "specificity": 0.8107448107448108,
+        "specificity_ci95": [
+          0.7918192918192918,
+          0.8284493284493285
+        ],
+        "precision": 0.375,
+        "precision_ci95": [
+          0.3438816480712463,
+          0.4057971014492754
+        ],
+        "f1": 0.4781491002570694,
+        "f1_ci95": [
+          0.4418257189952518,
+          0.5130222116282689
+        ],
+        "balanced_accuracy": 0.7351596394149585,
+        "balanced_accuracy_ci95": [
+          0.7062902670615436,
+          0.7634129906736291
+        ],
+        "confusion": {
+          "tp": 186,
+          "fp": 310,
+          "fn": 96,
+          "tn": 1328
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.2,
+          "optimal_sensitivity": 0.7127659574468085,
+          "optimal_specificity": 0.7698412698412699,
+          "optimal_j": 0.48260722728807837
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+        "is_primary": false,
+        "notes": "RFMiD ODC denotes Optic Disc Cupping (an anatomic sign, not clinical glaucoma diagnosis)."
+      },
+      "Retinal Detachment": {
+        "n_total": 1920,
+        "n_pos": 14,
+        "n_neg": 1906,
+        "prevalence_pct": 0.729,
+        "auroc": 0.48283615649827605,
+        "auroc_ci95": [
+          0.309544108829261,
+          0.6669670963873481
+        ],
+        "pr_auc": 0.04595413071033845,
+        "pr_auc_ci95": [
+          0.0063450635671831335,
+          0.22277845557331363
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.07142857142857142,
+        "sensitivity_ci95": [
+          0.0,
+          0.21428571428571427
+        ],
+        "specificity": 0.9900314795383001,
+        "specificity_ci95": [
+          0.9853095487932844,
+          0.9942287513116475
+        ],
+        "precision": 0.05,
+        "precision_ci95": [
+          0.0,
+          0.16666666666666666
+        ],
+        "f1": 0.058823529411764705,
+        "f1_ci95": [
+          0.0,
+          0.18181818181818182
+        ],
+        "balanced_accuracy": 0.5307300254834357,
+        "balanced_accuracy_ci95": [
+          0.4931794333683106,
+          0.6029521436066556
+        ],
+        "confusion": {
+          "tp": 1,
+          "fp": 19,
+          "fn": 13,
+          "tn": 1887
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.060000000000000005,
+          "optimal_sensitivity": 0.14285714285714285,
+          "optimal_specificity": 0.9742917103882477,
+          "optimal_j": 0.1171488532453906
+        },
+        "mapping_status": "Unavailable",
+        "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+        "is_primary": false,
+        "notes": "Direct evaluation UNAVAILABLE. RFMiD RT denotes Retinal Traction Detachment (25 cases)."
+      }
+    }
+  },
+  "Evaluation_Set": {
+    "partition": "Evaluation_Set",
+    "n_samples": 640,
+    "primary_exact_macro": {
+      "macro_auroc": 0.9079471664168738,
+      "macro_pr_auc": 0.4810695291579951,
+      "macro_f1": 0.42940890727354325,
+      "macro_sensitivity": 0.549072171609485,
+      "macro_specificity": 0.9185442363939499
+    },
+    "all_mappings_macro": {
+      "macro_auroc": 0.8298934735409191,
+      "macro_pr_auc": 0.4176453031169084,
+      "macro_f1": 0.3343847596690346,
+      "macro_sensitivity": 0.5095607925063588,
+      "macro_specificity": 0.925056106672259
+    },
+    "per_class": {
+      "Diabetic Retinopathy": {
+        "n_total": 640,
+        "n_pos": 132,
+        "n_neg": 508,
+        "prevalence_pct": 20.625,
+        "auroc": 0.8847977809591983,
+        "auroc_ci95": [
+          0.8531414041994749,
+          0.9140764808518252
+        ],
+        "pr_auc": 0.6278445899208296,
+        "pr_auc_ci95": [
+          0.5569307052602779,
+          0.7029357184981803
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.8712121212121212,
+        "sensitivity_ci95": [
+          0.8106060606060606,
+          0.9242424242424242
+        ],
+        "specificity": 0.7716535433070866,
+        "specificity_ci95": [
+          0.7322834645669292,
+          0.8070866141732284
+        ],
+        "precision": 0.49783549783549785,
+        "precision_ci95": [
+          0.4561279711375212,
+          0.5424629380053908
+        ],
+        "f1": 0.6336088154269972,
+        "f1_ci95": [
+          0.5898876404494382,
+          0.676138398671529
+        ],
+        "balanced_accuracy": 0.8214328322596038,
+        "balanced_accuracy_ci95": [
+          0.7854569315199237,
+          0.8551434621808637
+        ],
+        "confusion": {
+          "tp": 115,
+          "fp": 116,
+          "fn": 17,
+          "tn": 392
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.44,
+          "optimal_sensitivity": 0.8939393939393939,
+          "optimal_specificity": 0.7637795275590551,
+          "optimal_j": 0.6577189214984491
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=632 >= 200)",
+        "is_primary": true,
+        "notes": "Direct correspondence to non-proliferative and proliferative DR vascular lesions."
+      },
+      "Healthy": {
+        "n_total": 640,
+        "n_pos": 134,
+        "n_neg": 506,
+        "prevalence_pct": 20.938,
+        "auroc": 0.8943277682732582,
+        "auroc_ci95": [
+          0.8675708660256032,
+          0.9200522830511475
+        ],
+        "pr_auc": 0.6638493422925873,
+        "pr_auc_ci95": [
+          0.5916353316729348,
+          0.7389605561157252
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.47761194029850745,
+        "sensitivity_ci95": [
+          0.39552238805970147,
+          0.5597014925373134
+        ],
+        "specificity": 0.9268774703557312,
+        "specificity_ci95": [
+          0.9031620553359684,
+          0.9486166007905138
+        ],
+        "precision": 0.6336633663366337,
+        "precision_ci95": [
+          0.5462752525252526,
+          0.7216638029782358
+        ],
+        "f1": 0.5446808510638298,
+        "f1_ci95": [
+          0.4642857142857143,
+          0.6198490470568391
+        ],
+        "balanced_accuracy": 0.7022447053271194,
+        "balanced_accuracy_ci95": [
+          0.6566961388708631,
+          0.7474632765028613
+        ],
+        "confusion": {
+          "tp": 64,
+          "fp": 37,
+          "fn": 70,
+          "tn": 469
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.753731343283582,
+          "optimal_specificity": 0.8557312252964426,
+          "optimal_j": 0.6094625685800246
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=669 >= 200)",
+        "is_primary": true,
+        "notes": "Disease_Risk == 0 indicates absence of any detectable retinal risk/lesions."
+      },
+      "Macular Scar": {
+        "n_total": 640,
+        "n_pos": 5,
+        "n_neg": 635,
+        "prevalence_pct": 0.781,
+        "auroc": 0.8806299212598425,
+        "auroc_ci95": [
+          0.7073937007874017,
+          0.987724409448819
+        ],
+        "pr_auc": 0.1240193748088485,
+        "pr_auc_ci95": [
+          0.039442296496242195,
+          0.40717261904761887
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.6,
+        "sensitivity_ci95": [
+          0.2,
+          1.0
+        ],
+        "specificity": 0.9149606299212598,
+        "specificity_ci95": [
+          0.8913385826771654,
+          0.9354330708661417
+        ],
+        "precision": 0.05263157894736842,
+        "precision_ci95": [
+          0.016666666666666666,
+          0.09090909090909091
+        ],
+        "f1": 0.09677419354838708,
+        "f1_ci95": [
+          0.03076923076923077,
+          0.1639344262295082
+        ],
+        "balanced_accuracy": 0.75748031496063,
+        "balanced_accuracy_ci95": [
+          0.5535433070866141,
+          0.9598425196850393
+        ],
+        "confusion": {
+          "tp": 3,
+          "fp": 54,
+          "fn": 2,
+          "tn": 581
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.35000000000000003,
+          "optimal_sensitivity": 0.8,
+          "optimal_specificity": 0.905511811023622,
+          "optimal_j": 0.705511811023622
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+        "is_primary": true,
+        "notes": "RFMiD MS denotes Macular Scars (27 cases total). Wide bootstrap CIs required."
+      },
+      "Central Serous Chorioretinopathy [Color Fundus]": {
+        "n_total": 640,
+        "n_pos": 11,
+        "n_neg": 629,
+        "prevalence_pct": 1.719,
+        "auroc": 0.9512935395288337,
+        "auroc_ci95": [
+          0.9209387194681312,
+          0.9773124729007081
+        ],
+        "pr_auc": 0.3173077376766706,
+        "pr_auc_ci95": [
+          0.13646136164124464,
+          0.6076749005473995
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.2727272727272727,
+        "sensitivity_ci95": [
+          0.0,
+          0.5454545454545454
+        ],
+        "specificity": 0.985691573926868,
+        "specificity_ci95": [
+          0.9761526232114467,
+          0.9936406995230525
+        ],
+        "precision": 0.25,
+        "precision_ci95": [
+          0.0,
+          0.5
+        ],
+        "f1": 0.2608695652173913,
+        "f1_ci95": [
+          0.0,
+          0.5
+        ],
+        "balanced_accuracy": 0.6292094233270704,
+        "balanced_accuracy_ci95": [
+          0.4944356120826709,
+          0.7671628848099437
+        ],
+        "confusion": {
+          "tp": 3,
+          "fp": 9,
+          "fn": 8,
+          "tn": 620
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.6363636363636364,
+          "optimal_specificity": 0.9379968203497615,
+          "optimal_j": 0.5743604567133977
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Central Serous Retinopathy / Chorioretinopathy (61 cases total)."
+      },
+      "Disc Edema": {
+        "n_total": 640,
+        "n_pos": 21,
+        "n_neg": 619,
+        "prevalence_pct": 3.281,
+        "auroc": 0.9286868220632357,
+        "auroc_ci95": [
+          0.8555254250326948,
+          0.9850007692899454
+        ],
+        "pr_auc": 0.6723266010910397,
+        "pr_auc_ci95": [
+          0.4957289789261198,
+          0.84428707021374
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.5238095238095238,
+        "sensitivity_ci95": [
+          0.3333333333333333,
+          0.7142857142857143
+        ],
+        "specificity": 0.9935379644588045,
+        "specificity_ci95": [
+          0.9870759289176091,
+          0.9983844911147012
+        ],
+        "precision": 0.7333333333333333,
+        "precision_ci95": [
+          0.5333333333333333,
+          0.9285714285714286
+        ],
+        "f1": 0.611111111111111,
+        "f1_ci95": [
+          0.4137931034482759,
+          0.7777777777777778
+        ],
+        "balanced_accuracy": 0.7586737441341642,
+        "balanced_accuracy_ci95": [
+          0.66182014001077,
+          0.8563351027002077
+        ],
+        "confusion": {
+          "tp": 11,
+          "fp": 4,
+          "fn": 10,
+          "tn": 615
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.02,
+          "optimal_sensitivity": 0.7142857142857143,
+          "optimal_specificity": 0.9709208400646203,
+          "optimal_j": 0.6852065543503345
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Optic Disc Edema (96 cases total; distinct from Drusen DN)."
+      },
+      "Retinitis Pigmentosa": {
+        "n_total": 640,
+        "n_pos": 2,
+        "n_neg": 638,
+        "prevalence_pct": 0.312,
+        "auroc": 0.9992163009404389,
+        "auroc_ci95": [
+          0.9968652037617554,
+          1.0
+        ],
+        "pr_auc": 0.8333333333333333,
+        "pr_auc_ci95": [
+          0.5,
+          1.0
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 1.0,
+        "sensitivity_ci95": [
+          1.0,
+          1.0
+        ],
+        "specificity": 0.9811912225705329,
+        "specificity_ci95": [
+          0.9702194357366771,
+          0.9905956112852664
+        ],
+        "precision": 0.14285714285714285,
+        "precision_ci95": [
+          0.09523809523809523,
+          0.25
+        ],
+        "f1": 0.25,
+        "f1_ci95": [
+          0.17391304347826084,
+          0.4
+        ],
+        "balanced_accuracy": 0.9905956112852665,
+        "balanced_accuracy_ci95": [
+          0.9851097178683386,
+          0.9952978056426331
+        ],
+        "confusion": {
+          "tp": 2,
+          "fp": 12,
+          "fn": 0,
+          "tn": 626
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.99,
+          "optimal_sensitivity": 1.0,
+          "optimal_specificity": 0.9952978056426333,
+          "optimal_j": 0.9952978056426334
+        },
+        "mapping_status": "Exact (Underpowered)",
+        "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+        "is_primary": false,
+        "notes": "Severely inadequate sample size (N=10 in 3,200). Descriptive analysis only."
+      },
+      "Myopia": {
+        "n_total": 640,
+        "n_pos": 34,
+        "n_neg": 606,
+        "prevalence_pct": 5.312,
+        "auroc": 0.8064210832847991,
+        "auroc_ci95": [
+          0.7239334595224229,
+          0.8759985925063094
+        ],
+        "pr_auc": 0.2466302280968492,
+        "pr_auc_ci95": [
+          0.15638298565395345,
+          0.3895186704778686
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.38235294117647056,
+        "sensitivity_ci95": [
+          0.23529411764705882,
+          0.5588235294117647
+        ],
+        "specificity": 0.929042904290429,
+        "specificity_ci95": [
+          0.9075907590759076,
+          0.9488448844884488
+        ],
+        "precision": 0.23214285714285715,
+        "precision_ci95": [
+          0.14634146341463414,
+          0.3220338983050847
+        ],
+        "f1": 0.28888888888888886,
+        "f1_ci95": [
+          0.17977528089887643,
+          0.39999999999999997
+        ],
+        "balanced_accuracy": 0.6556979227334498,
+        "balanced_accuracy_ci95": [
+          0.5788681809357407,
+          0.7374781595806639
+        ],
+        "confusion": {
+          "tp": 13,
+          "fp": 43,
+          "fn": 21,
+          "tn": 563
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.6470588235294118,
+          "optimal_specificity": 0.8118811881188119,
+          "optimal_j": 0.45894001164822384
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": false,
+        "notes": "RFMiD MYA denotes Myopic Atrophy (167 cases). Feature-level morphological evaluation."
+      },
+      "Glaucoma": {
+        "n_total": 640,
+        "n_pos": 72,
+        "n_neg": 568,
+        "prevalence_pct": 11.25,
+        "auroc": 0.6975376564945226,
+        "auroc_ci95": [
+          0.6321046068075118,
+          0.7605037778755867
+        ],
+        "pr_auc": 0.26455041647825694,
+        "pr_auc_ci95": [
+          0.19448549709233573,
+          0.36461570661691833
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.4583333333333333,
+        "sensitivity_ci95": [
+          0.3472222222222222,
+          0.5694444444444444
+        ],
+        "specificity": 0.8257042253521126,
+        "specificity_ci95": [
+          0.7940140845070423,
+          0.8573943661971831
+        ],
+        "precision": 0.25,
+        "precision_ci95": [
+          0.19205298013245034,
+          0.31007874595231083
+        ],
+        "f1": 0.3235294117647059,
+        "f1_ci95": [
+          0.2488038277511961,
+          0.39643413046554393
+        ],
+        "balanced_accuracy": 0.642018779342723,
+        "balanced_accuracy_ci95": [
+          0.5828442879499217,
+          0.7037363067292645
+        ],
+        "confusion": {
+          "tp": 33,
+          "fp": 99,
+          "fn": 39,
+          "tn": 469
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.34,
+          "optimal_sensitivity": 0.5,
+          "optimal_specificity": 0.8133802816901409,
+          "optimal_j": 0.313380281690141
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+        "is_primary": false,
+        "notes": "RFMiD ODC denotes Optic Disc Cupping (an anatomic sign, not clinical glaucoma diagnosis)."
+      },
+      "Retinal Detachment": {
+        "n_total": 640,
+        "n_pos": 6,
+        "n_neg": 634,
+        "prevalence_pct": 0.938,
+        "auroc": 0.426130389064143,
+        "auroc_ci95": [
+          0.2760055205047318,
+          0.5757163512092535
+        ],
+        "pr_auc": 0.008946104353760368,
+        "pr_auc_ci95": [
+          0.00806220811394661,
+          0.015264444295534248
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.0,
+        "sensitivity_ci95": [
+          0.0,
+          0.0
+        ],
+        "specificity": 0.9968454258675079,
+        "specificity_ci95": [
+          0.9921135646687698,
+          1.0
+        ],
+        "precision": 0.0,
+        "precision_ci95": [
+          0.0,
+          0.0
+        ],
+        "f1": 0.0,
+        "f1_ci95": [
+          0.0,
+          0.0
+        ],
+        "balanced_accuracy": 0.49842271293375395,
+        "balanced_accuracy_ci95": [
+          0.4960567823343849,
+          0.5
+        ],
+        "confusion": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 6,
+          "tn": 632
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.66,
+          "optimal_sensitivity": 0.0,
+          "optimal_specificity": 1.0,
+          "optimal_j": 0.0
+        },
+        "mapping_status": "Unavailable",
+        "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+        "is_primary": false,
+        "notes": "Direct evaluation UNAVAILABLE. RFMiD RT denotes Retinal Traction Detachment (25 cases)."
+      }
+    }
+  },
+  "Test_Set": {
+    "partition": "Test_Set",
+    "n_samples": 640,
+    "primary_exact_macro": {
+      "macro_auroc": 0.8805940622141225,
+      "macro_pr_auc": 0.5041371959339298,
+      "macro_f1": 0.5229322919895039,
+      "macro_sensitivity": 0.6532070396396772,
+      "macro_specificity": 0.9210381425744899
+    },
+    "all_mappings_macro": {
+      "macro_auroc": 0.8461233211808519,
+      "macro_pr_auc": 0.45169026425304576,
+      "macro_f1": 0.4103908023811328,
+      "macro_sensitivity": 0.6051470733040942,
+      "macro_specificity": 0.928239214188745
+    },
+    "per_class": {
+      "Diabetic Retinopathy": {
+        "n_total": 640,
+        "n_pos": 124,
+        "n_neg": 516,
+        "prevalence_pct": 19.375,
+        "auroc": 0.8401240935233809,
+        "auroc_ci95": [
+          0.8040205363840961,
+          0.8737772333708427
+        ],
+        "pr_auc": 0.47975435198416466,
+        "pr_auc_ci95": [
+          0.41771869953582835,
+          0.5576603818562937
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.8145161290322581,
+        "sensitivity_ci95": [
+          0.7419354838709677,
+          0.8790322580645161
+        ],
+        "specificity": 0.7286821705426356,
+        "specificity_ci95": [
+          0.689922480620155,
+          0.7635658914728682
+        ],
+        "precision": 0.4190871369294606,
+        "precision_ci95": [
+          0.3801630020432436,
+          0.45815891733836056
+        ],
+        "f1": 0.5534246575342466,
+        "f1_ci95": [
+          0.5087218394691237,
+          0.5958731647944823
+        ],
+        "balanced_accuracy": 0.7715991497874468,
+        "balanced_accuracy_ci95": [
+          0.7322369654913728,
+          0.8096750750187546
+        ],
+        "confusion": {
+          "tp": 101,
+          "fp": 140,
+          "fn": 23,
+          "tn": 376
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.87,
+          "optimal_sensitivity": 0.782258064516129,
+          "optimal_specificity": 0.7810077519379846,
+          "optimal_j": 0.5632658164541136
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=632 >= 200)",
+        "is_primary": true,
+        "notes": "Direct correspondence to non-proliferative and proliferative DR vascular lesions."
+      },
+      "Healthy": {
+        "n_total": 640,
+        "n_pos": 134,
+        "n_neg": 506,
+        "prevalence_pct": 20.938,
+        "auroc": 0.8807297504572001,
+        "auroc_ci95": [
+          0.8468217214323639,
+          0.9081473806855053
+        ],
+        "pr_auc": 0.7019436945462882,
+        "pr_auc_ci95": [
+          0.6305025033927545,
+          0.7709414955983699
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.5,
+        "sensitivity_ci95": [
+          0.417910447761194,
+          0.5895522388059702
+        ],
+        "specificity": 0.9604743083003953,
+        "specificity_ci95": [
+          0.9426877470355731,
+          0.9762845849802372
+        ],
+        "precision": 0.7701149425287356,
+        "precision_ci95": [
+          0.6896551724137931,
+          0.8552671211160431
+        ],
+        "f1": 0.6063348416289593,
+        "f1_ci95": [
+          0.5294051701398048,
+          0.6810391883752448
+        ],
+        "balanced_accuracy": 0.7302371541501976,
+        "balanced_accuracy_ci95": [
+          0.6884254616246829,
+          0.7752400300867205
+        ],
+        "confusion": {
+          "tp": 67,
+          "fp": 20,
+          "fn": 67,
+          "tn": 486
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.7238805970149254,
+          "optimal_specificity": 0.857707509881423,
+          "optimal_j": 0.5815881068963482
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Robust (N_pos=669 >= 200)",
+        "is_primary": true,
+        "notes": "Disease_Risk == 0 indicates absence of any detectable retinal risk/lesions."
+      },
+      "Macular Scar": {
+        "n_total": 640,
+        "n_pos": 7,
+        "n_neg": 633,
+        "prevalence_pct": 1.094,
+        "auroc": 0.8505980591288649,
+        "auroc_ci95": [
+          0.6691435341909275,
+          0.960054163845633
+        ],
+        "pr_auc": 0.0797409798242145,
+        "pr_auc_ci95": [
+          0.04218130483605324,
+          0.22473785560959333
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.5714285714285714,
+        "sensitivity_ci95": [
+          0.2857142857142857,
+          0.8571428571428571
+        ],
+        "specificity": 0.9368088467614534,
+        "specificity_ci95": [
+          0.9178515007898894,
+          0.9557661927330173
+        ],
+        "precision": 0.09090909090909091,
+        "precision_ci95": [
+          0.03773584905660377,
+          0.15625
+        ],
+        "f1": 0.1568627450980392,
+        "f1_ci95": [
+          0.06666666666666667,
+          0.2641509433962264
+        ],
+        "balanced_accuracy": 0.7541187090950123,
+        "balanced_accuracy_ci95": [
+          0.6025727826675693,
+          0.9056646355224554
+        ],
+        "confusion": {
+          "tp": 4,
+          "fp": 40,
+          "fn": 3,
+          "tn": 593
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.05,
+          "optimal_sensitivity": 0.8571428571428571,
+          "optimal_specificity": 0.8751974723538705,
+          "optimal_j": 0.7323403294967274
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+        "is_primary": true,
+        "notes": "RFMiD MS denotes Macular Scars (27 cases total). Wide bootstrap CIs required."
+      },
+      "Central Serous Chorioretinopathy [Color Fundus]": {
+        "n_total": 640,
+        "n_pos": 13,
+        "n_neg": 627,
+        "prevalence_pct": 2.031,
+        "auroc": 0.9412342043920991,
+        "auroc_ci95": [
+          0.8677432216905901,
+          0.9887130413446202
+        ],
+        "pr_auc": 0.5627659302433058,
+        "pr_auc_ci95": [
+          0.3252016260290397,
+          0.8136280162800777
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.6153846153846154,
+        "sensitivity_ci95": [
+          0.3076923076923077,
+          0.8461538461538461
+        ],
+        "specificity": 0.9856459330143541,
+        "specificity_ci95": [
+          0.9760765550239234,
+          0.9936204146730463
+        ],
+        "precision": 0.47058823529411764,
+        "precision_ci95": [
+          0.2857142857142857,
+          0.7142857142857143
+        ],
+        "f1": 0.5333333333333333,
+        "f1_ci95": [
+          0.3076923076923077,
+          0.7333333333333334
+        ],
+        "balanced_accuracy": 0.8005152741994848,
+        "balanced_accuracy_ci95": [
+          0.6482440804809225,
+          0.9182922340817077
+        ],
+        "confusion": {
+          "tp": 8,
+          "fp": 9,
+          "fn": 5,
+          "tn": 618
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.03,
+          "optimal_sensitivity": 0.7692307692307693,
+          "optimal_specificity": 0.9457735247208932,
+          "optimal_j": 0.7150042939516625
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Central Serous Retinopathy / Chorioretinopathy (61 cases total)."
+      },
+      "Disc Edema": {
+        "n_total": 640,
+        "n_pos": 17,
+        "n_neg": 623,
+        "prevalence_pct": 2.656,
+        "auroc": 0.8902842035690681,
+        "auroc_ci95": [
+          0.7582770748748938,
+          0.9967920876215655
+        ],
+        "pr_auc": 0.696481023071676,
+        "pr_auc_ci95": [
+          0.4731130472293453,
+          0.9271264117556013
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.7647058823529411,
+        "sensitivity_ci95": [
+          0.5867647058823531,
+          0.9411764705882353
+        ],
+        "specificity": 0.9935794542536116,
+        "specificity_ci95": [
+          0.9871589085072231,
+          0.9983948635634029
+        ],
+        "precision": 0.7647058823529411,
+        "precision_ci95": [
+          0.5882352941176471,
+          0.9375
+        ],
+        "f1": 0.7647058823529412,
+        "f1_ci95": [
+          0.5999999999999999,
+          0.9090909090909091
+        ],
+        "balanced_accuracy": 0.8791426683032764,
+        "balanced_accuracy_ci95": [
+          0.7863398168256067,
+          0.9689830988575205
+        ],
+        "confusion": {
+          "tp": 13,
+          "fp": 4,
+          "fn": 4,
+          "tn": 619
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.01,
+          "optimal_sensitivity": 0.8235294117647058,
+          "optimal_specificity": 0.9695024077046549,
+          "optimal_j": 0.7930318194693609
+        },
+        "mapping_status": "Exact",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": true,
+        "notes": "Optic Disc Edema (96 cases total; distinct from Drusen DN)."
+      },
+      "Retinitis Pigmentosa": {
+        "n_total": 640,
+        "n_pos": 2,
+        "n_neg": 638,
+        "prevalence_pct": 0.312,
+        "auroc": 0.9905956112852665,
+        "auroc_ci95": [
+          0.9749216300940439,
+          1.0
+        ],
+        "pr_auc": 0.5714285714285714,
+        "pr_auc_ci95": [
+          0.1111111111111111,
+          1.0
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 1.0,
+        "sensitivity_ci95": [
+          1.0,
+          1.0
+        ],
+        "specificity": 0.9796238244514106,
+        "specificity_ci95": [
+          0.9686520376175548,
+          0.9890282131661442
+        ],
+        "precision": 0.13333333333333333,
+        "precision_ci95": [
+          0.09090909090909091,
+          0.2222222222222222
+        ],
+        "f1": 0.23529411764705882,
+        "f1_ci95": [
+          0.16666666666666669,
+          0.3636363636363636
+        ],
+        "balanced_accuracy": 0.9898119122257053,
+        "balanced_accuracy_ci95": [
+          0.9843260188087775,
+          0.994514106583072
+        ],
+        "confusion": {
+          "tp": 2,
+          "fp": 13,
+          "fn": 0,
+          "tn": 625
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.56,
+          "optimal_sensitivity": 1.0,
+          "optimal_specificity": 0.9811912225705329,
+          "optimal_j": 0.981191222570533
+        },
+        "mapping_status": "Exact (Underpowered)",
+        "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+        "is_primary": false,
+        "notes": "Severely inadequate sample size (N=10 in 3,200). Descriptive analysis only."
+      },
+      "Myopia": {
+        "n_total": 640,
+        "n_pos": 32,
+        "n_neg": 608,
+        "prevalence_pct": 5.0,
+        "auroc": 0.8800370065789473,
+        "auroc_ci95": [
+          0.7931524979440789,
+          0.9461991159539472
+        ],
+        "pr_auc": 0.5738384266247356,
+        "pr_auc_ci95": [
+          0.4153830055915977,
+          0.7317105707713933
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.71875,
+        "sensitivity_ci95": [
+          0.5625,
+          0.875
+        ],
+        "specificity": 0.9259868421052632,
+        "specificity_ci95": [
+          0.9062088815789474,
+          0.9457236842105263
+        ],
+        "precision": 0.3382352941176471,
+        "precision_ci95": [
+          0.2647058823529412,
+          0.4237416538263995
+        ],
+        "f1": 0.45999999999999996,
+        "f1_ci95": [
+          0.3669724770642202,
+          0.5555555555555556
+        ],
+        "balanced_accuracy": 0.8223684210526316,
+        "balanced_accuracy_ci95": [
+          0.7417763157894737,
+          0.8964021381578946
+        ],
+        "confusion": {
+          "tp": 23,
+          "fp": 45,
+          "fn": 9,
+          "tn": 563
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.65,
+          "optimal_sensitivity": 0.71875,
+          "optimal_specificity": 0.9424342105263158,
+          "optimal_j": 0.6611842105263159
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+        "is_primary": false,
+        "notes": "RFMiD MYA denotes Myopic Atrophy (167 cases). Feature-level morphological evaluation."
+      },
+      "Glaucoma": {
+        "n_total": 640,
+        "n_pos": 91,
+        "n_neg": 549,
+        "prevalence_pct": 14.219,
+        "auroc": 0.6980423947637061,
+        "auroc_ci95": [
+          0.6326908064612983,
+          0.7593226445685461
+        ],
+        "pr_auc": 0.33674992424533945,
+        "pr_auc_ci95": [
+          0.26495571658116157,
+          0.43600004015848454
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.46153846153846156,
+        "sensitivity_ci95": [
+          0.3516483516483517,
+          0.5604395604395604
+        ],
+        "specificity": 0.843351548269581,
+        "specificity_ci95": [
+          0.8087431693989071,
+          0.8724954462659381
+        ],
+        "precision": 0.328125,
+        "precision_ci95": [
+          0.2620487729108419,
+          0.3969465648854962
+        ],
+        "f1": 0.3835616438356165,
+        "f1_ci95": [
+          0.3055521346469622,
+          0.4600978254464022
+        ],
+        "balanced_accuracy": 0.6524450049040214,
+        "balanced_accuracy_ci95": [
+          0.5974178826637843,
+          0.7074113272883763
+        ],
+        "confusion": {
+          "tp": 42,
+          "fp": 86,
+          "fn": 49,
+          "tn": 463
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.18000000000000002,
+          "optimal_sensitivity": 0.5494505494505495,
+          "optimal_specificity": 0.8123861566484517,
+          "optimal_j": 0.3618367060990013
+        },
+        "mapping_status": "Approximate",
+        "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+        "is_primary": false,
+        "notes": "RFMiD ODC denotes Optic Disc Cupping (an anatomic sign, not clinical glaucoma diagnosis)."
+      },
+      "Retinal Detachment": {
+        "n_total": 640,
+        "n_pos": 5,
+        "n_neg": 635,
+        "prevalence_pct": 0.781,
+        "auroc": 0.6434645669291339,
+        "auroc_ci95": [
+          0.3958346456692914,
+          0.8781338582677163
+        ],
+        "pr_auc": 0.06250947630911625,
+        "pr_auc_ci95": [
+          0.008868136966114566,
+          0.3745029239766071
+        ],
+        "frozen_tau": 0.5,
+        "sensitivity": 0.0,
+        "sensitivity_ci95": [
+          0.0,
+          0.0
+        ],
+        "specificity": 1.0,
+        "specificity_ci95": [
+          1.0,
+          1.0
+        ],
+        "precision": 0.0,
+        "precision_ci95": [
+          0.0,
+          0.0
+        ],
+        "f1": 0.0,
+        "f1_ci95": [
+          0.0,
+          0.0
+        ],
+        "balanced_accuracy": 0.5,
+        "balanced_accuracy_ci95": [
+          0.5,
+          0.5
+        ],
+        "confusion": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 635
+        },
+        "exploratory_youden": {
+          "optimal_tau": 0.09,
+          "optimal_sensitivity": 0.2,
+          "optimal_specificity": 0.9952755905511811,
+          "optimal_j": 0.19527559055118116
+        },
+        "mapping_status": "Unavailable",
+        "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+        "is_primary": false,
+        "notes": "Direct evaluation UNAVAILABLE. RFMiD RT denotes Retinal Traction Detachment (25 cases)."
+      }
+    }
+  }
+}

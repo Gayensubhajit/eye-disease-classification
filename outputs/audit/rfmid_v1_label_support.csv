@@ -1,0 +1,47 @@
+label,rfmid_column,train_pos,train_neg,val_pos,val_neg,test_pos,test_neg,tv_pos,tv_neg,total_pos,total_neg,total_prevalence_pct,power_classification,table3_published_match
+NL (Normal / Healthy),Disease_Risk == 0,401,1519,134,506,134,506,535,2025,669,2531,20.906,Robust (Adequate Power; N_pos >= 200),True
+DR,DR,376,1544,132,508,124,516,508,2052,632,2568,19.75,Robust (Adequate Power; N_pos >= 200),True
+ARMD,ARMD,100,1820,38,602,31,609,138,2422,169,3031,5.281,Moderate (Adequate Power; 50 <= N_pos < 200),True
+MH,MH,317,1603,102,538,104,536,419,2141,523,2677,16.344,Robust (Adequate Power; N_pos >= 200),True
+DN,DN,138,1782,46,594,46,594,184,2376,230,2970,7.187,Robust (Adequate Power; N_pos >= 200),True
+MYA,MYA,101,1819,34,606,32,608,135,2425,167,3033,5.219,Moderate (Adequate Power; 50 <= N_pos < 200),True
+BRVO,BRVO,73,1847,23,617,23,617,96,2464,119,3081,3.719,Moderate (Adequate Power; 50 <= N_pos < 200),True
+TSLN,TSLN,186,1734,65,575,53,587,251,2309,304,2896,9.5,Robust (Adequate Power; N_pos >= 200),True
+ERM,ERM,14,1906,7,633,5,635,21,2539,26,3174,0.812,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+LS,LS,47,1873,17,623,15,625,64,2496,79,3121,2.469,Moderate (Adequate Power; 50 <= N_pos < 200),True
+MS,MS,15,1905,5,635,7,633,20,2540,27,3173,0.844,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+CSR,CSR,37,1883,11,629,13,627,48,2512,61,3139,1.906,Moderate (Adequate Power; 50 <= N_pos < 200),True
+ODC,ODC,282,1638,72,568,91,549,354,2206,445,2755,13.906,Robust (Adequate Power; N_pos >= 200),True
+CRVO,CRVO,28,1892,8,632,9,631,36,2524,45,3155,1.406,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+TV,TV,6,1914,2,638,2,638,8,2552,10,3190,0.312,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+AH,AH,16,1904,4,636,5,635,20,2540,25,3175,0.781,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+ODP,ODP,65,1855,26,614,24,616,91,2469,115,3085,3.594,Moderate (Adequate Power; 50 <= N_pos < 200),True
+ODE,ODE,58,1862,21,619,17,623,79,2481,96,3104,3.0,Moderate (Adequate Power; 50 <= N_pos < 200),True
+ST,ST,5,1915,4,636,2,638,9,2551,11,3189,0.344,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+AION,AION,17,1903,5,635,4,636,22,2538,26,3174,0.812,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+PT,PT,11,1909,2,638,4,636,13,2547,17,3183,0.531,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+RT,RT,14,1906,6,634,5,635,20,2540,25,3175,0.781,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+RS,RS,43,1877,14,626,14,626,57,2503,71,3129,2.219,Moderate (Adequate Power; 50 <= N_pos < 200),True
+CRS,CRS,32,1888,11,629,11,629,43,2517,54,3146,1.688,Moderate (Adequate Power; 50 <= N_pos < 200),True
+EDN,EDN,15,1905,5,635,4,636,20,2540,24,3176,0.75,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+RPEC,RPEC,22,1898,6,634,4,636,28,2532,32,3168,1.0,Borderline / Limited (Small N; 20 <= N_pos < 50; Wide CIs),True
+MHL,MHL,11,1909,3,637,3,637,14,2546,17,3183,0.531,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+RP,RP,6,1914,2,638,2,638,8,2552,10,3190,0.312,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+CWS,CWS,3,1917,3,637,2,638,6,2554,8,3192,0.25,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+CB,CB,1,1919,0,640,1,639,1,2559,2,3198,0.062,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+ODPM,ODPM,0,1920,2,638,0,640,2,2558,2,3198,0.062,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+PRH,PRH,2,1918,1,639,2,638,3,2557,5,3195,0.156,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+MNF,MNF,3,1917,0,640,0,640,3,2557,3,3197,0.094,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+HR,HR,0,1920,0,640,1,639,0,2560,1,3199,0.031,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+CRAO,CRAO,2,1918,2,638,0,640,4,2556,4,3196,0.125,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+TD,TD,3,1917,2,638,4,636,5,2555,9,3191,0.281,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+CME,CME,4,1916,1,639,2,638,5,2555,7,3193,0.219,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+PTCR,PTCR,5,1915,1,639,0,640,6,2554,6,3194,0.188,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+CF,CF,3,1917,2,638,1,639,5,2555,6,3194,0.188,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+VH,VH,1,1919,2,638,1,639,3,2557,4,3196,0.125,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+MCA,MCA,1,1919,0,640,0,640,1,2559,1,3199,0.031,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+VS,VS,1,1919,3,637,0,640,4,2556,4,3196,0.125,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+BRAO,BRAO,2,1918,2,638,0,640,4,2556,4,3196,0.125,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+PLQ,PLQ,1,1919,1,639,0,640,2,2558,2,3198,0.062,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+HPED,HPED,1,1919,0,640,0,640,1,2559,1,3199,0.031,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True
+CL,CL,1,1919,0,640,1,639,1,2559,2,3198,0.062,Severely Inadequate (N_pos < 20; Statistically Fragile / Exploratory Only),True

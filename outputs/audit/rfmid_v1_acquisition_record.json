@@ -1,0 +1,52 @@
+{
+  "acquisition_timestamp": "2026-10-11T13:45:00+05:30",
+  "dataset_metadata": {
+    "official_name": "Retinal Fundus Multi-Disease Image Dataset (RFMiD v1.0)",
+    "publication_citation": "Pachade et al. (2021), 'Retinal Fundus Multi-Disease Image Dataset (RFMiD) for Screening of Ophthalmic Diseases', Data, 6(2), 14. doi:10.3390/data6020014",
+    "challenge_affiliation": "Retinal Image Analysis for detecting Diseases (RIADD) Challenge, IEEE ISBI 2021",
+    "repository_source": "https://huggingface.co/datasets/ctmedtech/RFMID",
+    "repository_commit_date": "Canonical v1.0 release",
+    "image_format": "PNG (24-bit RGB Color Fundus Photography)",
+    "modalities": "Topcon 3D OCT-2000 (4288x2848), Carl Zeiss VISUCAM 500 (2048x1536), and Kowa VX-10alpha (2144x1424)"
+  },
+  "partition_inventory": {
+    "training_set": {
+      "image_count": 1920,
+      "label_file": "RFMiD_Training_Labels.csv",
+      "sha256": "03f3d0afcbe6829eef111ceb73ee6fe1e1c1b18531f6a789502279bfda371878",
+      "disease_risk_0_normal": 401,
+      "disease_risk_1_abnormal": 1519
+    },
+    "evaluation_set": {
+      "image_count": 640,
+      "label_file": "RFMiD_Validation_Labels.csv",
+      "sha256": "465ed8cbea77f269d17bf4055a90b2bd5b75edacb82e0519c876f28d98b24fff",
+      "disease_risk_0_normal": 134,
+      "disease_risk_1_abnormal": 506
+    },
+    "test_set": {
+      "image_count": 640,
+      "label_file": "RFMiD_Testing_Labels.csv",
+      "sha256": "4ebc844ddd280777cb18112f60b4890692efcb6e5121672b888d2d5a3fdf5e05",
+      "disease_risk_0_normal": 134,
+      "disease_risk_1_abnormal": 506
+    },
+    "total_cohort": {
+      "total_images": 3200,
+      "total_normal": 669,
+      "total_abnormal": 2531,
+      "test_labels_present": true,
+      "evaluation_scope": "Full N=3,200 labelled cohort available for external evaluation"
+    }
+  },
+  "protocol_compliance_verification": {
+    "internal_model_inference_status": "ZERO_INFERENCES (Model weights strictly un-evaluated on external cohort during preflight)",
+    "internal_test_set_quarantine": "PRESERVED (data_clean/test remains completely isolated; zero inferences)",
+    "threshold_tuning_status": "ZERO_TUNING (Thresholds frozen from internal validation; threshold-independent AUROC/PR-AUC prioritized)",
+    "evaluation_paradigm": "One-vs-Rest Binary Classification per condition; mutually exclusive softmax prohibited due to multi-label ground truth",
+    "retinal_detachment_status": "UNAVAILABLE for direct external validation; RFMiD RT represents Retinal Traction Detachment (N=25) which is etiologically non-equivalent to primary RD. RT restricted to secondary exploratory analysis.",
+    "glaucoma_status": "APPROXIMATE: RFMiD ODC represents Optic Disc Cupping (N=445) as a morphological sign, not a definitive clinical glaucoma diagnosis.",
+    "macular_scar_status": "EXACT: RFMiD MS represents Macular Scars (N=27); wide bootstrap CIs pre-registered.",
+    "retinitis_pigmentosa_status": "EXACT but UNDERPOWERED: RFMiD RP has N=10 cases total; restricted to exploratory descriptive reporting."
+  }
+}

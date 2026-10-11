@@ -1,0 +1,180 @@
+{
+  "dataset_name": "Retinal Fundus Multi-Disease Image Dataset (RFMiD v1.0)",
+  "source_publication": "Pachade et al. (2021), 'Retinal Fundus Multi-Disease Image Dataset (RFMiD) for Screening of Ophthalmic Diseases', Data, 6(2), 14. doi:10.3390/data6020014",
+  "cohort_summary": {
+    "total_images": 3200,
+    "training_set_images": 1920,
+    "evaluation_set_images": 640,
+    "test_set_images": 640,
+    "label_csv_checksums": {
+      "training_labels_sha256": "03f3d0afcbe6829eef111ceb73ee6fe1e1c1b18531f6a789502279bfda371878",
+      "validation_labels_sha256": "465ed8cbea77f269d17bf4055a90b2bd5b75edacb82e0519c876f28d98b24fff",
+      "testing_labels_sha256": "4ebc844ddd280777cb18112f60b4890692efcb6e5121672b888d2d5a3fdf5e05"
+    },
+    "ground_truth_test_labels_available": true,
+    "labelled_cohort_size_for_evaluation": 3200
+  },
+  "multi_label_structure": {
+    "total_disease_labels": 45,
+    "images_with_0_conditions_nl": 669,
+    "images_with_1_condition": 1782,
+    "images_with_2_conditions": 606,
+    "images_with_3_conditions": 136,
+    "images_with_4_conditions": 6,
+    "images_with_5_conditions": 1,
+    "multi_pathology_prevalence_pct": 23.41,
+    "evaluation_mandate": "Strict One-vs-Rest Binary Classification per condition. Mutually exclusive softmax is mathematically invalid."
+  },
+  "mapped_internal_conditions": [
+    {
+      "source_class_label": "Diabetic Retinopathy",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "DR",
+      "mapping_status": "Exact",
+      "rfmid_train_pos": 376,
+      "rfmid_val_pos": 132,
+      "rfmid_test_pos": 124,
+      "rfmid_total_pos": 632,
+      "rfmid_total_neg": 2568,
+      "statistical_power_category": "Robust (N_pos=632 >= 200)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "Direct correspondence to non-proliferative and proliferative diabetic retinal vascular changes.",
+      "metric_eligibility": "One-vs-Rest Binary AUROC, Specificity, Sensitivity, Precision-Recall AUC"
+    },
+    {
+      "source_class_label": "Healthy",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "Disease_Risk == 0 / NL",
+      "mapping_status": "Exact",
+      "rfmid_train_pos": 401,
+      "rfmid_val_pos": 134,
+      "rfmid_test_pos": 134,
+      "rfmid_total_pos": 669,
+      "rfmid_total_neg": 2531,
+      "statistical_power_category": "Robust (N_pos=669 >= 200)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Section 2.2",
+      "clinical_distinction_notes": "Ground truth Disease_Risk == 0 indicates absence of any detectable retinal lesions/risk.",
+      "metric_eligibility": "Specificity, Normal-vs-Abnormal Discrimination, Negative Predictive Value"
+    },
+    {
+      "source_class_label": "Macular Scar",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "MS",
+      "mapping_status": "Exact",
+      "rfmid_train_pos": 15,
+      "rfmid_val_pos": 5,
+      "rfmid_test_pos": 7,
+      "rfmid_total_pos": 27,
+      "rfmid_total_neg": 3173,
+      "statistical_power_category": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "RFMiD v1 defines MS as Macular Scars (27 total cases; Train: 15, Val: 5, Test: 7). Direct correspondence to internal Macular Scar class. Wide bootstrap CIs required.",
+      "metric_eligibility": "One-vs-Rest Binary AUROC, Specificity, Sensitivity (Pre-specified wide bootstrap CIs due to N_pos=27)"
+    },
+    {
+      "source_class_label": "Central Serous Chorioretinopathy [Color Fundus]",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "CSR",
+      "mapping_status": "Exact",
+      "rfmid_train_pos": 37,
+      "rfmid_val_pos": 11,
+      "rfmid_test_pos": 13,
+      "rfmid_total_pos": 61,
+      "rfmid_total_neg": 3139,
+      "statistical_power_category": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "Central Serous Retinopathy / Chorioretinopathy. Direct correspondence to localized neurosensory macular detachment (61 cases total; Train: 37, Val: 11, Test: 13).",
+      "metric_eligibility": "One-vs-Rest Binary AUROC, Specificity, Sensitivity, PR-AUC"
+    },
+    {
+      "source_class_label": "Disc Edema",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "ODE",
+      "mapping_status": "Exact",
+      "rfmid_train_pos": 58,
+      "rfmid_val_pos": 21,
+      "rfmid_test_pos": 17,
+      "rfmid_total_pos": 96,
+      "rfmid_total_neg": 3104,
+      "statistical_power_category": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "Optic Disc Edema (blurred disc margins, neuro-ophthalmic disc swelling). Distinct from Drusen (DN). Total 96 positive cases (Train: 58, Val: 21, Test: 17).",
+      "metric_eligibility": "One-vs-Rest Binary AUROC, Specificity, Sensitivity"
+    },
+    {
+      "source_class_label": "Retinitis Pigmentosa",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "RP",
+      "mapping_status": "Exact",
+      "rfmid_train_pos": 6,
+      "rfmid_val_pos": 2,
+      "rfmid_test_pos": 2,
+      "rfmid_total_pos": 10,
+      "rfmid_total_neg": 3190,
+      "statistical_power_category": "Severely Inadequate (N_pos=10 < 20; Statistically Fragile / Exploratory Only)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "Direct correspondence to hereditary pigmentary retinopathy presenting with peripheral bone-spicules. CRITICAL LIMITATION: Severely inadequate sample size (N=10 across full 3200 cohort; Train: 6, Val: 2, Test: 2); point estimates are statistically fragile.",
+      "metric_eligibility": "Exploratory Descriptive Analysis Only; Ineligible for standalone statistical validation claims"
+    },
+    {
+      "source_class_label": "Myopia",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "MYA",
+      "mapping_status": "Approximate",
+      "rfmid_train_pos": 101,
+      "rfmid_val_pos": 34,
+      "rfmid_test_pos": 32,
+      "rfmid_total_pos": 167,
+      "rfmid_total_neg": 3033,
+      "statistical_power_category": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "RFMiD v1 annotates Myopic Atrophy (MYA; 167 cases total; Train: 101, Val: 34, Test: 32). Internal source class includes broader high/pathological myopia fundus changes. Feature-level morphological evaluation only.",
+      "metric_eligibility": "One-vs-Rest Binary AUROC (Conditional on MYA feature alignment), Specificity"
+    },
+    {
+      "source_class_label": "Glaucoma",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "ODC",
+      "mapping_status": "Approximate",
+      "rfmid_train_pos": 282,
+      "rfmid_val_pos": 72,
+      "rfmid_test_pos": 91,
+      "rfmid_total_pos": 445,
+      "rfmid_total_neg": 2755,
+      "statistical_power_category": "Robust (N_pos=445 >= 200; Sign-level only)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "RFMiD v1 annotates Optic Disc Cupping (ODC; 445 cases; Train: 282, Val: 72, Test: 91), which is an anatomic sign, NOT a clinical diagnosis of Glaucoma. Physiological cupping without glaucoma exists, as does normal-tension glaucoma without severe cupping. Ineligible for definitive glaucoma clinical sensitivity/F1.",
+      "metric_eligibility": "Ranking Agreement, AUROC vs ODC; Ineligible for definitive clinical diagnostic specificity/F1"
+    },
+    {
+      "source_class_label": "Retinal Detachment",
+      "external_dataset": "RFMiD (v1.0)",
+      "external_label": "None (RT for exploratory only)",
+      "mapping_status": "Unavailable",
+      "rfmid_train_pos": 14,
+      "rfmid_val_pos": 6,
+      "rfmid_test_pos": 5,
+      "rfmid_total_pos": 25,
+      "rfmid_total_neg": 3175,
+      "statistical_power_category": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+      "supporting_source": "Pachade et al. (Data, MDPI 2021), Table 3 & Verified Label CSVs",
+      "clinical_distinction_notes": "CRITICAL PROTOCOL REQUIREMENT: Published Table 3 and verified CSVs confirm RT is Retinal Traction Detachment (25 positive cases total; Train: 14, Val: 6, Test: 5); no general/rhegmatogenous RD label exists in RFMiD v1. Tractional detachment is etiologically and morphologically distinct from primary rhegmatogenous or serous detachment. Direct external evaluation of Retinal Detachment is marked UNAVAILABLE. RT is eligible only for secondary exploratory analysis with explicit disclaimers.",
+      "metric_eligibility": "Direct External Evaluation UNAVAILABLE; Exploratory RT AUROC Only"
+    }
+  ],
+  "bootstrap_ci_prespecification": {
+    "resamples_B": 2000,
+    "confidence_level": 0.95,
+    "method": "Percentile Bootstrap (Stratified by Binary Ground Truth)",
+    "primary_metrics": [
+      "AUROC",
+      "PR-AUC"
+    ],
+    "secondary_metrics": [
+      "Sensitivity",
+      "Specificity",
+      "Balanced Accuracy (at pre-registered internal operating point)"
+    ],
+    "statistical_power_disclaimer": "Sample counts reported directly. Support alone does not imply adequate statistical power; wide confidence intervals will be explicitly displayed for low-support classes (MS N=27, RT N=25, RP N=10)."
+  }
+}

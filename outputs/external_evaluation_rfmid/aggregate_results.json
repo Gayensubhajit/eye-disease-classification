@@ -1,0 +1,1711 @@
+{
+  "dataset": "RFMiD v1.0",
+  "cohort_size": 3200,
+  "seeds_evaluated": [
+    42,
+    1337,
+    2026
+  ],
+  "partitions": {
+    "Full_Cohort": {
+      "partition": "Full_Cohort",
+      "classes": {
+        "Diabetic Retinopathy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=632 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "DR",
+          "n_pos": 632,
+          "n_neg": 2568,
+          "prevalence_pct": 19.75,
+          "auroc_mean": 0.8833201066025212,
+          "auroc_std": 0.006736121437967358,
+          "auroc_ci95_mean": [
+            0.8694974463578019,
+            0.8972455795197628
+          ],
+          "pr_auc_mean": 0.6398036033973471,
+          "pr_auc_std": 0.045786904654508784,
+          "pr_auc_ci95_mean": [
+            0.6061988601139577,
+            0.6742982662468796
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.8386075949367089,
+            "sensitivity_std": 0.022983922541667656,
+            "specificity_mean": 0.7805036344755972,
+            "specificity_std": 0.021230182943742692,
+            "f1_mean": 0.6144619389380223,
+            "f1_std": 0.008151513120062782,
+            "balanced_accuracy_mean": 0.809555614706153,
+            "balanced_accuracy_std": 0.002350383986162736
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.972991360126889,
+            "f1_std": 0.0037809328698887586,
+            "sensitivity_mean": 0.9738219895287958,
+            "sensitivity_std": 0.005235602094240843,
+            "specificity_mean": 0.9855465221318881,
+            "specificity_std": 0.006258539503410611
+          },
+          "generalization_gap": {
+            "delta_f1": -0.35852942118886677,
+            "delta_sensitivity": -0.13521439459208695,
+            "delta_specificity": -0.20504288765629086
+          }
+        },
+        "Healthy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=669 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "Disease_Risk == 0 / NL",
+          "n_pos": 669,
+          "n_neg": 2531,
+          "prevalence_pct": 20.906,
+          "auroc_mean": 0.8742816775029002,
+          "auroc_std": 0.008392822272990564,
+          "auroc_ci95_mean": [
+            0.860272919731552,
+            0.8875290838052591
+          ],
+          "pr_auc_mean": 0.648303903775211,
+          "pr_auc_std": 0.03137480238937699,
+          "pr_auc_ci95_mean": [
+            0.6149660230568561,
+            0.6835462261512668
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.3841554559043348,
+            "sensitivity_std": 0.08660631352389223,
+            "specificity_mean": 0.960094824180166,
+            "specificity_std": 0.008692216515211404,
+            "f1_mean": 0.49716550318173347,
+            "f1_std": 0.08344330132879157,
+            "balanced_accuracy_mean": 0.6721251400422504,
+            "balanced_accuracy_std": 0.04204012080145489
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8469226748872768,
+            "f1_std": 0.013327284734744047,
+            "sensitivity_mean": 0.9047619047619048,
+            "sensitivity_std": 0.01904761904761909,
+            "specificity_mean": 0.9465201465201464,
+            "specificity_std": 0.0033571983113229475
+          },
+          "generalization_gap": {
+            "delta_f1": -0.3497571717055433,
+            "delta_sensitivity": -0.5206064488575699,
+            "delta_specificity": 0.01357467766001963
+          }
+        },
+        "Macular Scar": {
+          "mapping_status": "Exact",
+          "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+          "is_primary": true,
+          "rfmid_label": "MS",
+          "n_pos": 27,
+          "n_neg": 3173,
+          "prevalence_pct": 0.844,
+          "auroc_mean": 0.8333430604677584,
+          "auroc_std": 0.028238894660852817,
+          "auroc_ci95_mean": [
+            0.7506248711154688,
+            0.9060841280402158
+          ],
+          "pr_auc_mean": 0.07309597981040732,
+          "pr_auc_std": 0.01465532285679904,
+          "pr_auc_ci95_mean": [
+            0.040408660892140534,
+            0.1592985000512728
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.5432098765432098,
+            "sensitivity_std": 0.056575008579701734,
+            "specificity_mean": 0.9152221872045384,
+            "specificity_std": 0.018352440417952264,
+            "f1_mean": 0.095504581726871,
+            "f1_std": 0.008646966563546752,
+            "balanced_accuracy_mean": 0.7292160318738742,
+            "balanced_accuracy_std": 0.019631197626838025
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8065884801665133,
+            "f1_std": 0.04592569973095779,
+            "sensitivity_mean": 0.7446808510638299,
+            "sensitivity_std": 0.073704289683782,
+            "specificity_mean": 0.9909031838856399,
+            "specificity_std": 0.0029776320305105928
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7110838984396423,
+            "delta_sensitivity": -0.20147097452062002,
+            "delta_specificity": -0.07568099668110151
+          }
+        },
+        "Central Serous Chorioretinopathy [Color Fundus]": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "CSR",
+          "n_pos": 61,
+          "n_neg": 3139,
+          "prevalence_pct": 1.906,
+          "auroc_mean": 0.8890322176322208,
+          "auroc_std": 0.022919509062342722,
+          "auroc_ci95_mean": [
+            0.8485886615938737,
+            0.9274033967171335
+          ],
+          "pr_auc_mean": 0.26183379467975226,
+          "pr_auc_std": 0.06855605602348568,
+          "pr_auc_ci95_mean": [
+            0.17687618514566075,
+            0.38564684548387773
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.360655737704918,
+            "sensitivity_std": 0.08674594462506852,
+            "specificity_mean": 0.9827970691302963,
+            "specificity_std": 0.009620687397605274,
+            "f1_mean": 0.3222710672960406,
+            "f1_std": 0.02926436968970096,
+            "balanced_accuracy_mean": 0.671726403417607,
+            "balanced_accuracy_std": 0.03909390984342324
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.797418630751964,
+            "f1_std": 0.049665677433615094,
+            "sensitivity_mean": 0.8787878787878788,
+            "sensitivity_std": 0.05248638810814775,
+            "specificity_mean": 0.9933211900425016,
+            "specificity_std": 0.0037917413469328656
+          },
+          "generalization_gap": {
+            "delta_f1": -0.47514756345592335,
+            "delta_sensitivity": -0.5181321410829608,
+            "delta_specificity": -0.010524120912205337
+          }
+        },
+        "Disc Edema": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "ODE",
+          "n_pos": 96,
+          "n_neg": 3104,
+          "prevalence_pct": 3.0,
+          "auroc_mean": 0.9394525656858534,
+          "auroc_std": 0.004843676753070424,
+          "auroc_ci95_mean": [
+            0.9040315923002576,
+            0.969458343400988
+          ],
+          "pr_auc_mean": 0.6869542943126531,
+          "pr_auc_std": 0.019297283028279197,
+          "pr_auc_ci95_mean": [
+            0.5898867724769613,
+            0.7823839267983231
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.6597222222222222,
+            "sensitivity_std": 0.05345418166090502,
+            "specificity_mean": 0.9921606529209622,
+            "specificity_std": 0.0016215280144481793,
+            "f1_mean": 0.6891927710973297,
+            "f1_std": 0.03301945811290082,
+            "balanced_accuracy_mean": 0.8259414375715922,
+            "balanced_accuracy_std": 0.02641317822582926
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.924731182795699,
+            "f1_std": 0.037248404463846856,
+            "sensitivity_mean": 0.9555555555555556,
+            "sensitivity_std": 0.03849001794597504,
+            "specificity_mean": 0.9969418960244649,
+            "specificity_std": 0.0010593582920910886
+          },
+          "generalization_gap": {
+            "delta_f1": -0.2355384116983693,
+            "delta_sensitivity": -0.2958333333333334,
+            "delta_specificity": -0.004781243103502697
+          }
+        },
+        "Retinitis Pigmentosa": {
+          "mapping_status": "Exact (Underpowered)",
+          "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+          "is_primary": false,
+          "rfmid_label": "RP",
+          "n_pos": 10,
+          "n_neg": 3190,
+          "prevalence_pct": 0.312,
+          "auroc_mean": 0.9396603970741902,
+          "auroc_std": 0.043782837114906735,
+          "auroc_ci95_mean": [
+            0.8591299634273772,
+            0.9984280303030303
+          ],
+          "pr_auc_mean": 0.4358988256890934,
+          "pr_auc_std": 0.04487438302934144,
+          "pr_auc_ci95_mean": [
+            0.20139414007490133,
+            0.7914060994713258
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.8333333333333334,
+            "sensitivity_std": 0.05773502691896256,
+            "specificity_mean": 0.9601880877742947,
+            "specificity_std": 0.023644344793897265,
+            "f1_mean": 0.13096649246250716,
+            "f1_std": 0.04683432617186345,
+            "balanced_accuracy_mean": 0.8967607105538141,
+            "balanced_accuracy_std": 0.017066895197965146
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8993038150932887,
+            "f1_std": 0.013300098374231135,
+            "sensitivity_mean": 0.9607843137254902,
+            "sensitivity_std": 0.033961780540566235,
+            "specificity_mean": 0.994475138121547,
+            "specificity_std": 0.0018416206261510082
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7683373226307816,
+            "delta_sensitivity": -0.12745098039215685,
+            "delta_specificity": -0.034287050347252324
+          }
+        },
+        "Myopia": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": false,
+          "rfmid_label": "MYA",
+          "n_pos": 167,
+          "n_neg": 3033,
+          "prevalence_pct": 5.219,
+          "auroc_mean": 0.789544879907182,
+          "auroc_std": 0.05419937964607014,
+          "auroc_ci95_mean": [
+            0.7500268339022581,
+            0.8275352032499459
+          ],
+          "pr_auc_mean": 0.30578324506422244,
+          "pr_auc_std": 0.07535598390704978,
+          "pr_auc_ci95_mean": [
+            0.24399988464664032,
+            0.38308458309989907
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.4471057884231537,
+            "sensitivity_std": 0.07582203558172684,
+            "specificity_mean": 0.9306517199692275,
+            "specificity_std": 0.01952334324915007,
+            "f1_mean": 0.3356992925598444,
+            "f1_std": 0.08112275586243717,
+            "balanced_accuracy_mean": 0.6888787541961906,
+            "balanced_accuracy_std": 0.04608330574989355
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.7233285917496444,
+            "f1_std": 0.011087096207766638,
+            "sensitivity_mean": 0.7297297297297297,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9796048438495856,
+            "specificity_std": 0.0022078404175511304
+          },
+          "generalization_gap": {
+            "delta_f1": -0.3876292991898,
+            "delta_sensitivity": -0.28262394130657603,
+            "delta_specificity": -0.04895312388035811
+          }
+        },
+        "Glaucoma": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+          "is_primary": false,
+          "rfmid_label": "ODC",
+          "n_pos": 445,
+          "n_neg": 2755,
+          "prevalence_pct": 13.906,
+          "auroc_mean": 0.7539314966999054,
+          "auroc_std": 0.014823089473495104,
+          "auroc_ci95_mean": [
+            0.7288897850010535,
+            0.778263739064826
+          ],
+          "pr_auc_mean": 0.3762249481989695,
+          "pr_auc_std": 0.005385671361245996,
+          "pr_auc_ci95_mean": [
+            0.3371779968382509,
+            0.42129225674257925
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.549063670411985,
+            "sensitivity_std": 0.05184797747017888,
+            "specificity_mean": 0.8216575922565034,
+            "specificity_std": 0.01510755304723482,
+            "f1_mean": 0.41336172527916676,
+            "f1_std": 0.021101501002045223,
+            "balanced_accuracy_mean": 0.6853606313342441,
+            "balanced_accuracy_std": 0.020143600676334614
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8134168432040773,
+            "f1_std": 0.015073419055920127,
+            "sensitivity_mean": 0.7741935483870966,
+            "sensitivity_std": 0.029077026415032146,
+            "specificity_mean": 0.9633027522935781,
+            "specificity_std": 0.006068236951983012
+          },
+          "generalization_gap": {
+            "delta_f1": -0.4000551179249105,
+            "delta_sensitivity": -0.22512987797511164,
+            "delta_specificity": -0.14164516003707472
+          }
+        },
+        "Retinal Detachment": {
+          "mapping_status": "Unavailable",
+          "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+          "is_primary": false,
+          "rfmid_label": "None (RT for exploratory only)",
+          "n_pos": 25,
+          "n_neg": 3175,
+          "prevalence_pct": 0.781,
+          "auroc_mean": 0.5134320209973754,
+          "auroc_std": 0.02509842297771597,
+          "auroc_ci95_mean": [
+            0.3839911811023622,
+            0.6413201049868765
+          ],
+          "pr_auc_mean": 0.025419902900405283,
+          "pr_auc_std": 0.012020517670119829,
+          "pr_auc_ci95_mean": [
+            0.007918651204062738,
+            0.1009066674267386
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.06666666666666667,
+            "sensitivity_std": 0.04618802153517006,
+            "specificity_mean": 0.9910761154855644,
+            "specificity_std": 0.0025457964625684062,
+            "f1_mean": 0.05753224428455259,
+            "f1_std": 0.030212589030670325,
+            "balanced_accuracy_mean": 0.5288713910761155,
+            "balanced_accuracy_std": 0.02191712634876025
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.9311111111111111,
+            "f1_std": 0.02501851166488385,
+            "sensitivity_mean": 0.8717948717948718,
+            "sensitivity_std": 0.044411559168432785,
+            "specificity_mean": 1.0,
+            "specificity_std": 0.0
+          },
+          "generalization_gap": {
+            "delta_f1": -0.8735788668265585,
+            "delta_sensitivity": -0.8051282051282052,
+            "delta_specificity": -0.008923884514435598
+          }
+        }
+      },
+      "primary_exact_macro": {
+        "macro_auroc_mean": 0.8838859255782507,
+        "macro_auroc_std": 0.008451294638665612,
+        "macro_pr_auc_mean": 0.46199831519507417,
+        "macro_pr_auc_std": 0.018726030956479615,
+        "macro_f1_mean": 0.44371917244799935,
+        "macro_f1_std": 0.025049591121375624,
+        "macro_sensitivity_mean": 0.5572701774622788,
+        "macro_sensitivity_std": 0.022640661551938786,
+        "macro_specificity_mean": 0.9261556735823119,
+        "macro_specificity_std": 0.0025773765500943045
+      },
+      "all_mappings_macro": {
+        "macro_auroc_mean": 0.8239998247299897,
+        "macro_auroc_std": 0.006908494574661972,
+        "macro_pr_auc_mean": 0.383702055314229,
+        "macro_pr_auc_std": 0.020419234899899778,
+        "macro_f1_mean": 0.35068395742511865,
+        "macro_f1_std": 0.02574277958684114,
+        "macro_sensitivity_mean": 0.5202800384607259,
+        "macro_sensitivity_std": 0.012627000846048618,
+        "macro_specificity_mean": 0.9260390981552389,
+        "macro_specificity_std": 0.0023026365208722375
+      }
+    },
+    "Training_Set": {
+      "partition": "Training_Set",
+      "classes": {
+        "Diabetic Retinopathy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=632 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "DR",
+          "n_pos": 376,
+          "n_neg": 1544,
+          "prevalence_pct": 19.583,
+          "auroc_mean": 0.8898337880792268,
+          "auroc_std": 0.004380681130465073,
+          "auroc_ci95_mean": [
+            0.8719623031731158,
+            0.9067815129717415
+          ],
+          "pr_auc_mean": 0.6565846488899517,
+          "pr_auc_std": 0.037437929269726125,
+          "pr_auc_ci95_mean": [
+            0.613146608511078,
+            0.7018599460900545
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.8430851063829787,
+            "sensitivity_std": 0.033955173762775834,
+            "specificity_mean": 0.7914507772020726,
+            "specificity_std": 0.027577291264305387,
+            "f1_mean": 0.624958661356905,
+            "f1_std": 0.010289754637635021,
+            "balanced_accuracy_mean": 0.8172679417925256,
+            "balanced_accuracy_std": 0.005160787269805385
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.972991360126889,
+            "f1_std": 0.0037809328698887586,
+            "sensitivity_mean": 0.9738219895287958,
+            "sensitivity_std": 0.005235602094240843,
+            "specificity_mean": 0.9855465221318881,
+            "specificity_std": 0.006258539503410611
+          },
+          "generalization_gap": {
+            "delta_f1": -0.348032698769984,
+            "delta_sensitivity": -0.1307368831458171,
+            "delta_specificity": -0.19409574492981552
+          }
+        },
+        "Healthy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=669 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "Disease_Risk == 0 / NL",
+          "n_pos": 401,
+          "n_neg": 1519,
+          "prevalence_pct": 20.885,
+          "auroc_mean": 0.8703362287719368,
+          "auroc_std": 0.008895034600111306,
+          "auroc_ci95_mean": [
+            0.8522701365961877,
+            0.8881829193748129
+          ],
+          "pr_auc_mean": 0.6390455899926367,
+          "pr_auc_std": 0.037842867536421396,
+          "pr_auc_ci95_mean": [
+            0.5960681306183483,
+            0.6860061309397624
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.370739817123857,
+            "sensitivity_std": 0.08302154761196251,
+            "specificity_mean": 0.9629141979372394,
+            "specificity_std": 0.007854083900888015,
+            "f1_mean": 0.48769231991992595,
+            "f1_std": 0.08490151774762207,
+            "balanced_accuracy_mean": 0.6668270075305482,
+            "balanced_accuracy_std": 0.041556433720089006
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8469226748872768,
+            "f1_std": 0.013327284734744047,
+            "sensitivity_mean": 0.9047619047619048,
+            "sensitivity_std": 0.01904761904761909,
+            "specificity_mean": 0.9465201465201464,
+            "specificity_std": 0.0033571983113229475
+          },
+          "generalization_gap": {
+            "delta_f1": -0.35923035496735084,
+            "delta_sensitivity": -0.5340220876380477,
+            "delta_specificity": 0.016394051417093047
+          }
+        },
+        "Macular Scar": {
+          "mapping_status": "Exact",
+          "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+          "is_primary": true,
+          "rfmid_label": "MS",
+          "n_pos": 15,
+          "n_neg": 1905,
+          "prevalence_pct": 0.781,
+          "auroc_mean": 0.7965296004666084,
+          "auroc_std": 0.04237407545846786,
+          "auroc_ci95_mean": [
+            0.670382327209099,
+            0.9056567512394285
+          ],
+          "pr_auc_mean": 0.06953827660710293,
+          "pr_auc_std": 0.01906056193121725,
+          "pr_auc_ci95_mean": [
+            0.025757310234870573,
+            0.20112997629234974
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.4444444444444445,
+            "sensitivity_std": 0.07698003589195009,
+            "specificity_mean": 0.9195100612423447,
+            "specificity_std": 0.017585954728612074,
+            "f1_mean": 0.07675412547019296,
+            "f1_std": 0.008085181634981125,
+            "balanced_accuracy_mean": 0.6819772528433946,
+            "balanced_accuracy_std": 0.031140085137532407
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8065884801665133,
+            "f1_std": 0.04592569973095779,
+            "sensitivity_mean": 0.7446808510638299,
+            "sensitivity_std": 0.073704289683782,
+            "specificity_mean": 0.9909031838856399,
+            "specificity_std": 0.0029776320305105928
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7298343546963203,
+            "delta_sensitivity": -0.3002364066193854,
+            "delta_specificity": -0.07139312264329523
+          }
+        },
+        "Central Serous Chorioretinopathy [Color Fundus]": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "CSR",
+          "n_pos": 37,
+          "n_neg": 1883,
+          "prevalence_pct": 1.927,
+          "auroc_mean": 0.8833661064144335,
+          "auroc_std": 0.007655450845347913,
+          "auroc_ci95_mean": [
+            0.8266301617602734,
+            0.9343679579739059
+          ],
+          "pr_auc_mean": 0.25083852265779755,
+          "pr_auc_std": 0.03566681585420661,
+          "pr_auc_ci95_mean": [
+            0.15757369608152968,
+            0.41725815721480314
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.36936936936936937,
+            "sensitivity_std": 0.08256893144064577,
+            "specificity_mean": 0.9824747742963357,
+            "specificity_std": 0.008774674265458509,
+            "f1_mean": 0.3274859287054409,
+            "f1_std": 0.010705287017791911,
+            "balanced_accuracy_mean": 0.6759220718328525,
+            "balanced_accuracy_std": 0.036943558055726765
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.797418630751964,
+            "f1_std": 0.049665677433615094,
+            "sensitivity_mean": 0.8787878787878788,
+            "sensitivity_std": 0.05248638810814775,
+            "specificity_mean": 0.9933211900425016,
+            "specificity_std": 0.0037917413469328656
+          },
+          "generalization_gap": {
+            "delta_f1": -0.46993270204652304,
+            "delta_sensitivity": -0.5094185094185094,
+            "delta_specificity": -0.01084641574616596
+          }
+        },
+        "Disc Edema": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "ODE",
+          "n_pos": 58,
+          "n_neg": 1862,
+          "prevalence_pct": 3.021,
+          "auroc_mean": 0.9543300986456288,
+          "auroc_std": 0.012620053413017696,
+          "auroc_ci95_mean": [
+            0.9147746212822697,
+            0.9843991907107671
+          ],
+          "pr_auc_mean": 0.69600621072939,
+          "pr_auc_std": 0.020736388410433373,
+          "pr_auc_ci95_mean": [
+            0.575775216590276,
+            0.8245879139558824
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.7126436781609197,
+            "sensitivity_std": 0.055423280235591676,
+            "specificity_mean": 0.9912280701754387,
+            "specificity_std": 0.0006201399239416371,
+            "f1_mean": 0.7140269151138717,
+            "f1_std": 0.03115602390299478,
+            "balanced_accuracy_mean": 0.8519358741681792,
+            "balanced_accuracy_std": 0.027517781018052308
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.924731182795699,
+            "f1_std": 0.037248404463846856,
+            "sensitivity_mean": 0.9555555555555556,
+            "sensitivity_std": 0.03849001794597504,
+            "specificity_mean": 0.9969418960244649,
+            "specificity_std": 0.0010593582920910886
+          },
+          "generalization_gap": {
+            "delta_f1": -0.21070426768182726,
+            "delta_sensitivity": -0.24291187739463593,
+            "delta_specificity": -0.005713825849026244
+          }
+        },
+        "Retinitis Pigmentosa": {
+          "mapping_status": "Exact (Underpowered)",
+          "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+          "is_primary": false,
+          "rfmid_label": "RP",
+          "n_pos": 6,
+          "n_neg": 1914,
+          "prevalence_pct": 0.312,
+          "auroc_mean": 0.9030825496342737,
+          "auroc_std": 0.0711898723617204,
+          "auroc_ci95_mean": [
+            0.786134331823987,
+            0.9994485080691976
+          ],
+          "pr_auc_mean": 0.429873855550726,
+          "pr_auc_std": 0.10163596570575471,
+          "pr_auc_ci95_mean": [
+            0.13094463780519092,
+            0.8596959175084175
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.7222222222222222,
+            "sensitivity_std": 0.09622504486493767,
+            "specificity_mean": 0.9575060954371298,
+            "specificity_std": 0.021695450791781156,
+            "f1_mean": 0.10317460317460318,
+            "f1_std": 0.028615486313206262,
+            "balanced_accuracy_mean": 0.839864158829676,
+            "balanced_accuracy_std": 0.03734718670045098
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8993038150932887,
+            "f1_std": 0.013300098374231135,
+            "sensitivity_mean": 0.9607843137254902,
+            "sensitivity_std": 0.033961780540566235,
+            "specificity_mean": 0.994475138121547,
+            "specificity_std": 0.0018416206261510082
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7961292119186856,
+            "delta_sensitivity": -0.23856209150326801,
+            "delta_specificity": -0.03696904268441714
+          }
+        },
+        "Myopia": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": false,
+          "rfmid_label": "MYA",
+          "n_pos": 101,
+          "n_neg": 1819,
+          "prevalence_pct": 5.26,
+          "auroc_mean": 0.779630849286138,
+          "auroc_std": 0.046530584164250786,
+          "auroc_ci95_mean": [
+            0.729692945930107,
+            0.8284428937671118
+          ],
+          "pr_auc_mean": 0.31571286745454125,
+          "pr_auc_std": 0.06041766025935307,
+          "pr_auc_ci95_mean": [
+            0.23481881075945962,
+            0.41204878370530307
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.405940594059406,
+            "sensitivity_std": 0.04950495049504952,
+            "specificity_mean": 0.9426424775517684,
+            "specificity_std": 0.019555538313291692,
+            "f1_mean": 0.33852912876931174,
+            "f1_std": 0.07051607052381173,
+            "balanced_accuracy_mean": 0.6742915358055871,
+            "balanced_accuracy_std": 0.031957280428000445
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.7233285917496444,
+            "f1_std": 0.011087096207766638,
+            "sensitivity_mean": 0.7297297297297297,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9796048438495856,
+            "specificity_std": 0.0022078404175511304
+          },
+          "generalization_gap": {
+            "delta_f1": -0.38479946298033263,
+            "delta_sensitivity": -0.3237891356703237,
+            "delta_specificity": -0.03696236629781713
+          }
+        },
+        "Glaucoma": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+          "is_primary": false,
+          "rfmid_label": "ODC",
+          "n_pos": 282,
+          "n_neg": 1638,
+          "prevalence_pct": 14.688,
+          "auroc_mean": 0.7938550154862211,
+          "auroc_std": 0.005744107959943541,
+          "auroc_ci95_mean": [
+            0.7641459251609962,
+            0.8215776876459501
+          ],
+          "pr_auc_mean": 0.4309389360496106,
+          "pr_auc_std": 0.0038071007010095515,
+          "pr_auc_ci95_mean": [
+            0.3797275637153428,
+            0.4892803012958713
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.6252955082742316,
+            "sensitivity_std": 0.04230621789166259,
+            "specificity_mean": 0.8103378103378104,
+            "specificity_std": 0.01404593726230151,
+            "f1_mean": 0.4583860064469641,
+            "f1_std": 0.017522808194527156,
+            "balanced_accuracy_mean": 0.717816659306021,
+            "balanced_accuracy_std": 0.01704081498223924
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8134168432040773,
+            "f1_std": 0.015073419055920127,
+            "sensitivity_mean": 0.7741935483870966,
+            "sensitivity_std": 0.029077026415032146,
+            "specificity_mean": 0.9633027522935781,
+            "specificity_std": 0.006068236951983012
+          },
+          "generalization_gap": {
+            "delta_f1": -0.35503083675711317,
+            "delta_sensitivity": -0.148898040112865,
+            "delta_specificity": -0.1529649419557677
+          }
+        },
+        "Retinal Detachment": {
+          "mapping_status": "Unavailable",
+          "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+          "is_primary": false,
+          "rfmid_label": "None (RT for exploratory only)",
+          "n_pos": 14,
+          "n_neg": 1906,
+          "prevalence_pct": 0.729,
+          "auroc_mean": 0.4765527407185329,
+          "auroc_std": 0.01856033213595589,
+          "auroc_ci95_mean": [
+            0.3062356343376805,
+            0.6594700944386148
+          ],
+          "pr_auc_mean": 0.03526570923342893,
+          "pr_auc_std": 0.019500870269693847,
+          "pr_auc_ci95_mean": [
+            0.006212051327001997,
+            0.17164579539145217
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.07142857142857142,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9884575026232948,
+            "specificity_std": 0.002286935437324564,
+            "f1_mean": 0.054528478057889816,
+            "f1_std": 0.006042461134402777,
+            "balanced_accuracy_mean": 0.5299430370259332,
+            "balanced_accuracy_std": 0.001143467718662263
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.9311111111111111,
+            "f1_std": 0.02501851166488385,
+            "sensitivity_mean": 0.8717948717948718,
+            "sensitivity_std": 0.044411559168432785,
+            "specificity_mean": 1.0,
+            "specificity_std": 0.0
+          },
+          "generalization_gap": {
+            "delta_f1": -0.8765826330532213,
+            "delta_sensitivity": -0.8003663003663004,
+            "delta_specificity": -0.011542497376705207
+          }
+        }
+      },
+      "primary_exact_macro": {
+        "macro_auroc_mean": 0.8788791644755669,
+        "macro_auroc_std": 0.009917387376901022,
+        "macro_pr_auc_mean": 0.4624026497753757,
+        "macro_pr_auc_std": 0.018226332099791694,
+        "macro_f1_mean": 0.4461835901132673,
+        "macro_f1_std": 0.02081635737169127,
+        "macro_sensitivity_mean": 0.5480564830963138,
+        "macro_sensitivity_std": 0.022731651542035058,
+        "macro_specificity_mean": 0.9295155761706863,
+        "macro_specificity_std": 0.003325745056543681
+      },
+      "all_mappings_macro": {
+        "macro_auroc_mean": 0.8163907752781111,
+        "macro_auroc_std": 0.0060367590722381955,
+        "macro_pr_auc_mean": 0.3915338463516873,
+        "macro_pr_auc_std": 0.008502965563826166,
+        "macro_f1_mean": 0.3539484630016783,
+        "macro_f1_std": 0.024358458403097576,
+        "macro_sensitivity_mean": 0.5072410346073334,
+        "macro_sensitivity_std": 0.01084164426933324,
+        "macro_specificity_mean": 0.9273913074226038,
+        "macro_specificity_std": 0.0018463559316402513
+      }
+    },
+    "Evaluation_Set": {
+      "partition": "Evaluation_Set",
+      "classes": {
+        "Diabetic Retinopathy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=632 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "DR",
+          "n_pos": 132,
+          "n_neg": 508,
+          "prevalence_pct": 20.625,
+          "auroc_mean": 0.8949584426946631,
+          "auroc_std": 0.012396310621079992,
+          "auroc_ci95_mean": [
+            0.8632744149168854,
+            0.9235674908534159
+          ],
+          "pr_auc_mean": 0.697689205189224,
+          "pr_auc_std": 0.06994865494869386,
+          "pr_auc_ci95_mean": [
+            0.6297585299573994,
+            0.7674551195842437
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.8535353535353535,
+            "sensitivity_std": 0.01577019696565251,
+            "specificity_mean": 0.7841207349081364,
+            "specificity_std": 0.010841674305681347,
+            "f1_mean": 0.6359628684886999,
+            "f1_std": 0.0022871402966915715,
+            "balanced_accuracy_mean": 0.8188280442217449,
+            "balanced_accuracy_std": 0.002655893705931929
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.972991360126889,
+            "f1_std": 0.0037809328698887586,
+            "sensitivity_mean": 0.9738219895287958,
+            "sensitivity_std": 0.005235602094240843,
+            "specificity_mean": 0.9855465221318881,
+            "specificity_std": 0.006258539503410611
+          },
+          "generalization_gap": {
+            "delta_f1": -0.33702849163818915,
+            "delta_sensitivity": -0.12028663599344236,
+            "delta_specificity": -0.2014257872237517
+          }
+        },
+        "Healthy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=669 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "Disease_Risk == 0 / NL",
+          "n_pos": 134,
+          "n_neg": 506,
+          "prevalence_pct": 20.938,
+          "auroc_mean": 0.889283818063831,
+          "auroc_std": 0.005467895633272877,
+          "auroc_ci95_mean": [
+            0.8615438125577647,
+            0.9159768106109768
+          ],
+          "pr_auc_mean": 0.6638835922123374,
+          "pr_auc_std": 0.0069044597856470855,
+          "pr_auc_ci95_mean": [
+            0.5923909277599724,
+            0.741832320418302
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.42039800995024873,
+            "sensitivity_std": 0.05294476779550437,
+            "specificity_mean": 0.9492753623188405,
+            "specificity_std": 0.019397143431272027,
+            "f1_mean": 0.5203975729896287,
+            "f1_std": 0.027720327865426653,
+            "balanced_accuracy_mean": 0.6848366861345446,
+            "balanced_accuracy_std": 0.017728440879879116
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8469226748872768,
+            "f1_std": 0.013327284734744047,
+            "sensitivity_mean": 0.9047619047619048,
+            "sensitivity_std": 0.01904761904761909,
+            "specificity_mean": 0.9465201465201464,
+            "specificity_std": 0.0033571983113229475
+          },
+          "generalization_gap": {
+            "delta_f1": -0.32652510189764805,
+            "delta_sensitivity": -0.48436389481165604,
+            "delta_specificity": 0.0027552157986940884
+          }
+        },
+        "Macular Scar": {
+          "mapping_status": "Exact",
+          "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+          "is_primary": true,
+          "rfmid_label": "MS",
+          "n_pos": 5,
+          "n_neg": 635,
+          "prevalence_pct": 0.781,
+          "auroc_mean": 0.8658267716535434,
+          "auroc_std": 0.02142426936907382,
+          "auroc_ci95_mean": [
+            0.6661364829396326,
+            0.9818425196850393
+          ],
+          "pr_auc_mean": 0.10839548710238138,
+          "pr_auc_std": 0.03664407702432752,
+          "pr_auc_ci95_mean": [
+            0.03706424966877531,
+            0.34808286333717353
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.7333333333333334,
+            "sensitivity_std": 0.11547005383792519,
+            "specificity_mean": 0.8929133858267716,
+            "specificity_std": 0.026864129305877105,
+            "f1_mean": 0.09707287933094384,
+            "f1_std": 0.01389129743636019,
+            "balanced_accuracy_mean": 0.8131233595800526,
+            "balanced_accuracy_std": 0.04910592112413375
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8065884801665133,
+            "f1_std": 0.04592569973095779,
+            "sensitivity_mean": 0.7446808510638299,
+            "sensitivity_std": 0.073704289683782,
+            "specificity_mean": 0.9909031838856399,
+            "specificity_std": 0.0029776320305105928
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7095156008355694,
+            "delta_sensitivity": -0.01134751773049647,
+            "delta_specificity": -0.09798979805886832
+          }
+        },
+        "Central Serous Chorioretinopathy [Color Fundus]": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "CSR",
+          "n_pos": 11,
+          "n_neg": 629,
+          "prevalence_pct": 1.719,
+          "auroc_mean": 0.8778725249313485,
+          "auroc_std": 0.06618080820695574,
+          "auroc_ci95_mean": [
+            0.799816929228694,
+            0.9433540492364022
+          ],
+          "pr_auc_mean": 0.16549720714662805,
+          "pr_auc_std": 0.13269156893447442,
+          "pr_auc_ci95_mean": [
+            0.07911790709191421,
+            0.3392704623463412
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.15151515151515152,
+            "sensitivity_std": 0.13886593015017698,
+            "specificity_mean": 0.9878113407525172,
+            "specificity_std": 0.006618969791625237,
+            "f1_mean": 0.14251207729468598,
+            "f1_std": 0.13210153539976152,
+            "balanced_accuracy_mean": 0.5696632461338343,
+            "balanced_accuracy_std": 0.06668191043511004
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.797418630751964,
+            "f1_std": 0.049665677433615094,
+            "sensitivity_mean": 0.8787878787878788,
+            "sensitivity_std": 0.05248638810814775,
+            "specificity_mean": 0.9933211900425016,
+            "specificity_std": 0.0037917413469328656
+          },
+          "generalization_gap": {
+            "delta_f1": -0.654906553457278,
+            "delta_sensitivity": -0.7272727272727273,
+            "delta_specificity": -0.0055098492899844365
+          }
+        },
+        "Disc Edema": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "ODE",
+          "n_pos": 21,
+          "n_neg": 619,
+          "prevalence_pct": 3.281,
+          "auroc_mean": 0.9192758417314152,
+          "auroc_std": 0.014411479046618273,
+          "auroc_ci95_mean": [
+            0.8376952073236402,
+            0.9785393748237045
+          ],
+          "pr_auc_mean": 0.6387937530325155,
+          "pr_auc_std": 0.029720545936327034,
+          "pr_auc_ci95_mean": [
+            0.45441902304831433,
+            0.821635681757729
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.5079365079365079,
+            "sensitivity_std": 0.027492869961410784,
+            "specificity_mean": 0.9903069466882067,
+            "specificity_std": 0.007041839973409836,
+            "f1_mean": 0.5703247707351674,
+            "f1_std": 0.052103906879290604,
+            "balanced_accuracy_mean": 0.7491217273123573,
+            "balanced_accuracy_std": 0.011986017116957943
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.924731182795699,
+            "f1_std": 0.037248404463846856,
+            "sensitivity_mean": 0.9555555555555556,
+            "sensitivity_std": 0.03849001794597504,
+            "specificity_mean": 0.9969418960244649,
+            "specificity_std": 0.0010593582920910886
+          },
+          "generalization_gap": {
+            "delta_f1": -0.3544064120605316,
+            "delta_sensitivity": -0.4476190476190477,
+            "delta_specificity": -0.006634949336258189
+          }
+        },
+        "Retinitis Pigmentosa": {
+          "mapping_status": "Exact (Underpowered)",
+          "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+          "is_primary": false,
+          "rfmid_label": "RP",
+          "n_pos": 2,
+          "n_neg": 638,
+          "prevalence_pct": 0.312,
+          "auroc_mean": 0.9971264367816092,
+          "auroc_std": 0.0019722660489213542,
+          "auroc_ci95_mean": [
+            0.9905956112852664,
+            1.0
+          ],
+          "pr_auc_mean": 0.7083333333333334,
+          "pr_auc_std": 0.11023963796102457,
+          "pr_auc_ci95_mean": [
+            0.3013468013468013,
+            1.0
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 1.0,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9629049111807734,
+            "specificity_std": 0.03167282041008919,
+            "f1_mean": 0.19281045751633985,
+            "f1_std": 0.09905519324331816,
+            "balanced_accuracy_mean": 0.9814524555903867,
+            "balanced_accuracy_std": 0.01583641020504463
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8993038150932887,
+            "f1_std": 0.013300098374231135,
+            "sensitivity_mean": 0.9607843137254902,
+            "sensitivity_std": 0.033961780540566235,
+            "specificity_mean": 0.994475138121547,
+            "specificity_std": 0.0018416206261510082
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7064933575769489,
+            "delta_sensitivity": 0.039215686274509776,
+            "delta_specificity": -0.031570226940773605
+          }
+        },
+        "Myopia": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": false,
+          "rfmid_label": "MYA",
+          "n_pos": 34,
+          "n_neg": 606,
+          "prevalence_pct": 5.312,
+          "auroc_mean": 0.7738222351646931,
+          "auroc_std": 0.07299723035396412,
+          "auroc_ci95_mean": [
+            0.6907546269332817,
+            0.8485322429301753
+          ],
+          "pr_auc_mean": 0.2055801290030995,
+          "pr_auc_std": 0.042050033061874846,
+          "pr_auc_ci95_mean": [
+            0.13239621735879534,
+            0.3349488315575208
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.37254901960784315,
+            "sensitivity_std": 0.1032907230671837,
+            "specificity_mean": 0.916941694169417,
+            "specificity_std": 0.015596751241757804,
+            "f1_mean": 0.2639542397274356,
+            "f1_std": 0.08132914239672921,
+            "balanced_accuracy_mean": 0.64474535688863,
+            "balanced_accuracy_std": 0.05802665354769468
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.7233285917496444,
+            "f1_std": 0.011087096207766638,
+            "sensitivity_mean": 0.7297297297297297,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9796048438495856,
+            "specificity_std": 0.0022078404175511304
+          },
+          "generalization_gap": {
+            "delta_f1": -0.4593743520222088,
+            "delta_sensitivity": -0.35718071012188657,
+            "delta_specificity": -0.06266314968016862
+          }
+        },
+        "Glaucoma": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+          "is_primary": false,
+          "rfmid_label": "ODC",
+          "n_pos": 72,
+          "n_neg": 568,
+          "prevalence_pct": 11.25,
+          "auroc_mean": 0.6596896191966615,
+          "auroc_std": 0.050335256428101646,
+          "auroc_ci95_mean": [
+            0.5902541405842463,
+            0.7253857345461657
+          ],
+          "pr_auc_mean": 0.2330489032751022,
+          "pr_auc_std": 0.03393750087378852,
+          "pr_auc_ci95_mean": [
+            0.1723625294499258,
+            0.32347973972907057
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.41203703703703703,
+            "sensitivity_std": 0.04877617478172564,
+            "specificity_mean": 0.8286384976525821,
+            "specificity_std": 0.015179010746922031,
+            "f1_mean": 0.29765145890053074,
+            "f1_std": 0.0229934243902549,
+            "balanced_accuracy_mean": 0.6203377673448096,
+            "balanced_accuracy_std": 0.0198391754619371
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8134168432040773,
+            "f1_std": 0.015073419055920127,
+            "sensitivity_mean": 0.7741935483870966,
+            "sensitivity_std": 0.029077026415032146,
+            "specificity_mean": 0.9633027522935781,
+            "specificity_std": 0.006068236951983012
+          },
+          "generalization_gap": {
+            "delta_f1": -0.5157653843035466,
+            "delta_sensitivity": -0.3621565113500596,
+            "delta_specificity": -0.13466425464099596
+          }
+        },
+        "Retinal Detachment": {
+          "mapping_status": "Unavailable",
+          "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+          "is_primary": false,
+          "rfmid_label": "None (RT for exploratory only)",
+          "n_pos": 6,
+          "n_neg": 634,
+          "prevalence_pct": 0.938,
+          "auroc_mean": 0.47117069751139157,
+          "auroc_std": 0.04575743740454543,
+          "auroc_ci95_mean": [
+            0.24490010515247107,
+            0.7004184192078514
+          ],
+          "pr_auc_mean": 0.014738648445333161,
+          "pr_auc_std": 0.007124057878859848,
+          "pr_auc_ci95_mean": [
+            0.007916493040442325,
+            0.04367691409606073
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.0,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9936908517350158,
+            "specificity_std": 0.004173109323445763,
+            "f1_mean": 0.0,
+            "f1_std": 0.0,
+            "balanced_accuracy_mean": 0.4968454258675079,
+            "balanced_accuracy_std": 0.0020865546617228814
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.9311111111111111,
+            "f1_std": 0.02501851166488385,
+            "sensitivity_mean": 0.8717948717948718,
+            "sensitivity_std": 0.044411559168432785,
+            "specificity_mean": 1.0,
+            "specificity_std": 0.0
+          },
+          "generalization_gap": {
+            "delta_f1": -0.9311111111111111,
+            "delta_sensitivity": -0.8717948717948718,
+            "delta_specificity": -0.006309148264984188
+          }
+        }
+      },
+      "primary_exact_macro": {
+        "macro_auroc_mean": 0.8894434798149602,
+        "macro_auroc_std": 0.017539735954750616,
+        "macro_pr_auc_mean": 0.4548518489366173,
+        "macro_pr_auc_std": 0.023489787046599726,
+        "macro_f1_mean": 0.3932540337678252,
+        "macro_f1_std": 0.039020668805264794,
+        "macro_sensitivity_mean": 0.533343671254119,
+        "macro_sensitivity_std": 0.016288092373415757,
+        "macro_specificity_mean": 0.9208855540988945,
+        "macro_specificity_std": 0.004481822801862634
+      },
+      "all_mappings_macro": {
+        "macro_auroc_mean": 0.8165584875254618,
+        "macro_auroc_std": 0.017344469480705553,
+        "macro_pr_auc_mean": 0.3817733620822172,
+        "macro_pr_auc_std": 0.03110139905495802,
+        "macro_f1_mean": 0.3022984805537147,
+        "macro_f1_std": 0.02840255537754767,
+        "macro_sensitivity_mean": 0.4945893792128306,
+        "macro_sensitivity_std": 0.016110616632669685,
+        "macro_specificity_mean": 0.9229559694702512,
+        "macro_specificity_std": 0.001986304908293088
+      }
+    },
+    "Test_Set": {
+      "partition": "Test_Set",
+      "classes": {
+        "Diabetic Retinopathy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=632 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "DR",
+          "n_pos": 124,
+          "n_neg": 516,
+          "prevalence_pct": 19.375,
+          "auroc_mean": 0.8507517504376093,
+          "auroc_std": 0.011000466609925326,
+          "auroc_ci95_mean": [
+            0.8158516191547888,
+            0.8836095742685671
+          ],
+          "pr_auc_mean": 0.5381303113768158,
+          "pr_auc_std": 0.05057995053068691,
+          "pr_auc_ci95_mean": [
+            0.4678807215152805,
+            0.621349781091787
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.8091397849462365,
+            "sensitivity_std": 0.009312101115961762,
+            "specificity_mean": 0.7441860465116279,
+            "specificity_std": 0.013565891472868241,
+            "f1_mean": 0.5632627646326277,
+            "f1_std": 0.010240816437699243,
+            "balanced_accuracy_mean": 0.7766629157289322,
+            "balanced_accuracy_std": 0.006651601222387999
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.972991360126889,
+            "f1_std": 0.0037809328698887586,
+            "sensitivity_mean": 0.9738219895287958,
+            "sensitivity_std": 0.005235602094240843,
+            "specificity_mean": 0.9855465221318881,
+            "specificity_std": 0.006258539503410611
+          },
+          "generalization_gap": {
+            "delta_f1": -0.4097285954942613,
+            "delta_sensitivity": -0.16468220458255933,
+            "delta_specificity": -0.2413604756202602
+          }
+        },
+        "Healthy": {
+          "mapping_status": "Exact",
+          "statistical_power": "Robust (N_pos=669 >= 200)",
+          "is_primary": true,
+          "rfmid_label": "Disease_Risk == 0 / NL",
+          "n_pos": 134,
+          "n_neg": 506,
+          "prevalence_pct": 20.938,
+          "auroc_mean": 0.8700764949953789,
+          "auroc_std": 0.009889633854436607,
+          "auroc_ci95_mean": [
+            0.8359412178239238,
+            0.9001364226299334
+          ],
+          "pr_auc_mean": 0.6658039686297258,
+          "pr_auc_std": 0.04996176009945181,
+          "pr_auc_ci95_mean": [
+            0.5951261230583554,
+            0.7386254206736996
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.3880597014925373,
+            "sensitivity_std": 0.13453549535313394,
+            "specificity_mean": 0.9624505928853755,
+            "specificity_std": 0.005228757531748173,
+            "f1_mean": 0.49976848953831055,
+            "f1_std": 0.1392232999739562,
+            "balanced_accuracy_mean": 0.6752551471889564,
+            "balanced_accuracy_std": 0.06840518092997042
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8469226748872768,
+            "f1_std": 0.013327284734744047,
+            "sensitivity_mean": 0.9047619047619048,
+            "sensitivity_std": 0.01904761904761909,
+            "specificity_mean": 0.9465201465201464,
+            "specificity_std": 0.0033571983113229475
+          },
+          "generalization_gap": {
+            "delta_f1": -0.34715418534896625,
+            "delta_sensitivity": -0.5167022032693674,
+            "delta_specificity": 0.01593044636522911
+          }
+        },
+        "Macular Scar": {
+          "mapping_status": "Exact",
+          "statistical_power": "Borderline / Limited (Small N: 20 <= N_pos < 50; Wide CIs)",
+          "is_primary": true,
+          "rfmid_label": "MS",
+          "n_pos": 7,
+          "n_neg": 633,
+          "prevalence_pct": 1.094,
+          "auroc_mean": 0.8971639208606034,
+          "auroc_std": 0.0438674750345792,
+          "auroc_ci95_mean": [
+            0.7895847438501468,
+            0.9675778605280975
+          ],
+          "pr_auc_mean": 0.10866271154327134,
+          "pr_auc_std": 0.03089980401709006,
+          "pr_auc_ci95_mean": [
+            0.05394883719687854,
+            0.30260478971746524
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.619047619047619,
+            "sensitivity_std": 0.08247860988423228,
+            "specificity_mean": 0.9246972090573986,
+            "specificity_std": 0.012671099963681886,
+            "f1_mean": 0.14858575186546497,
+            "f1_std": 0.026049893115039146,
+            "balanced_accuracy_mean": 0.7718724140525088,
+            "balanced_accuracy_std": 0.042171474332430736
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8065884801665133,
+            "f1_std": 0.04592569973095779,
+            "sensitivity_mean": 0.7446808510638299,
+            "sensitivity_std": 0.073704289683782,
+            "specificity_mean": 0.9909031838856399,
+            "specificity_std": 0.0029776320305105928
+          },
+          "generalization_gap": {
+            "delta_f1": -0.6580027283010483,
+            "delta_sensitivity": -0.1256332320162109,
+            "delta_specificity": -0.06620597482824131
+          }
+        },
+        "Central Serous Chorioretinopathy [Color Fundus]": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "CSR",
+          "n_pos": 13,
+          "n_neg": 627,
+          "prevalence_pct": 2.031,
+          "auroc_mean": 0.9217682901893429,
+          "auroc_std": 0.056200986464011206,
+          "auroc_ci95_mean": [
+            0.8556761951498794,
+            0.9735819735819735
+          ],
+          "pr_auc_mean": 0.4228794909669776,
+          "pr_auc_std": 0.15938039517773717,
+          "pr_auc_ci95_mean": [
+            0.23328303261630393,
+            0.6847778195370783
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.5128205128205129,
+            "sensitivity_std": 0.11750194089630359,
+            "specificity_mean": 0.9787347155768208,
+            "specificity_std": 0.016290859591753925,
+            "f1_mean": 0.42037037037037034,
+            "f1_std": 0.11115739776636235,
+            "balanced_accuracy_mean": 0.7457776141986668,
+            "balanced_accuracy_std": 0.05657817624931301
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.797418630751964,
+            "f1_std": 0.049665677433615094,
+            "sensitivity_mean": 0.8787878787878788,
+            "sensitivity_std": 0.05248638810814775,
+            "specificity_mean": 0.9933211900425016,
+            "specificity_std": 0.0037917413469328656
+          },
+          "generalization_gap": {
+            "delta_f1": -0.3770482603815936,
+            "delta_sensitivity": -0.3659673659673659,
+            "delta_specificity": -0.014586474465680843
+          }
+        },
+        "Disc Edema": {
+          "mapping_status": "Exact",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": true,
+          "rfmid_label": "ODE",
+          "n_pos": 17,
+          "n_neg": 623,
+          "prevalence_pct": 2.656,
+          "auroc_mean": 0.9111509772448305,
+          "auroc_std": 0.019949406933650993,
+          "auroc_ci95_mean": [
+            0.7870184590690209,
+            0.9973593931954804
+          ],
+          "pr_auc_mean": 0.7395810899978406,
+          "pr_auc_std": 0.06186121756148532,
+          "pr_auc_ci95_mean": [
+            0.536165780632125,
+            0.9362768822449438
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.6666666666666666,
+            "sensitivity_std": 0.08985442539129095,
+            "specificity_mean": 0.9967897271268059,
+            "specificity_std": 0.002780177861266235,
+            "f1_mean": 0.7458707620979426,
+            "f1_std": 0.027522151560475924,
+            "balanced_accuracy_mean": 0.8317281968967363,
+            "balanced_accuracy_std": 0.043616075589738186
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.924731182795699,
+            "f1_std": 0.037248404463846856,
+            "sensitivity_mean": 0.9555555555555556,
+            "sensitivity_std": 0.03849001794597504,
+            "specificity_mean": 0.9969418960244649,
+            "specificity_std": 0.0010593582920910886
+          },
+          "generalization_gap": {
+            "delta_f1": -0.17886042069775643,
+            "delta_sensitivity": -0.288888888888889,
+            "delta_specificity": -0.00015216889765901076
+          }
+        },
+        "Retinitis Pigmentosa": {
+          "mapping_status": "Exact (Underpowered)",
+          "statistical_power": "Severely Inadequate (N_pos=10 < 20; Exploratory Only)",
+          "is_primary": false,
+          "rfmid_label": "RP",
+          "n_pos": 2,
+          "n_neg": 638,
+          "prevalence_pct": 0.312,
+          "auroc_mean": 0.9942528735632182,
+          "auroc_std": 0.003944532097842546,
+          "auroc_ci95_mean": [
+            0.9843260188087773,
+            1.0
+          ],
+          "pr_auc_mean": 0.533068783068783,
+          "pr_auc_std": 0.2384367039957969,
+          "pr_auc_ci95_mean": [
+            0.19943019943019943,
+            1.0
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 1.0,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9655172413793104,
+            "specificity_std": 0.02177499057907491,
+            "f1_mean": 0.18035284289154255,
+            "f1_std": 0.0747445730691979,
+            "balanced_accuracy_mean": 0.9827586206896551,
+            "balanced_accuracy_std": 0.010887495289537455
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8993038150932887,
+            "f1_std": 0.013300098374231135,
+            "sensitivity_mean": 0.9607843137254902,
+            "sensitivity_std": 0.033961780540566235,
+            "specificity_mean": 0.994475138121547,
+            "specificity_std": 0.0018416206261510082
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7189509722017462,
+            "delta_sensitivity": 0.039215686274509776,
+            "delta_specificity": -0.02895789674223659
+          }
+        },
+        "Myopia": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Moderate (Adequate Power: 50 <= N_pos < 200)",
+          "is_primary": false,
+          "rfmid_label": "MYA",
+          "n_pos": 32,
+          "n_neg": 608,
+          "prevalence_pct": 5.0,
+          "auroc_mean": 0.8502090186403509,
+          "auroc_std": 0.06618182656568669,
+          "auroc_ci95_mean": [
+            0.7681319387335526,
+            0.9179794579221491
+          ],
+          "pr_auc_mean": 0.46715968508564787,
+          "pr_auc_std": 0.15887420664074758,
+          "pr_auc_ci95_mean": [
+            0.32320024736784253,
+            0.6308617870786257
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.65625,
+            "sensitivity_std": 0.13621559198564606,
+            "specificity_mean": 0.9084429824561404,
+            "specificity_std": 0.023625505950016733,
+            "f1_mean": 0.39316561844863734,
+            "f1_std": 0.10960994548875028,
+            "balanced_accuracy_mean": 0.7823464912280702,
+            "balanced_accuracy_std": 0.07949939494940986
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.7233285917496444,
+            "f1_std": 0.011087096207766638,
+            "sensitivity_mean": 0.7297297297297297,
+            "sensitivity_std": 0.0,
+            "specificity_mean": 0.9796048438495856,
+            "specificity_std": 0.0022078404175511304
+          },
+          "generalization_gap": {
+            "delta_f1": -0.330162973301007,
+            "delta_sensitivity": -0.07347972972972971,
+            "delta_specificity": -0.07116186139344516
+          }
+        },
+        "Glaucoma": {
+          "mapping_status": "Approximate",
+          "statistical_power": "Robust (N_pos=445 >= 200; Sign-level only)",
+          "is_primary": false,
+          "rfmid_label": "ODC",
+          "n_pos": 91,
+          "n_neg": 549,
+          "prevalence_pct": 14.219,
+          "auroc_mean": 0.7025761124121779,
+          "auroc_std": 0.028004344872516424,
+          "auroc_ci95_mean": [
+            0.641669168718349,
+            0.7612388825503579
+          ],
+          "pr_auc_mean": 0.3241211816474051,
+          "pr_auc_std": 0.011540122524866409,
+          "pr_auc_ci95_mean": [
+            0.25951116415127545,
+            0.41806466404217163
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.42124542124542125,
+            "sensitivity_std": 0.08950030566205582,
+            "specificity_mean": 0.8482088646023072,
+            "specificity_std": 0.01869435861364985,
+            "f1_mean": 0.3577700584689451,
+            "f1_std": 0.04826974525445497,
+            "balanced_accuracy_mean": 0.6347271429238642,
+            "balanced_accuracy_std": 0.035580007288700186
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.8134168432040773,
+            "f1_std": 0.015073419055920127,
+            "sensitivity_mean": 0.7741935483870966,
+            "sensitivity_std": 0.029077026415032146,
+            "specificity_mean": 0.9633027522935781,
+            "specificity_std": 0.006068236951983012
+          },
+          "generalization_gap": {
+            "delta_f1": -0.45564678473513215,
+            "delta_sensitivity": -0.3529481271416754,
+            "delta_specificity": -0.11509388769127094
+          }
+        },
+        "Retinal Detachment": {
+          "mapping_status": "Unavailable",
+          "statistical_power": "Non-Equivalent & Underpowered (N_pos=25; Direct Evaluation Unavailable)",
+          "is_primary": false,
+          "rfmid_label": "None (RT for exploratory only)",
+          "n_pos": 5,
+          "n_neg": 635,
+          "prevalence_pct": 0.781,
+          "auroc_mean": 0.6729658792650919,
+          "auroc_std": 0.04043330726481993,
+          "auroc_ci95_mean": [
+            0.44584776902887135,
+            0.8855774278215222
+          ],
+          "pr_auc_mean": 0.09222787607880151,
+          "pr_auc_std": 0.08507974402264558,
+          "pr_auc_ci95_mean": [
+            0.00967496395257766,
+            0.3888972729763201
+          ],
+          "frozen_tau_0_5": {
+            "sensitivity_mean": 0.13333333333333333,
+            "sensitivity_std": 0.23094010767585035,
+            "specificity_mean": 0.9963254593175853,
+            "specificity_std": 0.003278214172387635,
+            "f1_mean": 0.13333333333333336,
+            "f1_std": 0.23094010767585035,
+            "balanced_accuracy_mean": 0.5648293963254593,
+            "balanced_accuracy_std": 0.11502622800358589
+          },
+          "internal_val_baseline": {
+            "f1_mean": 0.9311111111111111,
+            "f1_std": 0.02501851166488385,
+            "sensitivity_mean": 0.8717948717948718,
+            "sensitivity_std": 0.044411559168432785,
+            "specificity_mean": 1.0,
+            "specificity_std": 0.0
+          },
+          "generalization_gap": {
+            "delta_f1": -0.7977777777777777,
+            "delta_sensitivity": -0.7384615384615385,
+            "delta_specificity": -0.0036745406824146842
+          }
+        }
+      },
+      "primary_exact_macro": {
+        "macro_auroc_mean": 0.8901822867455529,
+        "macro_auroc_std": 0.011187218518928892,
+        "macro_pr_auc_mean": 0.4950115145029262,
+        "macro_pr_auc_std": 0.03594602342716303,
+        "macro_f1_mean": 0.4755716277009432,
+        "macro_f1_std": 0.050634686289661425,
+        "macro_sensitivity_mean": 0.5991468569947145,
+        "macro_sensitivity_std": 0.04730075319188384,
+        "macro_specificity_mean": 0.9213716582316057,
+        "macro_specificity_std": 0.002227849920900697
+      },
+      "all_mappings_macro": {
+        "macro_auroc_mean": 0.8523239241787337,
+        "macro_auroc_std": 0.01205705384389203,
+        "macro_pr_auc_mean": 0.4324038998216965,
+        "macro_pr_auc_std": 0.053340063977148966,
+        "macro_f1_mean": 0.38249777684968606,
+        "macro_f1_std": 0.028850777273224153,
+        "macro_sensitivity_mean": 0.578507004394703,
+        "macro_sensitivity_std": 0.0232553528761661,
+        "macro_specificity_mean": 0.925039204323708,
+        "macro_specificity_std": 0.004179718994550793
+      }
+    }
+  }
+}
