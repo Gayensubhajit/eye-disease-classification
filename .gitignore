@@ -22,6 +22,8 @@ outputs/*
 !outputs/**/.gitkeep
 !outputs/audit/
 outputs/audit/*.npz
+outputs/audit/*.png
+outputs/audit/flagged_pair_contact_sheets/
 !outputs/clean_9class_baseline_effnet/
 outputs/clean_9class_baseline_effnet/*
 !outputs/clean_9class_baseline_effnet/*.json

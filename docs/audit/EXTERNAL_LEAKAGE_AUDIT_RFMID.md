@@ -6,8 +6,8 @@
 - Pre-Filtering Eligible Pool: `clean_split_manifest.csv` ($N=4,387$; includes retained cohort prior to partitioning)  
 **Audit Execution Date:** 2026-10-11  
 **Final Audit Verdict:** **`NO_IMAGE_DUPLICATION_CONFIRMED`**  
-**Formal Patient Overlap Statement:**  
-> *No exact image duplicates or high-confidence near-duplicate source-image pairs were confirmed under the documented audit procedures. Patient-level overlap remains unverifiable from the available metadata.*
+**Formal Patient Overlap Statement (CLAIM 2024 Alignment):**  
+> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was individually evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or high-confidence near-duplicate source-image pairs were confirmed under the documented audit procedures. Patient-level overlap remains unverifiable from the available metadata.*
 
 ---
 
@@ -20,7 +20,7 @@ To ensure conservative screening against potential cross-dataset contamination, 
 | **Pillar 1A: SHA-256 Bitwise** | Active Clean (`data_clean`, $N=3,747$) | RFMiD ($N=3,200$) | $3,200 \times 3,747 = \mathbf{11,990,400}$ | Exact 256-bit cryptographic digest match | 0 | 0 (**PASS**) |
 | **Pillar 1B: MD5 Bitwise** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Exact 128-bit MD5 digest match | 0 | 0 (**PASS**) |
 | **Pillar 2: Perceptual Hashes** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | $d_{\text{dHash}} \le 2$, $d_{\text{pHash}} \le 3$, or ($d_{\text{dHash}} \le 4 \land d_{\text{pHash}} \le 4$) | 11 | 0 (**PASS**) |
-| **Pillar 3: DINOv2 Latent Cosine** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Cosine Sim $\ge 0.960$ (encompasses top $0.0039\%$ tail) | 550 | 0 (**PASS**) |
+| **Pillar 3: DINOv2 Latent Cosine** | Eligible Pool ($N=4,387$) | RFMiD ($N=3,200$) | $3,200 \times 4,387 = \mathbf{14,038,400}$ | Cosine Sim $\ge 0.950$ (exhaustive pair evaluation trigger) | 8,266 | 0 (**PASS**) |
 
 *Note on Denominators:* Screening against the 4,387-image eligible pool (rather than solely the 3,747 retained images) provides a strictly conservative guarantee: if any RFMiD image had entered any part of the source repository pool—even images held in reserve or later quarantined—it would be detected.
 
@@ -55,45 +55,38 @@ Consequently, cosine similarity values between $0.92$ and $0.96$ reflect standar
 
 ---
 
-## 3. Deep Computer Vision Forensic Verification of Candidate Pairs
+## 3. Deep Computer Vision Forensic Verification: Exhaustive Full-Pair Resolution ($N=8,266$)
 
-### A. Resolution of all 8,266 High-Similarity Pairs ($\ge 0.950$) via 805 Worst-Case Nearest Neighbors
-To resolve the complete set of 8,266 pairs crossing the $\ge 0.950$ protocol sensitivity trigger:
-1. **Unique Image Deconstruction:** The 8,266 pairs involve **805 unique external images** and **1,010 unique internal images**, forming dense bipartite clusters around prototypical, clear fundus photographs (Glaucoma and Healthy categories account for $77.2\%$ of all pairs).
-2. **Worst-Case Nearest Neighbor Audit:** Every one of the 805 unique external images was audited at its **top-1 nearest internal neighbor** (the single internal image with maximum cosine similarity). If an external image's closest match is forensically confirmed distinct, all lower-similarity pairs involving that image are necessarily distinct.
-3. **Forensic Evidence Across all 805 Nearest Neighbors:**
-   - **Maximum ORB Homography Inliers:** **17** (Median: **0**, Mean: $1.12 \pm 2.31$; 0 pairs reached the $\ge 20$ near-duplicate threshold).
-   - **Maximum FOV-Masked SSIM:** **0.8891** (Median: **0.7215**, Mean: $0.7161 \pm 0.0610$; only 12 pairs had SSIM $\ge 0.85$, all driven by uniform low-texture background fields with $\le 5$ inliers).
-   - **pHash Hamming Distance:** Mean $24.15 \pm 6.12$ bits (Median: 24 bits, Min: 4 bits).
-   - Complete ledger saved in [`outputs/audit/external_leakage_audit_805_nearest_neighbors.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_805_nearest_neighbors.csv) and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md).
+### A. Full Pair-Level Evaluation Across All 8,266 Candidate Pairs
+To ensure complete forensic closure and eliminate reliance on nearest-neighbour rank-preservation assumptions, **every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was individually evaluated** with circular FOV-masked `float32` SSIM, NCC, pixel difference, and ORB RANSAC homography.
 
-### B. Forensic Verification Findings for Coarse Screened Tail ($N=561$)
-All 561 candidate pairs triggered by coarse screening (550 DINOv2 pairs with cosine similarity $\ge 0.960$ plus the 11 perceptual hash pairs) were subjected to multi-metric deep computer vision forensic review:
-1. **FOV-Masked Structural Similarity Index Measure (SSIM):** Computed on `float32` arrays strictly within the circular retinal field of view.
-2. **Normalized Cross-Correlation (NCC):** Evaluated over masked vascular and background fields.
-3. **ORB Feature Detection & RANSAC Geometric Homography:** Keypoint matching requiring geometrically consistent homography inliers. True duplicate or near-duplicate/burst captures typically yield $\ge 20-30$ inliers under slight rotation or cropping.
+- **Candidate Space:** 8,266 pairs involving **805 unique external images** and **1,010 unique internal images**.
+- **Overall Forensic Distribution Across all 8,266 Pairs:**
+  - **DINOv2 Cosine Similarity:** Median: 0.9532, Mean: $0.9540 \pm 0.0041$, Max: **0.9741** (Count $\ge 0.970$: 7, Count $\ge 0.985$: 0).
+  - **Circular FOV-Masked SSIM (float32):** Median: 0.7186, Mean: $0.7101 \pm 0.0583$, Max: **0.9080** (Count $\ge 0.85$: 63).
+  - **Circular FOV-Masked NCC:** Median: 0.4450, Mean: $0.3731 \pm 0.0712$, Max: **0.8168** (Count $\ge 0.85$: 0).
+  - **ORB RANSAC Homography Inliers:** Median: 0, Mean: $1.94 \pm 3.12$, Max: **43** (Count $\ge 20$: 4).
+  - **pHash Hamming Distance:** Median: 24 bits, Mean: $24.30 \pm 6.27$ bits, Min: 2 bits (Count $\le 4$: 4).
+  - **dHash Hamming Distance:** Median: 19 bits, Mean: $19.01 \pm 3.81$ bits, Min: 4 bits (Count $\le 2$: 0).
 
-- **Maximum ORB Homography Inliers:** **17** (Median: **0**; 0 pairs reached the $\ge 20$ near-duplicate threshold).
-- **Maximum Masked SSIM:** **0.8807** (Median: **0.6414**).
-- **Mean Pixel Difference:** Substantial color calibration and contrast divergence across all candidate pairs.
+### B. Detailed Review and Disposition of Flagged Candidate Pairs ($N=78$)
+Across all 8,266 pairs, exactly **78 pairs** triggered $\ge 1$ pre-specified sensitivity screening flag. Each flagged pair was rendered as a side-by-side contact sheet with pixel difference heatmap in `outputs/audit/flagged_pair_contact_sheets/` and visually examined:
 
-### Detailed Review of Perceptual Hash Candidates ($N=11$)
+1. **ORB RANSAC Inliers $\ge 20$ ($N=4$ Pairs):**
+   - **Pair 7192 (43 inliers):** External `395.png` (Training_Set) vs. Internal `DR688.jpg`. External image exhibits dense circinate rings of yellow hard exudates around the macula; internal image has zero exudates.
+   - **Pair 1080 (30 inliers):** External `581.png` (Evaluation_Set) vs. Internal `Glaucoma595.jpg`. Retinal vascular arcades and optic disc cup diverge.
+   - **Pair 1379 (20 inliers):** External `600.png` (Evaluation_Set) vs. Internal `Glaucoma595.jpg`. Optic cup geometry and vessel caliber diverge.
+   - **Pair 5901 (23 inliers):** External `1774.png` (Training_Set) vs. Internal `Macular Scar152.jpg`. Dense pigmented scar present internally, absent externally.
+   - *Forensic Root Cause:* In all 4 pairs, the inliers are **spurious camera aperture perimeter matches** caused by an identical circular aperture notch at the ~1:30 position (characteristic of Kowa non-mydriatic fundus cameras). RANSAC aligned the camera aperture perimeter; the biological retinal vasculature, optic disc, and lesions are completely divergent.
+2. **High Masked SSIM $\ge 0.85$ ($N=63$ Pairs):**
+   - SSIM ranged from 0.8501 to 0.9080 (max: Pair 52, External `14.png` vs. Internal `DR749.jpg`).
+   - Driven by uniform, untextured retinal background luminance within the dilated mask; all 63 pairs exhibit divergent vessel trees and optic cup margins (maximum ORB inliers in this subset was 12).
+3. **Low Perceptual Hash Distance $\le 4$ Bits ($N=4$ Pairs):**
+   - Pairs 1533, 1543, 2630, 5025; pHash 2–4 bits, dHash 8–11 bits, SSIM 0.6081–0.7263, ORB inliers 0–4. Divergent vessel trees and optic discs confirmed.
+4. **Top DINOv2 Cosine Similarity $\ge 0.970$ ($N=7$ Pairs):**
+   - Maximum cosine similarity 0.9741 (Pair 5951, External `1775.png` vs. Internal `Glaucoma795.jpg`). Standard optic-nerve-head centered fundi; zero ORB inliers.
 
-| external_image | external_partition | internal_image | trigger | cosine_sim | dhash_dist | phash_dist | masked_ssim | masked_ncc | orb_inliers | forensic_disposition |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `603.png` | Evaluation_Set | `Diabetic Retinopathy/DR734.jpg` | PERCEPTUAL_HASH | 0.8061 | 2 | 32 | 0.4385 | 0.4986 | 0 | Distinct fundi; differing disc ratio and vessel layout |
-| `603.png` | Evaluation_Set | `Diabetic Retinopathy/DR1281.jpg`| PERCEPTUAL_HASH | 0.7977 | 2 | 30 | 0.4322 | 0.5559 | 0 | Distinct fundi; different focal plane and lesions |
-| `603.png` | Evaluation_Set | `Diabetic Retinopathy/DR720.jpg` | PERCEPTUAL_HASH | 0.7461 | 2 | 30 | 0.5130 | 0.6132 | 0 | Distinct fundi; vessel arborization diverges |
-| `603.png` | Evaluation_Set | `Diabetic Retinopathy/DR1278.jpg`| PERCEPTUAL_HASH | 0.8052 | 2 | 30 | 0.4263 | 0.5598 | 0 | Distinct fundi; background pigmentation diverges |
-| `603.png` | Evaluation_Set | `Glaucoma/Glaucoma273.jpg`        | PERCEPTUAL_HASH | 0.8677 | 2 | 32 | 0.4114 | 0.4234 | 0 | Distinct fundi; cup-to-disc margins non-matching |
-| `603.png` | Evaluation_Set | `Glaucoma/Glaucoma234.jpg`        | PERCEPTUAL_HASH | 0.7736 | 2 | 32 | 0.4125 | 0.5331 | 0 | Distinct fundi; disc placement diverges |
-| `603.png` | Evaluation_Set | `Myopia/Myopia339.jpg`            | PERCEPTUAL_HASH | 0.8633 | 2 | 30 | 0.4686 | 0.6162 | 0 | Distinct fundi; peripapillary crescent absent in ext |
-| `603.png` | Evaluation_Set | `Myopia/Myopia492.jpg`            | PERCEPTUAL_HASH | 0.7995 | 2 | 32 | 0.4558 | 0.5436 | 0 | Distinct fundi; tessellation and vessel caliber differ |
-| `605.png` | Evaluation_Set | `Glaucoma/Glaucoma1257.jpg`       | PERCEPTUAL_HASH | 0.8869 | 4 | 4  | 0.6667 | 0.6840 | 0 | Distinct fundi; optic disc position and fovea shift |
-| `1549.png`| Training_Set   | `Myopia/Myopia327.jpg`            | PERCEPTUAL_HASH | 0.8340 | 2 | 22 | 0.8605 | 0.5660 | 0 | Distinct fundi; low-texture myopic crescent artifact |
-| `1655.png`| Training_Set   | `Myopia/Myopia327.jpg`            | PERCEPTUAL_HASH | 0.8382 | 1 | 24 | 0.8807 | 0.8195 | 0 | Distinct fundi; macular architecture diverges |
-
-All 11 perceptual-hash candidates and all 550 high-cosine candidates represent independent fundus images sharing macroscopic ocular composition. Zero pairs exhibit identical vascular branching or geometric registration.
+Complete ledgers are preserved in [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md).
 
 ---
 

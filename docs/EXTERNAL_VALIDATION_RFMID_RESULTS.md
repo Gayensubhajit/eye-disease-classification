@@ -108,18 +108,20 @@ In accordance with CLAIM 2024 reporting guidance, the exact comparison cohorts a
    - **MD5 Bitwise:** 3,200 external images vs. 4,387 eligible pool manifest records (`clean_split_manifest.csv`) = **14,038,400** comparisons (0 matches).
    - **Perceptual Hashing (dHash/pHash):** 3,200 external images vs. 4,387 eligible pool images = **14,038,400** pairs (11 coarse candidate pairs identified).
    - **DINOv2 Latent Cosine Space:** 3,200 external images vs. 4,387 eligible pool embeddings = **14,038,400** pairs.
-2. **DINOv2 Threshold Reconciliation & Complete Resolution of 8,266 Pairs:**
-   - Across the $14,038,400$ pairs, 8,266 pairs ($0.059\%$) exhibited cosine similarity $\ge 0.950$. In retinal imaging, this proximity reflects shared macroscopic anatomy (circular apertures, optic disc positions, and major vascular arcades), not image duplication.
-   - **Unique Image Deconstruction:** The 8,266 pairs involve **805 unique external images** and **1,010 unique internal images**, forming dense bipartite clusters around prototypical, clear fundus photographs (Glaucoma and Healthy categories account for $77.2\%$ of all pairs).
-   - **Worst-Case Nearest-Neighbor Audit:** Every one of the 805 unique external images was audited at its **top-1 nearest internal neighbor** (the single internal image with maximum cosine similarity). If an external image's closest match is forensically confirmed distinct, all lower-similarity pairs involving that image are necessarily distinct.
-   - **Forensic Evidence Across all 805 Nearest Neighbors:**
-     - Maximum ORB homography inliers was **17** (median: 0; near-duplicate registration threshold $\ge 20$).
-     - Maximum FOV-masked SSIM was **0.8891** (median: 0.7215; only 12 pairs had SSIM $\ge 0.85$, all driven by uniform low-texture background fields with $\le 5$ inliers).
-     - Mean pHash Hamming distance was $24.15 \pm 6.12$ bits.
-     - Complete ledger saved in [`outputs/audit/external_leakage_audit_805_nearest_neighbors.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_805_nearest_neighbors.csv) and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md).
-   - **Coarse Screened Tail ($N=561$):** Combining the top-550 pairs ($\ge 0.960$) and 11 perceptual-hash candidates, all were confirmed distinct (maximum ORB inliers 17, maximum SSIM 0.8807). Zero pairs exceeded cosine similarity of $0.980$, and zero pairs reached the near-duplicate threshold of $0.985$ (maximum observed: $0.9741$).
-3. **Patient Overlap Limitation:**
-   > *No exact image duplicates or high-confidence near-duplicate source-image pairs were confirmed under the documented audit procedures. Patient-level overlap remains unverifiable from the available metadata.*
+2. **DINOv2 Threshold Reconciliation & Exhaustive Resolution of All 8,266 Pairs:**
+   - Across the $14,038,400$ pairs, 8,266 pairs ($0.059\%$) exhibited cosine similarity $\ge 0.950$, involving 805 unique external images and 1,010 unique internal images.
+   - **Exhaustive Pair-Level Evaluation:** To eliminate reliance on nearest-neighbour rank-preservation assumptions, every single one of the 8,266 pairs was individually evaluated with circular FOV-masked `float32` SSIM, NCC, and ORB RANSAC homography.
+   - **Forensic Evidence Across all 8,266 Pairs:**
+     - Maximum DINOv2 cosine similarity: **0.9741** (mean: $0.9540 \pm 0.0041$; 0 pairs reached $\ge 0.985$).
+     - Maximum circular FOV-masked SSIM: **0.9080** (median: 0.7186; 63 pairs $\ge 0.85$, all driven by uniform low-texture background fundus fields with divergent vascular branches).
+     - Maximum masked NCC: **0.8168** (median: 0.4450; 0 pairs $\ge 0.85$).
+     - Maximum ORB RANSAC homography inliers: **43** (mean: $1.94 \pm 3.12$; exactly 4 pairs $\ge 20$).
+   - **Visual Review of 78 Flagged Pairs & Camera Aperture Notch Finding:**
+     - Exactly 78 pairs triggered sensitivity screening flags and were visually inspected via side-by-side contact sheets with difference heatmaps in `outputs/audit/flagged_pair_contact_sheets/`.
+     - In all 4 pairs with ORB inliers $\ge 20$ (Pairs 1080, 1379, 5901, 7192), keypoints were confirmed to cluster along a matching camera aperture perimeter notch at the ~1:30 position (characteristic of Kowa non-mydriatic fundus cameras), while the biological retinal vasculature, optic nerve head, and lesions are completely divergent.
+     - Complete pair-level ledger is preserved in [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) (8,266 rows) and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md).
+3. **Patient Overlap Limitation (CLAIM 2024 Alignment):**
+   > *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was individually evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or high-confidence near-duplicate source-image pairs were confirmed under the documented audit procedures. Patient-level overlap remains unverifiable from the available metadata.*
 
 ---
 

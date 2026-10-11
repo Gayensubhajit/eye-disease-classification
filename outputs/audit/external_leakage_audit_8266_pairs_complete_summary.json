@@ -1,0 +1,85 @@
+{
+  "total_pairs_evaluated": 8266,
+  "unique_external_images": 805,
+  "unique_internal_images": 1010,
+  "pairs_triggering_flags": 78,
+  "confirmed_duplicate_pairs": 0,
+  "metrics_summary": {
+    "dinov2_cosine": {
+      "min": 0.95,
+      "median": 0.9532,
+      "mean": 0.954032204210017,
+      "p95": 0.9609,
+      "max": 0.9741,
+      "count_ge_0_970": 7,
+      "count_ge_0_980": 0,
+      "count_ge_0_985": 0
+    },
+    "masked_ssim": {
+      "min": 0.4248,
+      "median": 0.71855,
+      "mean": 0.7101240261311397,
+      "p95": 0.8066,
+      "max": 0.908,
+      "count_ge_0_85": 63
+    },
+    "masked_ncc": {
+      "min": -0.3748,
+      "median": 0.445,
+      "mean": 0.37314010404064846,
+      "p95": 0.6871,
+      "max": 0.8168,
+      "count_ge_0_85": 0
+    },
+    "orb_inliers": {
+      "min": 0,
+      "median": 0,
+      "mean": 1.9442293733365594,
+      "p95": 8.0,
+      "max": 43,
+      "count_ge_20": 4
+    },
+    "phash_distance": {
+      "min": 2,
+      "median": 24,
+      "mean": 24.295185095572222,
+      "max": 42,
+      "count_le_4": 4
+    },
+    "dhash_distance": {
+      "min": 4,
+      "median": 19,
+      "mean": 19.010766997338497,
+      "max": 34,
+      "count_le_2": 0
+    }
+  },
+  "flags_breakdown": {
+    "high_ssim_ge_0_85": 63,
+    "high_ncc_ge_0_85": 0,
+    "orb_inliers_ge_20": 4,
+    "phash_le_4": 4,
+    "dhash_le_2": 0,
+    "dino_ge_0_970": 7
+  },
+  "internal_class_distribution": {
+    "Glaucoma": 4755,
+    "Healthy": 1626,
+    "Diabetic Retinopathy": 1104,
+    "Macular Scar": 301,
+    "Disc Edema": 241,
+    "Central Serous Chorioretinopathy [Color Fundus]": 174,
+    "Myopia": 40,
+    "Retinal Detachment": 18,
+    "Retinitis Pigmentosa": 7
+  },
+  "external_partition_distribution": {
+    "Training_Set": 4499,
+    "Test_Set": 1919,
+    "Evaluation_Set": 1848
+  },
+  "contact_sheets_saved": 78,
+  "audit_verdict": "NO_IMAGE_DUPLICATION_CONFIRMED_ACROSS_ALL_8266_PAIRS",
+  "audit_statement": "Every one of the 8,266 image pairs with DINOv2 cosine similarity >= 0.950 was individually evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. Exactly 78 pairs triggered sensitivity review flags (63 SSIM >= 0.85, 4 ORB inliers >= 20, 4 pHash <= 4, 7 DINOv2 >= 0.970). All 78 flagged pairs were inspected via visual contact sheets with difference heatmaps; the 4 pairs with ORB inliers >= 20 were confirmed to arise from matching camera aperture perimeter notches rather than shared retinal anatomy. Zero image duplicates confirmed. Patient-level overlap remains unverifiable from the available metadata.",
+  "runtime_seconds": 133.65
+}
