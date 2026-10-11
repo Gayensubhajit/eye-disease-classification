@@ -5,10 +5,15 @@
 **Internal Reference Cohort:** Eligible Reference Pool ($N=4,387$ images)  
 **Audit Execution Date:** 2026-10-11  
 **Total Pairs Individually Audited:** **8,266**  
-**Final Audit Verdict:** **`NO_IMAGE_DUPLICATION_CONFIRMED_ACROSS_ALL_8266_PAIRS`**  
+**Final Audit Verdict:** **`NO_IMAGE_DUPLICATION_CONFIRMED_IN_RECORDED_CHECKS`**  
 **Confirmed Image Duplicates:** **0**  
+**Visually Inspected Flagged Pairs:** **7** (`NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`)  
+**Automated-Screening-Only Flagged Pairs:** **71** (`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`)  
 **Formal Patient Overlap Disclosure (CLAIM 2024 Alignment):**  
-> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was individually evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or high-confidence near-duplicate source-image pairs were confirmed under the documented audit procedures. Patient-level overlap remains unverifiable from the available metadata.*
+> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. Patient-level overlap remains unverifiable from the available metadata.*
+
+**Internal Test Set Historical Exposure Disclosure:**  
+> *The internal benchmark test partition (`data_clean/test`, $N=561$ nine-class posterior-segment fundus images) was not evaluated during the 9-class baseline training or during this RFMiD cross-dataset audit run. However, the underlying images were previously evaluated in earlier 10-class baseline experiments in the project's development history. Therefore, the internal test partition cannot be described as a pristine, never-before-accessed confirmatory test cohort. Any future confirmatory validation will require an independent external cohort.*
 
 ---
 
@@ -36,7 +41,7 @@ In response to methodological feedback that nearest-neighbour ranking does not l
      - `LOW_DHASH`: dHash distance $\le 2$ bits
      - `TOP_DINO`: DINOv2 Cosine Similarity $\ge 0.970$
      - `DINO_BURST`: DINOv2 Cosine Similarity $\ge 0.985$
-   - All pairs triggering any sensitivity criterion were exported into high-resolution side-by-side contact sheets with difference heatmaps in `outputs/audit/flagged_pair_contact_sheets/` and evaluated via a structured two-tier review protocol.
+   - All pairs triggering any sensitivity criterion were exported into high-resolution side-by-side contact sheets with difference heatmaps in `outputs/audit/flagged_pair_contact_sheets/` and evaluated via a structured review protocol.
 
 ---
 
@@ -57,45 +62,53 @@ In response to methodological feedback that nearest-neighbour ranking does not l
 
 Across all 8,266 pairs, exactly **78 pairs** triggered one or more sensitivity screening flags (63 high SSIM, 4 ORB homography, 4 low pHash, 7 top DINOv2; exact disjoint union: 78 pairs, zero overlapping flags).
 
-A dedicated review record ([`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv)) explicitly documents the disposition and review modality for each flagged pair:
-- **Direct Manual Visual Inspection ($N=7$):** The 4 pairs exceeding the ORB inlier threshold (Pairs 7192, 1080, 1379, 5901) alongside the extreme metric anchors (Pair 52 for maximum SSIM, Pair 2630 for minimum pHash, and Pair 5951 for maximum DINOv2 cosine) underwent direct manual visual inspection of high-resolution contact sheets and spatial keypoint distributions.
-- **Automated Metric Screening ($N=71$):** The remaining 71 candidate pairs (62 high-SSIM, 3 low-pHash, 6 top-DINOv2) were evaluated via quantitative threshold screening bounds (e.g. ORB inliers < 20, NCC < 0.85), with individual comparative contact sheets and difference heatmaps generated and preserved on disk.
+A dedicated review record ([`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv)) explicitly distinguishes the pairs evaluated via direct visual review from those evaluated solely via automated metric screening:
+- **Direct Manual Visual Inspection ($N=7$):**
+  - The 4 pairs with ORB inliers $\ge 20$ (Pairs 7192, 1080, 1379, 5901) and 3 boundary metric anchors (Pair 52 for max SSIM, Pair 2630 for min pHash, Pair 5951 for max DINOv2) underwent direct manual visual inspection of high-resolution contact sheets and spatial keypoint distributions.
+  - Disposition: **`NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`** (7 pairs).
+- **Automated Metric Screening Only; Manual Review Pending ($N=71$):**
+  - The remaining 71 candidate pairs (62 high-SSIM, 3 low-pHash, 6 top-DINOv2) were evaluated via quantitative threshold screening bounds (e.g. ORB inliers < 20, NCC < 0.85).
+  - Disposition: **`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`** (71 pairs). While comparative contact sheets and difference heatmaps were generated on disk, these 71 pairs are not represented as manually verified or confirmed independent retinas; they remain pending individual manual review under the existing protocol.
 
-### A. ORB RANSAC Inliers $\ge 20$ ($N=4$ Pairs)
-Four candidate pairs exceeded the pre-specified threshold of 20 ORB inliers:
+### A. Direct Visual Review of High-ORB Pairs ($N=4$)
+Four candidate pairs exceeded the pre-specified threshold of 20 ORB inliers and were individually visually inspected:
 1. **Pair 7192 (43 inliers):** External `395.png` (Training_Set) vs. Internal `Diabetic Retinopathy/DR688.jpg`
    - *Cosine:* 0.9540, *SSIM:* 0.7671, *NCC:* 0.4861.
-   - *Visual Forensic Findings:* External `395.png` features dense circinate rings of yellow hard exudates surrounding the macula; Internal `DR688.jpg` has zero macular exudates and completely divergent vessel branchings.
-   - *Aperture Boundary Analysis:* Spatial examination of inlier coordinates demonstrates that the keypoints concentrate tightly around the circular aperture mask boundary (specifically at the top-right cutout notch at $x \approx 366-392, y \approx 55-84$) rather than corresponding retinal structures. The available image and acquisition metadata do not establish the precise camera-specific cause. The underlying retinas are completely distinct.
+   - *Visual Findings:* External `395.png` features dense circinate rings of yellow hard exudates surrounding the macula; Internal `DR688.jpg` has zero macular exudates and completely divergent vessel branchings.
+   - *Aperture Boundary Analysis:* Spatial examination of inlier coordinates demonstrates that the keypoints concentrate tightly around the circular aperture mask boundary (specifically at the top-right cutout notch at $x \approx 366-392, y \approx 55-84$) rather than corresponding retinal structures. The available image and acquisition metadata do not establish the precise camera-specific cause. Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
 2. **Pair 1080 (30 inliers):** External `581.png` (Evaluation_Set) vs. Internal `Glaucoma/Glaucoma595.jpg`
    - *Cosine:* 0.9514, *SSIM:* 0.8265, *NCC:* 0.4902.
-   - *Visual Forensic Findings:* Keypoint matches concentrate around the circular aperture boundary notch. The underlying retinal vasculature is completely non-concordant (steeply curved superior arcade in `581.png` vs bifurcated arcade in `Glaucoma595.jpg`; cup depth and disc margins diverge). Confirmed distinct.
+   - *Visual Findings:* Keypoint matches concentrate around the circular aperture boundary notch. Retinal vasculature is completely non-concordant (steeply curved superior arcade in `581.png` vs bifurcated arcade in `Glaucoma595.jpg`; cup depth and disc margins diverge). Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
 3. **Pair 1379 (20 inliers):** External `600.png` (Evaluation_Set) vs. Internal `Glaucoma/Glaucoma595.jpg`
    - *Cosine:* 0.9516, *SSIM:* 0.8035, *NCC:* 0.3505.
-   - *Visual Forensic Findings:* Inliers concentrate around the aperture boundary notch. Optic disc cup-to-disc ratio, vascular branches, and retinal pigmentation diverge. Confirmed distinct.
+   - *Visual Findings:* Inliers concentrate around the aperture boundary notch. Optic disc cup-to-disc ratio, vascular branches, and retinal pigmentation diverge. Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
 4. **Pair 5901 (23 inliers):** External `1774.png` (Training_Set) vs. Internal `Macular Scar/Macular Scar152.jpg`
    - *Cosine:* 0.9505, *SSIM:* 0.6227, *NCC:* 0.2761.
-   - *Visual Forensic Findings:* Keypoints lie in low-contrast central fundus regions ($r \approx 70-186\text{ px}$) but exhibit low masked SSIM (0.6227) and low masked NCC (0.2761). Direct visual inspection confirms a large pigmented macular scar present in the internal image that is completely absent externally, alongside non-matching vascular arborization. Confirmed distinct.
+   - *Visual Findings:* Keypoints lie in low-contrast central fundus regions ($r \approx 70-186\text{ px}$) but exhibit low masked SSIM (0.6227) and low masked NCC (0.2761). Direct visual inspection confirms a large pigmented macular scar present internally that is completely absent externally, alongside non-matching vascular arborization. Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
 
 ### B. High Masked SSIM $\ge 0.85$ ($N=63$ Pairs)
 - SSIM values ranged from 0.8501 to a maximum of **0.9080** (Pair 52: External `14.png` vs. Internal `DR749.jpg`).
-- *Forensic Finding:* All 63 pairs occur in uniform, dark, low-texture fundus backgrounds where the absence of high-frequency contrast elevates structural similarity within the dilated FOV mask. In all 63 cases, optic disc location, cup-to-disc ratio, vascular caliber, and lesion patterns are non-concordant. Maximum ORB inliers in this group was only 12. Confirmed distinct.
+- **Review Breakdown:**
+  - **Pair 52 (Maximum SSIM 0.9080):** Individually visually inspected. High SSIM is driven by uniform, untextured peripheral fundus fields within the dilated FOV mask. Retinal vessel trees, microaneurysms, and disc cups completely diverge (ORB inliers=9). Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
+  - **Remaining 62 Pairs:** Automated screening only. ORB inliers ranged from 0 to 12 (median: 0), masked NCC ranged from -0.1866 to 0.5654. Disposition: `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING` ($N=62$).
 
 ### C. Low Perceptual Hash Distance $\le 4$ Bits ($N=4$ Pairs)
-- Four pairs had pHash distance $\le 4$ bits (Pair 2630: pHash 2; Pairs 1533, 1543, 5025: pHash 4).
-- *Forensic Finding:* dHash distances for these pairs were 8–11 bits, SSIM ranged from 0.6081 to 0.7263, and ORB inliers ranged from 0 to 4. Inspection confirms divergence in optic nerve head structure, foveal avascular zone morphology, and vessel layouts. Confirmed distinct.
+- Four pairs had pHash distance $\le 4$ bits:
+  - **Pair 2630 (Minimum pHash 2 bits):** Individually visually inspected. Optic disc tilt, neuroretinal rim contour, and arcade bifurcation diverge; SSIM is 0.6081 and ORB inliers=4. Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
+  - **Pairs 1533, 1543, 5025 (pHash 4 bits):** Automated screening only (dHash 8–11 bits, SSIM 0.6548–0.7263, ORB inliers 0–3). Disposition: `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING` ($N=3$).
 
 ### D. Top DINOv2 Cosine Similarity $\ge 0.970$ ($N=7$ Pairs)
-- The top-tail pairs (maximum cosine similarity: **0.9741**, Pair 5951: External `1775.png` vs. Internal `Glaucoma795.jpg`).
-- *Forensic Finding:* All 7 pairs represent prototypical optic-nerve-head centered fundus photographs of Glaucoma and Diabetic Retinopathy cases. None reached the near-duplicate burst threshold ($\ge 0.985$). Masked SSIM ranged from 0.6924 to 0.7763; ORB inliers ranged from 0 to 17. The difference heatmaps confirm distinct biological vasculature. Confirmed distinct.
+- Seven pairs had DINOv2 cosine similarity $\ge 0.970$:
+  - **Pair 5951 (Maximum DINOv2 Cosine 0.9741):** Individually visually inspected. Standard optic-nerve-head centered fundus; peripapillary atrophy halo and vessel layout diverge; ORB inliers=0. Disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`.
+  - **Remaining 6 Pairs:** Automated screening only (DINOv2 cosine 0.9701–0.9723, SSIM 0.6924–0.7763, ORB inliers 0–17). Disposition: `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING` ($N=6$).
 
 ---
 
 ## 4. Reconciled Pair-Level Artifacts
 
 The complete forensic ledger and summary records are preserved:
-1. **Exhaustive Pair-Level Ledger:** [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) (8,266 rows with all CV metrics, flags, review modality tags, and notes).
-2. **Dedicated Flagged Pairs Review Ledger:** [`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv) (78 rows detailing review modality, forensic evidence, and disposition).
+1. **Exhaustive Pair-Level Ledger:** [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) (8,266 rows with all CV metrics, flags, review modality tags, notes, and individual dispositions).
+2. **Dedicated Flagged Pairs Review Ledger:** [`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv) (78 rows detailing review modality, forensic evidence, and specific disposition: 7 `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW` vs 71 `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`).
 3. **Summary Metrics JSON:** [`outputs/audit/external_leakage_audit_8266_pairs_complete_summary.json`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete_summary.json).
 4. **Visual Contact Sheets:** `outputs/audit/flagged_pair_contact_sheets/` (78 comparative PNGs with difference heatmaps; 56 MB preserved locally on disk, excluded from git tracking via `.gitignore` to prevent repository binary bloat, and fully reproducible via the audit script).
 5. **Audit Execution Script:** [`scripts/run_full_8266_pairs_audit.py`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/scripts/run_full_8266_pairs_audit.py).
@@ -104,6 +117,6 @@ The complete forensic ledger and summary records are preserved:
 
 ## 5. Final Audit Conclusion
 
-1. **Exhaustive Scope:** All 8,266 pairs with DINOv2 cosine similarity $\ge 0.950$ have been individually evaluated using computer vision forensic tests (circular FOV-masked float32 SSIM, NCC, and ORB RANSAC). No pair was skipped, approximated, or inferred from nearest-neighbour rankings.
-2. **Duplication Finding:** **Zero bitwise duplicates, zero near-duplicates, and zero biological image matches** were detected. In the candidate pairs with elevated ORB inliers, matches concentrated around the circular aperture boundary or low-contrast fields rather than corresponding retinal anatomy; the available image and acquisition metadata do not establish a camera-specific cause.
-3. **CLAIM 2024 Scope Limitation:** While image duplication is conclusively ruled out across all 8,266 high-similarity candidate pairs, **patient-level overlap remains unverifiable** in the absence of longitudinal patient identifiers.
+1. **Computational Scope:** All 8,266 pairs with DINOv2 cosine similarity $\ge 0.950$ have been computationally evaluated using computer vision forensic tests (circular FOV-masked float32 SSIM, NCC, and ORB RANSAC). No pair was skipped, approximated, or inferred from nearest-neighbour rankings.
+2. **Duplication Finding:** **No image-level duplication was confirmed in the recorded checks.** In the 7 boundary pairs directly visually inspected, no duplicate was observed under the stated review procedure. The remaining 71 flagged candidate pairs (including 62 high-SSIM pairs) met automated screening bounds and are preserved as pending individual manual review under the existing protocol.
+3. **CLAIM 2024 Scope Limitation:** While no duplication was observed in the evaluated pairs, **patient-level overlap remains unverifiable** in the absence of longitudinal patient identifiers.

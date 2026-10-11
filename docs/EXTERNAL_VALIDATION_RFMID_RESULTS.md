@@ -3,8 +3,8 @@
 **Dataset Evaluated:** Retinal Fundus Multi-Disease Image Dataset (RFMiD v1.0; Pachade et al., *Data*, MDPI 2021)  
 **Models Evaluated:** Three frozen EfficientNet-B0 baseline checkpoints (`seed_42`, `seed_1337`, `seed_2026`)  
 **Evaluation Role:** **Exploratory Cross-Dataset Testing** (Not an untouched confirmatory validation experiment)  
-**Internal Test Set Quarantine:** **Strictly Preserved** (`data_clean/test` $N=561$ untouched; 0 inferences executed)  
-**Image Duplication Audit:** **No Image Duplication Confirmed** across bitwise, perceptual, and latent screening  
+**Internal Test Set Status:** **No Test Inferences in Current 9-Class Runs** (`data_clean/test` $N=561$ posterior-segment images not evaluated in 9-class baseline or RFMiD audit; prior historical 10-class exposure disclosed)  
+**Image Duplication Audit:** **No Image Duplication Confirmed in Recorded Checks** (7 visually reviewed, 71 automated screening pending manual review)  
 
 ---
 
@@ -18,7 +18,7 @@ Because the external dataset outputs, predictions, and threshold trade-offs have
 ### B. Scientific Scope & Non-Tuning Commitments
 1. **Preservation of Evidence:** All three model checkpoints, training logs, validation prediction ledgers, RFMiD external predictions, and metrics are preserved completely intact without retroactive alteration.
 2. **Prohibition of Post-Hoc Selection:** The RFMiD dataset cannot be used to select new model architectures or tune classification thresholds for any subsequent confirmatory claims. Any confirmatory claim will require a separate, untouched external cohort.
-3. **Internal Test Quarantine:** The internal benchmark test partition (`data_clean/test`, $N=561$) remains strictly quarantined and unaccessed.
+3. **Internal Test Cohort Exposure Disclosure:** The internal benchmark test partition (`data_clean/test`, $N=561$ posterior fundus images) was not accessed or evaluated during the 9-class baseline training or this RFMiD cross-dataset audit run. However, because the underlying images were previously evaluated in earlier 10-class experiments in the project's development history, this partition is not a pristine, never-before-accessed confirmatory test set. Any confirmatory claim will require an independent external cohort.
 
 ---
 
@@ -118,7 +118,7 @@ In accordance with CLAIM 2024 reporting guidance, the exact comparison cohorts a
      - Maximum ORB RANSAC homography inliers: **43** (mean: $1.94 \pm 3.12$; exactly 4 pairs $\ge 20$).
    - **Review of 78 Flagged Pairs & Aperture Boundary Evidence:**
      - Exactly 78 unique pairs triggered sensitivity screening flags (63 high SSIM, 4 ORB homography, 4 low pHash, 7 top DINOv2; exact disjoint union: 78 pairs, zero overlapping flags).
-     - A dedicated review record ([`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv)) explicitly documents the disposition and review modality for each flagged pair: 7 boundary pairs directly visually inspected (Pairs 7192, 1080, 1379, 5901 for ORB inliers $\ge 20$; Pair 52 for max SSIM; Pair 2630 for min pHash; Pair 5951 for max DINOv2) vs. 71 pairs evaluated via automated multi-metric screening bounds.
+     - A dedicated review record ([`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv)) explicitly documents the disposition and review modality for each flagged pair: 7 boundary pairs directly visually inspected (disposition: `NO_DUPLICATE_OBSERVED_ON_VISUAL_REVIEW`) vs. 71 pairs evaluated via automated multi-metric screening bounds (disposition: `AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`, remaining pending individual manual review under protocol).
      - In the 4 pairs with ORB inliers $\ge 20$, geometric matches concentrate around the fundus-image aperture boundary notch ($x \approx 366-392, y \approx 55-84$) or low-contrast fields rather than corresponding retinal structures. The available image and acquisition metadata do not establish a camera-specific cause. The underlying retinal vasculature, optic nerve head, and pathology are completely non-concordant.
      - Complete pair-level ledger is preserved in [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) (8,266 rows), [`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv) (78 rows), and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md). Contact sheets are preserved locally on disk in `outputs/audit/flagged_pair_contact_sheets/` (56 MB; git-ignored via `.gitignore` to prevent repository bloat).
 3. **Patient Overlap Limitation (CLAIM 2024 Alignment):**
@@ -142,7 +142,7 @@ This empirical finding validates our pre-flight protocol decision:
 | Milestone / Component | Current Scientific Status | Disposition |
 | :--- | :--- | :--- |
 | **Three-Seed Baseline** | Closed & Verified | $85.73\% \pm 0.62\%$ Internal Macro-F1; checkpoints frozen and preserved |
-| **Internal Test Partition** | Strictly Quarantined | `data_clean/test` ($N=561$) unaccessed and preserved for future use |
+| **Internal Test Partition** | Historical 10-Class Exposure | `data_clean/test` ($N=561$) unaccessed in 9-class/RFMiD runs, but previously evaluated in 10-class baseline; not confirmatory |
 | **RFMiD v1.0 Evaluation** | **Exploratory Cross-Dataset Testing** | Macro-AUROC $88.39\% \pm 0.85\%$; protocol deviation disclosed; results preserved |
 | **External Operating Points** | Exploratory Only | Fixed $\tau=0.5$ disclosed; Youden thresholds labeled post-hoc exploratory |
 | **Confirmatory Testing** | Pending Next Step | Requires separate, untouched external cohort with compatible multi-label formulation |
