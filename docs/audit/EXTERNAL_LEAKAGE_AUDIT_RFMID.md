@@ -70,14 +70,18 @@ To ensure complete forensic closure and eliminate reliance on nearest-neighbour 
   - **dHash Hamming Distance:** Median: 19 bits, Mean: $19.01 \pm 3.81$ bits, Min: 4 bits (Count $\le 2$: 0).
 
 ### B. Detailed Review and Disposition of Flagged Candidate Pairs ($N=78$)
-Across all 8,266 pairs, exactly **78 pairs** triggered $\ge 1$ pre-specified sensitivity screening flag. Each flagged pair was rendered as a side-by-side contact sheet with pixel difference heatmap in `outputs/audit/flagged_pair_contact_sheets/` and visually examined:
+Across all 8,266 pairs, exactly **78 unique pairs** triggered one or more pre-specified sensitivity screening flags (63 high SSIM, 4 ORB homography, 4 low pHash, 7 top DINOv2; exact disjoint union: 78 pairs, zero overlapping flags).
+
+A dedicated review record ([`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv)) explicitly documents the disposition and review modality for each flagged pair:
+- **Direct Manual Visual Inspection ($N=7$):** The 4 pairs with ORB inliers $\ge 20$ (Pairs 7192, 1080, 1379, 5901) alongside key metric anchors (Pair 52 for maximum SSIM, Pair 2630 for minimum pHash, and Pair 5951 for maximum DINOv2 cosine) were individually reviewed via high-resolution contact sheets, difference heatmaps, and keypoint spatial distributions.
+- **Automated Metric Screening ($N=71$):** The remaining 71 candidate pairs (62 high-SSIM, 3 low-pHash, 6 top-DINOv2) were evaluated via quantitative threshold screening bounds (e.g. ORB inliers < 20, NCC < 0.85), with individual comparative contact sheets and difference heatmaps generated and preserved on disk.
 
 1. **ORB RANSAC Inliers $\ge 20$ ($N=4$ Pairs):**
    - **Pair 7192 (43 inliers):** External `395.png` (Training_Set) vs. Internal `DR688.jpg`. External image exhibits dense circinate rings of yellow hard exudates around the macula; internal image has zero exudates.
    - **Pair 1080 (30 inliers):** External `581.png` (Evaluation_Set) vs. Internal `Glaucoma595.jpg`. Retinal vascular arcades and optic disc cup diverge.
    - **Pair 1379 (20 inliers):** External `600.png` (Evaluation_Set) vs. Internal `Glaucoma595.jpg`. Optic cup geometry and vessel caliber diverge.
-   - **Pair 5901 (23 inliers):** External `1774.png` (Training_Set) vs. Internal `Macular Scar152.jpg`. Dense pigmented scar present internally, absent externally.
-   - *Forensic Root Cause:* In all 4 pairs, the inliers are **spurious camera aperture perimeter matches** caused by an identical circular aperture notch at the ~1:30 position (characteristic of Kowa non-mydriatic fundus cameras). RANSAC aligned the camera aperture perimeter; the biological retinal vasculature, optic disc, and lesions are completely divergent.
+   - **Pair 5901 (23 inliers):** External `1774.png` (Training_Set) vs. Internal `Macular Scar152.jpg`. Dense pigmented scar present internally, absent externally; masked SSIM is only 0.6227 and NCC is 0.2761.
+   - *Aperture Boundary & Geometry Findings:* In Pairs 7192, 1080, and 1379, keypoint coordinates cluster tightly at the circular aperture mask boundary notch ($x \approx 366-392, y \approx 55-84$) rather than retinal structures. In Pair 5901, matches fall in central low-contrast fundus without geometric or vascular concordance. The available image and acquisition metadata do not establish the precise camera-specific cause. The underlying biological retinal vasculature, optic disc, and lesions are completely divergent.
 2. **High Masked SSIM $\ge 0.85$ ($N=63$ Pairs):**
    - SSIM ranged from 0.8501 to 0.9080 (max: Pair 52, External `14.png` vs. Internal `DR749.jpg`).
    - Driven by uniform, untextured retinal background luminance within the dilated mask; all 63 pairs exhibit divergent vessel trees and optic cup margins (maximum ORB inliers in this subset was 12).
@@ -86,7 +90,7 @@ Across all 8,266 pairs, exactly **78 pairs** triggered $\ge 1$ pre-specified sen
 4. **Top DINOv2 Cosine Similarity $\ge 0.970$ ($N=7$ Pairs):**
    - Maximum cosine similarity 0.9741 (Pair 5951, External `1775.png` vs. Internal `Glaucoma795.jpg`). Standard optic-nerve-head centered fundi; zero ORB inliers.
 
-Complete ledgers are preserved in [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md).
+Complete ledgers are preserved in [`outputs/audit/external_leakage_audit_8266_pairs_complete.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/external_leakage_audit_8266_pairs_complete.csv) (8,266 rows), [`outputs/audit/flagged_pairs_review_ledger.csv`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/audit/flagged_pairs_review_ledger.csv) (78 rows), and detailed in [`docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/docs/audit/DINOV2_HIGH_SIMILARITY_AUDIT_REPORT.md). Contact sheets for all 78 flagged pairs are saved on disk in `outputs/audit/flagged_pair_contact_sheets/` (56 MB; excluded from git tracking via `.gitignore` to prevent repository binary bloat, and fully reproducible via the audit script).
 
 ---
 

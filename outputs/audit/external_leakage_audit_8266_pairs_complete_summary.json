@@ -79,7 +79,13 @@
     "Evaluation_Set": 1848
   },
   "contact_sheets_saved": 78,
+  "contact_sheets_tracked_in_git": false,
+  "flagged_pairs_union_count": 78,
+  "review_modality_breakdown": {
+    "direct_manual_visual_inspection": 7,
+    "automated_metric_screening": 71
+  },
   "audit_verdict": "NO_IMAGE_DUPLICATION_CONFIRMED_ACROSS_ALL_8266_PAIRS",
-  "audit_statement": "Every one of the 8,266 image pairs with DINOv2 cosine similarity >= 0.950 was individually evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. Exactly 78 pairs triggered sensitivity review flags (63 SSIM >= 0.85, 4 ORB inliers >= 20, 4 pHash <= 4, 7 DINOv2 >= 0.970). All 78 flagged pairs were inspected via visual contact sheets with difference heatmaps; the 4 pairs with ORB inliers >= 20 were confirmed to arise from matching camera aperture perimeter notches rather than shared retinal anatomy. Zero image duplicates confirmed. Patient-level overlap remains unverifiable from the available metadata.",
-  "runtime_seconds": 133.65
+  "audit_statement": "Every one of the 8,266 image pairs with DINOv2 cosine similarity >= 0.950 was individually evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. Exactly 78 pairs triggered sensitivity review flags (63 SSIM >= 0.85, 4 ORB inliers >= 20, 4 pHash <= 4, 7 DINOv2 >= 0.970; exact disjoint union: 78 pairs, zero overlapping flags). A dedicated review ledger distinguishes 7 boundary pairs evaluated via direct manual visual inspection from 71 pairs evaluated via automated multi-metric screening. In the 4 pairs with ORB inliers >= 20, geometric matches appear to concentrate around the fundus-image aperture boundary rather than corresponding retinal structures; available metadata do not establish a camera-specific cause. Zero image duplicates confirmed. Patient-level overlap remains unverifiable from the available metadata.",
+  "runtime_seconds": 134.79
 }
