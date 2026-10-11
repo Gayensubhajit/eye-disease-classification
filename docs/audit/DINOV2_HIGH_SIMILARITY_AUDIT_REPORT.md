@@ -11,10 +11,13 @@
 **Automated-Screening-Only Flagged Pairs:** **71** (`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`)  
 **Unflagged Candidate Pairs:** **8,188** (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed)  
 **Formal Patient Overlap Disclosure (CLAIM 2024 Alignment):**  
-> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. The remaining 8,188 pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed). Patient-level overlap remains unverifiable from the available metadata.*
+> *Among the 14,038,400 possible cross-dataset image pairs (3,200 RFMiD images × 4,387 internal reference images), 8,266 pairs (0.0589%) met the DINOv2 cosine-similarity threshold of $\ge 0.950$ and were computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. The remaining 8,188 pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed). Patient-level overlap remains unverifiable from the available metadata.*
 
 **Internal Test Set Historical Exposure Disclosure:**  
 > *The internal benchmark test partition (`data_clean/test`, $N=561$ nine-class posterior-segment fundus images) was not evaluated during the 9-class baseline training or during this RFMiD cross-dataset audit run. However, the underlying images were previously evaluated in earlier 10-class baseline experiments in the project's development history. Therefore, the internal test partition cannot be described as a pristine, never-before-accessed confirmatory test cohort. Any future confirmatory validation will require an independent external cohort.*
+
+**Inference History & Correction Safeguards:**  
+> *No model retraining, new model inference, or threshold changes were performed during the final audit-correction pass. An earlier exploratory inference run evaluated the frozen checkpoints on all 3,200 RFMiD images; those external-evaluation results remain exploratory. The internal test cohort was also evaluated during earlier ten-class baseline experiments and is not a pristine confirmatory benchmark.*
 
 ---
 
@@ -24,7 +27,7 @@ In response to methodological feedback that nearest-neighbour ranking does not l
 
 ### Audit Methodology
 1. **Full Pair Set Enumeration:**
-   - All 8,266 pairs satisfying DINOv2 cosine similarity $\ge 0.950$ were extracted from the complete $3,200 	imes 4,387 = 14,038,400$ cross-dataset cosine similarity matrix.
+   - Among the 14,038,400 possible cross-dataset image pairs (3,200 RFMiD images × 4,387 internal reference images), 8,266 pairs (0.0589%) met the DINOv2 cosine-similarity threshold of $\ge 0.950$ and underwent pair-level computer-vision screening.
    - The pairs involve **805 unique external images** and **1010 unique internal images**.
 2. **Individual Pair-Level Computation:**
    - Every single pair was individually loaded and tested with:

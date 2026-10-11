@@ -10,10 +10,13 @@
 **Automated-Screening-Only Flagged Pairs:** **71** (`AUTOMATED_SCREEN_ONLY_MANUAL_REVIEW_PENDING`)  
 **Unflagged Candidate Pairs:** **8,188** (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed)  
 **Formal Patient Overlap Statement (CLAIM 2024 Alignment):**  
-> *Every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. The remaining 8,188 pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed). Patient-level overlap remains unverifiable from the available metadata.*
+> *Among the 14,038,400 possible cross-dataset image pairs (3,200 RFMiD images × 4,387 internal reference images), 8,266 pairs (0.0589%) met the DINOv2 cosine-similarity threshold of $\ge 0.950$ and were computationally evaluated with circular FOV-masked float32 SSIM, NCC, and ORB RANSAC homography. No exact image duplicates or near-duplicate source pairs were confirmed in the recorded checks. A dedicated review ledger records that 7 boundary pairs were confirmed distinct upon direct visual inspection, while 71 flagged candidate pairs (including 62 high-SSIM cases) remain pending manual review under the existing protocol. The remaining 8,188 pairs did not trigger any configured screening flags (`AUTOMATED_SCREEN_NO_CONFIGURED_FLAG`; individual visual review not performed). Patient-level overlap remains unverifiable from the available metadata.*
 
 **Internal Test Set Historical Exposure Disclosure:**  
 > *The internal benchmark test partition (`data_clean/test`, $N=561$ nine-class posterior-segment fundus images) was not evaluated during the 9-class baseline training or during this RFMiD cross-dataset audit run. However, the underlying images were previously evaluated in earlier 10-class baseline experiments in the project's development history. Therefore, the internal test partition cannot be claimed as a pristine, never-before-accessed confirmatory test cohort. Any future confirmatory validation will require an independent external cohort.*
+
+**Inference History & Correction Safeguards:**  
+> *No model retraining, new model inference, or threshold changes were performed during the final audit-correction pass. An earlier exploratory inference run evaluated the frozen checkpoints on all 3,200 RFMiD images; those external-evaluation results remain exploratory. The internal test cohort was also evaluated during earlier ten-class baseline experiments and is not a pristine confirmatory benchmark.*
 
 ---
 
@@ -34,7 +37,7 @@ To ensure conservative screening against potential cross-dataset contamination, 
 
 ## 2. DINOv2 Latent Space Distribution & Threshold Reconciliation
 
-The preflight protocol established a cosine similarity above $0.950$ as an initial sensitivity trigger for reviewing structural proximity. Across the full cross-dataset matrix of $14,038,400$ pairs:
+Among the 14,038,400 possible cross-dataset image pairs (3,200 RFMiD images × 4,387 internal reference images), 8,266 pairs (0.0589%) met the DINOv2 cosine-similarity threshold of $\ge 0.950$ and underwent pair-level computer-vision screening:
 - **Pairs with Cosine Similarity $\ge 0.950$:** **8,266** pairs ($0.059\%$ of all pairs).
 - **Pairs with Cosine Similarity $\ge 0.960$:** **550** pairs ($0.0039\%$ of all pairs).
 - **Pairs with Cosine Similarity $\ge 0.970$:** **7** pairs.
@@ -66,7 +69,7 @@ Consequently, cosine similarity values between $0.92$ and $0.96$ reflect standar
 ### A. Full Pair-Level Evaluation Across All 8,266 Candidate Pairs
 To ensure complete forensic closure and eliminate reliance on nearest-neighbour rank-preservation assumptions, **every one of the 8,266 image pairs with DINOv2 cosine similarity $\ge 0.950$ was individually evaluated** with circular FOV-masked `float32` SSIM, NCC, pixel difference, and ORB RANSAC homography.
 
-- **Candidate Space:** 8,266 pairs involving **805 unique external images** and **1,010 unique internal images**.
+- **Candidate Space:** Among the 14,038,400 possible pairs, 8,266 pairs (0.0589%) met the DINOv2 cosine-similarity threshold of $\ge 0.950$ and underwent pair-level computer-vision screening, involving **805 unique external images** and **1,010 unique internal images**.
 - **Overall Forensic Distribution Across all 8,266 Pairs:**
   - **DINOv2 Cosine Similarity:** Median: 0.9532, Mean: $0.9540 \pm 0.0041$, Max: **0.9741** (Count $\ge 0.970$: 7, Count $\ge 0.985$: 0).
   - **Circular FOV-Masked SSIM (float32):** Median: 0.7186, Mean: $0.7101 \pm 0.0583$, Max: **0.9080** (Count $\ge 0.85$: 63).
