@@ -19,6 +19,10 @@ data/test/
 
 # Model checkpoints and outputs — never commit these
 outputs/
+!outputs/**/.gitkeep
+!outputs/audit/**
+!outputs/clean_9class_baseline_effnet/*.json
+!outputs/clean_9class_baseline_effnet/**/*.sha256
 *.pt
 *.pth
 *.ckpt

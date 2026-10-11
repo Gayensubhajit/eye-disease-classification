@@ -1,0 +1,216 @@
+{
+  "experiment_title": "9-Class Posterior-Segment Retinal Baseline (EfficientNet-B0)",
+  "protocol_version": "Research Protocol v1.1",
+  "seeds_evaluated": [
+    42,
+    1337,
+    2026
+  ],
+  "sample_count_validation": 560,
+  "classes_count": 9,
+  "methodological_scope": "Variability across seeds 42, 1337, and 2026 reflects stochastic optimization and weight initialization dynamics under a fixed dataset split; it does not represent random-split or patient-level variability.",
+  "aggregate_metrics": {
+    "macro_f1": {
+      "mean": 0.8573125210984959,
+      "std": 0.0061695010005416275,
+      "min": 0.8513755924861964,
+      "max": 0.8636908829962207,
+      "values": [
+        0.8513755924861964,
+        0.8568710878130708,
+        0.8636908829962207
+      ]
+    },
+    "balanced_accuracy": {
+      "mean": 0.8660122937039058,
+      "std": 0.010598123784759722,
+      "min": 0.8541610843322744,
+      "max": 0.8745802184080779,
+      "values": [
+        0.8541610843322744,
+        0.8745802184080779,
+        0.8692955783713653
+      ]
+    },
+    "overall_accuracy": {
+      "mean": 0.8761904761904762,
+      "std": 0.003717260713332367,
+      "min": 0.8732142857142857,
+      "max": 0.8803571428571428,
+      "values": [
+        0.8732142857142857,
+        0.875,
+        0.8803571428571428
+      ]
+    },
+    "validation_loss_at_peak": {
+      "mean": 0.9770660850973356,
+      "std": 0.1178648184881742,
+      "values": [
+        0.9511512996894973,
+        0.87431507983378,
+        1.1057318757687296
+      ]
+    }
+  },
+  "individual_runs": {
+    "seed_42": {
+      "best_epoch": 19,
+      "macro_f1": 0.8513755924861964,
+      "balanced_accuracy": 0.8541610843322744,
+      "accuracy": 0.8732142857142857,
+      "correct_count": 489,
+      "val_loss": 0.9511512996894973,
+      "train_loss": 0.010374263453812182,
+      "checkpoint_sha256": "e54f0f86fafaa95f7921a83b383f2b9928111383a68761e7f915b8b63abda38d"
+    },
+    "seed_1337": {
+      "best_epoch": 19,
+      "macro_f1": 0.8568710878130708,
+      "balanced_accuracy": 0.8745802184080779,
+      "accuracy": 0.875,
+      "correct_count": 490,
+      "val_loss": 0.87431507983378,
+      "train_loss": 0.008180212417751504,
+      "checkpoint_sha256": "887f3a16aeb029054e9a31f75837c409fd73b76c1b8ad2677d745af9928cbe41"
+    },
+    "seed_2026": {
+      "best_epoch": 19,
+      "macro_f1": 0.8636908829962207,
+      "balanced_accuracy": 0.8692955783713653,
+      "accuracy": 0.8803571428571428,
+      "correct_count": 493,
+      "val_loss": 1.1057318757687296,
+      "train_loss": 0.013345241135879095,
+      "checkpoint_sha256": "8d89c9e0d4ef73b3ae6a76d83c87c1eac28f5e891f11740bcc9515a1be58caa9"
+    }
+  },
+  "per_class_performance": {
+    "Central Serous Chorioretinopathy [Color Fundus]": {
+      "validation_support": 11,
+      "f1_mean": 0.797418630751964,
+      "f1_std": 0.049665677433615094,
+      "recall_mean": 0.8787878787878788,
+      "recall_std": 0.05248638810814775,
+      "precision_mean": 0.7374708624708625,
+      "precision_std": 0.1004306849377059,
+      "individual_seed_f1s": {
+        "seed_42": 0.8181818181818182,
+        "seed_1337": 0.7407407407407406,
+        "seed_2026": 0.8333333333333333
+      }
+    },
+    "Diabetic Retinopathy": {
+      "validation_support": 191,
+      "f1_mean": 0.972991360126889,
+      "f1_std": 0.0037809328698887586,
+      "recall_mean": 0.9738219895287958,
+      "recall_std": 0.005235602094240843,
+      "precision_mean": 0.972252568743797,
+      "precision_std": 0.011499401850566466,
+      "individual_seed_f1s": {
+        "seed_42": 0.9763779527559056,
+        "seed_1337": 0.9736842105263157,
+        "seed_2026": 0.9689119170984456
+      }
+    },
+    "Disc Edema": {
+      "validation_support": 15,
+      "f1_mean": 0.924731182795699,
+      "f1_std": 0.037248404463846856,
+      "recall_mean": 0.9555555555555556,
+      "recall_std": 0.03849001794597504,
+      "precision_mean": 0.8958333333333334,
+      "precision_std": 0.03608439182435161,
+      "individual_seed_f1s": {
+        "seed_42": 0.9032258064516129,
+        "seed_1337": 0.967741935483871,
+        "seed_2026": 0.9032258064516129
+      }
+    },
+    "Glaucoma": {
+      "validation_support": 124,
+      "f1_mean": 0.8134168432040773,
+      "f1_std": 0.015073419055920127,
+      "recall_mean": 0.7741935483870966,
+      "recall_std": 0.029077026415032146,
+      "precision_mean": 0.8575566696111604,
+      "precision_std": 0.01755451331325878,
+      "individual_seed_f1s": {
+        "seed_42": 0.8181818181818181,
+        "seed_1337": 0.7965367965367967,
+        "seed_2026": 0.8255319148936169
+      }
+    },
+    "Healthy": {
+      "validation_support": 105,
+      "f1_mean": 0.8469226748872768,
+      "f1_std": 0.013327284734744047,
+      "recall_mean": 0.9047619047619048,
+      "recall_std": 0.01904761904761909,
+      "precision_mean": 0.7961096983824257,
+      "precision_std": 0.01165409695756328,
+      "individual_seed_f1s": {
+        "seed_42": 0.8378378378378378,
+        "seed_1337": 0.8407079646017699,
+        "seed_2026": 0.8622222222222223
+      }
+    },
+    "Macular Scar": {
+      "validation_support": 47,
+      "f1_mean": 0.8065884801665133,
+      "f1_std": 0.04592569973095779,
+      "recall_mean": 0.7446808510638299,
+      "recall_std": 0.073704289683782,
+      "precision_mean": 0.883061383061383,
+      "precision_std": 0.03537220832549887,
+      "individual_seed_f1s": {
+        "seed_42": 0.7674418604651163,
+        "seed_1337": 0.8571428571428571,
+        "seed_2026": 0.7951807228915662
+      }
+    },
+    "Myopia": {
+      "validation_support": 37,
+      "f1_mean": 0.7233285917496444,
+      "f1_std": 0.011087096207766638,
+      "recall_mean": 0.7297297297297297,
+      "recall_std": 0.0,
+      "precision_mean": 0.7172557172557172,
+      "precision_std": 0.021605623379237555,
+      "individual_seed_f1s": {
+        "seed_42": 0.7297297297297297,
+        "seed_1337": 0.7297297297297297,
+        "seed_2026": 0.7105263157894737
+      }
+    },
+    "Retinal Detachment": {
+      "validation_support": 13,
+      "f1_mean": 0.9311111111111111,
+      "f1_std": 0.02501851166488385,
+      "recall_mean": 0.8717948717948718,
+      "recall_std": 0.044411559168432785,
+      "precision_mean": 1.0,
+      "precision_std": 0.0,
+      "individual_seed_f1s": {
+        "seed_42": 0.9166666666666666,
+        "seed_1337": 0.9166666666666666,
+        "seed_2026": 0.9600000000000001
+      }
+    },
+    "Retinitis Pigmentosa": {
+      "validation_support": 17,
+      "f1_mean": 0.8993038150932887,
+      "f1_std": 0.013300098374231135,
+      "recall_mean": 0.9607843137254902,
+      "recall_std": 0.033961780540566235,
+      "precision_mean": 0.8468393205235311,
+      "precision_std": 0.0398937642998525,
+      "individual_seed_f1s": {
+        "seed_42": 0.8947368421052632,
+        "seed_1337": 0.8888888888888888,
+        "seed_2026": 0.9142857142857143
+      }
+    }
+  }
+}

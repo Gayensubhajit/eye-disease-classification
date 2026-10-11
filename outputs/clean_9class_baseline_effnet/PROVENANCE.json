@@ -1,0 +1,78 @@
+{
+  "provenance_metadata": {
+    "protocol_version": "Research Protocol v1.1",
+    "experiment_title": "9-Class Posterior-Segment Retinal Baseline (EfficientNet-B0)",
+    "timestamp_utc": "2026-10-11T08:05:00Z",
+    "status": "FROZEN_AND_VERIFIED",
+    "git": {
+      "base_commit": "cc2fc8b8f557f1b8e81922fa6a129afdcd107b4a",
+      "branch": "main",
+      "core_src_diff": "ZERO modifications in src/ across all runs. Underlying model construction, training loop, loss, optimizer, scheduler, data loading, and augmentations were 100% identical and committed in git.",
+      "runner_history_note": "Runner script scripts/run_9class_3seed_baseline.py was edited during Seed 2026 resumption strictly for wrapper-level resilience: skipping completed runs, filesystem mount path resolution, setting NO_ALBUMENTATIONS_UPDATE=1 to bypass network timeout latency, output structuring into dicts, saving .sha256 files, and adding sample-level assertions. No training hyperparameters, architectures, seeds, or data splits were altered."
+    },
+    "runner_script": {
+      "path": "scripts/run_9class_3seed_baseline.py",
+      "sha256": "9439fa379df8b750df6883227f0f475d2753e5bb5cb7a55047a58f9edf967906"
+    },
+    "reconciliation_audit": {
+      "audit_script": "scripts/audit_baseline_provenance_complete.py",
+      "audit_status": "PASSED_BITWISE_EXACT",
+      "confusion_matrix_check": "Element-for-element bitwise equality between saved val_confusion_matrix.csv and fresh 9x9 matrix reconstructed from val_predictions.csv verified for all 3 seeds.",
+      "metrics_recalculation": "All per-class and aggregate metrics (Macro-F1, Balanced Accuracy, Overall Accuracy, Val Loss) verified arithmetically from raw predictions."
+    },
+    "runtime_environment": {
+      "python_version": "3.10.12",
+      "framework": "PyTorch 2.4.0+cu121",
+      "accelerator": "NVIDIA GeForce RTX 3050 Laptop GPU (4GB VRAM)",
+      "cuda_driver_umd": "13.4",
+      "os": "Linux 6.6.137+bpo-amd64"
+    },
+    "dataset_quarantine_integrity": {
+      "training_samples": 2612,
+      "validation_samples": 560,
+      "test_samples": 561,
+      "test_inferences_executed": 0,
+      "test_quarantine_enforced": true
+    }
+  },
+  "seeds": {
+    "seed_42": {
+      "best_epoch": 19,
+      "checkpoint_path": "outputs/clean_9class_baseline_effnet/seed_42/best_model.pth",
+      "checkpoint_sha256": "e54f0f86fafaa95f7921a83b383f2b9928111383a68761e7f915b8b63abda38d",
+      "val_macro_f1": 0.8513755924861964,
+      "val_balanced_acc": 0.8541610843322744,
+      "val_overall_acc": 0.8732142857142857,
+      "correct_count": 489,
+      "total_val": 560
+    },
+    "seed_1337": {
+      "best_epoch": 19,
+      "checkpoint_path": "outputs/clean_9class_baseline_effnet/seed_1337/best_model.pth",
+      "checkpoint_sha256": "887f3a16aeb029054e9a31f75837c409fd73b76c1b8ad2677d745af9928cbe41",
+      "val_macro_f1": 0.8568710878130708,
+      "val_balanced_acc": 0.8745802184080779,
+      "val_overall_acc": 0.875,
+      "correct_count": 490,
+      "total_val": 560
+    },
+    "seed_2026": {
+      "best_epoch": 19,
+      "checkpoint_path": "outputs/clean_9class_baseline_effnet/seed_2026/best_model.pth",
+      "checkpoint_sha256": "8d89c9e0d4ef73b3ae6a76d83c87c1eac28f5e891f11740bcc9515a1be58caa9",
+      "val_macro_f1": 0.8636908829962207,
+      "val_balanced_acc": 0.8692955783713653,
+      "val_overall_acc": 0.8803571428571428,
+      "correct_count": 493,
+      "total_val": 560
+    }
+  },
+  "aggregate_validation_summary": {
+    "macro_f1_mean": 0.8573125210984959,
+    "macro_f1_std": 0.0061695010005416275,
+    "balanced_acc_mean": 0.8660122937039058,
+    "balanced_acc_std": 0.010598123784759722,
+    "overall_acc_mean": 0.8761904761904762,
+    "overall_acc_std": 0.003717260713332367
+  }
+}

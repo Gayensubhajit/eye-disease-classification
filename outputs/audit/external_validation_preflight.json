@@ -1,0 +1,113 @@
+{
+  "protocol": "EXTERNAL_VALIDATION_PREFLIGHT_PROTOCOL_V1_1",
+  "status": "PREFLIGHT_READY_FOR_REVIEW",
+  "timestamp_utc": "2026-10-11T08:05:00Z",
+  "target_external_dataset": {
+    "name": "RFMiD (Retinal Fundus Multi-Disease Image Dataset)",
+    "version": "v1.0",
+    "citation": "Pachade et al. (Data, MDPI 2021, 6(2), 14)",
+    "access_terms": "CC BY 4.0",
+    "total_cohort_size": 3200,
+    "published_table": "Table 3 (Overall and Camera-Specific Disease Distribution)",
+    "partitions": {
+      "train": 1920,
+      "val": 640,
+      "test": 640
+    },
+    "evaluation_cohort_caution": "Support counts represent published Table 3 totals across the entire 3,200 cohort. In challenge distributions where test set labels are withheld, the labelled evaluation cohort is restricted to the train + val partitions (N=2,560). Actual CSV headers, rows, and ground truth availability must be verified on disk for the acquired release prior to computing metrics."
+  },
+  "baseline_frozen_reference": {
+    "model": "EfficientNet-B0",
+    "task": "9-Class Posterior Segment Color Fundus Classification",
+    "seeds": [42, 1337, 2026],
+    "git_commit": "cc2fc8b8f557f1b8e81922fa6a129afdcd107b4a",
+    "core_code_integrity": "Identical and committed in src/ across all three runs with zero working-tree modifications.",
+    "runner_script_sha256": "9439fa379df8b750df6883227f0f475d2753e5bb5cb7a55047a58f9edf967906",
+    "reconciliation_audit": "Passed with 100% element-for-element bitwise confusion matrix match and aggregate summary verification (scripts/audit_baseline_provenance_complete.py).",
+    "validation_macro_f1_mean": 0.8573125210984959,
+    "validation_macro_f1_std": 0.0061695010005416275,
+    "validation_balanced_acc_mean": 0.8660122937039058,
+    "validation_accuracy_mean": 0.8761904761904762
+  },
+  "mapping_and_eligibility": {
+    "Diabetic Retinopathy": {
+      "rfmid_column": "DR",
+      "mapping_status": "Exact",
+      "published_table3_support": 632,
+      "negative_support": 2568,
+      "power_status": "Robust",
+      "eligibility": "Confirmatory One-vs-Rest AUROC, PR-AUC, Sensitivity, Specificity"
+    },
+    "Healthy": {
+      "rfmid_column": "Disease_Risk == 0 / NL",
+      "mapping_status": "Exact",
+      "published_table3_support": 669,
+      "negative_support": 2531,
+      "power_status": "Robust",
+      "eligibility": "Specificity, Normal-vs-Abnormal Discrimination, NPV"
+    },
+    "Macular Scar": {
+      "rfmid_column": "MS",
+      "mapping_status": "Exact",
+      "published_table3_support": 27,
+      "negative_support": 3173,
+      "power_status": "Limited (Small N)",
+      "eligibility": "Confirmatory One-vs-Rest AUROC, PR-AUC, Sensitivity, Specificity (Flagged: wide bootstrap CIs due to N=27)"
+    },
+    "Central Serous Chorioretinopathy [Color Fundus]": {
+      "rfmid_column": "CSR",
+      "mapping_status": "Exact",
+      "published_table3_support": 61,
+      "negative_support": 3139,
+      "power_status": "Moderate",
+      "eligibility": "Confirmatory One-vs-Rest AUROC, Specificity, Sensitivity, PR-AUC"
+    },
+    "Disc Edema": {
+      "rfmid_column": "ODE",
+      "mapping_status": "Exact",
+      "published_table3_support": 96,
+      "negative_support": 3104,
+      "power_status": "Moderate",
+      "eligibility": "Confirmatory AUROC, Specificity, Sensitivity"
+    },
+    "Retinitis Pigmentosa": {
+      "rfmid_column": "RP",
+      "mapping_status": "Exact",
+      "published_table3_support": 10,
+      "negative_support": 3190,
+      "power_status": "Severely Inadequate (N=10)",
+      "eligibility": "Exploratory Descriptive Analysis Only; Ineligible for standalone statistical validation claims"
+    },
+    "Myopia": {
+      "rfmid_column": "MYA",
+      "mapping_status": "Approximate",
+      "published_table3_support": 167,
+      "negative_support": 3033,
+      "power_status": "Adequate (Feature-level)",
+      "eligibility": "One-vs-Rest AUROC (Conditional on Myopic Atrophy MYA), Specificity"
+    },
+    "Glaucoma": {
+      "rfmid_column": "ODC",
+      "mapping_status": "Approximate",
+      "published_table3_support": 445,
+      "negative_support": 2755,
+      "power_status": "Robust (Sign-level)",
+      "eligibility": "Ranking Agreement, AUROC vs ODC; Ineligible for clinical glaucoma diagnosis"
+    },
+    "Retinal Detachment": {
+      "rfmid_column": "None (RT exploratory only)",
+      "mapping_status": "Unavailable",
+      "published_table3_support": 25,
+      "negative_support": 3175,
+      "power_status": "Non-Equivalent & Underpowered (N=25)",
+      "eligibility": "Direct External Evaluation UNAVAILABLE; Exploratory RT AUROC Only"
+    }
+  },
+  "protocol_governance_rules": {
+    "multi_label_semantics": "Preserved. Each disease evaluated via independent binary One-vs-Rest classification; never forced into 9-class softmax.",
+    "uncertainty_estimation": "95% non-parametric bootstrap confidence intervals (1,000 stratified resamples).",
+    "threshold_policy": "Locked to internal validation operating point; zero target-domain threshold optimization.",
+    "leakage_auditing": "3-Pillar scan (SHA-256 bitwise, pHash DCT Hamming <= 3, DINOv2 cosine > 0.95).",
+    "quarantine": "Zero external inference executed; internal test split quarantined."
+  }
+}
