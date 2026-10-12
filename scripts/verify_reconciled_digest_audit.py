@@ -59,15 +59,33 @@ def main():
 
     clean_sha256 = {}
     clean_md5 = {}
+    canonical_splits = {"train": 0, "val": 0, "test": 0}
+    pterygium_splits = {"train": 0, "val": 0, "test": 0}
+    fundus_splits = {"train": 0, "val": 0, "test": 0}
+
     for p in clean_paths:
         rel_key = str(p.relative_to(CLEAN_ROOT))
         data = p.read_bytes()
         clean_sha256[rel_key] = hashlib.sha256(data).hexdigest()
         clean_md5[rel_key] = hashlib.md5(data).hexdigest()
+        parts = p.relative_to(CLEAN_ROOT).parts
+        split = parts[0]
+        if split in canonical_splits:
+            canonical_splits[split] += 1
+            if len(parts) > 1 and parts[1] == "Pterygium":
+                pterygium_splits[split] += 1
+            else:
+                fundus_splits[split] += 1
+
+    assert canonical_splits == {"train": 2622, "val": 562, "test": 563}, f"Unexpected clean split counts: {canonical_splits}"
+    assert pterygium_splits == {"train": 10, "val": 2, "test": 2}, f"Unexpected pterygium split counts: {pterygium_splits}"
+    assert fundus_splits == {"train": 2612, "val": 560, "test": 561}, f"Unexpected 9-class fundus split counts: {fundus_splits}"
 
     assert len(clean_sha256) == 3747, f"Expected 3747 unique clean hashes, got {len(clean_sha256)}"
     assert len(clean_md5) == 3747
-    print(f"  -> Successfully digested 3,747 canonical benchmark images (including 14 Pterygium anterior images).")
+    print(f"  -> Successfully digested 3,747 canonical benchmark images (Train: {canonical_splits['train']}, Val: {canonical_splits['val']}, Test: {canonical_splits['test']}).")
+    print(f"     * Anterior Pterygium: {sum(pterygium_splits.values())} (Train: {pterygium_splits['train']}, Val: {pterygium_splits['val']}, Test: {pterygium_splits['test']})")
+    print(f"     * Posterior Fundus 9-class: {sum(fundus_splits.values())} (Train: {fundus_splits['train']}, Val: {fundus_splits['val']}, Test: {fundus_splits['test']})")
 
     # 3. Eligible reference pool (clean_split_manifest.csv, N=4,387)
     print("\n[3/4] Indexing and hashing eligible reference pool (N=4,387)...")
@@ -93,7 +111,15 @@ def main():
     assert len(pool_sha256) == 4387, f"Expected 4387 unique pool hashes, got {len(pool_sha256)}"
     assert len(pool_md5) == 4387
     assert manifest_md5_matches == 4387, f"Manifest MD5 verification failed: {manifest_md5_matches}/4387 matched"
-    print(f"  -> Successfully digested 4,387 pool images; 100% (4,387/4,387) match clean_split_manifest.csv MD5s.")
+
+    pool_splits_series = df_manifest["split"].value_counts()
+    pool_splits = {
+        "train": int(pool_splits_series.get("train", 0)),
+        "val": int(pool_splits_series.get("val", 0)),
+        "test": int(pool_splits_series.get("test", 0)),
+    }
+    assert pool_splits == {"train": 3073, "val": 657, "test": 657}, f"Unexpected pool splits: {pool_splits}"
+    print(f"  -> Successfully digested 4,387 pool images (Train: {pool_splits['train']}, Val: {pool_splits['val']}, Test: {pool_splits['test']}); 100% (4,387/4,387) match clean_split_manifest.csv MD5s.")
 
     # 4. Cross-cohort digest comparisons
     print("\n[4/4] Evaluating pairwise cryptographic digest collisions...")
@@ -142,8 +168,11 @@ def main():
             "total_images_found": len(clean_paths),
             "unique_path_keyed_hashes_retained": len(clean_sha256),
             "missing_images": 0,
+            "canonical_split_breakdown": canonical_splits,
             "includes_anterior_pterygium_images": 14,
+            "pterygium_split_breakdown": pterygium_splits,
             "posterior_fundus_9class_images": 3733,
+            "fundus_9class_split_breakdown": fundus_splits,
             "sha256_comparisons": comp_clean_count,
             "sha256_matching_digests": len(sha_matches_clean)
         },
@@ -153,6 +182,7 @@ def main():
             "total_images_found": len(pool_sha256),
             "unique_path_keyed_hashes_retained": len(pool_sha256),
             "missing_images": 0,
+            "eligible_pool_split_breakdown": pool_splits,
             "manifest_md5_bitwise_verification_rate": f"{manifest_md5_matches}/{len(df_manifest)} (100%)",
             "sha256_comparisons": comp_pool_count,
             "sha256_matching_digests": len(sha_matches_pool),

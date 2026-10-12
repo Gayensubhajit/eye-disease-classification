@@ -1,6 +1,6 @@
 {
   "audit_name": "Reconciled Path-Keyed Cryptographic Digest Duplicate Screening Audit",
-  "timestamp_utc": "2026-10-12T07:29:48Z",
+  "timestamp_utc": "2026-10-12T07:46:47Z",
   "status": "ZERO_MATCHING_DIGESTS_CONFIRMED",
   "rfmid_external_cohort": {
     "total_images_found": 3200,
@@ -17,8 +17,23 @@
     "total_images_found": 3747,
     "unique_path_keyed_hashes_retained": 3747,
     "missing_images": 0,
+    "canonical_split_breakdown": {
+      "train": 2622,
+      "val": 562,
+      "test": 563
+    },
     "includes_anterior_pterygium_images": 14,
+    "pterygium_split_breakdown": {
+      "train": 10,
+      "val": 2,
+      "test": 2
+    },
     "posterior_fundus_9class_images": 3733,
+    "fundus_9class_split_breakdown": {
+      "train": 2612,
+      "val": 560,
+      "test": 561
+    },
     "sha256_comparisons": 11990400,
     "sha256_matching_digests": 0
   },
@@ -28,6 +43,11 @@
     "total_images_found": 4387,
     "unique_path_keyed_hashes_retained": 4387,
     "missing_images": 0,
+    "eligible_pool_split_breakdown": {
+      "train": 3073,
+      "val": 657,
+      "test": 657
+    },
     "manifest_md5_bitwise_verification_rate": "4387/4387 (100%)",
     "sha256_comparisons": 14038400,
     "sha256_matching_digests": 0,
@@ -40,5 +60,5 @@
     "zero_exact_duplicates_across_eligible_pool_md5": true,
     "patient_level_overlap_limitation": "Patient-level overlap between RFMiD and the internal dataset cannot be assessed from the available public metadata because patient identifiers or validated cross-dataset linkage information are unavailable."
   },
-  "elapsed_seconds": 30.1
+  "elapsed_seconds": 44.78
 }

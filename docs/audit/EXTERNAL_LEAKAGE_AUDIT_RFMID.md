@@ -2,7 +2,7 @@
 
 **Evaluation Dataset:** Retinal Fundus Multi-Disease Image Dataset (RFMiD v1.0; $N=3,200$)  
 **Internal Reference Cohorts:**
-- Active Clean Benchmark V4: `data_clean/` ($N=3,747$; Train 2,626, Val 560, Test 561)
+- Active Clean Benchmark V4: `data_clean/` ($N=3,747$; Train 2,622, Val 562, Test 563; 9-class fundus: Train 2,612, Val 560, Test 561; Pterygium: Train 10, Val 2, Test 2)
 - Pre-Filtering Eligible Pool: `clean_split_manifest.csv` ($N=4,387$; includes retained cohort prior to partitioning)  
 **Audit Execution Date:** 2026-10-11  
 **Final Audit Verdict:** **`NO_IMAGE_DUPLICATION_CONFIRMED_IN_RECORDED_CHECKS`**  
