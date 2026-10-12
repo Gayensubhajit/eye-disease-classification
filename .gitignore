@@ -24,6 +24,22 @@ outputs/*
 outputs/audit/*.npz
 outputs/audit/*.png
 outputs/audit/flagged_pair_contact_sheets/
+# Large intermediate candidate-edge and neighbor tables (> 800 KB)
+outputs/audit/raw_near_duplicate_candidates.csv
+outputs/audit/v4_combined_candidate_edges.csv
+outputs/audit/embedding_nearest_neighbors.csv
+outputs/audit/cross_split_near_duplicate_candidates.csv
+outputs/audit/embedding_cross_split_candidates.csv
+outputs/audit/validated_source_mapping.csv
+outputs/audit/source_cluster_review.csv
+outputs/audit/v4_all_candidate_edges.csv
+
+# Scratch download and exploration scripts
+scripts/download_remaining_direct.py
+scripts/download_rfmid_remaining.py
+scripts/download_rfmid_robust.py
+scripts/audit_external_leakage.py
+
 !outputs/clean_9class_baseline_effnet/
 outputs/clean_9class_baseline_effnet/*
 !outputs/clean_9class_baseline_effnet/*.json

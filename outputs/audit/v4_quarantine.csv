@@ -1,0 +1,398 @@
+image_path,group_id,class,conflict_classes,group_size,quarantine_reason
+Central Serous Chorioretinopathy [Color Fundus]/CSCR23.jpg,SRC_GROUP_0001,Central Serous Chorioretinopathy [Color Fundus],Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Central Serous Chorioretinopathy [Color Fundus]/CSCR61.jpg,SRC_GROUP_0001,Central Serous Chorioretinopathy [Color Fundus],Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Central Serous Chorioretinopathy [Color Fundus]/CSCR90.jpg,SRC_GROUP_0001,Central Serous Chorioretinopathy [Color Fundus],Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR107.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR122.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1360.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1361.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1372.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR147.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR205.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR208.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR210.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR236.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR238.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR261.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR280.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR283.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR328.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR332.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR337.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR342.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR353.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR354.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR371.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR423.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR458.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR499.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR515.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR558.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR563.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR565.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR576.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR610.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR624.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR651.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR670.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR680.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR681.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR689.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR697.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR709.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR711.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR728.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR736.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR739.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR744.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR746.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR747.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR748.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR775.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR776.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR803.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR822.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR827.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR828.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR850.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR946.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR948.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR980.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR984.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR993.jpg,SRC_GROUP_0001,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema31.jpg,SRC_GROUP_0001,Disc Edema,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema64.jpg,SRC_GROUP_0001,Disc Edema,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema69.jpg,SRC_GROUP_0001,Disc Edema,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema81.jpg,SRC_GROUP_0001,Disc Edema,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma100.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1250.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1260.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1289.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1290.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma257.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma268.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma29.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma291.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma462.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma546.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma595.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma601.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma621.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma86.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma860.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma989.jpg,SRC_GROUP_0001,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy301.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy446.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy465.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy519.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy552.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy647.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy664.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy665.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy671.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy672.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy673.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy675.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy685.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy690.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy693.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy695.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy700.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy713.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy727.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy728.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy730.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy733.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy750.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy751.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy775.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy786.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy816.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy824.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy825.jpg,SRC_GROUP_0001,Healthy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar135.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar144.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar152.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar186.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar244.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar258.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar314.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar325.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar369.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar385.jpg,SRC_GROUP_0001,Macular Scar,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia219.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia223.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia247.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia277.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia280.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia305.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia306.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia319.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia320.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia321.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia322.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia323.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia329.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia330.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia332.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia344.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia347.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia349.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia350.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia351.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia354.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia360.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia378.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia394.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia405.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia406.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia410.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia417.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia429.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia430.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia431.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia433.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia436.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia439.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia440.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia444.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia446.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia454.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia455.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia457.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia481.jpg,SRC_GROUP_0001,Myopia,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Retinal Detachment/Retinal Detachment81.jpg,SRC_GROUP_0001,Retinal Detachment,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Retinal Detachment/Retinal Detachment96.jpg,SRC_GROUP_0001,Retinal Detachment,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Retinal Detachment/Retinal Detachment98.jpg,SRC_GROUP_0001,Retinal Detachment,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa108.jpg,SRC_GROUP_0001,Retinitis Pigmentosa,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa77.jpg,SRC_GROUP_0001,Retinitis Pigmentosa,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa79.jpg,SRC_GROUP_0001,Retinitis Pigmentosa,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinal Detachment; Retinitis Pigmentosa,168,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR125.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR285.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR422.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR707.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR738.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR745.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR909.jpg,SRC_GROUP_0002,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema67.jpg,SRC_GROUP_0002,Disc Edema,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1297.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma256.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma30.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma542.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma620.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma648.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma654.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma711.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma745.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma814.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma88.jpg,SRC_GROUP_0002,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy677.jpg,SRC_GROUP_0002,Healthy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy691.jpg,SRC_GROUP_0002,Healthy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy692.jpg,SRC_GROUP_0002,Healthy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy726.jpg,SRC_GROUP_0002,Healthy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy729.jpg,SRC_GROUP_0002,Healthy,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar243.jpg,SRC_GROUP_0002,Macular Scar,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia201.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia222.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia246.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia345.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia355.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia361.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia409.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia459.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia485.jpg,SRC_GROUP_0002,Myopia,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa100.jpg,SRC_GROUP_0002,Retinitis Pigmentosa,Diabetic Retinopathy; Disc Edema; Glaucoma; Healthy; Macular Scar; Myopia; Retinitis Pigmentosa,35,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR567.jpg,SRC_GROUP_0003,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR577.jpg,SRC_GROUP_0003,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR650.jpg,SRC_GROUP_0003,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR741.jpg,SRC_GROUP_0003,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma237.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma329.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma625.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma683.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma696.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma842.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma89.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma924.jpg,SRC_GROUP_0003,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy464.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy520.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy553.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy644.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy681.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy749.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy809.jpg,SRC_GROUP_0003,Healthy,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia482.jpg,SRC_GROUP_0003,Myopia,Diabetic Retinopathy; Glaucoma; Healthy; Myopia,20,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1095.jpg,SRC_GROUP_0004,Glaucoma,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1204.jpg,SRC_GROUP_0004,Glaucoma,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma205.jpg,SRC_GROUP_0004,Glaucoma,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma359.jpg,SRC_GROUP_0004,Glaucoma,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma965.jpg,SRC_GROUP_0004,Glaucoma,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy957.jpg,SRC_GROUP_0004,Healthy,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy986.jpg,SRC_GROUP_0004,Healthy,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar279.jpg,SRC_GROUP_0004,Macular Scar,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar415.jpg,SRC_GROUP_0004,Macular Scar,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa51.jpg,SRC_GROUP_0004,Retinitis Pigmentosa,Glaucoma; Healthy; Macular Scar; Retinitis Pigmentosa,10,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema15.jpg,SRC_GROUP_0005,Disc Edema,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1055.jpg,SRC_GROUP_0005,Glaucoma,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1270.jpg,SRC_GROUP_0005,Glaucoma,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma26.jpg,SRC_GROUP_0005,Glaucoma,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma940.jpg,SRC_GROUP_0005,Glaucoma,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy323.jpg,SRC_GROUP_0005,Healthy,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy715.jpg,SRC_GROUP_0005,Healthy,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy984.jpg,SRC_GROUP_0005,Healthy,Disc Edema; Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1153.jpg,SRC_GROUP_0006,Glaucoma,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy109.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy16.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy172.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy224.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy237.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy240.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy39.jpg,SRC_GROUP_0006,Healthy,Glaucoma; Healthy,8,CROSS_CLASS_SOURCE_CONFLICT
+Retinal Detachment/Retinal Detachment54.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Retinal Detachment/Retinal Detachment55.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Retinal Detachment/Retinal Detachment56.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Retinal Detachment/Retinal Detachment57.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Retinal Detachment/Retinal Detachment58.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Retinal Detachment/Retinal Detachment59.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Retinal Detachment/Retinal Detachment64.jpg,SRC_GROUP_0007,Retinal Detachment,Retinal Detachment,7,AMBIGUOUS_TRANSITIVE_CHAIN
+Diabetic Retinopathy/DR477.jpg,SRC_GROUP_0008,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,6,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR609.jpg,SRC_GROUP_0008,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,6,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR977.jpg,SRC_GROUP_0008,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,6,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1232.jpg,SRC_GROUP_0008,Glaucoma,Diabetic Retinopathy; Glaucoma,6,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma59.jpg,SRC_GROUP_0008,Glaucoma,Diabetic Retinopathy; Glaucoma,6,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma684.jpg,SRC_GROUP_0008,Glaucoma,Diabetic Retinopathy; Glaucoma,6,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1231.jpg,SRC_GROUP_0010,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Healthy,5,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma338.jpg,SRC_GROUP_0010,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy,5,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma959.jpg,SRC_GROUP_0010,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy,5,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma997.jpg,SRC_GROUP_0010,Glaucoma,Diabetic Retinopathy; Glaucoma; Healthy,5,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy372.jpg,SRC_GROUP_0010,Healthy,Diabetic Retinopathy; Glaucoma; Healthy,5,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR345.jpg,SRC_GROUP_0011,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Retinitis Pigmentosa,4,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR378.jpg,SRC_GROUP_0011,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma; Retinitis Pigmentosa,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1269.jpg,SRC_GROUP_0011,Glaucoma,Diabetic Retinopathy; Glaucoma; Retinitis Pigmentosa,4,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa49.jpg,SRC_GROUP_0011,Retinitis Pigmentosa,Diabetic Retinopathy; Glaucoma; Retinitis Pigmentosa,4,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1283.jpg,SRC_GROUP_0012,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR873.jpg,SRC_GROUP_0012,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma660.jpg,SRC_GROUP_0012,Glaucoma,Diabetic Retinopathy; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma833.jpg,SRC_GROUP_0012,Glaucoma,Diabetic Retinopathy; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR883.jpg,SRC_GROUP_0013,Diabetic Retinopathy,Diabetic Retinopathy; Disc Edema; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema119.jpg,SRC_GROUP_0013,Disc Edema,Diabetic Retinopathy; Disc Edema; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1261.jpg,SRC_GROUP_0013,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma746.jpg,SRC_GROUP_0013,Glaucoma,Diabetic Retinopathy; Disc Edema; Glaucoma,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1011.jpg,SRC_GROUP_0014,Glaucoma,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1014.jpg,SRC_GROUP_0014,Glaucoma,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1133.jpg,SRC_GROUP_0014,Glaucoma,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy337.jpg,SRC_GROUP_0014,Healthy,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1286.jpg,SRC_GROUP_0016,Glaucoma,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy293.jpg,SRC_GROUP_0016,Healthy,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy711.jpg,SRC_GROUP_0016,Healthy,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy732.jpg,SRC_GROUP_0016,Healthy,Glaucoma; Healthy,4,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma536.jpg,SRC_GROUP_0017,Glaucoma,Glaucoma; Healthy; Myopia,4,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy676.jpg,SRC_GROUP_0017,Healthy,Glaucoma; Healthy; Myopia,4,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy712.jpg,SRC_GROUP_0017,Healthy,Glaucoma; Healthy; Myopia,4,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia346.jpg,SRC_GROUP_0017,Myopia,Glaucoma; Healthy; Myopia,4,CROSS_CLASS_SOURCE_CONFLICT
+Central Serous Chorioretinopathy [Color Fundus]/CSCR83.jpg,SRC_GROUP_0019,Central Serous Chorioretinopathy [Color Fundus],Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR357.jpg,SRC_GROUP_0019,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR633.jpg,SRC_GROUP_0019,Diabetic Retinopathy,Central Serous Chorioretinopathy [Color Fundus]; Diabetic Retinopathy,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR765.jpg,SRC_GROUP_0024,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma653.jpg,SRC_GROUP_0024,Glaucoma,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma751.jpg,SRC_GROUP_0024,Glaucoma,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR146.jpg,SRC_GROUP_0025,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR520.jpg,SRC_GROUP_0025,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma23.jpg,SRC_GROUP_0025,Glaucoma,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR449.jpg,SRC_GROUP_0026,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma432.jpg,SRC_GROUP_0026,Glaucoma,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma481.jpg,SRC_GROUP_0026,Glaucoma,Diabetic Retinopathy; Glaucoma,3,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1152.jpg,SRC_GROUP_0027,Diabetic Retinopathy,Diabetic Retinopathy; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy391.jpg,SRC_GROUP_0027,Healthy,Diabetic Retinopathy; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy462.jpg,SRC_GROUP_0027,Healthy,Diabetic Retinopathy; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1013.jpg,SRC_GROUP_0030,Glaucoma,Glaucoma; Healthy; Macular Scar,3,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy822.jpg,SRC_GROUP_0030,Healthy,Glaucoma; Healthy; Macular Scar,3,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar348.jpg,SRC_GROUP_0030,Macular Scar,Glaucoma; Healthy; Macular Scar,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma619.jpg,SRC_GROUP_0033,Glaucoma,Glaucoma; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma659.jpg,SRC_GROUP_0033,Glaucoma,Glaucoma; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy679.jpg,SRC_GROUP_0033,Healthy,Glaucoma; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1016.jpg,SRC_GROUP_0034,Glaucoma,Glaucoma; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1166.jpg,SRC_GROUP_0034,Glaucoma,Glaucoma; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy422.jpg,SRC_GROUP_0034,Healthy,Glaucoma; Healthy,3,CROSS_CLASS_SOURCE_CONFLICT
+Central Serous Chorioretinopathy [Color Fundus]/CSCR88.jpg,SRC_GROUP_0043,Central Serous Chorioretinopathy [Color Fundus],Central Serous Chorioretinopathy [Color Fundus]; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma506.jpg,SRC_GROUP_0043,Glaucoma,Central Serous Chorioretinopathy [Color Fundus]; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1136.jpg,SRC_GROUP_0048,Diabetic Retinopathy,Diabetic Retinopathy; Retinal Detachment,2,CROSS_CLASS_SOURCE_CONFLICT
+Retinal Detachment/Retinal Detachment8.jpg,SRC_GROUP_0048,Retinal Detachment,Diabetic Retinopathy; Retinal Detachment,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1239.jpg,SRC_GROUP_0053,Diabetic Retinopathy,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar67.jpg,SRC_GROUP_0053,Macular Scar,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR688.jpg,SRC_GROUP_0055,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma368.jpg,SRC_GROUP_0055,Glaucoma,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR81.jpg,SRC_GROUP_0056,Diabetic Retinopathy,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar222.jpg,SRC_GROUP_0056,Macular Scar,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR461.jpg,SRC_GROUP_0072,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma856.jpg,SRC_GROUP_0072,Glaucoma,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1461.jpg,SRC_GROUP_0073,Diabetic Retinopathy,Diabetic Retinopathy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia456.jpg,SRC_GROUP_0073,Myopia,Diabetic Retinopathy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR330.jpg,SRC_GROUP_0074,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1349.jpg,SRC_GROUP_0074,Glaucoma,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR453.jpg,SRC_GROUP_0103,Diabetic Retinopathy,Diabetic Retinopathy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia134.jpg,SRC_GROUP_0103,Myopia,Diabetic Retinopathy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR876.jpg,SRC_GROUP_0108,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma954.jpg,SRC_GROUP_0108,Glaucoma,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR397.jpg,SRC_GROUP_0113,Diabetic Retinopathy,Diabetic Retinopathy; Retinitis Pigmentosa,2,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa118.jpg,SRC_GROUP_0113,Retinitis Pigmentosa,Diabetic Retinopathy; Retinitis Pigmentosa,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR898.jpg,SRC_GROUP_0119,Diabetic Retinopathy,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar412.jpg,SRC_GROUP_0119,Macular Scar,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR1495.jpg,SRC_GROUP_0121,Diabetic Retinopathy,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma832.jpg,SRC_GROUP_0121,Glaucoma,Diabetic Retinopathy; Glaucoma,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR464.jpg,SRC_GROUP_0122,Diabetic Retinopathy,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar355.jpg,SRC_GROUP_0122,Macular Scar,Diabetic Retinopathy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Diabetic Retinopathy/DR420.jpg,SRC_GROUP_0123,Diabetic Retinopathy,Diabetic Retinopathy; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy698.jpg,SRC_GROUP_0123,Healthy,Diabetic Retinopathy; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Disc Edema/Disc Edema89.jpg,SRC_GROUP_0124,Disc Edema,Disc Edema; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar368.jpg,SRC_GROUP_0124,Macular Scar,Disc Edema; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1320.jpg,SRC_GROUP_0137,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy753.jpg,SRC_GROUP_0137,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma874.jpg,SRC_GROUP_0140,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy932.jpg,SRC_GROUP_0140,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma51.jpg,SRC_GROUP_0143,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy160.jpg,SRC_GROUP_0143,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1154.jpg,SRC_GROUP_0154,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy353.jpg,SRC_GROUP_0154,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1019.jpg,SRC_GROUP_0162,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy1007.jpg,SRC_GROUP_0162,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1017.jpg,SRC_GROUP_0175,Glaucoma,Glaucoma; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia14.jpg,SRC_GROUP_0175,Myopia,Glaucoma; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma156.jpg,SRC_GROUP_0181,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy379.jpg,SRC_GROUP_0181,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma636.jpg,SRC_GROUP_0188,Glaucoma,Glaucoma; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar335.jpg,SRC_GROUP_0188,Macular Scar,Glaucoma; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma710.jpg,SRC_GROUP_0189,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy818.jpg,SRC_GROUP_0189,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma541.jpg,SRC_GROUP_0192,Glaucoma,Glaucoma; Retinitis Pigmentosa,2,CROSS_CLASS_SOURCE_CONFLICT
+Retinitis Pigmentosa/Retinitis Pigmentosa78.jpg,SRC_GROUP_0192,Retinitis Pigmentosa,Glaucoma; Retinitis Pigmentosa,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1066.jpg,SRC_GROUP_0193,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy235.jpg,SRC_GROUP_0193,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma182.jpg,SRC_GROUP_0194,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy383.jpg,SRC_GROUP_0194,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma785.jpg,SRC_GROUP_0196,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy863.jpg,SRC_GROUP_0196,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma738.jpg,SRC_GROUP_0197,Glaucoma,Glaucoma; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar358.jpg,SRC_GROUP_0197,Macular Scar,Glaucoma; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma330.jpg,SRC_GROUP_0198,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy471.jpg,SRC_GROUP_0198,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1211.jpg,SRC_GROUP_0199,Glaucoma,Glaucoma; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia279.jpg,SRC_GROUP_0199,Myopia,Glaucoma; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Glaucoma/Glaucoma1102.jpg,SRC_GROUP_0200,Glaucoma,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy41.jpg,SRC_GROUP_0200,Healthy,Glaucoma; Healthy,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy910.jpg,SRC_GROUP_0207,Healthy,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar396.jpg,SRC_GROUP_0207,Macular Scar,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy1002.jpg,SRC_GROUP_0212,Healthy,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia7.jpg,SRC_GROUP_0212,Myopia,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy815.jpg,SRC_GROUP_0215,Healthy,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia224.jpg,SRC_GROUP_0215,Myopia,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy935.jpg,SRC_GROUP_0225,Healthy,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar422.jpg,SRC_GROUP_0225,Macular Scar,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy528.jpg,SRC_GROUP_0228,Healthy,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia170.jpg,SRC_GROUP_0228,Myopia,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy276.jpg,SRC_GROUP_0232,Healthy,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar64.jpg,SRC_GROUP_0232,Macular Scar,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy907.jpg,SRC_GROUP_0235,Healthy,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Macular Scar/Macular Scar395.jpg,SRC_GROUP_0235,Macular Scar,Healthy; Macular Scar,2,CROSS_CLASS_SOURCE_CONFLICT
+Healthy/Healthy640.jpg,SRC_GROUP_0238,Healthy,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT
+Myopia/Myopia200.jpg,SRC_GROUP_0238,Myopia,Healthy; Myopia,2,CROSS_CLASS_SOURCE_CONFLICT

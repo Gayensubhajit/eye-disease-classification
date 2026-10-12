@@ -1,0 +1,12 @@
+Metric,Observed,Expected,Status
+Raw Image Pool Total,5335,5335,PASS
+Raw Exact Duplicates Excluded,948,948,PASS
+V4 Quarantined Images (Conflict + Ambiguous Chains),397,397,PASS
+V4 Excluded Same-Class Redundant Burst Frames,243,243,PASS
+Total Retained Clean Pool Images,3747,3747,PASS
+Mathematical Pool Reconciliation,5335,5335,PASS
+MD5 Cross-Split Overlap,0,0,PASS
+Source Group Cross-Split Overlap,0,0,PASS
+V3 High-Confidence Burst Pairs Crossing Split,0,0,PASS
+Quarantined Images Present in Split,0,0,PASS
+Expanded DINOv2 Top-50 Neighbor Cross-Split Pairs,44275,Audited,AUDITED

@@ -1,0 +1,14 @@
+Check,Observed,Expected,Status
+Total Physical Image Files Copied,3747,3747,PASS
+Non-Image Stray Files,0,0,PASS
+Train Split Total Count,2622,2622,PASS
+Validation Split Total Count,562,562,PASS
+Test Split Total Count,563,563,PASS
+Per-Class Distribution Cells Matching Manifest,30,30,PASS
+MD5 Cross-Split Overlap,0,0,PASS
+Quarantine File Contamination,0,0,PASS
+Excluded Burst Redundant Contamination,0,0,PASS
+V3 Pairs Cross-Split Leakage (Endpoint Inspected),0,0,PASS
+V3 Pairs Both Endpoints Present,0,0,PASS
+V3 Pairs Representative Retained Exactly 1,61,61,PASS
+V3 Pairs Both Endpoints Excluded,25,25,PASS
