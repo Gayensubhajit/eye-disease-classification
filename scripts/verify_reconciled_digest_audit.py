@@ -183,7 +183,7 @@ def main():
             "unique_path_keyed_hashes_retained": len(pool_sha256),
             "missing_images": 0,
             "eligible_pool_split_breakdown": pool_splits,
-            "manifest_md5_bitwise_verification_rate": f"{manifest_md5_matches}/{len(df_manifest)} (100%)",
+            "manifest_md5_checksum_match_rate": f"{manifest_md5_matches}/{len(df_manifest)} (100%)",
             "sha256_comparisons": comp_pool_count,
             "sha256_matching_digests": len(sha_matches_pool),
             "md5_comparisons": comp_pool_count,

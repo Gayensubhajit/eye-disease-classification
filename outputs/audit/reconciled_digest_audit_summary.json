@@ -48,7 +48,7 @@
       "val": 657,
       "test": 657
     },
-    "manifest_md5_bitwise_verification_rate": "4387/4387 (100%)",
+    "manifest_md5_checksum_match_rate": "4387/4387 (100%)",
     "sha256_comparisons": 14038400,
     "sha256_matching_digests": 0,
     "md5_comparisons": 14038400,
