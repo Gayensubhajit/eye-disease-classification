@@ -23,7 +23,7 @@
     "git_commit": "cc2fc8b8f557f1b8e81922fa6a129afdcd107b4a",
     "core_code_integrity": "Identical and committed in src/ across all three runs with zero working-tree modifications.",
     "runner_script_sha256": "9439fa379df8b750df6883227f0f475d2753e5bb5cb7a55047a58f9edf967906",
-    "reconciliation_audit": "Passed with 100% element-for-element bitwise confusion matrix match and aggregate summary verification (scripts/audit_baseline_provenance_complete.py).",
+    "reconciliation_audit": "Passed with 100% element-for-element exact confusion matrix match and aggregate summary verification (scripts/audit_baseline_provenance_complete.py).",
     "validation_macro_f1_mean": 0.8573125210984959,
     "validation_macro_f1_std": 0.0061695010005416275,
     "validation_balanced_acc_mean": 0.8660122937039058,
@@ -107,7 +107,7 @@
     "multi_label_semantics": "Preserved. Each disease evaluated via independent binary One-vs-Rest classification; never forced into 9-class softmax.",
     "uncertainty_estimation": "95% non-parametric bootstrap confidence intervals (1,000 stratified resamples).",
     "threshold_policy": "Locked to internal validation operating point; zero target-domain threshold optimization.",
-    "leakage_auditing": "3-Pillar scan (SHA-256 bitwise, pHash DCT Hamming <= 3, DINOv2 cosine > 0.95).",
+    "leakage_auditing": "3-Pillar scan (SHA-256 cryptographic digest match, pHash DCT Hamming <= 3, DINOv2 cosine > 0.95).",
     "quarantine": "Zero external inference executed; internal test split quarantined."
   }
 }

@@ -35,7 +35,7 @@ Every seed contains its complete artifact suite on disk:
 
 ### 1.3 Expanded Mathematical & Confusion Matrix Verification
 An automated audit script ([`scripts/audit_baseline_provenance_complete.py`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/scripts/audit_baseline_provenance_complete.py)) verified:
-1. **Element-for-Element Confusion Matrix Matching:** Fresh $9 \times 9$ confusion matrices reconstructed from `val_predictions.csv` for each seed were asserted against the saved `val_confusion_matrix.csv` files on disk using `numpy.testing.assert_array_equal()`. Every cell was **bitwise identical**.
+1. **Element-for-Element Confusion Matrix Matching:** Fresh $9 \times 9$ confusion matrices reconstructed from `val_predictions.csv` for each seed were asserted against the saved `val_confusion_matrix.csv` files on disk using `numpy.testing.assert_array_equal()`. Every cell was **identical**.
 2. **Per-Class Metrics Recalculation:** All sensitivities, specificities, precisions, and F1 scores were recalculated directly from the confusion matrices and verified against `val_metrics.json`.
 3. **Aggregate Summary Assertion:** All aggregate statistics in [`outputs/clean_9class_baseline_effnet/aggregate_results.json`](file:///home/silentbyte/Documents/GitHub/eye-disease-classification/outputs/clean_9class_baseline_effnet/aggregate_results.json) were asserted against numpy calculations across the three seeds:
    $$\text{Macro-F1} = \mathbf{85.73\% \pm 0.62\%} \quad (\text{Range: } 85.14\% - 86.37\%)$$
