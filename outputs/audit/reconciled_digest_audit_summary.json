@@ -1,0 +1,44 @@
+{
+  "audit_name": "Reconciled Path-Keyed Cryptographic Digest Duplicate Screening Audit",
+  "timestamp_utc": "2026-10-12T07:29:48Z",
+  "status": "ZERO_MATCHING_DIGESTS_CONFIRMED",
+  "rfmid_external_cohort": {
+    "total_images_found": 3200,
+    "unique_path_keyed_hashes_retained": 3200,
+    "missing_images": 0,
+    "partition_breakdown": {
+      "Training": 1920,
+      "Evaluation": 640,
+      "Test": 640
+    }
+  },
+  "canonical_frozen_benchmark": {
+    "path": "data_clean",
+    "total_images_found": 3747,
+    "unique_path_keyed_hashes_retained": 3747,
+    "missing_images": 0,
+    "includes_anterior_pterygium_images": 14,
+    "posterior_fundus_9class_images": 3733,
+    "sha256_comparisons": 11990400,
+    "sha256_matching_digests": 0
+  },
+  "eligible_reference_pool": {
+    "path": "Eye Disease Image Dataset/Original Dataset/Original Dataset",
+    "manifest": "outputs/audit/clean_split_manifest.csv",
+    "total_images_found": 4387,
+    "unique_path_keyed_hashes_retained": 4387,
+    "missing_images": 0,
+    "manifest_md5_bitwise_verification_rate": "4387/4387 (100%)",
+    "sha256_comparisons": 14038400,
+    "sha256_matching_digests": 0,
+    "md5_comparisons": 14038400,
+    "md5_matching_digests": 0
+  },
+  "methodological_conclusions": {
+    "zero_exact_duplicates_across_canonical_benchmark": true,
+    "zero_exact_duplicates_across_eligible_pool_sha256": true,
+    "zero_exact_duplicates_across_eligible_pool_md5": true,
+    "patient_level_overlap_limitation": "Patient-level overlap between RFMiD and the internal dataset cannot be assessed from the available public metadata because patient identifiers or validated cross-dataset linkage information are unavailable."
+  },
+  "elapsed_seconds": 30.1
+}
