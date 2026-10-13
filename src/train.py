@@ -261,6 +261,7 @@ def main() -> None:
             model, val_loader, criterion, device, class_names, dry_run=args.dry_run, use_amp=use_amp
         )
 
+        current_lr = float(optimizer.param_groups[0]["lr"])
         scheduler.step()
 
         elapsed = time.time() - epoch_start
@@ -268,7 +269,7 @@ def main() -> None:
         acc = val_metrics["accuracy"]
 
         print(
-            f"Epoch {epoch:02d}/{epochs:02d} [{elapsed:.1f}s] - "
+            f"Epoch {epoch:02d}/{epochs:02d} [{elapsed:.1f}s] (lr: {current_lr:.8f}) - "
             f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f} | "
             f"Val Acc: {acc:.4f} | Val Macro F1: {macro_f1:.4f}",
             flush=True,
@@ -276,6 +277,7 @@ def main() -> None:
 
         log_entry = {
             "epoch": epoch,
+            "learning_rate": current_lr,
             "train_loss": train_loss,
             "val_loss": val_loss,
             "val_metrics": val_metrics,
