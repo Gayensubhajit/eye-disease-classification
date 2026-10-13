@@ -1,6 +1,7 @@
 """Training entry point for fundus eye disease classification models."""
 
 import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import sys
@@ -36,6 +37,10 @@ def set_seed(seed: int = 42) -> None:
         torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
+        try:
+            torch.use_deterministic_algorithms(True)
+        except Exception as e:
+            print(f"Warning: Could not enable deterministic algorithms: {e}")
 
 
 def train_one_epoch(
@@ -46,6 +51,7 @@ def train_one_epoch(
     scaler: torch.amp.GradScaler,
     device: torch.device,
     dry_run: bool = False,
+    use_amp: bool = False,
 ) -> float:
     """Run one epoch of training."""
     model.train()
@@ -57,7 +63,7 @@ def train_one_epoch(
         targets = targets.to(device, non_blocking=True)
 
         optimizer.zero_grad()
-        with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda")):
+        with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda" and use_amp)):
             outputs = model(images)
             loss = criterion(outputs, targets)
 
@@ -84,6 +90,7 @@ def evaluate_epoch(
     device: torch.device,
     class_names: list,
     dry_run: bool = False,
+    use_amp: bool = False,
 ) -> Tuple[float, Dict[str, Any], np.ndarray, np.ndarray, np.ndarray]:
     """Run evaluation over a dataset loader."""
     model.eval()
@@ -98,7 +105,7 @@ def evaluate_epoch(
         images = images.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
 
-        with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda")):
+        with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda" and use_amp)):
             outputs = model(images)
             loss = criterion(outputs, targets)
 
@@ -131,6 +138,7 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="Perform fast sanity check run")
     parser.add_argument("--evaluate-test", action="store_true", default=None, help="Force evaluation on test set")
     parser.add_argument("--no-test-eval", action="store_true", default=False, help="Disable evaluation on test set")
+    parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint to resume training from")
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -165,32 +173,92 @@ def main() -> None:
     model = build_model(config).to(device)
     criterion = get_loss_function(config, class_counts=class_counts).to(device)
     
+    base_lr = float(config["training"]["learning_rate"])
     optimizer = AdamW(
         model.parameters(),
-        lr=float(config["training"]["learning_rate"]),
+        lr=base_lr,
         weight_decay=float(config["training"]["weight_decay"]),
     )
 
     epochs = 2 if args.dry_run else int(config["training"]["epochs"])
-    scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
-    scaler = torch.amp.GradScaler("cuda", enabled=(device.type == "cuda"))
+    use_amp = bool(config.get("training", {}).get("use_amp", False))
+    scaler = torch.amp.GradScaler("cuda", enabled=(device.type == "cuda" and use_amp))
 
     best_macro_f1 = -1.0
+    best_val_loss = float("inf")
     best_model_path = output_dir / "best_model.pth"
     history = []
+    start_epoch = 1
 
-    print(f"\nStarting training for {epochs} epochs...")
+    if args.resume:
+        resume_path = Path(args.resume)
+        if resume_path.exists():
+            print(f"Resuming training from checkpoint: {resume_path}")
+            resume_ckpt = torch.load(resume_path, map_location=device, weights_only=False)
+            model.load_state_dict(resume_ckpt["model_state_dict"])
+            if "optimizer_state_dict" in resume_ckpt:
+                optimizer.load_state_dict(resume_ckpt["optimizer_state_dict"])
+            start_epoch = int(resume_ckpt.get("epoch", 0)) + 1
+            best_macro_f1 = float(resume_ckpt.get("val_metrics", {}).get("macro_f1", -1.0))
+            best_val_loss = float(resume_ckpt.get("val_loss", float("inf")))
+
+            # Reconstruct or restore exact scheduler state
+            if "scheduler_state_dict" in resume_ckpt:
+                scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
+                scheduler.load_state_dict(resume_ckpt["scheduler_state_dict"])
+                curr_lr = optimizer.param_groups[0]["lr"]
+                print(f"Restored scheduler state_dict (current lr: {curr_lr:.8f})")
+            else:
+                for group in optimizer.param_groups:
+                    group["initial_lr"] = base_lr
+                    group["lr"] = base_lr
+                scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
+                for _ in range(start_epoch - 1):
+                    scheduler.step()
+                curr_lr = optimizer.param_groups[0]["lr"]
+                print(f"Reconstructed canonical scheduler state (resumed epoch {start_epoch} lr: {curr_lr:.8f})")
+
+            print(f"Resumed at epoch {start_epoch}/{epochs} (Previous best Val Macro F1: {best_macro_f1:.4f})")
+            if (output_dir / "training_history.json").exists():
+                try:
+                    with open(output_dir / "training_history.json", "r", encoding="utf-8") as hf:
+                        history = json.load(hf)
+                    history = [h for h in history if h.get("epoch", 0) < start_epoch]
+                    if history:
+                        hist_best = max(history, key=lambda h: h.get("val_metrics", {}).get("macro_f1", -1.0))
+                        hist_f1 = float(hist_best.get("val_metrics", {}).get("macro_f1", -1.0))
+                        hist_loss = float(hist_best.get("val_loss", float("inf")))
+                        if hist_f1 > best_macro_f1:
+                            best_macro_f1 = hist_f1
+                            best_val_loss = hist_loss
+                except Exception:
+                    history = []
+            if best_model_path.exists():
+                try:
+                    best_ckpt = torch.load(best_model_path, map_location="cpu", weights_only=False)
+                    saved_f1 = float(best_ckpt.get("val_metrics", {}).get("macro_f1", -1.0))
+                    if saved_f1 > best_macro_f1:
+                        best_macro_f1 = saved_f1
+                except Exception:
+                    pass
+        else:
+            print(f"Warning: Specified resume checkpoint not found: {resume_path}. Starting from epoch 1.")
+            scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
+    else:
+        scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
+
+    print(f"\nStarting training from epoch {start_epoch} to {epochs} (use_amp={use_amp})...")
     start_time = time.time()
 
-    for epoch in range(1, epochs + 1):
+    for epoch in range(start_epoch, epochs + 1):
         epoch_start = time.time()
 
         train_loss = train_one_epoch(
-            model, train_loader, criterion, optimizer, scaler, device, dry_run=args.dry_run
+            model, train_loader, criterion, optimizer, scaler, device, dry_run=args.dry_run, use_amp=use_amp
         )
 
         val_loss, val_metrics, val_true, val_pred, _ = evaluate_epoch(
-            model, val_loader, criterion, device, class_names, dry_run=args.dry_run
+            model, val_loader, criterion, device, class_names, dry_run=args.dry_run, use_amp=use_amp
         )
 
         scheduler.step()
@@ -202,7 +270,8 @@ def main() -> None:
         print(
             f"Epoch {epoch:02d}/{epochs:02d} [{elapsed:.1f}s] - "
             f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f} | "
-            f"Val Acc: {acc:.4f} | Val Macro F1: {macro_f1:.4f}"
+            f"Val Acc: {acc:.4f} | Val Macro F1: {macro_f1:.4f}",
+            flush=True,
         )
 
         log_entry = {
@@ -213,13 +282,22 @@ def main() -> None:
         }
         history.append(log_entry)
 
-        if macro_f1 > best_macro_f1:
+        # Checkpoint selection: peak validation macro-F1, tie-break by lower validation loss
+        is_best = False
+        if macro_f1 > best_macro_f1 + 1e-5:
+            is_best = True
+        elif abs(macro_f1 - best_macro_f1) <= 1e-5 and val_loss < best_val_loss:
+            is_best = True
+
+        if is_best:
             best_macro_f1 = macro_f1
+            best_val_loss = val_loss
             torch.save(
                 {
                     "epoch": epoch,
                     "model_state_dict": model.state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
+                    "scheduler_state_dict": scheduler.state_dict(),
                     "config": config,
                     "val_metrics": val_metrics,
                 },
@@ -232,6 +310,23 @@ def main() -> None:
                 str(output_dir / "best_val_confusion_matrix.png"),
                 title=f"Best Val Confusion Matrix (Epoch {epoch})",
             )
+
+        # Always save latest checkpoint for crash resilience
+        torch.save(
+            {
+                "epoch": epoch,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "scheduler_state_dict": scheduler.state_dict(),
+                "config": config,
+                "val_metrics": val_metrics,
+                "val_loss": val_loss,
+            },
+            output_dir / "latest_checkpoint.pth",
+        )
+
+        with open(output_dir / "training_history.json", "w", encoding="utf-8") as f:
+            json.dump(history, f, indent=2)
 
     total_time = time.time() - start_time
     print(f"\nTraining completed in {total_time / 60:.2f} minutes.")
