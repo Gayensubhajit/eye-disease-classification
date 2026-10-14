@@ -68,3 +68,32 @@ data_clean/
 
 # External dataset images — never commit binaries
 data_external/
+
+# Clean 10-class quad ensemble evaluation artifacts
+!outputs/clean_10class_quad_ensemble_eval/
+!outputs/clean_10class_quad_ensemble_eval/**
+
+# Clean 10-class backbone validation logs and metrics (excluding .pth checkpoints)
+!outputs/clean_10class_convnext_small_384_clean/
+outputs/clean_10class_convnext_small_384_clean/*
+!outputs/clean_10class_convnext_small_384_clean/*.json
+!outputs/clean_10class_convnext_small_384_clean/*.md
+!outputs/clean_10class_convnext_small_384_clean/*.csv
+
+!outputs/clean_10class_efficientnet_b3_384_clean/
+outputs/clean_10class_efficientnet_b3_384_clean/*
+!outputs/clean_10class_efficientnet_b3_384_clean/*.json
+!outputs/clean_10class_efficientnet_b3_384_clean/*.md
+!outputs/clean_10class_efficientnet_b3_384_clean/*.csv
+
+!outputs/clean_10class_resnet50d_384_clean/
+outputs/clean_10class_resnet50d_384_clean/*
+!outputs/clean_10class_resnet50d_384_clean/*.json
+!outputs/clean_10class_resnet50d_384_clean/*.md
+!outputs/clean_10class_resnet50d_384_clean/*.csv
+
+!outputs/clean_10class_biomedclip_cbam_fusion/
+outputs/clean_10class_biomedclip_cbam_fusion/*
+!outputs/clean_10class_biomedclip_cbam_fusion/*.json
+!outputs/clean_10class_biomedclip_cbam_fusion/*.md
+!outputs/clean_10class_biomedclip_cbam_fusion/*.csv

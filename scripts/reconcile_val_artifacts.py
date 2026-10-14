@@ -79,10 +79,13 @@ def reconcile_validation(config_path: str, checkpoint_path: str, output_dir: str
     all_preds = []
     all_probs = []
 
+    use_amp = bool(config.get("training", {}).get("use_amp", False))
+    print(f"Inference precision: {'AMP/FP16' if (device.type == 'cuda' and use_amp) else 'FP32'}")
+
     with torch.no_grad():
         for step, (images, targets) in enumerate(val_loader):
             images_gpu = images.to(device, non_blocking=True)
-            with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda")):
+            with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda" and use_amp)):
                 outputs = model(images_gpu)
             probs = torch.softmax(outputs, dim=1)
             preds = torch.argmax(probs, dim=1)

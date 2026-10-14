@@ -1,0 +1,149 @@
+{
+  "cross_validation_scheme": "5-Fold Stratified Cross-Validation on duplicate/source-group audited data_clean/val (N=562) [Internal Exploratory Analysis]",
+  "selection_objective": "Direct Macro-F1 maximization, accuracy tie-breaker",
+  "oof_accuracy": 0.895017793594306,
+  "oof_balanced_accuracy": 0.8973202644143479,
+  "oof_macro_f1": 0.8963627412867273,
+  "oof_weighted_f1": 0.8941242007865279,
+  "oof_correct_predictions": 503,
+  "oof_total_predictions": 562,
+  "folds": [
+    {
+      "fold": 1,
+      "train_samples": 449,
+      "held_out_samples": 113,
+      "selected_weights": {
+        "convnext": 0.5,
+        "effnet_b3": 0.0,
+        "resnet50d": 0.02777799963951111,
+        "biomedclip": 0.4722220003604889
+      },
+      "train_macro_f1": 0.8971753120422363,
+      "train_accuracy": 0.8975501656532288,
+      "held_out_macro_f1": 0.9417308182014065,
+      "held_out_accuracy": 0.9203539823008849
+    },
+    {
+      "fold": 2,
+      "train_samples": 449,
+      "held_out_samples": 113,
+      "selected_weights": {
+        "convnext": 0.5,
+        "effnet_b3": 0.4666669964790344,
+        "resnet50d": 0.03333299979567528,
+        "biomedclip": 0.0
+      },
+      "train_macro_f1": 0.9132503867149353,
+      "train_accuracy": 0.9064587950706482,
+      "held_out_macro_f1": 0.8492745489804314,
+      "held_out_accuracy": 0.8672566371681416
+    },
+    {
+      "fold": 3,
+      "train_samples": 450,
+      "held_out_samples": 112,
+      "selected_weights": {
+        "convnext": 0.5,
+        "effnet_b3": 0.0,
+        "resnet50d": 0.17499999701976776,
+        "biomedclip": 0.32499998807907104
+      },
+      "train_macro_f1": 0.9049097299575806,
+      "train_accuracy": 0.9088889360427856,
+      "held_out_macro_f1": 0.9204857291544598,
+      "held_out_accuracy": 0.8928571428571429
+    },
+    {
+      "fold": 4,
+      "train_samples": 450,
+      "held_out_samples": 112,
+      "selected_weights": {
+        "convnext": 0.5,
+        "effnet_b3": 0.0,
+        "resnet50d": 0.17499999701976776,
+        "biomedclip": 0.32499998807907104
+      },
+      "train_macro_f1": 0.9101963043212891,
+      "train_accuracy": 0.902222216129303,
+      "held_out_macro_f1": 0.8862238673832876,
+      "held_out_accuracy": 0.9196428571428571
+    },
+    {
+      "fold": 5,
+      "train_samples": 450,
+      "held_out_samples": 112,
+      "selected_weights": {
+        "convnext": 0.5,
+        "effnet_b3": 0.0,
+        "resnet50d": 0.17499999701976776,
+        "biomedclip": 0.32499998807907104
+      },
+      "train_macro_f1": 0.9242548942565918,
+      "train_accuracy": 0.9133333563804626,
+      "held_out_macro_f1": 0.8375879240585122,
+      "held_out_accuracy": 0.875
+    }
+  ],
+  "per_class": [
+    {
+      "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+      "sensitivity": 0.9090909090909091,
+      "specificity": 0.9945553539019963,
+      "f1_score": 0.8333333333333334
+    },
+    {
+      "class_name": "Diabetic Retinopathy",
+      "sensitivity": 0.9790575916230366,
+      "specificity": 0.9811320754716981,
+      "f1_score": 0.9714285714285714
+    },
+    {
+      "class_name": "Disc Edema",
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "class_name": "Glaucoma",
+      "sensitivity": 0.8225806451612904,
+      "specificity": 0.9611872146118722,
+      "f1_score": 0.8395061728395061
+    },
+    {
+      "class_name": "Healthy",
+      "sensitivity": 0.9238095238095239,
+      "specificity": 0.9606126914660832,
+      "f1_score": 0.8818181818181818
+    },
+    {
+      "class_name": "Macular Scar",
+      "sensitivity": 0.7446808510638298,
+      "specificity": 0.9941747572815534,
+      "f1_score": 0.8235294117647058
+    },
+    {
+      "class_name": "Myopia",
+      "sensitivity": 0.7297297297297297,
+      "specificity": 0.9828571428571429,
+      "f1_score": 0.7397260273972602
+    },
+    {
+      "class_name": "Pterygium",
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "class_name": "Retinal Detachment",
+      "sensitivity": 0.9230769230769231,
+      "specificity": 1.0,
+      "f1_score": 0.96
+    },
+    {
+      "class_name": "Retinitis Pigmentosa",
+      "sensitivity": 0.9411764705882353,
+      "specificity": 0.9963302752293578,
+      "f1_score": 0.9142857142857143
+    }
+  ]
+}

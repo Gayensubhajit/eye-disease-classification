@@ -3,6 +3,7 @@
 from pathlib import Path
 from typing import Dict, Any, Tuple, Optional, List
 import cv2
+cv2.setNumThreads(0)
 import torch
 from torch.utils.data import Dataset, DataLoader
 import numpy as np

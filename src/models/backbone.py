@@ -21,7 +21,8 @@ class ChannelAttention(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         avg_out = self.fc2(self.relu(self.fc1(self.avg_pool(x))))
-        max_out = self.fc2(self.relu(self.fc1(self.max_pool(x))))
+        # Use torch.amax across spatial dims (2, 3) for deterministic backward on CUDA
+        max_out = self.fc2(self.relu(self.fc1(torch.amax(x, dim=(2, 3), keepdim=True))))
         return self.sigmoid(avg_out + max_out)
 
 
@@ -113,10 +114,10 @@ class BiomedCLIPCBAMFusionClassifier(nn.Module):
             fused_features = torch.cat([cls_token, pooled_spatial], dim=1)  # (B, 1536)
             return self.classifier(fused_features)
         else:
-            features = self.visual(x)
-            if isinstance(features, (list, tuple)):
-                features = features[0]
-            return self.classifier(features)
+            raise RuntimeError(
+                "BiomedCLIPCBAMFusionClassifier requires a visual trunk with forward_features "
+                "to extract spatial token grids for CBAM attention."
+            )
 
     def get_features(self, x: torch.Tensor) -> torch.Tensor:
         """Extract spatial feature map for Grad-CAM visualization."""

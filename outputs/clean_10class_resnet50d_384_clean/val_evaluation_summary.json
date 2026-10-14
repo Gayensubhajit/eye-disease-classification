@@ -1,0 +1,81 @@
+{
+  "best_epoch": 18,
+  "checkpoint_path": "outputs/clean_10class_resnet50d_384_clean/best_model.pth",
+  "checkpoint_sha256": "110a01d6b4544376bd26f6e21857d0307f5187a86ccc0cc11aca790caf25346f",
+  "val_macro_f1_at_best_epoch": 0.8457007378763265,
+  "val_metrics_at_best_epoch": {
+    "accuracy": 0.8701067615658363,
+    "balanced_accuracy": 0.8585180000255306,
+    "macro_f1": 0.8457007378763265,
+    "weighted_f1": 0.8675763401615166,
+    "macro_auc": 0.9708344300772506,
+    "kappa": 0.8614295929186084,
+    "macro_sensitivity": 0.8585180000255306,
+    "macro_specificity": 0.9842412941894478,
+    "per_class": [
+      {
+        "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+        "sensitivity": 0.8181818181818182,
+        "specificity": 0.9909255898366606,
+        "f1_score": 0.72
+      },
+      {
+        "class_name": "Diabetic Retinopathy",
+        "sensitivity": 0.9685863874345549,
+        "specificity": 0.9784366576819407,
+        "f1_score": 0.9635416666666666
+      },
+      {
+        "class_name": "Disc Edema",
+        "sensitivity": 0.9333333333333333,
+        "specificity": 0.9981718464351006,
+        "f1_score": 0.9333333333333333
+      },
+      {
+        "class_name": "Glaucoma",
+        "sensitivity": 0.8306451612903226,
+        "specificity": 0.9680365296803652,
+        "f1_score": 0.8547717842323651
+      },
+      {
+        "class_name": "Healthy",
+        "sensitivity": 0.9142857142857143,
+        "specificity": 0.9387308533916849,
+        "f1_score": 0.8384279475982532
+      },
+      {
+        "class_name": "Macular Scar",
+        "sensitivity": 0.5531914893617021,
+        "specificity": 0.9980582524271845,
+        "f1_score": 0.7027027027027027
+      },
+      {
+        "class_name": "Myopia",
+        "sensitivity": 0.7027027027027027,
+        "specificity": 0.9828571428571429,
+        "f1_score": 0.7222222222222222
+      },
+      {
+        "class_name": "Pterygium",
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "class_name": "Retinal Detachment",
+        "sensitivity": 0.9230769230769231,
+        "specificity": 0.994535519125683,
+        "f1_score": 0.8571428571428571
+      },
+      {
+        "class_name": "Retinitis Pigmentosa",
+        "sensitivity": 0.9411764705882353,
+        "specificity": 0.9926605504587156,
+        "f1_score": 0.8648648648648649
+      }
+    ]
+  },
+  "device": "cuda",
+  "training_time_minutes": 48.35677808523178,
+  "test_evaluated": false
+}

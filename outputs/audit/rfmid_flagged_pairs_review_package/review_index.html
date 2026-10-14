@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFMiD Cross-Dataset Leakage Audit: Flagged Candidate Pairs Human Adjudication Dashboard</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 24px; }
+  h1 { margin-top: 0; font-size: 24px; color: #38bdf8; }
+  .subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+  .summary-bar { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .card { background: #1e293b; border-radius: 8px; padding: 16px 20px; border: 1px solid #334155; }
+  .card .num { font-size: 28px; font-weight: bold; color: #f1f5f9; }
+  .card .label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+  .filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .btn { background: #334155; color: #cbd5e1; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s; }
+  .btn:hover { background: #475569; color: #fff; }
+  .btn.active { background: #0284c7; color: #fff; }
+  .pair-grid { display: flex; flex-direction: column; gap: 24px; }
+  .pair-card { background: #1e293b; border-radius: 8px; border: 1px solid #334155; padding: 20px; }
+  .pair-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+  .pair-title { font-size: 16px; font-weight: 600; color: #f8fafc; }
+  .badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  .badge-pending { background: #854d0e; color: #fef08a; }
+  .badge-completed { background: #166534; color: #bbf7d0; }
+  .badge-flag { background: #334155; color: #93c5fd; }
+  .metrics-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; font-size: 13px; color: #cbd5e1; }
+  .metric-item { background: #0f172a; padding: 6px 12px; border-radius: 4px; border: 1px solid #1e293b; }
+  .metric-item span { color: #38bdf8; font-weight: 600; }
+  .img-container { width: 100%; overflow-x: auto; background: #000; border-radius: 6px; padding: 4px; border: 1px solid #334155; margin-bottom: 12px; }
+  .img-container img { width: 100%; max-width: 1536px; height: auto; display: block; border-radius: 4px; }
+  .evidence-box { background: #0f172a; padding: 12px; border-radius: 6px; border-left: 3px solid #38bdf8; font-size: 13px; color: #cbd5e1; }
+</style>
+<script>
+function filterPairs(category) {
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.pair-card').forEach(card => {
+    if (category === 'all') card.style.display = 'block';
+    else if (category === 'completed' && card.dataset.completed === 'true') card.style.display = 'block';
+    else if (category === 'pending' && card.dataset.completed === 'false') card.style.display = 'block';
+    else if (category === 'high_ssim' && card.dataset.flag.includes('HIGH_SSIM')) card.style.display = 'block';
+    else if (category === 'top_dino' && card.dataset.flag.includes('TOP_DINO')) card.style.display = 'block';
+    else if (category === 'low_phash' && card.dataset.flag.includes('LOW_PHASH')) card.style.display = 'block';
+    else if (category === 'orb_ge_20' && card.dataset.flag.includes('ORB_INLIERS')) card.style.display = 'block';
+    else card.style.display = 'none';
+  });
+}
+</script>
+</head>
+<body>
+
+<h1>RFMiD Cross-Dataset Leakage Audit: Flagged Pairs Adjudication Dashboard</h1>
+<div class="subtitle">Provenance-Verified Inspection Interface: 7 Documented Boundary Reviews + 71 Cases Awaiting Documented Human Adjudication</div>
+
+<div class="summary-bar">
+  <div class="card">
+    <div class="num">78</div>
+    <div class="label">Total Flagged Pairs</div>
+  </div>
+  <div class="card">
+    <div class="num" style="color: #4ade80">7</div>
+    <div class="label">Documented Visual Reviews</div>
+  </div>
+  <div class="card">
+    <div class="num" style="color: #fef08a">71</div>
+    <div class="label">Awaiting Human Adjudication</div>
+  </div>
+  <div class="card">
+    <div class="num" style="color: #f87171">0</div>
+    <div class="label">Confirmed Duplicates</div>
+  </div>
+  <div class="card">
+    <div class="num">8,188</div>
+    <div class="label">Unflagged Candidates</div>
+  </div>
+  <div class="card">
+    <div class="num">8,266</div>
+    <div class="label">Total DINOv2 Population</div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="btn active" onclick="filterPairs('all')">All Flagged Pairs (78)</button>
+  <button class="btn" onclick="filterPairs('pending')">Awaiting Human Review (71)</button>
+  <button class="btn" onclick="filterPairs('completed')">Documented Visual Reviews (7)</button>
+  <button class="btn" onclick="filterPairs('high_ssim')">High SSIM (&ge; 0.85) (63)</button>
+  <button class="btn" onclick="filterPairs('top_dino')">Top DINOv2 (&ge; 0.970) (7)</button>
+  <button class="btn" onclick="filterPairs('low_phash')">Low pHash (&le; 4) (4)</button>
+  <button class="btn" onclick="filterPairs('orb_ge_20')">ORB Inliers (&ge; 20) (4)</button>
+</div>
+
+<div class="pair-grid">
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="HIGH_SSIM_GE_0.85" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0052: External <span style="color:#38bdf8">14.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR749.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9513</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.9080</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4355</span></div>
+        <div class="metric-item">ORB Inliers: <span>9</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0052_14.png_vs_Diabetic Retinopathy_DR749.jpg.png" alt="Contact Sheet Pair 52" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: maximum SSIM pair (0.9080); high SSIM driven by large uniform untextured background fundus; vessel trees, microaneurysms, and color hue completely diverge; ORB inliers=9.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0053: External <span style="color:#38bdf8">14.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma256.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9526</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8948</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4863</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0053_14.png_vs_Glaucoma_Glaucoma256.jpg.png" alt="Contact Sheet Pair 53" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8948, NCC=0.4863, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8948) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma256.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 14.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.4863.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0054: External <span style="color:#38bdf8">14.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma745.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9516</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8986</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4393</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0054_14.png_vs_Glaucoma_Glaucoma745.jpg.png" alt="Contact Sheet Pair 54" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8986, NCC=0.4393, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8986) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma745.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 14.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.4393, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0237: External <span style="color:#38bdf8">242.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR749.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9544</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8750</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4655</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>16</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0237_242.png_vs_Diabetic Retinopathy_DR749.jpg.png" alt="Contact Sheet Pair 237" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8750, NCC=0.4655, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8750) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR749.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 242.png; zero ORB inliers across retinal structures (NCC=0.4655, pHash distance=16 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0242: External <span style="color:#38bdf8">242.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma256.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9584</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8541</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4770</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>18</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0242_242.png_vs_Glaucoma_Glaucoma256.jpg.png" alt="Contact Sheet Pair 242" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8541, NCC=0.4770, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8541) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma256.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 242.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.4770, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0331: External <span style="color:#38bdf8">293.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma442.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9569</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8653</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5654</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0331_293.png_vs_Glaucoma_Glaucoma442.jpg.png" alt="Contact Sheet Pair 331" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8653, NCC=0.5654, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8653) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma442.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 293.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.5654, pHash distance=28 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0332: External <span style="color:#38bdf8">293.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma910.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9541</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8588</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4989</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>24</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0332_293.png_vs_Glaucoma_Glaucoma910.jpg.png" alt="Contact Sheet Pair 332" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8588, NCC=0.4989, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8588) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma910.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 293.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.4989.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0333: External <span style="color:#38bdf8">293.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy694.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9515</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8715</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5281</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0333_293.png_vs_Healthy_Healthy694.jpg.png" alt="Contact Sheet Pair 333" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8715, NCC=0.5281, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8715) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.5281, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0474: External <span style="color:#38bdf8">364.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma745.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9543</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8677</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4670</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0474_364.png_vs_Glaucoma_Glaucoma745.jpg.png" alt="Contact Sheet Pair 474" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8677, NCC=0.4670, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8677) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma745.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 364.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.4670, pHash distance=28 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0524: External <span style="color:#38bdf8">410.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma256.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9574</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8571</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5092</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>30</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>17</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0524_410.png_vs_Glaucoma_Glaucoma256.jpg.png" alt="Contact Sheet Pair 524" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8571, NCC=0.5092, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8571) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma256.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 410.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.5092, pHash distance=30 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0632: External <span style="color:#38bdf8">476.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma655.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9518</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8617</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1435</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0632_476.png_vs_Glaucoma_Glaucoma655.jpg.png" alt="Contact Sheet Pair 632" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8617, NCC=0.1435, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8617) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma655.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 476.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.1435, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0635: External <span style="color:#38bdf8">476.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma256.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9572</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8501</span></div>
+        <div class="metric-item">Masked NCC: <span>-0.1866</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>24</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0635_476.png_vs_Glaucoma_Glaucoma256.jpg.png" alt="Contact Sheet Pair 635" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8501, NCC=-0.1866, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8501) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 476.png is OS (Left Eye, nasal disc right); internal Glaucoma256.jpg is OD (Right Eye, nasal disc left)); internal image Glaucoma256.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 476.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=-0.1866, pHash distance=24 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0639: External <span style="color:#38bdf8">476.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy731.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9587</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8678</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1292</span></div>
+        <div class="metric-item">ORB Inliers: <span>6</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0639_476.png_vs_Healthy_Healthy731.jpg.png" alt="Contact Sheet Pair 639" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8678, NCC=0.1292, ORB inliers=6); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8678) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; ORB keypoints (6 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.1292.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0670: External <span style="color:#38bdf8">491.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy731.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9519</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8907</span></div>
+        <div class="metric-item">Masked NCC: <span>0.0848</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>27</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0670_491.png_vs_Healthy_Healthy731.jpg.png" alt="Contact Sheet Pair 670" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8907, NCC=0.0848, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8907) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 491.png is OD (Right Eye, nasal disc left); internal Healthy731.jpg is OS (Left Eye, nasal disc right)); both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.0848, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0684: External <span style="color:#38bdf8">509.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma443.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9612</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8502</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2475</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>13</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0684_509.png_vs_Glaucoma_Glaucoma443.jpg.png" alt="Contact Sheet Pair 684" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8502, NCC=0.2475, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8502) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 509.png is OD (Right Eye, nasal disc left); internal Glaucoma443.jpg is OS (Left Eye, nasal disc right)); internal image Glaucoma443.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 509.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.2475, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0692: External <span style="color:#38bdf8">520.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR609.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9540</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8697</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6227</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>8</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>10</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0692_520.png_vs_Diabetic Retinopathy_DR609.jpg.png" alt="Contact Sheet Pair 692" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8697, NCC=0.6227, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8697) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR609.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 520.png; zero ORB inliers across retinal structures (NCC=0.6227, pHash distance=8 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0693: External <span style="color:#38bdf8">520.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy664.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9508</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8587</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1156</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>18</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0693_520.png_vs_Healthy_Healthy664.jpg.png" alt="Contact Sheet Pair 693" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8587, NCC=0.1156, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8587) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 520.png is OD (Right Eye, nasal disc left); internal Healthy664.jpg is OS (Left Eye, nasal disc right)); both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.1156, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0698: External <span style="color:#38bdf8">523.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR540.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9532</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8567</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3246</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>16</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>17</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0698_523.png_vs_Diabetic Retinopathy_DR540.jpg.png" alt="Contact Sheet Pair 698" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8567, NCC=0.3246, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8567) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 523.png is OD (Right Eye, nasal disc left); internal DR540.jpg is OS (Left Eye, nasal disc right)); internal image DR540.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 523.png; zero ORB inliers across retinal structures (NCC=0.3246, pHash distance=16 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0699: External <span style="color:#38bdf8">523.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR539.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9502</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8621</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5631</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>15</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0699_523.png_vs_Diabetic Retinopathy_DR539.jpg.png" alt="Contact Sheet Pair 699" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8621, NCC=0.5631, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8621) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR539.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 523.png; zero ORB inliers across retinal structures (NCC=0.5631, pHash distance=26 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0702: External <span style="color:#38bdf8">523.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma711.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9518</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8638</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4792</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>24</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>16</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0702_523.png_vs_Glaucoma_Glaucoma711.jpg.png" alt="Contact Sheet Pair 702" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8638, NCC=0.4792, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8638) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma711.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 523.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.4792, pHash distance=24 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0707: External <span style="color:#38bdf8">523.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma442.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9560</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8526</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4589</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>15</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0707_523.png_vs_Glaucoma_Glaucoma442.jpg.png" alt="Contact Sheet Pair 707" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8526, NCC=0.4589, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8526) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma442.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 523.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.4589, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="TOP_DINO_GE_0.970" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #0905: External <span style="color:#38bdf8">569.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma741.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9701</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.6924</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5647</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>15</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_0905_569.png_vs_Glaucoma_Glaucoma741.jpg.png" alt="Contact Sheet Pair 905" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: TOP_DINO_GE_0.970 (SSIM=0.6924, NCC=0.5647, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: top DINOv2 cosine (0.9701) is driven by concordant camera field geometry and canonical posterior-segment optic-nerve centering; internal image Glaucoma741.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 569.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.5647.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="ORB_INLIERS_GE_20" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1080: External <span style="color:#38bdf8">581.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma595.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">ORB_INLIERS_GE_20</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9514</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8265</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4902</span></div>
+        <div class="metric-item">ORB Inliers: <span>30</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1080_581.png_vs_Glaucoma_Glaucoma595.jpg.png" alt="Contact Sheet Pair 1080" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: inliers concentrate around aperture boundary notch; internal Glaucoma595.jpg has distinct arcade bifurcation and cup depth compared to external image.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1090: External <span style="color:#38bdf8">581.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy731.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9543</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8505</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5293</span></div>
+        <div class="metric-item">ORB Inliers: <span>8</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1090_581.png_vs_Healthy_Healthy731.jpg.png" alt="Contact Sheet Pair 1090" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8505, NCC=0.5293, ORB inliers=8); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8505) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; ORB keypoints (8 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.5293.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="ORB_INLIERS_GE_20" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1379: External <span style="color:#38bdf8">600.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma595.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">ORB_INLIERS_GE_20</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9516</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8035</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3505</span></div>
+        <div class="metric-item">ORB Inliers: <span>20</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>19</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1379_600.png_vs_Glaucoma_Glaucoma595.jpg.png" alt="Contact Sheet Pair 1379" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: inliers concentrate around aperture boundary notch; internal Glaucoma595.jpg has distinct arcade bifurcation and cup depth compared to external image.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1531: External <span style="color:#38bdf8">606.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR333.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9506</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8561</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2695</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>16</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>14</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1531_606.png_vs_Diabetic Retinopathy_DR333.jpg.png" alt="Contact Sheet Pair 1531" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8561, NCC=0.2695, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8561) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR333.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 606.png; zero ORB inliers across retinal structures (NCC=0.2695, pHash distance=16 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="LOW_PHASH_LE_4" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1533: External <span style="color:#38bdf8">609.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma1274.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">LOW_PHASH_LE_4</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9567</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7040</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6874</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>4</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>10</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1533_609.png_vs_Glaucoma_Glaucoma1274.jpg.png" alt="Contact Sheet Pair 1533" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: LOW_PHASH_LE_4 (SSIM=0.7040, NCC=0.6874, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: low perceptual hash distance (4 bits) reflects broad low-frequency global intensity symmetry despite completely non-matching high-frequency features; internal image Glaucoma1274.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 609.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.6874.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1536: External <span style="color:#38bdf8">611.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma443.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9600</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8533</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5508</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>16</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1536_611.png_vs_Glaucoma_Glaucoma443.jpg.png" alt="Contact Sheet Pair 1536" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8533, NCC=0.5508, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8533) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma443.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 611.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.5508, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="LOW_PHASH_LE_4" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1543: External <span style="color:#38bdf8">614.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma1274.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">LOW_PHASH_LE_4</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9546</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7263</span></div>
+        <div class="metric-item">Masked NCC: <span>0.7639</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>4</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>11</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1543_614.png_vs_Glaucoma_Glaucoma1274.jpg.png" alt="Contact Sheet Pair 1543" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: LOW_PHASH_LE_4 (SSIM=0.7263, NCC=0.7639, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: low perceptual hash distance (4 bits) reflects broad low-frequency global intensity symmetry despite completely non-matching high-frequency features; internal image Glaucoma1274.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 614.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.7639, pHash distance=4 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1589: External <span style="color:#38bdf8">62.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy730.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9590</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8523</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3929</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>32</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1589_62.png_vs_Healthy_Healthy730.jpg.png" alt="Contact Sheet Pair 1589" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8523, NCC=0.3929, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8523) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.3929, pHash distance=32 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1590: External <span style="color:#38bdf8">62.png</span> (Evaluation_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy678.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9579</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8646</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4772</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>32</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1590_62.png_vs_Healthy_Healthy678.jpg.png" alt="Contact Sheet Pair 1590" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8646, NCC=0.4772, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8646) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 62.png is OS (Left Eye, nasal disc right); internal Healthy678.jpg is OD (Right Eye, nasal disc left)); both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.4772, pHash distance=32 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #1853: External <span style="color:#38bdf8">142.png</span> (Test_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR1396.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9510</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8577</span></div>
+        <div class="metric-item">Masked NCC: <span>0.0908</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>30</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_1853_142.png_vs_Diabetic Retinopathy_DR1396.jpg.png" alt="Contact Sheet Pair 1853" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8577, NCC=0.0908, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8577) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 142.png is OD (Right Eye, nasal disc left); internal DR1396.jpg is OS (Left Eye, nasal disc right)); internal image DR1396.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 142.png; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.0908.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #2092: External <span style="color:#38bdf8">273.png</span> (Test_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR347.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9524</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8585</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4972</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>16</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_2092_273.png_vs_Diabetic Retinopathy_DR347.jpg.png" alt="Contact Sheet Pair 2092" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8585, NCC=0.4972, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8585) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR347.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 273.png; zero ORB inliers across retinal structures (NCC=0.4972, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #2093: External <span style="color:#38bdf8">273.png</span> (Test_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR749.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9518</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8762</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3148</span></div>
+        <div class="metric-item">ORB Inliers: <span>7</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_2093_273.png_vs_Diabetic Retinopathy_DR749.jpg.png" alt="Contact Sheet Pair 2093" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8762, NCC=0.3148, ORB inliers=7); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8762) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR749.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 273.png; ORB keypoints (7 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.3148.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="LOW_PHASH_LE_4" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #2630: External <span style="color:#38bdf8">467.png</span> (Test_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma936.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">LOW_PHASH_LE_4</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9574</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.6081</span></div>
+        <div class="metric-item">Masked NCC: <span>0.7107</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>2</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>8</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_2630_467.png_vs_Glaucoma_Glaucoma936.jpg.png" alt="Contact Sheet Pair 2630" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: lowest pHash pair (2 bits); distinct optic disc angle, neuroretinal rim thinning, and superior arcade bifurcation; SSIM=0.6081, ORB inliers=4.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #3171: External <span style="color:#38bdf8">534.png</span> (Test_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy664.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9520</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8719</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6130</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>8</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>17</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_3171_534.png_vs_Healthy_Healthy664.jpg.png" alt="Contact Sheet Pair 3171" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8719, NCC=0.6130, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8719) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.6130, pHash distance=8 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #3483: External <span style="color:#38bdf8">599.png</span> (Test_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR539.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9544</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8624</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6758</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>8</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>7</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_3483_599.png_vs_Diabetic Retinopathy_DR539.jpg.png" alt="Contact Sheet Pair 3483" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8624, NCC=0.6758, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8624) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR539.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 599.png; zero ORB inliers across retinal structures (NCC=0.6758, pHash distance=8 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="TOP_DINO_GE_0.970" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4505: External <span style="color:#38bdf8">1275.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR339.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9713</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7763</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5033</span></div>
+        <div class="metric-item">ORB Inliers: <span>10</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>19</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4505_1275.png_vs_Diabetic Retinopathy_DR339.jpg.png" alt="Contact Sheet Pair 4505" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: TOP_DINO_GE_0.970 (SSIM=0.7763, NCC=0.5033, ORB inliers=10); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: top DINOv2 cosine (0.9713) is driven by concordant camera field geometry and canonical posterior-segment optic-nerve centering; internal image DR339.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1275.png; ORB keypoints (10 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.5033.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4573: External <span style="color:#38bdf8">131.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR749.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9509</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8941</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1145</span></div>
+        <div class="metric-item">ORB Inliers: <span>11</span></div>
+        <div class="metric-item">pHash Distance: <span>24</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>23</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4573_131.png_vs_Diabetic Retinopathy_DR749.jpg.png" alt="Contact Sheet Pair 4573" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8941, NCC=0.1145, ORB inliers=11); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8941) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 131.png is OS (Left Eye, nasal disc right); internal DR749.jpg is OD (Right Eye, nasal disc left)); internal image DR749.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 131.png; ORB keypoints (11 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.1145.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4618: External <span style="color:#38bdf8">1363.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma256.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9561</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8518</span></div>
+        <div class="metric-item">Masked NCC: <span>-0.3555</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>30</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4618_1363.png_vs_Glaucoma_Glaucoma256.jpg.png" alt="Contact Sheet Pair 4618" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8518, NCC=-0.3555, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8518) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 1363.png is OS (Left Eye, nasal disc right); internal Glaucoma256.jpg is OD (Right Eye, nasal disc left)); internal image Glaucoma256.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1363.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=-0.3555, pHash distance=30 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4724: External <span style="color:#38bdf8">1374.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR348.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9524</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8695</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2744</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>36</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4724_1374.png_vs_Diabetic Retinopathy_DR348.jpg.png" alt="Contact Sheet Pair 4724" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8695, NCC=0.2744, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8695) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 1374.png is OS (Left Eye, nasal disc right); internal DR348.jpg is OD (Right Eye, nasal disc left)); internal image DR348.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1374.png; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.2744.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4727: External <span style="color:#38bdf8">1374.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR10.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9539</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8591</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4411</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>30</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4727_1374.png_vs_Diabetic Retinopathy_DR10.jpg.png" alt="Contact Sheet Pair 4727" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8591, NCC=0.4411, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8591) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR10.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1374.png; zero ORB inliers across retinal structures (NCC=0.4411, pHash distance=30 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4728: External <span style="color:#38bdf8">1374.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR8.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9504</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8534</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2866</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>34</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4728_1374.png_vs_Diabetic Retinopathy_DR8.jpg.png" alt="Contact Sheet Pair 4728" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8534, NCC=0.2866, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8534) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 1374.png is OS (Left Eye, nasal disc right); internal DR8.jpg is OD (Right Eye, nasal disc left)); internal image DR8.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1374.png; zero ORB inliers across retinal structures (NCC=0.2866, pHash distance=34 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4730: External <span style="color:#38bdf8">1374.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy824.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9520</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8918</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4430</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>36</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4730_1374.png_vs_Healthy_Healthy824.jpg.png" alt="Contact Sheet Pair 4730" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8918, NCC=0.4430, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8918) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 1374.png is OS (Left Eye, nasal disc right); internal Healthy824.jpg is OD (Right Eye, nasal disc left)); both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.4430, pHash distance=36 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4731: External <span style="color:#38bdf8">1374.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Myopia/Myopia455.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9572</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8655</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3141</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4731_1374.png_vs_Myopia_Myopia455.jpg.png" alt="Contact Sheet Pair 4731" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8655, NCC=0.3141, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8655) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Myopia455.jpg shows myopic chorioretinal stretching and peripapillary crescent morphology absent in external 1374.png; zero ORB inliers across retinal structures (NCC=0.3141, pHash distance=28 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4796: External <span style="color:#38bdf8">1401.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR347.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9534</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8621</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5585</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>25</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4796_1401.png_vs_Diabetic Retinopathy_DR347.jpg.png" alt="Contact Sheet Pair 4796" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8621, NCC=0.5585, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8621) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR347.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1401.png; zero ORB inliers across retinal structures (NCC=0.5585, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4801: External <span style="color:#38bdf8">1401.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma256.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9583</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8595</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5303</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4801_1401.png_vs_Glaucoma_Glaucoma256.jpg.png" alt="Contact Sheet Pair 4801" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8595, NCC=0.5303, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8595) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma256.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1401.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.5303, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4802: External <span style="color:#38bdf8">1401.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy694.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9503</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8625</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5361</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4802_1401.png_vs_Healthy_Healthy694.jpg.png" alt="Contact Sheet Pair 4802" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8625, NCC=0.5361, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8625) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.5361, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4830: External <span style="color:#38bdf8">1412.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR11.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9501</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8555</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5526</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4830_1412.png_vs_Diabetic Retinopathy_DR11.jpg.png" alt="Contact Sheet Pair 4830" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8555, NCC=0.5526, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8555) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR11.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1412.png; zero ORB inliers across retinal structures (NCC=0.5526, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="TOP_DINO_GE_0.970" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #4980: External <span style="color:#38bdf8">1472.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma291.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9707</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7158</span></div>
+        <div class="metric-item">Masked NCC: <span>0.8078</span></div>
+        <div class="metric-item">ORB Inliers: <span>17</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>16</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_4980_1472.png_vs_Glaucoma_Glaucoma291.jpg.png" alt="Contact Sheet Pair 4980" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: TOP_DINO_GE_0.970 (SSIM=0.7158, NCC=0.8078, ORB inliers=17); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: top DINOv2 cosine (0.9707) is driven by concordant camera field geometry and canonical posterior-segment optic-nerve centering; internal image Glaucoma291.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1472.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (17 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.8078.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5006: External <span style="color:#38bdf8">1499.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma542.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9525</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8579</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3514</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>16</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>15</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5006_1499.png_vs_Glaucoma_Glaucoma542.jpg.png" alt="Contact Sheet Pair 5006" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8579, NCC=0.3514, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8579) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma542.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1499.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.3514, pHash distance=16 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="LOW_PHASH_LE_4" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5025: External <span style="color:#38bdf8">1510.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR1403.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">LOW_PHASH_LE_4</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9506</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7137</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6956</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>4</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>9</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5025_1510.png_vs_Diabetic Retinopathy_DR1403.jpg.png" alt="Contact Sheet Pair 5025" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: LOW_PHASH_LE_4 (SSIM=0.7137, NCC=0.6956, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: low perceptual hash distance (4 bits) reflects broad low-frequency global intensity symmetry despite completely non-matching high-frequency features; internal image DR1403.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1510.png; zero ORB inliers across retinal structures (NCC=0.6956, pHash distance=4 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5178: External <span style="color:#38bdf8">1585.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma901.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9512</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8522</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2256</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5178_1585.png_vs_Glaucoma_Glaucoma901.jpg.png" alt="Contact Sheet Pair 5178" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8522, NCC=0.2256, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8522) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma901.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1585.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.2256, pHash distance=26 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5370: External <span style="color:#38bdf8">1609.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR5.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9521</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8779</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1395</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>15</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5370_1609.png_vs_Diabetic Retinopathy_DR5.jpg.png" alt="Contact Sheet Pair 5370" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8779, NCC=0.1395, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8779) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 1609.png is OD (Right Eye, nasal disc left); internal DR5.jpg is OS (Left Eye, nasal disc right)); internal image DR5.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1609.png; zero ORB inliers across retinal structures (NCC=0.1395, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="TOP_DINO_GE_0.970" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5453: External <span style="color:#38bdf8">1645.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR480.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9704</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7025</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5160</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>18</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>13</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5453_1645.png_vs_Diabetic Retinopathy_DR480.jpg.png" alt="Contact Sheet Pair 5453" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: TOP_DINO_GE_0.970 (SSIM=0.7025, NCC=0.5160, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: top DINOv2 cosine (0.9704) is driven by concordant camera field geometry and canonical posterior-segment optic-nerve centering; internal image DR480.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1645.png; zero ORB inliers across retinal structures (NCC=0.5160, pHash distance=18 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5594: External <span style="color:#38bdf8">1688.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma595.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9510</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8617</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4750</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>8</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>15</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5594_1688.png_vs_Glaucoma_Glaucoma595.jpg.png" alt="Contact Sheet Pair 5594" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8617, NCC=0.4750, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8617) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma595.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1688.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.4750.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5674: External <span style="color:#38bdf8">1717.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR539.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9507</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8664</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4010</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>18</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5674_1717.png_vs_Diabetic Retinopathy_DR539.jpg.png" alt="Contact Sheet Pair 5674" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8664, NCC=0.4010, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8664) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR539.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 1717.png; zero ORB inliers across retinal structures (NCC=0.4010, pHash distance=26 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="ORB_INLIERS_GE_20" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5901: External <span style="color:#38bdf8">1774.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Macular Scar/Macular Scar152.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">ORB_INLIERS_GE_20</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9505</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.6227</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2761</span></div>
+        <div class="metric-item">ORB Inliers: <span>23</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5901_1774.png_vs_Macular Scar_Macular Scar152.jpg.png" alt="Contact Sheet Pair 5901" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: pigmented macular scar present internally, absent externally; masked SSIM only 0.6227, NCC 0.2761; non-matching vascular arborization.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="TOP_DINO_GE_0.970" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #5951: External <span style="color:#38bdf8">1775.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma795.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9741</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7051</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6299</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>14</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_5951_1775.png_vs_Glaucoma_Glaucoma795.jpg.png" alt="Contact Sheet Pair 5951" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: highest DINOv2 cosine pair (0.9741); prototypical optic-disc-centered fundus; peripapillary atrophy halo and vessel layout diverge; ORB inliers=0.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="TOP_DINO_GE_0.970" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #6442: External <span style="color:#38bdf8">1848.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma609.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9719</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7340</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5867</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>23</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_6442_1848.png_vs_Glaucoma_Glaucoma609.jpg.png" alt="Contact Sheet Pair 6442" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: TOP_DINO_GE_0.970 (SSIM=0.7340, NCC=0.5867, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: top DINOv2 cosine (0.9719) is driven by concordant camera field geometry and canonical posterior-segment optic-nerve centering; internal image Glaucoma609.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1848.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.5867, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #6594: External <span style="color:#38bdf8">1867.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma710.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9515</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8525</span></div>
+        <div class="metric-item">Masked NCC: <span>0.7007</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>22</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>16</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_6594_1867.png_vs_Glaucoma_Glaucoma710.jpg.png" alt="Contact Sheet Pair 6594" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8525, NCC=0.7007, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8525) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma710.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 1867.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.7007, pHash distance=22 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #6601: External <span style="color:#38bdf8">1867.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy731.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9515</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8621</span></div>
+        <div class="metric-item">Masked NCC: <span>0.6943</span></div>
+        <div class="metric-item">ORB Inliers: <span>10</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>17</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_6601_1867.png_vs_Healthy_Healthy731.jpg.png" alt="Contact Sheet Pair 6601" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8621, NCC=0.6943, ORB inliers=10); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8621) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; ORB keypoints (10 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.6943.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="COMPLETED_REVIEW" data-flag="ORB_INLIERS_GE_20" data-completed="true">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7192: External <span style="color:#38bdf8">395.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR688.jpg</span></div>
+        <div>
+          <span class="badge badge-completed">DOCUMENTED MANUAL REVIEW COMPLETE</span>
+          <span class="badge badge-flag">ORB_INLIERS_GE_20</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9540</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7671</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4861</span></div>
+        <div class="metric-item">ORB Inliers: <span>43</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7192_395.png_vs_Diabetic Retinopathy_DR688.jpg.png" alt="Contact Sheet Pair 7192" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Forensic Verification:</strong> Direct Manual Visual Inspection | <strong>Status:</strong> DOCUMENTED MANUAL REVIEW COMPLETE<br>
+        <strong>Reviewer:</strong> CV_Forensic_Auditor (2026-10-11) | <strong>Verdict:</strong> DISTINCT_ANATOMY<br>
+        <strong>Documented Evidence:</strong> Direct visual inspection of contact sheet: inliers concentrate along aperture boundary notch; prominent circinate hard exudates present externally, completely absent internally; vessel trees diverge.
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7380: External <span style="color:#38bdf8">51.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma711.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9532</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8680</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2289</span></div>
+        <div class="metric-item">ORB Inliers: <span>12</span></div>
+        <div class="metric-item">pHash Distance: <span>32</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7380_51.png_vs_Glaucoma_Glaucoma711.jpg.png" alt="Contact Sheet Pair 7380" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8680, NCC=0.2289, ORB inliers=12); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8680) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma711.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 51.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (12 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.2289.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7381: External <span style="color:#38bdf8">51.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma442.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9542</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8510</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2676</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>36</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>23</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7381_51.png_vs_Glaucoma_Glaucoma442.jpg.png" alt="Contact Sheet Pair 7381" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8510, NCC=0.2676, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8510) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma442.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 51.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.2676, pHash distance=36 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7382: External <span style="color:#38bdf8">51.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma910.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9550</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8614</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2443</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>34</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7382_51.png_vs_Glaucoma_Glaucoma910.jpg.png" alt="Contact Sheet Pair 7382" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8614, NCC=0.2443, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8614) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma910.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 51.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.2443, pHash distance=34 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7383: External <span style="color:#38bdf8">51.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy694.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9573</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8599</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2734</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>34</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>24</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7383_51.png_vs_Healthy_Healthy694.jpg.png" alt="Contact Sheet Pair 7383" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8599, NCC=0.2734, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8599) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.2734, pHash distance=34 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7390: External <span style="color:#38bdf8">52.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Disc Edema/Disc Edema84.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9505</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8654</span></div>
+        <div class="metric-item">Masked NCC: <span>-0.1542</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>26</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7390_52.png_vs_Disc Edema_Disc Edema84.jpg.png" alt="Contact Sheet Pair 7390" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8654, NCC=-0.1542, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8654) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 52.png is OS (Left Eye, nasal disc right); internal Disc Edema84.jpg is OD (Right Eye, nasal disc left)); internal image Disc Edema84.jpg demonstrates prominent optic disc elevation/edema with obscured margins, whereas external 52.png has a flat, sharply demarcated disc and distinct arcade branching; zero ORB inliers across retinal structures (NCC=-0.1542, pHash distance=26 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7625: External <span style="color:#38bdf8">560.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Disc Edema/Disc Edema83.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9562</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8801</span></div>
+        <div class="metric-item">Masked NCC: <span>0.0704</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>30</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>22</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7625_560.png_vs_Disc Edema_Disc Edema83.jpg.png" alt="Contact Sheet Pair 7625" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8801, NCC=0.0704, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8801) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 560.png is OD (Right Eye, nasal disc left); internal Disc Edema83.jpg is OS (Left Eye, nasal disc right)); internal image Disc Edema83.jpg demonstrates prominent optic disc elevation/edema with obscured margins, whereas external 560.png has a flat, sharply demarcated disc and distinct arcade branching; zero ORB inliers across retinal structures (NCC=0.0704, pHash distance=30 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7634: External <span style="color:#38bdf8">578.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma595.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9529</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8607</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1673</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>20</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>28</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7634_578.png_vs_Glaucoma_Glaucoma595.jpg.png" alt="Contact Sheet Pair 7634" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8607, NCC=0.1673, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8607) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma595.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 578.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.1673, pHash distance=20 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7691: External <span style="color:#38bdf8">595.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma595.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9519</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8749</span></div>
+        <div class="metric-item">Masked NCC: <span>0.3108</span></div>
+        <div class="metric-item">ORB Inliers: <span>9</span></div>
+        <div class="metric-item">pHash Distance: <span>16</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>27</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7691_595.png_vs_Glaucoma_Glaucoma595.jpg.png" alt="Contact Sheet Pair 7691" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8749, NCC=0.3108, ORB inliers=9); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8749) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma595.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 595.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (9 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.3108.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7709: External <span style="color:#38bdf8">624.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR624.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9525</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8930</span></div>
+        <div class="metric-item">Masked NCC: <span>0.1152</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>29</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7709_624.png_vs_Diabetic Retinopathy_DR624.jpg.png" alt="Contact Sheet Pair 7709" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8930, NCC=0.1152, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8930) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 624.png is OD (Right Eye, nasal disc left); internal DR624.jpg is OS (Left Eye, nasal disc right)); internal image DR624.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 624.png; zero ORB inliers across retinal structures (NCC=0.1152, pHash distance=28 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7818: External <span style="color:#38bdf8">705.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Diabetic Retinopathy/DR207.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9506</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8524</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2253</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>26</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>28</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7818_705.png_vs_Diabetic Retinopathy_DR207.jpg.png" alt="Contact Sheet Pair 7818" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8524, NCC=0.2253, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8524) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image DR207.jpg exhibits distinct diabetic microvascular findings (focal hemorrhages/microaneurysms) with non-matching temporal vascular arcade trajectories and divergent macular architecture compared to 705.png; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.2253.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7826: External <span style="color:#38bdf8">723.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma910.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9555</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8559</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5090</span></div>
+        <div class="metric-item">ORB Inliers: <span>4</span></div>
+        <div class="metric-item">pHash Distance: <span>24</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7826_723.png_vs_Glaucoma_Glaucoma910.jpg.png" alt="Contact Sheet Pair 7826" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8559, NCC=0.5090, ORB inliers=4); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8559) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma910.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 723.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; ORB keypoints (4 inliers) localize along peripheral aperture border notch rather than retinal parenchyma; NCC=0.5090.</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #7994: External <span style="color:#38bdf8">811.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma542.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9512</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8557</span></div>
+        <div class="metric-item">Masked NCC: <span>0.5201</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>16</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>21</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_7994_811.png_vs_Glaucoma_Glaucoma542.jpg.png" alt="Contact Sheet Pair 7994" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8557, NCC=0.5201, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8557) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; internal image Glaucoma542.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 811.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.5201, pHash distance=16 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="TOP_DINO_GE_0.970" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #8022: External <span style="color:#38bdf8">818.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Glaucoma/Glaucoma735.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">TOP_DINO_GE_0.970</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9715</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.7646</span></div>
+        <div class="metric-item">Masked NCC: <span>0.4642</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>24</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>20</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_8022_818.png_vs_Glaucoma_Glaucoma735.jpg.png" alt="Contact Sheet Pair 8022" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: TOP_DINO_GE_0.970 (SSIM=0.7646, NCC=0.4642, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: top DINOv2 cosine (0.9715) is driven by concordant camera field geometry and canonical posterior-segment optic-nerve centering; internal image Glaucoma735.jpg shows characteristic glaucomatous optic disc cupping and neuroretinal rim thinning, whereas external image 818.png exhibits distinct disc margin contour, cup-to-disc ratio, and non-concordant vascular bifurcation angles; zero ORB inliers across retinal structures (NCC=0.4642, pHash distance=24 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #8264: External <span style="color:#38bdf8">997.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy664.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9523</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.8743</span></div>
+        <div class="metric-item">Masked NCC: <span>-0.2080</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>27</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_8264_997.png_vs_Healthy_Healthy664.jpg.png" alt="Contact Sheet Pair 8264" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.8743, NCC=-0.2080, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.8743) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; images display opposite laterality (external 997.png is OD (Right Eye, nasal disc left); internal Healthy664.jpg is OS (Left Eye, nasal disc right)); both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=-0.2080, pHash distance=28 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+
+    <div class="pair-card" data-status="PENDING_HUMAN_ADJUDICATION" data-flag="HIGH_SSIM_GE_0.85" data-completed="false">
+      <div class="pair-header">
+        <div class="pair-title">Pair #8265: External <span style="color:#38bdf8">997.png</span> (Training_Set) vs Internal <span style="color:#a78bfa">Healthy/Healthy677.jpg</span></div>
+        <div>
+          <span class="badge badge-pending">AWAITING DOCUMENTED HUMAN ADJUDICATION</span>
+          <span class="badge badge-flag">HIGH_SSIM_GE_0.85</span>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-item">DINOv2 Cosine: <span>0.9510</span></div>
+        <div class="metric-item">Masked SSIM: <span>0.9004</span></div>
+        <div class="metric-item">Masked NCC: <span>0.2145</span></div>
+        <div class="metric-item">ORB Inliers: <span>0</span></div>
+        <div class="metric-item">pHash Distance: <span>28</span> bits</div>
+        <div class="metric-item">dHash Distance: <span>18</span> bits</div>
+      </div>
+      <div class="img-container">
+        <img src="../flagged_pair_contact_sheets/pair_8265_997.png_vs_Healthy_Healthy677.jpg.png" alt="Contact Sheet Pair 8265" loading="lazy">
+      </div>
+      <div class="evidence-box">
+        
+        <strong>Adjudication Status:</strong> <span style="color:#fef08a">AWAITING DOCUMENTED HUMAN ADJUDICATION</span><br>
+        <strong>Automated Observation:</strong> Automated metric screening: HIGH_SSIM_GE_0.85 (SSIM=0.9004, NCC=0.2145, ORB inliers=0); contact sheet rendered on disk. AI preliminary inspection suggests anatomical divergence; awaiting human adjudication sign-off.<br>
+        <strong>AI Preliminary Inspection Guidance (Exploratory):</strong> <span style="color:#cbd5e1">Visual inspection of contact sheet: elevated SSIM (0.9004) is driven by broad, homogeneous retinal background pigmentation and uniform illumination within the circular aperture; both eyes exhibit normal fundus landmarks but diverge across individual superior/inferior temporal vascular branching, arteriolar-venular crossing geometry, and foveal reflex positioning; zero ORB inliers across retinal structures (NCC=0.2145, pHash distance=28 bits).</span><br>
+        <em>Action Required: Human reviewer must inspect contact sheet below and record decision in <code>pending_71_pairs_review_sheet.csv</code>.</em>
+      </div>
+    </div>
+</div>
+
+</body>
+</html>

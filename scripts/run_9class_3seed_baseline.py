@@ -17,6 +17,7 @@ Architectural Protocol:
 """
 
 import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 os.environ["NO_ALBUMENTATIONS_UPDATE"] = "1"
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
@@ -69,6 +70,60 @@ EXPECTED_VAL_SUPPORTS = {
 }
 
 
+def compute_high_specificity_thresholds(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    class_names: List[str],
+    target_specificities: List[float] = [0.90, 0.95],
+    eps: float = 1e-6,
+) -> Dict[str, Dict[str, Any]]:
+    """Select One-vs-Rest operating thresholds targeting >= 90% and >= 95% specificity on validation data.
+
+    Candidate set: unique validation probabilities + 0.0 + (1.0 + eps).
+    Boundary condition: t = 1.0 + eps guarantees Spec = 1.0, Sens = 0.0.
+    Tie-breaking convention: lowest threshold among equally sensitive feasible candidates.
+    """
+    results = {}
+    for c_idx, c_name in enumerate(class_names):
+        pos_mask = (y_true == c_idx)
+        neg_mask = (y_true != c_idx)
+        n_pos = int(pos_mask.sum())
+        n_neg = int(neg_mask.sum())
+
+        c_probs = y_prob[:, c_idx]
+        candidate_thresholds = np.unique(np.concatenate([[0.0], c_probs, [1.0 + eps]]))
+
+        c_results = {}
+        for target_spec in target_specificities:
+            feasible = []
+            for t in candidate_thresholds:
+                spec = np.sum(c_probs[neg_mask] < t) / n_neg if n_neg > 0 else 1.0
+                sens = np.sum(c_probs[pos_mask] >= t) / n_pos if n_pos > 0 else 0.0
+                if spec >= target_spec:
+                    feasible.append((t, sens, spec))
+
+            if feasible:
+                max_sens = max(item[1] for item in feasible)
+                top_candidates = [item for item in feasible if item[1] == max_sens]
+                selected_t, achieved_sens, achieved_spec = min(top_candidates, key=lambda x: x[0])
+            else:
+                selected_t = 1.0 + eps
+                achieved_sens = 0.0
+                achieved_spec = 1.0
+
+            assert achieved_spec >= target_spec or np.isclose(achieved_spec, target_spec), (
+                f"Achieved spec {achieved_spec} < target {target_spec} for {c_name}"
+            )
+            c_results[f"spec_{int(target_spec*100)}"] = {
+                "target_specificity": target_spec,
+                "selected_threshold": float(selected_t),
+                "achieved_val_sensitivity": float(achieved_sens),
+                "achieved_val_specificity": float(achieved_spec),
+            }
+        results[c_name] = c_results
+    return results
+
+
 def build_seed_config(seed: int, seed_dir: Path) -> Path:
     config_dict = {
         "seed": seed,
@@ -101,6 +156,7 @@ def build_seed_config(seed: int, seed_dir: Path) -> Path:
             "use_weighted_sampler": False,
             "scheduler": "cosine",
             "evaluate_test": False,
+            "use_amp": False,
         },
         "output": {
             "directory": str(seed_dir.resolve().relative_to(ROOT.resolve())) if seed_dir.resolve().is_relative_to(ROOT.resolve()) else str(seed_dir),
@@ -122,6 +178,7 @@ def run_training_subprocess(config_path: Path) -> None:
         "--no-test-eval",
     ]
     env = os.environ.copy()
+    env["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
     env["NO_ALBUMENTATIONS_UPDATE"] = "1"
     env["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
     print(f"\n>>> Launching training: {' '.join(cmd)}")
@@ -279,6 +336,8 @@ def evaluate_and_reconcile_seed(seed: int, seed_dir: Path, config_path: Path) ->
             "tn": tn_val,
         }
 
+    operating_thresholds = compute_high_specificity_thresholds(y_true, y_prob, CLASS_NAMES)
+
     # Save reconciled metrics
     val_metrics_out = {
         "seed": seed,
@@ -294,6 +353,7 @@ def evaluate_and_reconcile_seed(seed: int, seed_dir: Path, config_path: Path) ->
         "val_loss_at_peak": float(val_loss_at_peak) if val_loss_at_peak is not None else None,
         "checkpoint_sha256": ckpt_sha256,
         "checkpoint_path": str(ckpt_path.resolve().relative_to(ROOT.resolve())) if ckpt_path.resolve().is_relative_to(ROOT.resolve()) else str(ckpt_path),
+        "operating_thresholds": operating_thresholds,
         "per_class": per_class_dict,
     }
 

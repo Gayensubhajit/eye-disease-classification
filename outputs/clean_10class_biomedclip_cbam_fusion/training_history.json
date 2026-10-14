@@ -1,0 +1,1542 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 1.107597543482195,
+    "val_loss": 1.4744639437532987,
+    "val_metrics": {
+      "accuracy": 0.6120996441281139,
+      "balanced_accuracy": 0.5449379607101079,
+      "macro_f1": 0.5238753046490465,
+      "weighted_f1": 0.6019386458856062,
+      "macro_auc": 0.8663055908611204,
+      "kappa": 0.5728120327922023,
+      "macro_sensitivity": 0.5449379607101079,
+      "macro_specificity": 0.9530892445883576,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.0,
+          "specificity": 1.0,
+          "f1_score": 0.0
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.6230366492146597,
+          "specificity": 0.9946091644204852,
+          "f1_score": 0.7628205128205128
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.13333333333333333,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.2222222222222222
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8709677419354839,
+          "specificity": 0.7214611872146118,
+          "f1_score": 0.6101694915254238
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.5428571428571428,
+          "specificity": 0.9474835886214442,
+          "f1_score": 0.6129032258064516
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.10638297872340426,
+          "specificity": 0.996116504854369,
+          "f1_score": 0.18518518518518517
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.8108108108108109,
+          "specificity": 0.8895238095238095,
+          "f1_score": 0.48
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.5384615384615384,
+          "specificity": 0.994535519125683,
+          "f1_score": 0.6086956521739131
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8235294117647058,
+          "specificity": 0.9889908256880734,
+          "f1_score": 0.7567567567567568
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.8176638101640319,
+    "val_loss": 1.1845806992092431,
+    "val_metrics": {
+      "accuracy": 0.6227758007117438,
+      "balanced_accuracy": 0.5766179859756857,
+      "macro_f1": 0.5639954991555133,
+      "weighted_f1": 0.6154512556035856,
+      "macro_auc": 0.9135996068240259,
+      "kappa": 0.7033425355077119,
+      "macro_sensitivity": 0.5766179859756857,
+      "macro_specificity": 0.9553533586945173,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.0,
+          "specificity": 1.0,
+          "f1_score": 0.0
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9633507853403142,
+          "specificity": 0.889487870619946,
+          "f1_score": 0.8846153846153846
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.26666666666666666,
+          "specificity": 0.9926873857404022,
+          "f1_score": 0.34782608695652173
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.31451612903225806,
+          "specificity": 0.9771689497716894,
+          "f1_score": 0.4508670520231214
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.3619047619047619,
+          "specificity": 0.9824945295404814,
+          "f1_score": 0.5033112582781457
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.8936170212765957,
+          "specificity": 0.7456310679611651,
+          "f1_score": 0.38181818181818183
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.4864864864864865,
+          "specificity": 0.9752380952380952,
+          "f1_score": 0.5294117647058824
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.5384615384615384,
+          "specificity": 1.0,
+          "f1_score": 0.7
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9908256880733946,
+          "f1_score": 0.8421052631578947
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.7143413044404292,
+    "val_loss": 0.8883528085259781,
+    "val_metrics": {
+      "accuracy": 0.7117437722419929,
+      "balanced_accuracy": 0.5826440927994984,
+      "macro_f1": 0.5852210293609545,
+      "weighted_f1": 0.6906636884073268,
+      "macro_auc": 0.9269082340522061,
+      "kappa": 0.709116379548697,
+      "macro_sensitivity": 0.5826440927994984,
+      "macro_specificity": 0.9632927252694993,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.0,
+          "specificity": 1.0,
+          "f1_score": 0.0
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9109947643979057,
+          "specificity": 0.9191374663072777,
+          "f1_score": 0.8810126582278481
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.06666666666666667,
+          "specificity": 1.0,
+          "f1_score": 0.125
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8467741935483871,
+          "specificity": 0.815068493150685,
+          "f1_score": 0.6774193548387096
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.5619047619047619,
+          "specificity": 0.9649890590809628,
+          "f1_score": 0.6555555555555556
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.2978723404255319,
+          "specificity": 0.996116504854369,
+          "f1_score": 0.4444444444444444
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5675675675675675,
+          "specificity": 0.9485714285714286,
+          "f1_score": 0.49411764705882355
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.6923076923076923,
+          "specificity": 0.9927140255009107,
+          "f1_score": 0.6923076923076923
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8823529411764706,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.8823529411764706
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.6677365748596773,
+    "val_loss": 0.7769277034015842,
+    "val_metrics": {
+      "accuracy": 0.7348754448398577,
+      "balanced_accuracy": 0.660305815337949,
+      "macro_f1": 0.6716409236098944,
+      "weighted_f1": 0.7249912644658681,
+      "macro_auc": 0.9475720620368431,
+      "kappa": 0.7647133372549852,
+      "macro_sensitivity": 0.660305815337949,
+      "macro_specificity": 0.9676039894996091,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.2727272727272727,
+          "specificity": 0.9891107078039928,
+          "f1_score": 0.3
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.900523560209424,
+          "specificity": 0.9730458221024259,
+          "f1_score": 0.9222520107238605
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.26666666666666666,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.4
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.5403225806451613,
+          "specificity": 0.954337899543379,
+          "f1_score": 0.6350710900473934
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9904761904761905,
+          "specificity": 0.8030634573304157,
+          "f1_score": 0.6956521739130435
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.3404255319148936,
+          "specificity": 0.9922330097087378,
+          "f1_score": 0.47761194029850745
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.4864864864864865,
+          "specificity": 0.9752380952380952,
+          "f1_score": 0.5294117647058824
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.9230769230769231,
+          "specificity": 0.9981785063752276,
+          "f1_score": 0.9230769230769231
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8823529411764706,
+          "specificity": 0.9926605504587156,
+          "f1_score": 0.8333333333333334
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.5756834824970894,
+    "val_loss": 0.6223531010232574,
+    "val_metrics": {
+      "accuracy": 0.7775800711743772,
+      "balanced_accuracy": 0.7313198402087793,
+      "macro_f1": 0.7206801037213908,
+      "weighted_f1": 0.7776090149162733,
+      "macro_auc": 0.9604386694749871,
+      "kappa": 0.7906902100446567,
+      "macro_sensitivity": 0.7313198402087793,
+      "macro_specificity": 0.973524004728274,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.09090909090909091,
+          "specificity": 1.0,
+          "f1_score": 0.16666666666666666
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.8429319371727748,
+          "specificity": 0.9838274932614556,
+          "f1_score": 0.8994413407821229
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.5333333333333333,
+          "specificity": 0.9890310786106032,
+          "f1_score": 0.5517241379310345
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.782258064516129,
+          "specificity": 0.9041095890410958,
+          "f1_score": 0.7376425855513308
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.7619047619047619,
+          "specificity": 0.9540481400437637,
+          "f1_score": 0.7766990291262136
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.6808510638297872,
+          "specificity": 0.9533980582524272,
+          "f1_score": 0.6213592233009708
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.7567567567567568,
+          "specificity": 0.96,
+          "f1_score": 0.6511627906976745
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.9230769230769231,
+          "specificity": 1.0,
+          "f1_score": 0.96
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9908256880733946,
+          "f1_score": 0.8421052631578947
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.5550497368853298,
+    "val_loss": 0.7657211285972723,
+    "val_metrics": {
+      "accuracy": 0.7722419928825622,
+      "balanced_accuracy": 0.6469434118979278,
+      "macro_f1": 0.6706954852412381,
+      "weighted_f1": 0.7606414992669915,
+      "macro_auc": 0.9443004063609743,
+      "kappa": 0.7909319937530161,
+      "macro_sensitivity": 0.6469434118979278,
+      "macro_specificity": 0.9718388353300907,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.09090909090909091,
+          "specificity": 0.9981851179673321,
+          "f1_score": 0.15384615384615385
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9162303664921466,
+          "specificity": 0.9730458221024259,
+          "f1_score": 0.9308510638297872
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.13333333333333333,
+          "specificity": 1.0,
+          "f1_score": 0.23529411764705882
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.6532258064516129,
+          "specificity": 0.95662100456621,
+          "f1_score": 0.7232142857142857
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 1.0,
+          "specificity": 0.824945295404814,
+          "f1_score": 0.7241379310344828
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.5106382978723404,
+          "specificity": 0.9825242718446602,
+          "f1_score": 0.6
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5135135135135135,
+          "specificity": 0.9885714285714285,
+          "f1_score": 0.6129032258064516
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.7692307692307693,
+          "specificity": 1.0,
+          "f1_score": 0.8695652173913043
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8823529411764706,
+          "specificity": 0.9944954128440368,
+          "f1_score": 0.8571428571428571
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.4794672837382869,
+    "val_loss": 0.7670839214664337,
+    "val_metrics": {
+      "accuracy": 0.7526690391459074,
+      "balanced_accuracy": 0.5560335437163665,
+      "macro_f1": 0.587157164642388,
+      "weighted_f1": 0.731701338449994,
+      "macro_auc": 0.9514526797043908,
+      "kappa": 0.6482107203773394,
+      "macro_sensitivity": 0.5560335437163665,
+      "macro_specificity": 0.9675696351951373,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.0,
+          "specificity": 0.9981851179673321,
+          "f1_score": 0.0
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9947643979057592,
+          "specificity": 0.8382749326145552,
+          "f1_score": 0.8616780045351474
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.5333333333333333,
+          "specificity": 0.9835466179159049,
+          "f1_score": 0.5
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.717741935483871,
+          "specificity": 0.9611872146118722,
+          "f1_score": 0.7739130434782608
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.8,
+          "specificity": 0.9540481400437637,
+          "f1_score": 0.8
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.46808510638297873,
+          "specificity": 0.9533980582524272,
+          "f1_score": 0.4731182795698925
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.24324324324324326,
+          "specificity": 0.9961904761904762,
+          "f1_score": 0.375
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 0.5,
+          "specificity": 1.0,
+          "f1_score": 0.6666666666666666
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.5384615384615384,
+          "specificity": 0.994535519125683,
+          "f1_score": 0.6086956521739131
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.7647058823529411,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.8125
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.4506540214351622,
+    "val_loss": 0.8718501682065135,
+    "val_metrics": {
+      "accuracy": 0.7295373665480427,
+      "balanced_accuracy": 0.6228531893179265,
+      "macro_f1": 0.6449903354096846,
+      "weighted_f1": 0.7211253834492203,
+      "macro_auc": 0.9450739505058318,
+      "kappa": 0.7517714659885321,
+      "macro_sensitivity": 0.6228531893179265,
+      "macro_specificity": 0.9669737139575277,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.2727272727272727,
+          "specificity": 0.985480943738657,
+          "f1_score": 0.2727272727272727
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9057591623036649,
+          "specificity": 0.9811320754716981,
+          "f1_score": 0.9326145552560647
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.13333333333333333,
+          "specificity": 1.0,
+          "f1_score": 0.23529411764705882
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.532258064516129,
+          "specificity": 0.9634703196347032,
+          "f1_score": 0.6407766990291263
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 1.0,
+          "specificity": 0.7680525164113785,
+          "f1_score": 0.6645569620253164
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.3191489361702128,
+          "specificity": 0.9980582524271845,
+          "f1_score": 0.47619047619047616
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5675675675675675,
+          "specificity": 0.979047619047619,
+          "f1_score": 0.6086956521739131
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.6153846153846154,
+          "specificity": 1.0,
+          "f1_score": 0.7619047619047619
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8823529411764706,
+          "specificity": 0.9944954128440368,
+          "f1_score": 0.8571428571428571
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.38705610890228453,
+    "val_loss": 0.6058966408274882,
+    "val_metrics": {
+      "accuracy": 0.8113879003558719,
+      "balanced_accuracy": 0.7265627103650122,
+      "macro_f1": 0.731618489983269,
+      "weighted_f1": 0.8031556792859262,
+      "macro_auc": 0.9737045325153979,
+      "kappa": 0.8013611428695084,
+      "macro_sensitivity": 0.7265627103650122,
+      "macro_specificity": 0.9772705121363714,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.09090909090909091,
+          "specificity": 0.9981851179673321,
+          "f1_score": 0.15384615384615385
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9424083769633508,
+          "specificity": 0.9730458221024259,
+          "f1_score": 0.9448818897637795
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.7333333333333333,
+          "specificity": 0.9945155393053017,
+          "f1_score": 0.7586206896551724
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.6612903225806451,
+          "specificity": 0.9726027397260274,
+          "f1_score": 0.7522935779816514
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9809523809523809,
+          "specificity": 0.8971553610503282,
+          "f1_score": 0.807843137254902
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.48936170212765956,
+          "specificity": 0.9883495145631068,
+          "f1_score": 0.6052631578947368
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.8108108108108109,
+          "specificity": 0.9561904761904761,
+          "f1_score": 0.6666666666666666
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.6153846153846154,
+          "specificity": 1.0,
+          "f1_score": 0.7619047619047619
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9926605504587156,
+          "f1_score": 0.8648648648648649
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.33441419234537695,
+    "val_loss": 0.5302269776746154,
+    "val_metrics": {
+      "accuracy": 0.8220640569395018,
+      "balanced_accuracy": 0.776223439262792,
+      "macro_f1": 0.776623817684279,
+      "weighted_f1": 0.8232823778269706,
+      "macro_auc": 0.9739131355426034,
+      "kappa": 0.7811570729653055,
+      "macro_sensitivity": 0.776223439262792,
+      "macro_specificity": 0.9790970912733888,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.36363636363636365,
+          "specificity": 0.9927404718693285,
+          "f1_score": 0.42105263157894735
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9267015706806283,
+          "specificity": 0.9784366576819407,
+          "f1_score": 0.9414893617021277
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.72
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.6935483870967742,
+          "specificity": 0.9726027397260274,
+          "f1_score": 0.7747747747747747
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9238095238095239,
+          "specificity": 0.9387308533916849,
+          "f1_score": 0.8434782608695652
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.6382978723404256,
+          "specificity": 0.974757281553398,
+          "f1_score": 0.6666666666666666
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.8108108108108109,
+          "specificity": 0.9428571428571428,
+          "f1_score": 0.6185567010309279
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.9230769230769231,
+          "specificity": 0.9981785063752276,
+          "f1_score": 0.9230769230769231
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8823529411764706,
+          "specificity": 0.9944954128440368,
+          "f1_score": 0.8571428571428571
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.2790577764971669,
+    "val_loss": 0.614688725289027,
+    "val_metrics": {
+      "accuracy": 0.8131672597864769,
+      "balanced_accuracy": 0.7251824118876701,
+      "macro_f1": 0.7312893254940951,
+      "weighted_f1": 0.809122803154734,
+      "macro_auc": 0.9624878487087554,
+      "kappa": 0.8026949111913909,
+      "macro_sensitivity": 0.7251824118876701,
+      "macro_specificity": 0.9777334812592245,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.09090909090909091,
+          "specificity": 1.0,
+          "f1_score": 0.16666666666666666
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9528795811518325,
+          "specificity": 0.9811320754716981,
+          "f1_score": 0.9578947368421052
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.4666666666666667,
+          "specificity": 1.0,
+          "f1_score": 0.6363636363636364
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8306451612903226,
+          "specificity": 0.9269406392694064,
+          "f1_score": 0.7953667953667953
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.7047619047619048,
+          "specificity": 0.9671772428884027,
+          "f1_score": 0.7628865979381443
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.851063829787234,
+          "specificity": 0.9300970873786408,
+          "f1_score": 0.6504065040650406
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5675675675675675,
+          "specificity": 0.9866666666666667,
+          "f1_score": 0.6461538461538462
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9853211009174312,
+          "f1_score": 0.7804878048780488
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.24014108552448993,
+    "val_loss": 0.5748603732931656,
+    "val_metrics": {
+      "accuracy": 0.8202846975088968,
+      "balanced_accuracy": 0.7283866509371197,
+      "macro_f1": 0.7610751903177965,
+      "weighted_f1": 0.8161933199089365,
+      "macro_auc": 0.9756308336862833,
+      "kappa": 0.8287912515560778,
+      "macro_sensitivity": 0.7283866509371197,
+      "macro_specificity": 0.9776265656936932,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.2727272727272727,
+          "specificity": 0.9963702359346642,
+          "f1_score": 0.375
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9214659685863874,
+          "specificity": 0.9757412398921833,
+          "f1_score": 0.9361702127659575
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.3333333333333333,
+          "specificity": 1.0,
+          "f1_score": 0.5
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8387096774193549,
+          "specificity": 0.906392694063927,
+          "f1_score": 0.7732342007434945
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.8285714285714286,
+          "specificity": 0.9321663019693655,
+          "f1_score": 0.7802690582959642
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.7659574468085106,
+          "specificity": 0.9864077669902913,
+          "f1_score": 0.8
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5945945945945946,
+          "specificity": 0.9828571428571429,
+          "f1_score": 0.6470588235294118
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.8823529411764706,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.8823529411764706
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.21625244263971607,
+    "val_loss": 0.5619870155429951,
+    "val_metrics": {
+      "accuracy": 0.8487544483985765,
+      "balanced_accuracy": 0.7958687458301568,
+      "macro_f1": 0.8162773232508057,
+      "weighted_f1": 0.8465518148258054,
+      "macro_auc": 0.9669505693399365,
+      "kappa": 0.859316495311768,
+      "macro_sensitivity": 0.7958687458301568,
+      "macro_specificity": 0.9813637067346587,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.6363636363636364,
+          "specificity": 0.9909255898366606,
+          "f1_score": 0.6086956521739131
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9738219895287958,
+          "specificity": 0.9730458221024259,
+          "f1_score": 0.9612403100775194
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6,
+          "specificity": 1.0,
+          "f1_score": 0.75
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8225806451612904,
+          "specificity": 0.9383561643835616,
+          "f1_score": 0.8063241106719368
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.8476190476190476,
+          "specificity": 0.949671772428884,
+          "f1_score": 0.8202764976958525
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.723404255319149,
+          "specificity": 0.9786407766990292,
+          "f1_score": 0.7391304347826086
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5675675675675675,
+          "specificity": 0.9866666666666667,
+          "f1_score": 0.6461538461538462
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.9142857142857143
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.16845734426034237,
+    "val_loss": 0.6085355304193176,
+    "val_metrics": {
+      "accuracy": 0.8380782918149466,
+      "balanced_accuracy": 0.765221596739692,
+      "macro_f1": 0.7892099338158902,
+      "weighted_f1": 0.8341705246992029,
+      "macro_auc": 0.9746192073386715,
+      "kappa": 0.8268385303995076,
+      "macro_sensitivity": 0.765221596739692,
+      "macro_specificity": 0.9802324609115445,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.5454545454545454,
+          "specificity": 0.9963702359346642,
+          "f1_score": 0.631578947368421
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9581151832460733,
+          "specificity": 0.9730458221024259,
+          "f1_score": 0.953125
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.4666666666666667,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.6086956521739131
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.75,
+          "specificity": 0.9634703196347032,
+          "f1_score": 0.7982832618025751
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9714285714285714,
+          "specificity": 0.9168490153172867,
+          "f1_score": 0.8326530612244898
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.574468085106383,
+          "specificity": 0.9922330097087378,
+          "f1_score": 0.6923076923076923
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.6756756756756757,
+          "specificity": 0.9695238095238096,
+          "f1_score": 0.6410256410256411
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.7692307692307693,
+          "specificity": 1.0,
+          "f1_score": 0.8695652173913043
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9926605504587156,
+          "f1_score": 0.8648648648648649
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 15,
+    "train_loss": 0.13875295681002303,
+    "val_loss": 0.6158697460993489,
+    "val_metrics": {
+      "accuracy": 0.8451957295373665,
+      "balanced_accuracy": 0.7917724453717374,
+      "macro_f1": 0.8231275980167088,
+      "weighted_f1": 0.8434088354006113,
+      "macro_auc": 0.9731266588569373,
+      "kappa": 0.859128902342009,
+      "macro_sensitivity": 0.7917724453717374,
+      "macro_specificity": 0.9810378777379654,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.5454545454545454,
+          "specificity": 1.0,
+          "f1_score": 0.7058823529411765
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9633507853403142,
+          "specificity": 0.9784366576819407,
+          "f1_score": 0.9608355091383812
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.72
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.7016129032258065,
+          "specificity": 0.9794520547945206,
+          "f1_score": 0.7909090909090909
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9904761904761905,
+          "specificity": 0.8905908096280087,
+          "f1_score": 0.803088803088803
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.6808510638297872,
+          "specificity": 0.9883495145631068,
+          "f1_score": 0.7529411764705882
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.6486486486486487,
+          "specificity": 0.979047619047619,
+          "f1_score": 0.6666666666666666
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.9142857142857143
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 16,
+    "train_loss": 0.09754295616739583,
+    "val_loss": 0.6783184698895548,
+    "val_metrics": {
+      "accuracy": 0.8416370106761566,
+      "balanced_accuracy": 0.8097604612748552,
+      "macro_f1": 0.8264011974274444,
+      "weighted_f1": 0.8387463833955952,
+      "macro_auc": 0.9739727662519151,
+      "kappa": 0.8625903016187495,
+      "macro_sensitivity": 0.8097604612748552,
+      "macro_specificity": 0.9808535953866485,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.6363636363636364,
+          "specificity": 0.9963702359346642,
+          "f1_score": 0.7
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9685863874345549,
+          "specificity": 0.9757412398921833,
+          "f1_score": 0.961038961038961
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6666666666666666,
+          "specificity": 1.0,
+          "f1_score": 0.8
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.6370967741935484,
+          "specificity": 0.9840182648401826,
+          "f1_score": 0.7523809523809524
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9714285714285714,
+          "specificity": 0.9080962800875274,
+          "f1_score": 0.8192771084337349
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.8085106382978723,
+          "specificity": 0.9689320388349515,
+          "f1_score": 0.7524752475247525
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.6216216216216216,
+          "specificity": 0.979047619047619,
+          "f1_score": 0.647887323943662
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.9142857142857143
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 17,
+    "train_loss": 0.0832504694208696,
+    "val_loss": 0.6957476276115537,
+    "val_metrics": {
+      "accuracy": 0.8487544483985765,
+      "balanced_accuracy": 0.7740449465941357,
+      "macro_f1": 0.7998867685843949,
+      "weighted_f1": 0.8441499056151869,
+      "macro_auc": 0.9751236226340554,
+      "kappa": 0.8361980945044072,
+      "macro_sensitivity": 0.7740449465941357,
+      "macro_specificity": 0.9812309770636128,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.36363636363636365,
+          "specificity": 0.9963702359346642,
+          "f1_score": 0.47058823529411764
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9633507853403142,
+          "specificity": 0.9730458221024259,
+          "f1_score": 0.9558441558441558
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6666666666666666,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.7692307692307693
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8145161290322581,
+          "specificity": 0.9497716894977168,
+          "f1_score": 0.8178137651821862
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9333333333333333,
+          "specificity": 0.9234135667396062,
+          "f1_score": 0.8235294117647058
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.6170212765957447,
+          "specificity": 0.9902912621359223,
+          "f1_score": 0.7160493827160493
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.5945945945945946,
+          "specificity": 0.9885714285714285,
+          "f1_score": 0.676923076923077
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 0.9981785063752276,
+          "f1_score": 0.88
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9944954128440368,
+          "f1_score": 0.8888888888888888
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 18,
+    "train_loss": 0.0734299271972033,
+    "val_loss": 0.6366386119279599,
+    "val_metrics": {
+      "accuracy": 0.8505338078291815,
+      "balanced_accuracy": 0.7985927218694332,
+      "macro_f1": 0.8183508563269173,
+      "weighted_f1": 0.8493937745331896,
+      "macro_auc": 0.9766724018208948,
+      "kappa": 0.8514554343792865,
+      "macro_sensitivity": 0.7985927218694332,
+      "macro_specificity": 0.9818068561518555,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.5454545454545454,
+          "specificity": 0.9963702359346642,
+          "f1_score": 0.631578947368421
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9633507853403142,
+          "specificity": 0.9757412398921833,
+          "f1_score": 0.9583333333333334
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6666666666666666,
+          "specificity": 0.9963436928702011,
+          "f1_score": 0.7407407407407407
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.7983870967741935,
+          "specificity": 0.958904109589041,
+          "f1_score": 0.8215767634854771
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.8952380952380953,
+          "specificity": 0.936542669584245,
+          "f1_score": 0.8245614035087719
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.6808510638297872,
+          "specificity": 0.9864077669902913,
+          "f1_score": 0.7441860465116279
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.6486486486486487,
+          "specificity": 0.9714285714285714,
+          "f1_score": 0.631578947368421
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.9142857142857143
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 19,
+    "train_loss": 0.06651871950698776,
+    "val_loss": 0.6655909368251302,
+    "val_metrics": {
+      "accuracy": 0.8665480427046264,
+      "balanced_accuracy": 0.8166496649981727,
+      "macro_f1": 0.8371932403577474,
+      "weighted_f1": 0.864574674910515,
+      "macro_auc": 0.9758106031258652,
+      "kappa": 0.8612707475660157,
+      "macro_sensitivity": 0.8166496649981727,
+      "macro_specificity": 0.9836214541132176,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.6363636363636364,
+          "specificity": 0.9963702359346642,
+          "f1_score": 0.7
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9738219895287958,
+          "specificity": 0.9757412398921833,
+          "f1_score": 0.9637305699481865
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6666666666666666,
+          "specificity": 0.9963436928702011,
+          "f1_score": 0.7407407407407407
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8064516129032258,
+          "specificity": 0.9634703196347032,
+          "f1_score": 0.8333333333333334
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9238095238095239,
+          "specificity": 0.9387308533916849,
+          "f1_score": 0.8434782608695652
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.723404255319149,
+          "specificity": 0.9844660194174757,
+          "f1_score": 0.7640449438202247
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.6486486486486487,
+          "specificity": 0.9847619047619047,
+          "f1_score": 0.6956521739130435
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.9142857142857143
+        }
+      ]
+    }
+  },
+  {
+    "epoch": 20,
+    "train_loss": 0.05627224899041321,
+    "val_loss": 0.6482224055844296,
+    "val_metrics": {
+      "accuracy": 0.8612099644128114,
+      "balanced_accuracy": 0.8028746160153706,
+      "macro_f1": 0.8257062148503722,
+      "weighted_f1": 0.8588555732097002,
+      "macro_auc": 0.975917178828005,
+      "kappa": 0.8581264715259949,
+      "macro_sensitivity": 0.8028746160153706,
+      "macro_specificity": 0.9829452468932021,
+      "per_class": [
+        {
+          "class_name": "Central Serous Chorioretinopathy [Color Fundus]",
+          "sensitivity": 0.5454545454545454,
+          "specificity": 0.9945553539019963,
+          "f1_score": 0.6
+        },
+        {
+          "class_name": "Diabetic Retinopathy",
+          "sensitivity": 0.9790575916230366,
+          "specificity": 0.9757412398921833,
+          "f1_score": 0.9664082687338501
+        },
+        {
+          "class_name": "Disc Edema",
+          "sensitivity": 0.6666666666666666,
+          "specificity": 0.9981718464351006,
+          "f1_score": 0.7692307692307693
+        },
+        {
+          "class_name": "Glaucoma",
+          "sensitivity": 0.8064516129032258,
+          "specificity": 0.95662100456621,
+          "f1_score": 0.823045267489712
+        },
+        {
+          "class_name": "Healthy",
+          "sensitivity": 0.9142857142857143,
+          "specificity": 0.9387308533916849,
+          "f1_score": 0.8384279475982532
+        },
+        {
+          "class_name": "Macular Scar",
+          "sensitivity": 0.6808510638297872,
+          "specificity": 0.9883495145631068,
+          "f1_score": 0.7529411764705882
+        },
+        {
+          "class_name": "Myopia",
+          "sensitivity": 0.6486486486486487,
+          "specificity": 0.9809523809523809,
+          "f1_score": 0.676056338028169
+        },
+        {
+          "class_name": "Pterygium",
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "class_name": "Retinal Detachment",
+          "sensitivity": 0.8461538461538461,
+          "specificity": 1.0,
+          "f1_score": 0.9166666666666666
+        },
+        {
+          "class_name": "Retinitis Pigmentosa",
+          "sensitivity": 0.9411764705882353,
+          "specificity": 0.9963302752293578,
+          "f1_score": 0.9142857142857143
+        }
+      ]
+    }
+  }
+]

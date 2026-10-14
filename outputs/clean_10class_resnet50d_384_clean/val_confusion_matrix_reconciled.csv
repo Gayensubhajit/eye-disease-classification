@@ -1,0 +1,11 @@
+,Central Serous Chorioretinopathy [Color Fundus],Diabetic Retinopathy,Disc Edema,Glaucoma,Healthy,Macular Scar,Myopia,Pterygium,Retinal Detachment,Retinitis Pigmentosa
+Central Serous Chorioretinopathy [Color Fundus],9,1,0,0,0,0,0,0,1,0
+Diabetic Retinopathy,0,185,0,1,1,1,0,0,1,2
+Disc Edema,0,1,14,0,0,0,0,0,0,0
+Glaucoma,0,1,0,103,16,0,4,0,0,0
+Healthy,1,0,0,8,96,0,0,0,0,0
+Macular Scar,4,4,1,2,4,26,4,0,0,2
+Myopia,0,0,0,3,7,0,26,0,1,0
+Pterygium,0,0,0,0,0,0,0,2,0,0
+Retinal Detachment,0,0,0,0,0,0,1,0,12,0
+Retinitis Pigmentosa,0,1,0,0,0,0,0,0,0,16
