@@ -1,12 +1,22 @@
 # Automated Retinal Disease Screening System from Color Fundus Photography
 
+> ### Benchmark status and limitations
+>
+> The previously reported 91.83% test accuracy and 91.78% Macro-F1 were obtained using the original, uncleaned 10-class data split. These figures are retained as historical results and should not be interpreted as independently validated performance on the cleaned benchmark.
+>
+> The current duplicate- and source-group-audited dataset contains 3,747 images: 2,622 training, 562 validation, and 563 test images. Patient-level independence cannot be verified because patient identifiers are unavailable.
+>
+> The current leading standalone model, ConvNeXt-Small, achieved 90.18% Macro-F1 and 89.50% accuracy on the 562-image validation set. These are validation results, not independent clinical validation. The test set remains reserved for a separately documented evaluation.
+>
+> See [docs/experiments/CLEAN_10CLASS_QUAD_ENSEMBLE_FINAL_REPORT.md](docs/experiments/CLEAN_10CLASS_QUAD_ENSEMBLE_FINAL_REPORT.md) for the benchmark methodology, model comparisons, and limitations.
+
 <div align="center">
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.5+](https://img.shields.io/badge/PyTorch-2.5+-ee4c2c.svg)](https://pytorch.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.141+-009688.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![SOTA 10-Class: 91.83%](https://img.shields.io/badge/10--Class%20SOTA-91.83%25-06b6d4.svg)](#key-achievements--benchmarks)
+[![SOTA 10-Class: 91.83% (Historical)](https://img.shields.io/badge/10--Class%20Historical-91.83%25-06b6d4.svg)](#key-achievements--benchmarks)
 [![SOTA 4-Class: 95.74%](https://img.shields.io/badge/4--Class%20SOTA-95.74%25-10b981.svg)](#key-achievements--benchmarks)
 
 **Department of Information Technology, Jadavpur University**  
@@ -47,7 +57,7 @@ All metrics evaluated strictly on untouched, physically isolated held-out test s
 
 | Benchmark Dataset | Winning Approach | Test Accuracy | Macro F1 | ROC-AUC | Literature Comparison & Status |
 |---|---|:---:|:---:|:---:|---|
-| **Primary 10-Class System**<br/>*(Eye Disease Image Dataset, 600 test images)* | **Unified Quad-Ensemble MS-TTA**<br/>(ConvNeXt + EffNet + ResNet + BiomedCLIP) | **91.83%**<br/>(551/600) | **91.78%** | **0.9923** | 🏆 **Surpasses Published Classical SOTA** (86.37% in *IEEE Access 2026*) by **+5.46%**.<br/>• **94.83% 5-Model Oracle Ceiling** (EXP-024) |
+| **Primary 10-Class System (Historical Uncleaned)**<br/>*(Eye Disease Image Dataset, 600 test images)* | **Unified Quad-Ensemble MS-TTA**<br/>(ConvNeXt + EffNet + ResNet + BiomedCLIP) | **91.83%**<br/>(551/600) | **91.78%** | **0.9923** | 🏆 **Surpasses Published Classical SOTA** (86.37% in *IEEE Access 2026*) by **+5.46%**.<br/>• **Historical uncleaned split baseline** |
 | **Kaggle 4-Class Benchmark**<br/>*(4,217 images, 423 test images)* | **ResNet-Integrated Quad Ensemble**<br/>(BiomedCLIP + ConvNeXt + ResNet + EffNet) | **95.74%**<br/>(405/423) | **95.70%** | **0.9929** | 🥇 **Surpasses Published Paper SOTA** (*Alsohemi & Dardouri, Journal of Imaging MDPI 2025*, 95.12%) by **+0.62%**.<br/>• **100.0% Sensitivity, Specificity, and F1 on Diabetic Retinopathy** |
 
 ---
@@ -56,7 +66,7 @@ All metrics evaluated strictly on untouched, physically isolated held-out test s
 
 To ensure absolute publication rigor, all models were evaluated using **1,000-iteration Bootstrap 95% Confidence Intervals** and **McNemar's Paired Discordance Significance Tests** (exact two-sided binomial):
 
-### 10-Class 95% Bootstrap Confidence Intervals (600 Test Images)
+### 10-Class 95% Bootstrap Confidence Intervals (600 Historical Test Images)
 
 | Architecture | Test Accuracy (95% CI) | Macro F1-Score (95% CI) | Macro ROC-AUC (95% CI) | Cohen's $\kappa$ (95% CI) |
 |---|:---:|:---:|:---:|:---:|
@@ -65,7 +75,7 @@ To ensure absolute publication rigor, all models were evaluated using **1,000-it
 | ResNet-50d 384 | 88.17% [85.67%, 90.67%] | 88.17% [85.95%, 90.43%] | 0.9904 [0.9867, 0.9935] | 0.8685 [0.8405, 0.8961] |
 | BiomedCLIP-CBAM 224 | 89.00% [86.50%, 91.34%] | 88.98% [86.63%, 91.14%] | 0.9898 [0.9858, 0.9934] | 0.8778 [0.8497, 0.9037] |
 | ViT-Base-384 | 89.17% [86.50%, 91.67%] | 89.15% [86.78%, 91.38%] | 0.9910 [0.9879, 0.9940] | 0.8796 [0.8499, 0.9072] |
-| **Unified Quad Ensemble (SOTA)** | **91.83% [89.67%, 93.83%]** | **91.78% [89.75%, 93.76%]** | **0.9923 [0.9890, 0.9949]** | **0.9093 [0.8850, 0.9314]** |
+| **Unified Quad Ensemble (Historical)** | **91.83% [89.67%, 93.83%]** | **91.78% [89.75%, 93.76%]** | **0.9923 [0.9890, 0.9949]** | **0.9093 [0.8850, 0.9314]** |
 
 - **McNemar's Test vs Standalone Models:**
   - vs ResNet-50d: **$p = 1.95 \times 10^{-4}$ ($p < 0.001$, Highly Significant)**
@@ -121,21 +131,32 @@ python scripts/batch_screening.py \
 
 ## Dataset & Disease Taxonomy
 
-The primary dataset contains **4,000 colour fundus images** equally balanced across 10 distinct classes:
+The historical dataset contains **4,000 colour fundus images** equally balanced across 10 distinct classes (2,800 train / 600 val / 600 test). The audited, leak-screened dataset (`data_clean/`) contains **3,747 images** (2,622 train / 562 val / 563 test) with verified split integrity:
 
-| Class Index | Disease Condition | Acronym / Anatomical Focus | Split (Train / Val / Test) |
+| Class Index | Disease Condition | Acronym / Anatomical Focus | Clean Split (Train / Val / Test) |
 |:---:|---|---|:---:|
-| 1 | Central Serous Chorioretinopathy | CSCR (Macular Serous Fluid Detachment) | 280 / 60 / 60 |
-| 2 | Diabetic Retinopathy | DR (Microaneurysms, Hard Exudates, Hemorrhages) | 280 / 60 / 60 |
-| 3 | Disc Edema | Papilledema (Blurred Optic Disc Margins) | 280 / 60 / 60 |
-| 4 | Glaucoma | Optic Cup Excavation / RNFL Thinning | 280 / 60 / 60 |
-| 5 | Healthy / Normal | Normal Retinal Vasculature & Physiological Cup | 280 / 60 / 60 |
-| 6 | Macular Scar | Cicatricial Fibrous Tissue in Macula | 280 / 60 / 60 |
-| 7 | Pathological Myopia | Temporal Crescent, Posterior Staphyloma | 280 / 60 / 60 |
-| 8 | Pterygium | Fibrovascular Corneal Encroachment | 280 / 60 / 60 |
-| 9 | Retinal Detachment | Neurosensory Retina Separation / Retinal Folds | 280 / 60 / 60 |
-| 10 | Retinitis Pigmentosa | Peripheral Bone-Spicule Hyperpigmentation | 280 / 60 / 60 |
-| **Total** | **10 Balanced Pathologies** | **Physically Isolated Partitions** | **2,800 / 600 / 600** |
+| 1 | Central Serous Chorioretinopathy | CSCR (Macular Serous Fluid Detachment) | 51 / 11 / 11 |
+| 2 | Diabetic Retinopathy | DR (Microaneurysms, Hard Exudates, Hemorrhages) | 889 / 191 / 191 |
+| 3 | Disc Edema | Papilledema (Blurred Optic Disc Margins) | 71 / 15 / 15 |
+| 4 | Glaucoma | Optic Cup Excavation / RNFL Thinning | 578 / 124 / 124 |
+| 5 | Healthy / Normal | Normal Retinal Vasculature & Physiological Cup | 487 / 105 / 105 |
+| 6 | Macular Scar | Cicatricial Fibrous Tissue in Macula | 219 / 47 / 47 |
+| 7 | Pathological Myopia | Temporal Crescent, Posterior Staphyloma | 172 / 37 / 38 |
+| 8 | Pterygium | Fibrovascular Corneal Encroachment | 10 / 2 / 2 |
+| 9 | Retinal Detachment | Neurosensory Retina Separation / Retinal Folds | 62 / 13 / 13 |
+| 10 | Retinitis Pigmentosa | Peripheral Bone-Spicule Hyperpigmentation | 83 / 17 / 17 |
+| **Total** | **10 Pathologies** | **Duplicate/Source-Group Audited** | **2,622 / 562 / 563 (3,747 Total)** |
+
+---
+
+## Model Checkpoints & Reproducibility Note
+
+Large binary model checkpoints (`best_model.pth`, ~500 MB each) are deliberately excluded from Git tracking to avoid repository bloat. Every model's exact cryptographic SHA-256 checksum is tracked in its evaluation manifest (`val_evaluation_reconciled.json`) and documented in [`docs/experiments/CLEAN_10CLASS_QUAD_ENSEMBLE_FINAL_REPORT.md`](docs/experiments/CLEAN_10CLASS_QUAD_ENSEMBLE_FINAL_REPORT.md). Checkpoints are archived locally in `outputs/` and mirrored in persistent research storage for exact prediction reproduction:
+
+- **ConvNeXt-Small 384**: `238e5d081f59fbe4c5d3148d38972bdf4eb209df16972c74aee47f76df1aa60d`
+- **EfficientNet-B3 384**: `0a93355dbc07dd2c989a55901e5b0fb8281d51dbc836bb3f0e1eb3a7e00fc3aa`
+- **ResNet-50d 384**: `110a01d6b4544376bd26f6e21857d0307f5187a86ccc0cc11aca790caf25346f`
+- **BiomedCLIP + CBAM**: `b323dfbe245e87508dd2e10a94104dcbee5c3e72325ea5f8167add9d7dee73aa`
 
 ---
 
@@ -143,26 +164,26 @@ The primary dataset contains **4,000 colour fundus images** equally balanced acr
 
 ```
 configs/              Model architecture configuration YAML files
-data/                 Physically partitioned dataset (train, val, test)
+data/                 Historical dataset (train, val, test)
+data_clean/           Audited clean benchmark partitions (2622 train, 562 val, 563 test)
 data_kaggle_4class/   Kaggle 4-class benchmark partitions
 docs/
+  experiments/        Authoritative clean benchmark protocols and evaluation reports
+  audit/              DINOv2, SSIM, and external leakage audit ledgers
   figures/            Publication figures (system_architecture.png & .svg)
   presentation/       Interactive 8-slide executive briefing deck (index.html)
-  Benchmark_Progress_Update.pdf  Master compiled report
-  SESSION_HANDOVER.md Master project memory & experimental benchmarks (EXP-001 through EXP-029)
-  statistical_significance_analysis.md  Bootstrap CIs and McNemar test report
 scripts/
   batch_screening.py  Automated batch inference & clinical PDF report generator
   compute_statistical_significance.py  1000-bootstrap CI and McNemar calculator
   evaluate_ms_tta.py  Multi-Scale TTA evaluation engine
-  generate_architecture_figure.py  Figure 1 schematic generator
+  reconcile_val_artifacts.py Pure FP32 validation evaluation and reconciliation
   run_studio.py       Single-command FastAPI Web Studio launcher
 src/
   data/               CLAHE preprocessing, FOV boundary cropping, Albumentations
   models/             ConvNeXt, EfficientNet, ResNet, ViT, BiomedCLIP + CBAM
   utils/              Grad-CAM explainability and overlay blending
   web/                FastAPI backend, inference engine, and dark-glassmorphism assets
-outputs/              Model checkpoints, cached probabilities, and PDF reports
+outputs/              Model evaluation JSONs, confusion matrices, prediction logs, and audit ledgers
 ```
 
 ---
@@ -189,17 +210,6 @@ pip install fastapi uvicorn python-multipart reportlab scipy
 python scripts/run_studio.py --port 8000
 # Open http://localhost:8000 for the Interactive Screening Studio
 # Open http://localhost:8000/presentation for the Executive Presentation Deck
-```
-
-### 3. Run Standalone Inference & Evaluation
-```bash
-# Evaluate Unified Quad Ensemble on 600 test images:
-python scripts/evaluate_ms_tta.py \
-  --configs configs/efficientnet_b3_384_clahe.yaml configs/resnet50d_384_clahe.yaml \
-            configs/convnext_small_384_clahe.yaml configs/biomedclip_cbam_fusion.yaml \
-  --checkpoints outputs/efficientnet_b3_384_clahe/best_model.pth outputs/resnet50d_384_clahe/best_model.pth \
-                outputs/convnext_small_384_clahe/best_model.pth outputs/biomedclip_cbam_fusion/best_model.pth \
-  --weights 0.429 0.286 0.143 0.143 --scales 1.0 1.15 --batch-size 4
 ```
 
 ---
