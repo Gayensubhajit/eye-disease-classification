@@ -68,6 +68,7 @@ def get_loss_function(
     """
     loss_config = config.get("loss", {})
     loss_name = loss_config.get("name", "cross_entropy").lower()
+    label_smoothing = float(loss_config.get("label_smoothing", 0.0))
     use_weighted_sampler = config.get("training", {}).get("use_weighted_sampler", False)
 
     weights = None
@@ -79,9 +80,9 @@ def get_loss_function(
         weights = torch.tensor(weights_arr, dtype=torch.float32)
 
     if loss_name == "weighted_ce":
-        return nn.CrossEntropyLoss(weight=weights)
+        return nn.CrossEntropyLoss(weight=weights, label_smoothing=label_smoothing)
     elif loss_name == "focal":
         gamma = float(loss_config.get("gamma", 2.0))
         return FocalLoss(alpha=weights, gamma=gamma)
     else:
-        return nn.CrossEntropyLoss()
+        return nn.CrossEntropyLoss(label_smoothing=label_smoothing)

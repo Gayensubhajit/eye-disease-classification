@@ -1,0 +1,41 @@
+seed: 2026
+data:
+  train_dir: data_clean/train
+  val_dir: data_clean/val
+  test_dir: data_clean/test
+  image_size: 384
+  num_classes: 10
+  class_names:
+  - Central Serous Chorioretinopathy [Color Fundus]
+  - Diabetic Retinopathy
+  - Disc Edema
+  - Glaucoma
+  - Healthy
+  - Macular Scar
+  - Myopia
+  - Pterygium
+  - Retinal Detachment
+  - Retinitis Pigmentosa
+  crop_fundus: true
+  apply_clahe: true
+  conservative_augmentation: false
+model:
+  name: swin_base_patch4_window12_384.ms_in22k_ft_in1k
+  pretrained: true
+  dropout: 0.3
+loss:
+  name: cross_entropy
+training:
+  batch_size: 2
+  gradient_accumulation_steps: 2
+  epochs: 20
+  learning_rate: 3.0e-05
+  weight_decay: 0.0001
+  num_workers: 2
+  device: cuda
+  use_weighted_sampler: false
+  scheduler: cosine
+  use_amp: false
+  evaluate_test: false
+output:
+  directory: outputs/clean_10class_swin_base_384_seed2026

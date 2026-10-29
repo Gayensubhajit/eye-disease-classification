@@ -79,6 +79,7 @@ def get_train_transforms(image_size: int = 224, conservative: bool = False) -> A
                 border_mode=cv2.BORDER_CONSTANT,
                 p=0.5,
             ),
+            A.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, p=0.3),
             A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
             ToTensorV2(),
         ])

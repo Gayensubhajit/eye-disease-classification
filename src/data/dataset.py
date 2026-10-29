@@ -116,11 +116,15 @@ def create_dataloaders(
     apply_clahe_flag = config["data"].get("apply_clahe", False)
     class_names = config["data"].get("class_names", None)
 
-    conservative_aug = (
-        config['data'].get('augmentation_mode') == 'conservative'
-        or config['data'].get('conservative_augmentation', False)
-    )
-    train_transforms = get_train_transforms(image_size, conservative=conservative_aug)
+    aug_mode = config['data'].get('augmentation_mode')
+    if aug_mode in ['none', 'disabled', False] or config['data'].get('augmentation', True) is False:
+        train_transforms = get_val_transforms(image_size)
+    else:
+        conservative_aug = (
+            aug_mode == 'conservative'
+            or config['data'].get('conservative_augmentation', False)
+        )
+        train_transforms = get_train_transforms(image_size, conservative=conservative_aug)
     val_transforms = get_val_transforms(image_size)
 
     train_dataset = FundusDataset(
@@ -148,12 +152,24 @@ def create_dataloaders(
     batch_size = config["training"]["batch_size"]
     num_workers = config["training"]["num_workers"]
 
+    seed = int(config.get("seed", 42))
+    g = torch.Generator()
+    g.manual_seed(seed)
+
+    def seed_worker(worker_id):
+        worker_seed = torch.initial_seed() % 2**32
+        np.random.seed(worker_seed)
+        import random
+        random.seed(worker_seed)
+
     train_loader = DataLoader(
         train_dataset,
         batch_size=batch_size,
         shuffle=True,
         num_workers=num_workers,
         pin_memory=True,
+        worker_init_fn=seed_worker,
+        generator=g,
     )
     val_loader = DataLoader(
         val_dataset,

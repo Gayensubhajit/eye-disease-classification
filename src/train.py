@@ -52,32 +52,45 @@ def train_one_epoch(
     device: torch.device,
     dry_run: bool = False,
     use_amp: bool = False,
+    accum_steps: int = 1,
 ) -> float:
-    """Run one epoch of training."""
+    """Run one epoch of training with mathematically exact gradient accumulation across complete and partial groups."""
     model.train()
     total_loss = 0.0
     num_samples = 0
+    optimizer.zero_grad()
+
+    total_steps = min(2, len(loader)) if dry_run else len(loader)
 
     for step, (images, targets) in enumerate(loader):
+        if step >= total_steps:
+            break
+
         images = images.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
 
-        optimizer.zero_grad()
+        # Compute dynamic accumulation window size to handle partial trailing groups exactly
+        window_start = (step // max(accum_steps, 1)) * max(accum_steps, 1)
+        window_end = min(window_start + max(accum_steps, 1), total_steps)
+        current_window_size = window_end - window_start
+
         with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda" and use_amp)):
             outputs = model(images)
             loss = criterion(outputs, targets)
+            loss_scaled = loss / max(current_window_size, 1)
 
-        scaler.scale(loss).backward()
-        scaler.unscale_(optimizer)
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-        scaler.step(optimizer)
-        scaler.update()
+        scaler.scale(loss_scaled).backward()
+
+        is_window_end = (step + 1 == window_end)
+        if is_window_end:
+            scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            scaler.step(optimizer)
+            scaler.update()
+            optimizer.zero_grad()
 
         total_loss += loss.item() * len(targets)
         num_samples += len(targets)
-
-        if dry_run and step >= 2:
-            break
 
     return total_loss / max(num_samples, 1)
 
@@ -101,7 +114,11 @@ def evaluate_epoch(
     all_targets = []
     all_probs = []
 
+    total_steps = min(2, len(loader)) if dry_run else len(loader)
     for step, (images, targets) in enumerate(loader):
+        if step >= total_steps:
+            break
+
         images = images.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
 
@@ -118,9 +135,6 @@ def evaluate_epoch(
         all_preds.append(preds.cpu().numpy())
         all_targets.append(targets.cpu().numpy())
         all_probs.append(probs.cpu().numpy())
-
-        if dry_run and step >= 2:
-            break
 
     y_pred = np.concatenate(all_preds)
     y_true = np.concatenate(all_targets)
@@ -172,6 +186,7 @@ def main() -> None:
     # Build Model, Loss, Optimizer
     model = build_model(config).to(device)
     criterion = get_loss_function(config, class_counts=class_counts).to(device)
+    val_criterion = nn.CrossEntropyLoss().to(device)
     
     base_lr = float(config["training"]["learning_rate"])
     optimizer = AdamW(
@@ -253,12 +268,13 @@ def main() -> None:
     for epoch in range(start_epoch, epochs + 1):
         epoch_start = time.time()
 
+        accum_steps = int(config.get("training", {}).get("gradient_accumulation_steps", 1))
         train_loss = train_one_epoch(
-            model, train_loader, criterion, optimizer, scaler, device, dry_run=args.dry_run, use_amp=use_amp
+            model, train_loader, criterion, optimizer, scaler, device, dry_run=args.dry_run, use_amp=use_amp, accum_steps=accum_steps
         )
 
         val_loss, val_metrics, val_true, val_pred, _ = evaluate_epoch(
-            model, val_loader, criterion, device, class_names, dry_run=args.dry_run, use_amp=use_amp
+            model, val_loader, val_criterion, device, class_names, dry_run=args.dry_run, use_amp=use_amp
         )
 
         current_lr = float(optimizer.param_groups[0]["lr"])
